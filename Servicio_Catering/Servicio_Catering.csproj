@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9FC9498A-BD82-439E-A836-B1BCC6209B47}</ProjectGuid>
+    <ProjectGuid>{7974494F-2CB7-4CD9-AC7A-BE02C4F78466}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Servicio_Catering</RootNamespace>
     <AssemblyName>Servicio_Catering</AssemblyName>
@@ -75,6 +75,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL_Catering\BLL_Catering.csproj">
+      <Project>{89f66bfb-869c-4b0b-a03c-1858141ab8d3}</Project>
+      <Name>BLL_Catering</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
