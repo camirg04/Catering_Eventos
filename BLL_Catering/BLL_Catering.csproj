@@ -42,12 +42,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="LoginService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL_Catering\DAL_Catering.csproj">
       <Project>{5dee45ff-140c-4dfa-a03c-90231349cf99}</Project>
       <Name>DAL_Catering</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entity_Catering\Entity_Catering.csproj">
+      <Project>{259cfc22-deaa-446a-b91e-2173525f9964}</Project>
+      <Name>Entity_Catering</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

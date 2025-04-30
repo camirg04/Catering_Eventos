@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChefVista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChefVista.Designer.cs">
+      <DependentUpon>ChefVista.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +60,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ChefVista.resx">
+      <DependentUpon>ChefVista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -80,6 +92,10 @@
     <ProjectReference Include="..\BLL_Catering\BLL_Catering.csproj">
       <Project>{89f66bfb-869c-4b0b-a03c-1858141ab8d3}</Project>
       <Name>BLL_Catering</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entity_Catering\Entity_Catering.csproj">
+      <Project>{259cfc22-deaa-446a-b91e-2173525f9964}</Project>
+      <Name>Entity_Catering</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

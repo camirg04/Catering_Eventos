@@ -21,7 +21,7 @@ namespace DAL_Catering
          */
         private void Conectar()
         {   // HACK: Cadena de conexión hardcodeada. Luego ponerla como parametro de configuración del proyecto u otra alternativa.
-            strCadenaDeConexion = @"Integrated Security = SSPI; Persist Security Info = False; Initial Catalog = CursosBBDD; Data Source = localhost\SQLEXPRESS";
+            strCadenaDeConexion = @"Integrated Security = SSPI; Persist Security Info = False; Initial Catalog = CATERINGDB; Data Source = .\SQLEXPRESS";
 
             //Instanció un objeto del tipo SqlConnection
             objConexion = new SqlConnection();
@@ -214,6 +214,58 @@ namespace DAL_Catering
 
 
             return filasAfectadas;
+        }
+
+        public DataTable LeerPorComando(string pComando, SqlParameter[] parametros = null)
+        {
+            DataTable unaTabla = new DataTable();
+            SqlCommand objComando = new SqlCommand();
+
+            this.Conectar();
+
+            try
+            {
+                // Configuración básica del comando
+                objComando.CommandType = CommandType.Text;
+                objComando.Connection = this.objConexion;
+                objComando.CommandText = pComando;
+                objComando.CommandTimeout = 30; // Tiempo de espera en segundos
+
+                // Agregar parámetros si existen
+                if (parametros != null && parametros.Length > 0)
+                {
+                    objComando.Parameters.AddRange(parametros);
+                }
+
+                // Ejecutar y llenar DataTable
+                using (SqlDataAdapter objAdaptador = new SqlDataAdapter(objComando))
+                {
+                    objAdaptador.Fill(unaTabla);
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                // Manejo específico para errores SQL
+                unaTabla = null;
+                throw new ApplicationException($"Error de SQL: {sqlEx.Number} - {sqlEx.Message}", sqlEx);
+            }
+            catch (Exception ex)
+            {
+                unaTabla = null;
+                throw new ApplicationException("Error al ejecutar consulta", ex);
+            }
+            finally
+            {
+                this.Desconectar();
+
+                // Limpieza de recursos
+                if (objComando != null)
+                {
+                    objComando.Dispose();
+                }
+            }
+
+            return unaTabla;
         }
 
         #region Parametros
