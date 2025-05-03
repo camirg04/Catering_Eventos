@@ -9,11 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL_Catering;
 using Entity_Catering;
+using NLog;
 
 namespace Servicio_Catering
 {
     public partial class Form1 : Form
     {
+        private static readonly Logger logger = LogManager.GetCurrentClassLogger();
         public Form1()
         {
             InitializeComponent();
@@ -35,20 +37,32 @@ namespace Servicio_Catering
             warningPass.Text = loginService.ValidarClave(tbPass.Text);
             if (warningMail.Text == "" && warningPass.Text == "")
             {
-                Usuario user = loginService.LoginUsuario(tbMail.Text, tbPass.Text);
-                if (user == null) { 
-                    MessageBox.Show("Mail o clave incorrecta");
+                try
+                {
+                    Usuario user = loginService.LoginUsuario(tbMail.Text, tbPass.Text);
+                    if (user == null)
+                    {
+                        MessageBox.Show("Mail o clave incorrecta");
+                        return;
+                    }
+
+                    if (user.Perfil == Perfil.CHEF.ToString())
+                    {
+                        Administracion ventanaChef = new Administracion(user);
+                        ventanaChef.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Pantallas en construcción");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    logger.Error(ex, "Error al intentar loguear usuario en UI");
+                    MessageBox.Show("Error al intentar loguear usuario");
                     return;
                 }
-
-                if (user.Perfil == Perfil.CHEF.ToString())
-                {
-                    Administracion ventanaChef = new Administracion(user);
-                    ventanaChef.ShowDialog();
-                }
-                else {
-                    MessageBox.Show("Pantallas en construcción");
-                }
+                
             }
         }
 
