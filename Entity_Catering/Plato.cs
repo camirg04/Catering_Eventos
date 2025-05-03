@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,25 +25,28 @@ namespace Entity_Catering
             _fechaBaja = fechaBaja;
         }
 
-
+        [DisplayName("ID Plato")]
         public int IdPlato
         {
             get { return _idPlato; }
             set { _idPlato = value; }
         }
 
+        [DisplayName("Nombre")]
         public string Nombre
         {
             get { return _nombre; }
             set { _nombre = value; }
         }
 
+        [DisplayName("Tipo de plato")]
         public string TipoPlato
         {
             get { return _tipoPlato; }
             set { _tipoPlato = value; }
         }
 
+        [DisplayName("Fecha de baja")]
         public DateTime? FechaBaja
         {
             get { return _fechaBaja; }

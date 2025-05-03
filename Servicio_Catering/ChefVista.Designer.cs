@@ -31,10 +31,10 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.txtFiltro = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.cbCampo = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.cbTipoPlato = new System.Windows.Forms.ComboBox();
+            this.cbActivo = new System.Windows.Forms.ComboBox();
+            this.lblActivo = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lbFiltrar = new System.Windows.Forms.Label();
@@ -102,10 +102,10 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.btnBuscar);
-            this.tabPage1.Controls.Add(this.txtFiltro);
-            this.tabPage1.Controls.Add(this.comboBox1);
-            this.tabPage1.Controls.Add(this.cbCampo);
-            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.txtNombre);
+            this.tabPage1.Controls.Add(this.cbTipoPlato);
+            this.tabPage1.Controls.Add(this.cbActivo);
+            this.tabPage1.Controls.Add(this.lblActivo);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.lbFiltrar);
@@ -131,45 +131,46 @@
             this.btnBuscar.TabIndex = 13;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // txtFiltro
+            // txtNombre
             // 
-            this.txtFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFiltro.Location = new System.Drawing.Point(787, 218);
-            this.txtFiltro.Name = "txtFiltro";
-            this.txtFiltro.Size = new System.Drawing.Size(147, 20);
-            this.txtFiltro.TabIndex = 12;
+            this.txtNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNombre.Location = new System.Drawing.Point(787, 218);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(147, 20);
+            this.txtNombre.TabIndex = 12;
             // 
-            // comboBox1
+            // cbTipoPlato
             // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(787, 272);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(147, 21);
-            this.comboBox1.TabIndex = 11;
+            this.cbTipoPlato.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbTipoPlato.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTipoPlato.FormattingEnabled = true;
+            this.cbTipoPlato.Location = new System.Drawing.Point(787, 272);
+            this.cbTipoPlato.Name = "cbTipoPlato";
+            this.cbTipoPlato.Size = new System.Drawing.Size(147, 21);
+            this.cbTipoPlato.TabIndex = 11;
             // 
-            // cbCampo
+            // cbActivo
             // 
-            this.cbCampo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbCampo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbCampo.FormattingEnabled = true;
-            this.cbCampo.Location = new System.Drawing.Point(787, 325);
-            this.cbCampo.Name = "cbCampo";
-            this.cbCampo.Size = new System.Drawing.Size(149, 21);
-            this.cbCampo.TabIndex = 10;
+            this.cbActivo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbActivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbActivo.FormattingEnabled = true;
+            this.cbActivo.Location = new System.Drawing.Point(787, 325);
+            this.cbActivo.Name = "cbActivo";
+            this.cbActivo.Size = new System.Drawing.Size(149, 21);
+            this.cbActivo.TabIndex = 10;
             // 
-            // label3
+            // lblActivo
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(785, 307);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 15);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Ingrediente";
+            this.lblActivo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblActivo.AutoSize = true;
+            this.lblActivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblActivo.Location = new System.Drawing.Point(785, 307);
+            this.lblActivo.Name = "lblActivo";
+            this.lblActivo.Size = new System.Drawing.Size(44, 15);
+            this.lblActivo.TabIndex = 9;
+            this.lblActivo.Text = "Activo";
             // 
             // label2
             // 
@@ -233,6 +234,7 @@
             this.verPlato.TabIndex = 4;
             this.verPlato.Text = "Ver detalle";
             this.verPlato.UseVisualStyleBackColor = true;
+            this.verPlato.Click += new System.EventHandler(this.verPlato_Click);
             // 
             // dgvPlatos
             // 
@@ -607,6 +609,7 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "Administracion";
             this.Text = "Administración Catering";
+            this.Load += new System.EventHandler(this.Administracion_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -638,11 +641,11 @@
         private System.Windows.Forms.Button agregarPlato;
         private System.Windows.Forms.Button verPlato;
         private System.Windows.Forms.DataGridView dgvPlatos;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblActivo;
         private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.TextBox txtFiltro;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox cbCampo;
+        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.ComboBox cbTipoPlato;
+        private System.Windows.Forms.ComboBox cbActivo;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ComboBox comboBox2;
