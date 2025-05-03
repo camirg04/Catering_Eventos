@@ -5,12 +5,13 @@ using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using Entity_Catering;
+using NLog;
 
 namespace BLL_Catering
 {
     public class LoginService
     {
-
+        private static readonly Logger logger = LogManager.GetCurrentClassLogger();
         public LoginService() { }
 
         public string ValidarUsuario(string usuario)
@@ -26,8 +27,31 @@ namespace BLL_Catering
 
         public Usuario LoginUsuario(string mail, string clave)
         {
-            DAL_Catering.LoginDAL loginDAL = new DAL_Catering.LoginDAL();
-            return loginDAL.BuscarUsuarioPorCredenciales(mail, clave);
+            try {
+                DAL_Catering.LoginDAL loginDAL = new DAL_Catering.LoginDAL();
+                Usuario usuario =  loginDAL.BuscarUsuarioPorCredenciales(mail);
+                if (usuario == null)
+                {
+                    return null;
+                }
+                else
+                {
+                    if (usuario.Clave != clave)
+                    {
+                        return null;
+                    }
+                    else
+                    {
+                        return usuario;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al intentar loguear usuario en BLL");
+                throw ex;
+            }
+            
         }
     }
 }

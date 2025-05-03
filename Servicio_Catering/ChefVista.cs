@@ -8,11 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entity_Catering;
+using BLL_Catering;
+using NLog;
 
 namespace Servicio_Catering
 {
     public partial class Administracion : Form
     {
+        private static readonly Logger logger = LogManager.GetCurrentClassLogger();
         private Usuario _usuario;
 
         public Administracion(Usuario user)
@@ -28,11 +31,28 @@ namespace Servicio_Catering
             fechaHastaEvento.Format = DateTimePickerFormat.Short;
 
             this.Load += (sender, e) => MensajeBienvenida();
+            ObtenerPlatosActivos();
         }
 
         private void MensajeBienvenida()
         {
             lblBienvenida.Text = "¡Bienvenido/a " + _usuario.Nombre + "!";
+        }
+
+        private void ObtenerPlatosActivos()
+        {
+            try {
+                PlatoBLL platoBLL = new PlatoBLL();
+                List<Plato> listaPlatos = platoBLL.BuscarPlatosActivos();
+                dgvPlatos.DataSource = listaPlatos;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al obtener los platos activos en UI");
+                MessageBox.Show("Error al obtener los platos activos");
+            }
+
+            
         }
 
         private void tabPage2_Click(object sender, EventArgs e)
@@ -60,29 +80,5 @@ namespace Servicio_Catering
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Administracion_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void agregarPlato_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label13_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
