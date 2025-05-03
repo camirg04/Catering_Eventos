@@ -13,7 +13,7 @@ namespace BLL_Catering
     {
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
         public LoginService() { }
-
+        /*un comentario*/
         public string ValidarUsuario(string usuario)
         {
             string response = !(usuario == "" || usuario == null) ? "" : "El usuario no puede estar vacío";
