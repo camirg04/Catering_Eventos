@@ -14,7 +14,7 @@ namespace BLL_Catering
     public class PlatoBLL
     {
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
-        private PlatoDAL _platoDAL;
+        private readonly PlatoDAL _platoDAL;
         public PlatoBLL() {
             _platoDAL = new PlatoDAL();
         }

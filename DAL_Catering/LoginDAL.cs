@@ -12,7 +12,7 @@ namespace DAL_Catering
 {
     public class LoginDAL
     {
-        Conexion conexion;
+        private readonly Conexion conexion;
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
 
         public LoginDAL() {

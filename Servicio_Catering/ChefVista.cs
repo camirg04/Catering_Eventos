@@ -16,9 +16,9 @@ namespace Servicio_Catering
     public partial class Administracion : Form
     {
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
-        private Usuario _usuario;
-        private HelperFront _helperFront;
-        private PlatoBLL _platoBLL;
+        private readonly Usuario _usuario;
+        private readonly HelperFront _helperFront;
+        private readonly PlatoBLL _platoBLL;
 
         public Administracion(Usuario user)
         {
