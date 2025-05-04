@@ -18,12 +18,14 @@ namespace Servicio_Catering
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
         private Usuario _usuario;
         private HelperFront _helperFront;
+        private PlatoBLL _platoBLL;
 
         public Administracion(Usuario user)
         {
             InitializeComponent();
             _usuario = user;
             _helperFront = new HelperFront();
+            _platoBLL = new PlatoBLL();
         }
 
         private void MensajeBienvenida()
@@ -34,8 +36,7 @@ namespace Servicio_Catering
         private void ObtenerPlatosActivos()
         {
             try {
-                PlatoBLL platoBLL = new PlatoBLL();
-                List<Plato> listaPlatos = platoBLL.BuscarPlatosActivos();
+                List<Plato> listaPlatos = _platoBLL.BuscarPlatosActivos();
                 dgvPlatos.DataSource = listaPlatos;
             }
             catch (Exception ex)
@@ -107,9 +108,21 @@ namespace Servicio_Catering
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            string nombrePLato = txtNombre.Text;
-            string tipoPlato = cbTipoPlato.Text;
-            string activo = cbActivo.Text;
+          
+
+            try {
+                string nombrePLato = txtNombre.Text;
+                string tipoPlato = cbTipoPlato.Text;
+                string activo = cbActivo.Text;
+                List<Plato> platos = _platoBLL.FiltrarPlatos(nombrePLato, tipoPlato, activo);
+                dgvPlatos.DataSource = platos;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al buscar platos en UI");
+                MessageBox.Show("Error al buscar platos");
+            }
+            
         }
     }
 }
