@@ -20,7 +20,7 @@ namespace DAL_Catering
         }
 
 
-        public List<Plato> BuscarPLatos(string consulta, List<SqlParameter> parametros)
+        public List<Plato> BuscarPlatos(string consulta, List<SqlParameter> parametros)
         {
             try
             {
