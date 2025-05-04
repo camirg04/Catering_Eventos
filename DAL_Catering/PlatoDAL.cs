@@ -12,7 +12,7 @@ namespace DAL_Catering
 {
     public class PlatoDAL
     {
-        Conexion conexion;
+        private readonly Conexion conexion;
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
         public PlatoDAL()
         {

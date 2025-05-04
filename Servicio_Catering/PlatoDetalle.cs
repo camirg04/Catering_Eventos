@@ -15,9 +15,9 @@ namespace Servicio_Catering
 {
     public partial class PlatoDetalle : Form
     {
-        private Plato _plato;
+        private readonly Plato _plato;
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
-        private HelperFront _helperFront;
+        private readonly HelperFront _helperFront;
         public PlatoDetalle(Plato plato)
         {
             _plato = plato;
