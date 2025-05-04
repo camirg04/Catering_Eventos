@@ -14,14 +14,15 @@ namespace BLL_Catering
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
         public LoginService() { }
         /*un comentario*/
+        //otro comentario
         public string ValidarUsuario(string usuario)
         {
-            string response = !(usuario == "" || usuario == null) ? "" : "El usuario no puede estar vacío";
+            string response = !(usuario == null || usuario.Trim() == "") ? "" : "El usuario no puede estar vacío";
             return response;
         }
         public string ValidarClave(string clave)
         {
-            string response = !(clave == "" || clave == null) ? "" : "La clave no puede estar vacía";
+            string response = !(clave == null || clave.Trim() == "") ? "" : "La clave no puede estar vacía";
             return response;
         }
 

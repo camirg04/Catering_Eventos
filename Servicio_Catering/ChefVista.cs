@@ -17,21 +17,15 @@ namespace Servicio_Catering
     {
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
         private Usuario _usuario;
+        private HelperFront _helperFront;
+        private PlatoBLL _platoBLL;
 
         public Administracion(Usuario user)
         {
             InitializeComponent();
             _usuario = user;
- 
-            //tamaño mímimo de la ventana al inicializar componente
-            this.MinimumSize = new Size(1000, 600);
-
-            //para que el date time picker se vea como dd/mm/yyyy
-            fechaDesdeEvento.Format = DateTimePickerFormat.Short;
-            fechaHastaEvento.Format = DateTimePickerFormat.Short;
-
-            this.Load += (sender, e) => MensajeBienvenida();
-            ObtenerPlatosActivos();
+            _helperFront = new HelperFront();
+            _platoBLL = new PlatoBLL();
         }
 
         private void MensajeBienvenida()
@@ -42,14 +36,13 @@ namespace Servicio_Catering
         private void ObtenerPlatosActivos()
         {
             try {
-                PlatoBLL platoBLL = new PlatoBLL();
-                List<Plato> listaPlatos = platoBLL.BuscarPlatosActivos();
+                List<Plato> listaPlatos = _platoBLL.BuscarPlatosActivos();
                 dgvPlatos.DataSource = listaPlatos;
             }
             catch (Exception ex)
             {
                 logger.Error(ex, "Error al obtener los platos activos en UI");
-                MessageBox.Show("Error al obtener los platos activos");
+                throw ex;
             }
 
             
@@ -80,5 +73,56 @@ namespace Servicio_Catering
 
         }
 
+        private void verPlato_Click(object sender, EventArgs e)
+        {
+            Plato plato = (Plato)dgvPlatos.CurrentRow.DataBoundItem;
+
+            PlatoDetalle platoDetalle = new PlatoDetalle(plato);
+            platoDetalle.ShowDialog();
+            ObtenerPlatosActivos();
+        }
+
+        private void Administracion_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                //tamaño mímimo de la ventana al inicializar componente
+                this.MinimumSize = new Size(1000, 600);
+
+                //para que el date time picker se vea como dd/mm/yyyy
+                fechaDesdeEvento.Format = DateTimePickerFormat.Short;
+                fechaHastaEvento.Format = DateTimePickerFormat.Short;
+
+                MensajeBienvenida();
+                dgvPlatos.ReadOnly = true;
+                ObtenerPlatosActivos();
+                _helperFront.cargarComboTipoPlato(cbTipoPlato);
+                _helperFront.cargarComboSiNo(cbActivo);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al cargar la ventana de administración");
+                MessageBox.Show("Error al cargar la ventana de administración");
+            }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+          
+
+            try {
+                string nombrePLato = txtNombre.Text;
+                string tipoPlato = cbTipoPlato.Text;
+                string activo = cbActivo.Text;
+                List<Plato> platos = _platoBLL.FiltrarPlatos(nombrePLato, tipoPlato, activo);
+                dgvPlatos.DataSource = platos;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al buscar platos en UI");
+                MessageBox.Show("Error al buscar platos");
+            }
+            
+        }
     }
 }

@@ -19,14 +19,12 @@ namespace Servicio_Catering
         public Form1()
         {
             InitializeComponent();
-            warningMail.Text = "";
-            warningPass.Text = "";
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //Administracion ventanaChef = new Administracion();
-            //ventanaChef.ShowDialog();
+            warningMail.Text = "";
+            warningPass.Text = "";
         }
 
 
