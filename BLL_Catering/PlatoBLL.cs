@@ -19,20 +19,8 @@ namespace BLL_Catering
             _platoDAL = new PlatoDAL();
         }
 
-        public List<Plato> BuscarPlatosActivos()
-        {
-            try
-            {
-                return _platoDAL.BuscarPlatosActivos();
-            }
-            catch (Exception ex)
-            {
-                logger.Error(ex, "Error al buscar platos activos en BLL");
-                throw ex;
-            }
-        }
 
-        public List<Plato> FiltrarPlatos(string nombre, string tipo, string activo)
+        public List<Plato> BuscarPlatos(string nombre, string tipo, string activo)
         {
             try
             {
@@ -65,7 +53,7 @@ namespace BLL_Catering
                     consulta.Append(" WHERE " + string.Join(" AND ", condiciones));
                 }
 
-                return _platoDAL.FiltrarPlatos(consulta.ToString(), parametros);
+                return _platoDAL.BuscarPlatos(consulta.ToString(), parametros);
             }
             catch (Exception ex)
             {

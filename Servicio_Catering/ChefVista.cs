@@ -36,16 +36,14 @@ namespace Servicio_Catering
         private void ObtenerPlatosActivos()
         {
             try {
-                List<Plato> listaPlatos = _platoBLL.BuscarPlatosActivos();
-                dgvPlatos.DataSource = listaPlatos;
+                List<Plato> platos = _platoBLL.BuscarPlatos(null, null, "Si");
+                dgvPlatos.DataSource = platos;
             }
             catch (Exception ex)
             {
                 logger.Error(ex, "Error al obtener los platos activos en UI");
                 throw ex;
-            }
-
-            
+            }            
         }
 
         private void tabPage2_Click(object sender, EventArgs e)
@@ -114,7 +112,7 @@ namespace Servicio_Catering
                 string nombrePLato = txtNombre.Text;
                 string tipoPlato = cbTipoPlato.Text;
                 string activo = cbActivo.Text;
-                List<Plato> platos = _platoBLL.FiltrarPlatos(nombrePLato, tipoPlato, activo);
+                List<Plato> platos = _platoBLL.BuscarPlatos(nombrePLato, tipoPlato, activo);
                 dgvPlatos.DataSource = platos;
             }
             catch (Exception ex)
