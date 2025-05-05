@@ -13,9 +13,12 @@ namespace Entity_Catering
         private string _nombre;
         private string _tipoPlato;
         private DateTime? _fechaBaja;
+        private List<PlatoInsumo> _listaInsumos; // lista de insumos que componen el plato
         // falta agregar lista de ingredientes y sus cantidades
 
-        public Plato() { }
+        public Plato() {
+
+        }
 
         public Plato(int idPlato, string nombre, string tipoPlato, DateTime? fechaBaja)
         {
@@ -51,6 +54,12 @@ namespace Entity_Catering
         {
             get { return _fechaBaja; }
             set { _fechaBaja = value; }
+        }
+
+        public List<PlatoInsumo> ListaInsumos
+        {
+            get { return _listaInsumos; }
+            set { _listaInsumos = value; }
         }
     }
 }

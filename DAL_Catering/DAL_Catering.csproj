@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conexion.cs" />
+    <Compile Include="InsumoDAL.cs" />
     <Compile Include="LoginDAL.cs" />
     <Compile Include="PlatoDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

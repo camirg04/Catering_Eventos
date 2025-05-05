@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35913.81 d17.13
+VisualStudioVersion = 17.13.35913.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servicio_Catering", "Servicio_Catering\Servicio_Catering.csproj", "{7974494F-2CB7-4CD9-AC7A-BE02C4F78466}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL_Catering", "DAL_Catering\DAL_Catering.csproj", "{5DEE45FF-140C-4DFA-A03C-90231349CF99}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity_Catering", "Entity_Catering\Entity_Catering.csproj", "{259CFC22-DEAA-446A-B91E-2173525F9964}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO_Catering", "DTO_Catering\DTO_Catering.csproj", "{AF7D86EA-ED3A-471E-97DF-ABB5B26FF401}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{259CFC22-DEAA-446A-B91E-2173525F9964}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{259CFC22-DEAA-446A-B91E-2173525F9964}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{259CFC22-DEAA-446A-B91E-2173525F9964}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF7D86EA-ED3A-471E-97DF-ABB5B26FF401}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF7D86EA-ED3A-471E-97DF-ABB5B26FF401}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF7D86EA-ED3A-471E-97DF-ABB5B26FF401}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF7D86EA-ED3A-471E-97DF-ABB5B26FF401}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

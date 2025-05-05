@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -28,6 +30,20 @@ namespace Servicio_Catering
             combo.Items.Clear();
             combo.Items.Add("Si");
             combo.Items.Add("No");
+        }
+
+        public void cargarComboIsumos(ComboBox combo, List<Insumo> insumos)
+        {
+            combo.DataSource = insumos;
+            combo.DisplayMember = "Nombre";  
+            combo.ValueMember = "IdInsumo";
+            combo.SelectedIndex = -1;
+        }
+
+        public bool esDecimal(string numero) {
+            CultureInfo culturaEspañol = new CultureInfo("es-ES");
+
+            return decimal.TryParse(numero, NumberStyles.Number, culturaEspañol, out decimal resultado);
         }
     }
 }
