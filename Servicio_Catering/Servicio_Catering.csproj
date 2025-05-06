@@ -115,6 +115,10 @@
       <Project>{89f66bfb-869c-4b0b-a03c-1858141ab8d3}</Project>
       <Name>BLL_Catering</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DTO_Catering\DTO_Catering.csproj">
+      <Project>{af7d86ea-ed3a-471e-97df-abb5b26ff401}</Project>
+      <Name>DTO_Catering</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Entity_Catering\Entity_Catering.csproj">
       <Project>{259cfc22-deaa-446a-b91e-2173525f9964}</Project>
       <Name>Entity_Catering</Name>

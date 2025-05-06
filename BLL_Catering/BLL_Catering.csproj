@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="InsumoBLL.cs" />
     <Compile Include="LoginService.cs" />
     <Compile Include="PlatoBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
