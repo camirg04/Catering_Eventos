@@ -131,6 +131,47 @@ namespace DAL_Catering
             return unaTabla;
         }
 
+        public int EscribirPorComandoExecuteScalar(string pTexto, SqlParameter[] pParametrosSql = null)
+        {
+            int idCreado = -1;
+            var objComando = new SqlCommand();
+            this.Conectar();
+
+            try
+            {
+                // Configuración básica del comando
+                objComando.CommandType = CommandType.Text;
+                objComando.Connection = this.objConexion;
+                objComando.CommandText = pTexto;
+                objComando.CommandTimeout = 30; // Tiempo de espera en segundos
+
+                // Agregar parámetros si existen
+                if (pParametrosSql != null && pParametrosSql.Length > 0)
+                {
+                    objComando.Parameters.AddRange(pParametrosSql);
+                }
+
+                // Ejecuta y obtiene el ID generado
+                object resultado = objComando.ExecuteScalar();
+
+                if (resultado != null && int.TryParse(resultado.ToString(), out int id))
+                {
+                    idCreado = id;
+                }
+            }
+            catch (Exception)
+            {
+                idCreado = -1;
+                throw;
+            }
+            finally
+            {
+                this.Desconectar();
+            }
+
+            return idCreado;
+        }
+
         public int EscribirPorComando(string pTexto)
         {
             //Instanció una variable filasAfectadas que va a terminar devolviendo la cantidad de filas afectadas.
@@ -168,6 +209,50 @@ namespace DAL_Catering
             return filasAfectadas;
         }
 
+        public int EscribirPorComando(string pTexto, SqlParameter[] pParametrosSql)
+        {
+            //Instanció una variable filasAfectadas que va a terminar devolviendo la cantidad de filas afectadas.
+            int filasAfectadas = 0;
+
+            //Instancio un objeto del tipo SqlCommand
+            var objComando = new SqlCommand();
+
+            //Me conecto...
+            this.Conectar();
+
+            try
+            {
+                // Configuración básica del comando
+                objComando.CommandType = CommandType.Text;
+                objComando.Connection = this.objConexion;
+                objComando.CommandText = pTexto;
+                objComando.CommandTimeout = 30; // Tiempo de espera en segundos
+
+                // Agregar parámetros si existen
+                if (pParametrosSql != null && pParametrosSql.Length > 0)
+                {
+                    objComando.Parameters.AddRange(pParametrosSql);
+                }
+
+                //El método ExecuteNonQuery() me devuelve la cantidad de filas afectadas.
+                filasAfectadas = objComando.ExecuteNonQuery();
+
+
+            }
+            catch (Exception)
+            {
+                filasAfectadas = -1;
+                throw;
+            }
+            finally
+            {
+                //Me desconecto
+                this.Desconectar();
+            }
+
+
+            return filasAfectadas;
+        }
 
         public int EscribirPorStoreProcedure(string pTexto, SqlParameter[] pParametrosSql)
         {

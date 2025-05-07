@@ -40,10 +40,5 @@ namespace Servicio_Catering
             combo.SelectedIndex = -1;
         }
 
-        public bool esDecimal(string numero) {
-            CultureInfo culturaEspañol = new CultureInfo("es-ES");
-
-            return decimal.TryParse(numero, NumberStyles.Number, culturaEspañol, out decimal resultado);
-        }
     }
 }
