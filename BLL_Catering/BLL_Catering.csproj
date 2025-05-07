@@ -51,11 +51,16 @@
     <Compile Include="LoginService.cs" />
     <Compile Include="PlatoBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValidacionesBLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL_Catering\DAL_Catering.csproj">
       <Project>{5dee45ff-140c-4dfa-a03c-90231349cf99}</Project>
       <Name>DAL_Catering</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTO_Catering\DTO_Catering.csproj">
+      <Project>{AF7D86EA-ED3A-471E-97DF-ABB5B26FF401}</Project>
+      <Name>DTO_Catering</Name>
     </ProjectReference>
     <ProjectReference Include="..\Entity_Catering\Entity_Catering.csproj">
       <Project>{259cfc22-deaa-446a-b91e-2173525f9964}</Project>

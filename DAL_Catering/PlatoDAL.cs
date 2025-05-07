@@ -19,6 +19,167 @@ namespace DAL_Catering
             conexion = new Conexion();
         }
 
+        public bool AgregarIngrediente(int idPlato, int idInsumo, Decimal cantidad)
+        {
+            string consulta = @"insert into plato_insumo (id_plato, id_insumo, cantidad_necesaria) values (@Id_plato,@IdInsumo,@Cantidad)";
+            try
+            {
+                // Crear parámetros
+                SqlParameter[] parametros = new SqlParameter[]
+                {
+                new SqlParameter("@Id_plato", SqlDbType.BigInt, 100) { Value = idPlato },
+                new SqlParameter("@IdInsumo", SqlDbType.BigInt, 100) { Value = idInsumo },
+                new SqlParameter("@Cantidad", SqlDbType.Decimal, 100) { Value = cantidad }
+                };
+                int filasAfectadas = conexion.EscribirPorComando(consulta, parametros);
+
+                if (filasAfectadas > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al agregar ingrediente a plato en DAL " + consulta);
+                throw;
+            }
+      
+
+        }
+
+        public bool EditarIngrediente(int idPlato, int idInsumo, Decimal cantidad, int idPlatoInsumo)
+        {
+            string consulta = @"update plato_insumo set id_plato = @Id_plato, id_insumo = @IdInsumo, cantidad_necesaria = @Cantidad where id_plato_insumo = @Id_plato_insumo";
+            try
+            {
+                // Crear parámetros
+                SqlParameter[] parametros = new SqlParameter[]
+                {
+                new SqlParameter("@Id_plato", SqlDbType.BigInt, 100) { Value = idPlato },
+                new SqlParameter("@IdInsumo", SqlDbType.BigInt, 100) { Value = idInsumo },
+                new SqlParameter("@Id_plato_insumo", SqlDbType.BigInt, 100) { Value = idPlatoInsumo },
+                new SqlParameter("@Cantidad", SqlDbType.Decimal, 100) { Value = cantidad }
+                };
+                int filasAfectadas = conexion.EscribirPorComando(consulta, parametros);
+
+                if (filasAfectadas > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al editar ingrediente a plato en DAL " + consulta);
+                throw;
+            }
+
+
+        }
+
+        public bool EliminarIngrediente(int idPlatoInsumo)
+        {
+            string consulta = @"delete from plato_insumo where id_plato_insumo = @Id_plato_insumo";
+            try
+            {           
+                // Crear parámetros
+                SqlParameter[] parametros = new SqlParameter[]
+                {
+                new SqlParameter("@Id_plato_insumo", SqlDbType.BigInt, 100) { Value = idPlatoInsumo }
+                };
+                int filasAfectadas = conexion.EscribirPorComando(consulta, parametros);
+
+                if (filasAfectadas > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al eliminar ingrediente a plato en DAL: " + consulta);
+                throw;
+            }
+
+
+        }
+
+        public int EditarPlato(string nombrePlato, string tipo, DateTime? fechaBaja, int id_plato)
+        {
+            string consulta = @"update plato set nombre = @Nombre, tipo_plato = @Tipo, fecha_baja = @FechaBaja where id_plato = @Idplato";
+            try
+            {
+                // Crear parámetros
+                SqlParameter[] parametros = new SqlParameter[]
+                {
+                    new SqlParameter("@Nombre", SqlDbType.VarChar, 100) { Value = nombrePlato },
+                    new SqlParameter("@Tipo", SqlDbType.VarChar, 100) { Value = tipo },
+                    new SqlParameter("@FechaBaja", SqlDbType.Date, 100) { Value = fechaBaja ?? (object)DBNull.Value },
+                    new SqlParameter("@Idplato", SqlDbType.BigInt, 100) { Value = id_plato }
+                };
+                int afectados = conexion.EscribirPorComando(consulta, parametros);
+
+                if (afectados > 0)
+                {
+                    return afectados;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al agregar plato a plato en DAL " + consulta);
+                throw;
+            }
+
+
+        }
+
+
+
+        public int AgregarPlato(string nombrePlato, string tipo, DateTime? fechaBaja)
+        {
+            string consulta = @"insert into plato (nombre, tipo_plato, fecha_baja) OUTPUT INSERTED.id_plato values  (@Nombre,@Tipo,@FechaBaja)";
+            try
+            {
+                // Crear parámetros
+                SqlParameter[] parametros = new SqlParameter[]
+                {
+                new SqlParameter("@Nombre", SqlDbType.VarChar, 100) { Value = nombrePlato },
+                new SqlParameter("@Tipo", SqlDbType.VarChar, 100) { Value = tipo },
+                new SqlParameter("@FechaBaja", SqlDbType.Date, 100) { Value = fechaBaja ?? (object)DBNull.Value }
+                };
+                int idCreado = conexion.EscribirPorComandoExecuteScalar(consulta, parametros);
+
+                if (idCreado > 0)
+                {
+                    return idCreado;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al agregar plato a plato en DAL " + consulta);
+                throw;
+            }
+
+
+        }
 
         public List<Plato> BuscarPlatos(string consulta, List<SqlParameter> parametros)
         {
@@ -48,6 +209,7 @@ namespace DAL_Catering
                     plato.IdPlato = Convert.ToInt32(row["id_plato"]);
                     plato.Nombre = row["nombre"].ToString();
                     plato.TipoPlato = row["tipo_plato"].ToString();
+                    plato.FechaBaja = row["fecha_baja"] as DateTime?;
 
                     //obtener ingredientes del plato
                     string consultaIngredientes = @"select id_plato_insumo,p_i.id_insumo, cantidad_necesaria,
@@ -88,7 +250,7 @@ namespace DAL_Catering
             catch (Exception ex)
             {
                 logger.Error(ex, "Error al buscar platos activos en DAL");
-                throw ex;
+                throw;
             }
 
 

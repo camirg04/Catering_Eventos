@@ -19,10 +19,12 @@ namespace Servicio_Catering
     public partial class PlatoDetalle : Form
     {
         private readonly Plato _plato;
-        private BindingList<InsumoPlatoDTO> _listaInsumosPlato;
+        private readonly PlatoBLL _platoBLL;     
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
         private readonly HelperFront _helperFront;
         private readonly string _modo;
+        private BindingList<InsumoPlatoDTO> _listaInsumosPlato;
+        private List<InsumoPlatoDTO> _listaInsumosPlatoCopy;
         private List<InsumoPlatoDTO> _insumosEliminar;
         private List<InsumoPlatoDTO> _insumosAgregar;
         private List<InsumoPlatoDTO> _insumosEditar;
@@ -36,6 +38,7 @@ namespace Servicio_Catering
             _insumosEliminar = new List<InsumoPlatoDTO>();
             _insumosAgregar = new List<InsumoPlatoDTO>();
             _insumosEditar = new List<InsumoPlatoDTO>();
+            _platoBLL = new PlatoBLL();
             InitializeComponent();
         }
 
@@ -82,6 +85,7 @@ namespace Servicio_Catering
                     //visibilidad de los botones al ver detalle
                     visibilidadBotonesVer();
                     _listaInsumosPlato = InsumoPlatoDTO.mapPlatoInsumoListToInsumoPlatoDTOBindingList(_plato.ListaInsumos);
+                    _listaInsumosPlatoCopy = InsumoPlatoDTO.mapPlatoInsumoListToInsumoPlatoDTOList(_plato.ListaInsumos);
                     cargarInsumos();
                     preseleccionarDatos();
                     preseleccionarActivoYBaja();
@@ -201,77 +205,52 @@ namespace Servicio_Catering
 
         }
 
+
         private void btnAgregarIngrediente_Click(object sender, EventArgs e)
         {
-            bool esDecimal = _helperFront.esDecimal(txtCantidad.Text);
-            if (!esDecimal)
+            List<string> errores = new List<string>();
+            errores.Add(_platoBLL.cantidadInvalida(txtCantidad.Text));
+            errores.Add(_platoBLL.platoDuplicado((int)cbIngredientes.SelectedValue, _listaInsumosPlato));
+            foreach (string error in errores)
             {
-                MessageBox.Show("Formato numero incorrecto");
-                return;
-            }
-
-            int idInsumo = (int)cbIngredientes.SelectedValue;
-            foreach (InsumoPlatoDTO insumo in _listaInsumosPlato)
-            {
-                if (insumo.IdInsumo == idInsumo)
+                if (error != null)
                 {
-                    MessageBox.Show("El insumo ya existe en el plato");
+                    MessageBox.Show(error);
                     return;
                 }
             }
 
+            int idInsumo = (int)cbIngredientes.SelectedValue;
             Insumo ins = _insumos.Find(_insumo=> _insumo.IdInsumo == idInsumo);
             InsumoPlatoDTO insumoPlato = new InsumoPlatoDTO(0, ins.IdInsumo, Decimal.Parse(txtCantidad.Text, new CultureInfo("es-ES")), ins.Nombre, ins.UnidadMedida);
             _listaInsumosPlato.Add(insumoPlato);
-            _insumosAgregar.Add(insumoPlato);
         }
 
         private void eliminarPlato_Click(object sender, EventArgs e)
         {
             InsumoPlatoDTO insumo = (InsumoPlatoDTO)dgvIngredientes.CurrentRow.DataBoundItem;
-            _insumosEliminar.Add(insumo);
             _listaInsumosPlato.Remove(insumo);
         }
+
+      
 
         private void btnEditarIngrediente_Click(object sender, EventArgs e)
         {
             InsumoPlatoDTO insumoSeleccionado = (InsumoPlatoDTO)dgvIngredientes.CurrentRow.DataBoundItem;
-            if(insumoSeleccionado == null)
+            List<string> errores = new List<string>();
+            errores.Add(_platoBLL.sinPlatoSeleccionado(insumoSeleccionado));
+            errores.Add(_platoBLL.cantidadInvalida(txtCantidad.Text));
+            errores.Add(_platoBLL.platoDuplicado((int)cbIngredientes.SelectedValue, _listaInsumosPlato));
+            foreach (string error in errores)
             {
-                MessageBox.Show("Seleccione un insumo para editar");
-                return;
-            }
-
-            bool esDecimal = _helperFront.esDecimal(txtCantidad.Text);
-            if (!esDecimal)
-            {
-                MessageBox.Show("Formato numero incorrecto");
-                return;
-            }
-
-            int idInsumo = (int)cbIngredientes.SelectedValue;
-            int mismoInsumo = 0;
-            foreach (InsumoPlatoDTO insumo in _listaInsumosPlato)
-            {
-                if (insumo.IdInsumo == idInsumo)
+                if (error != null)
                 {
-                    mismoInsumo++;
+                    MessageBox.Show(error);
+                    return;
                 }
             }
-
-            if (mismoInsumo > 1)
-            {
-                MessageBox.Show("No se puede duplicar el insumo en el plato");
-                return;
-            }
-
-            Insumo ins = _insumos.Find(_insumo => _insumo.IdInsumo == idInsumo);
-            insumoSeleccionado.CantidadNecesaria = Decimal.Parse(txtCantidad.Text, new CultureInfo("es-ES"));
-            insumoSeleccionado.IdInsumo = ins.IdInsumo;
-            insumoSeleccionado.NombreInsumo = ins.Nombre;
-            insumoSeleccionado.UnidadMedida = ins.UnidadMedida;
-            _insumosEditar.Add(insumoSeleccionado);
-            dgvIngredientes.BindingContext[dgvIngredientes.DataSource].EndCurrentEdit();
+            
+            _platoBLL.editarInsumo(insumoSeleccionado, _insumos, (int)cbIngredientes.SelectedValue, txtCantidad.Text);
         }
 
         public void getListaInsumos()
@@ -298,6 +277,8 @@ namespace Servicio_Catering
             try
             {
                 InsumoPlatoDTO insumoSeleccionado = (InsumoPlatoDTO)dgvIngredientes.CurrentRow.DataBoundItem;
+                if (insumoSeleccionado == null)
+                    return;
                 Insumo ins = _insumos.Find(_insumo => _insumo.IdInsumo == insumoSeleccionado.IdInsumo);
                 cbIngredientes.SelectedValue = ins.IdInsumo;
                 txtCantidad.Text = insumoSeleccionado.CantidadNecesaria.ToString();
@@ -305,6 +286,67 @@ namespace Servicio_Catering
             catch (Exception ex)
             {
                 logger.Error(ex, "Error al seleccionar insumo en la grilla");
+            }
+        }
+
+        private void cambiosIngredientes() {
+            _insumosAgregar = _listaInsumosPlato
+            .Where(nuevo => !_listaInsumosPlatoCopy.Any(orig => orig.IdInsumoPlato == nuevo.IdInsumoPlato))
+            .ToList();
+
+            _insumosEliminar = _listaInsumosPlatoCopy
+                .Where(orig => !_listaInsumosPlato.Any(nuevo => nuevo.IdInsumoPlato == orig.IdInsumoPlato))
+                .ToList();
+
+            //se edita sólo si hay cambios
+            _insumosEditar = _listaInsumosPlato
+            .Where(nuevo =>
+            {
+                var original = _listaInsumosPlatoCopy.FirstOrDefault(c => c.IdInsumoPlato == nuevo.IdInsumoPlato);
+                return original != null &&
+                       (original.IdInsumo != nuevo.IdInsumo ||
+                        original.CantidadNecesaria != nuevo.CantidadNecesaria);
+
+            })
+            .ToList();
+
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (txtNombrePlato.Text == null || txtNombrePlato.Text.Trim().Length == 0)
+                {
+                    MessageBox.Show("El nombre del plato no puede estar vacio");
+                    return;
+                }
+                if(_modo == "agregar" && !_insumosAgregar.Any())
+                {
+                    MessageBox.Show("El plato no se puede crear sin ingredientes");
+                    return;
+                }
+                _plato.Nombre = txtNombrePlato.Text;
+                _plato.TipoPlato = cbTipoPlato.Text;
+                _plato.FechaBaja = cbPlatoActivo.Text == "Si" ? null : (DateTime?)DateTime.Now;
+                cambiosIngredientes();
+
+                bool exito = _platoBLL.guardarCambiosPlato(_modo, _plato, _insumosAgregar, _insumosEditar, _insumosEliminar);
+                if(exito)
+                {
+                    MessageBox.Show("Se guardaron los cambios");
+                }
+                else
+                {
+                    MessageBox.Show("No se pudieron guardar los cambios, intentelo nuevamente mas tarde");
+                }
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al guardar los cambios del plato, intentelo nuevamente mas tarde");
+                this.Close();
             }
         }
     }
