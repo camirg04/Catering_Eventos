@@ -37,7 +37,6 @@
             this.btnIngresar = new System.Windows.Forms.Button();
             this.warningMail = new System.Windows.Forms.Label();
             this.warningPass = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label9
@@ -135,22 +134,11 @@
             this.warningPass.TabIndex = 29;
             this.warningPass.Text = "mensaje error";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(282, 342);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 30;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(812, 422);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.warningPass);
             this.Controls.Add(this.warningMail);
             this.Controls.Add(this.btnIngresar);
@@ -179,7 +167,6 @@
         private System.Windows.Forms.Button btnIngresar;
         private System.Windows.Forms.Label warningMail;
         private System.Windows.Forms.Label warningPass;
-        private System.Windows.Forms.Button button1;
     }
 }
 

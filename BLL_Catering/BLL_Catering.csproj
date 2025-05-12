@@ -47,8 +47,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="EmpleadosBLL.cs" />
     <Compile Include="InsumoBLL.cs" />
     <Compile Include="LoginService.cs" />
+    <Compile Include="MenusBLL.cs" />
     <Compile Include="PlatoBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValidacionesBLL.cs" />

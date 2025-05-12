@@ -10,7 +10,7 @@ namespace Entity_Catering
     {
 
         private int _idEmpleado;
-        private string _dniEmpleado;
+        private string _dni;
         private string _nombre;
         private string _apellido;
         private string _domicilio;
@@ -24,12 +24,12 @@ namespace Entity_Catering
             set { _idEmpleado = value; }
         }
 
-        public string DniEmpleado
+        public string DNI
         {
-            get { return _dniEmpleado; }
+            get { return _dni; }
             set
             {
-                _dniEmpleado = value;
+                _dni = value;
             }
         }
 
@@ -83,12 +83,14 @@ namespace Entity_Catering
         {
         }
 
-        public Empleado(int idEmpleado, string dniEmpleado, string nombre, string apellido)
+        public Empleado(int idEmpleado, string dniEmpleado, string nombre, string apellido, string domicilio, string telefono)
         {
             IdEmpleado = idEmpleado;
-            DniEmpleado = dniEmpleado;
+            DNI = dniEmpleado;
             Nombre = nombre;
             Apellido = apellido;
+            Domicilio = domicilio;
+            Telefono = telefono;
         }
 
         // Métodos
@@ -99,7 +101,7 @@ namespace Entity_Catering
 
         public override string ToString()
         {
-            return $"{NombreCompleto} (DNI: {DniEmpleado})";
+            return $"{NombreCompleto} (DNI: {DNI})";
         }
 
     }
