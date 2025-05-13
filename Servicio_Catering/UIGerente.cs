@@ -17,11 +17,13 @@ namespace Servicio_Catering
     {
         private readonly EmpleadosBLL _empleadosBLL;
         private readonly MenusBLL _menusBLL;
+        private readonly EventosBLL _eventosBLL;
         public UIGerente()
         {
             InitializeComponent();
             _empleadosBLL = new EmpleadosBLL();
             _menusBLL = new MenusBLL();
+            _eventosBLL = new EventosBLL();
         }
 
         private void obtenerEmpleados()
@@ -53,6 +55,22 @@ namespace Servicio_Catering
                 dgvVisualizaProductos.DataSource = menus;
                 dgvVisualizaProductos.Columns["FechaDeBaja"].Visible = false;
 
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private void obtenerTodasLasVentas()
+        {
+            try
+            {
+                List<Entity_Catering.Evento> eventos = _eventosBLL.ListarEventos();
+                dgvVisualizaReporte.DataSource = eventos;
+
+
 
             }
             catch (Exception)
@@ -63,6 +81,7 @@ namespace Servicio_Catering
         }
 
 
+
         private void btnTodoEmpleados_Click(object sender, EventArgs e)
         {
             obtenerEmpleados();
@@ -71,13 +90,18 @@ namespace Servicio_Catering
 
         private void UIGerente_Load(object sender, EventArgs e)
         {
-            
+            obtenerTodasLasVentas();
 
         }
 
         private void btnMenus_Click(object sender, EventArgs e)
         {
             obtenerMenus();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

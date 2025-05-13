@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Conexion.cs" />
     <Compile Include="EmpleadoDAL.cs" />
+    <Compile Include="EventoDAL.cs" />
     <Compile Include="InsumoDAL.cs" />
     <Compile Include="LoginDAL.cs" />
     <Compile Include="MenuDAL.cs" />
