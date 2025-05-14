@@ -69,13 +69,12 @@ namespace Servicio_Catering
             {
                 List<Entity_Catering.Evento> eventos = _eventosBLL.ListarEventos();
                 dgvVisualizaReporte.DataSource = eventos;
-
+             
 
 
             }
-            catch (Exception)
+            catch (Exception )
             {
-
                 throw;
             }
         }
@@ -90,7 +89,7 @@ namespace Servicio_Catering
 
         private void UIGerente_Load(object sender, EventArgs e)
         {
-            obtenerTodasLasVentas();
+         
 
         }
 
@@ -99,9 +98,9 @@ namespace Servicio_Catering
             obtenerMenus();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnTodasLasVentas_Click(object sender, EventArgs e)
         {
-
+            obtenerTodasLasVentas();
         }
     }
 }

@@ -9,7 +9,16 @@ namespace Entity_Catering
 	public class Evento
 	{
 
-		private DateTime _fecha;
+        private int _id;
+
+        public int Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+
+
+        private DateTime _fecha;
 
 		public DateTime Fecha
 		{
@@ -18,14 +27,7 @@ namespace Entity_Catering
 		}
 
 
-		private float _descuentoAplicado;
-
-		public float DescuentoAplicado
-		{
-			get { return _descuentoAplicado; }
-			set { _descuentoAplicado = value; }
-		}
-
+		
 		private string _direccion;
 
 		public  string Direccion
@@ -42,13 +44,6 @@ namespace Entity_Catering
 			set { _localidad = value; }
 		}
 
-		private int _id;
-
-		public int Id
-		{
-			get { return _id; }
-			set { _id = value; }
-		}
 
 		private string _estado;
 
@@ -75,14 +70,21 @@ namespace Entity_Catering
 		}
 
 		private int _pago;
-
-		public int Pago
+        public int Pago
 		{
 			get { return _pago; }
 			set { _pago = value; }
 		}
 
-		private int _idUsuarioVenta;
+        private float _descuentoAplicado;
+
+        public float DescuentoAplicado
+        {
+            get { return _descuentoAplicado; }
+            set { _descuentoAplicado = value; }
+        }
+
+        private int _idUsuarioVenta;
 
 		public int IdUsuarioVenta
 		{
@@ -108,7 +110,7 @@ namespace Entity_Catering
 
 
 		//para construir el objeto desde la bd
-		public Evento(DateTime fecha, float descuentoAplicado, string direccion, string localidad, string estado, int cantidadPersonas, float totalEstimado, int pago, int id_usuario_venta, int idMenu, int idCliente, int idEvento)
+		public Evento(int idEvento, DateTime fecha,  string direccion, string localidad, string estado, float totalEstimado, int cantidadPersonas,  int descuentoAplicado, int pago, int id_usuario_venta, int idMenu, int idCliente)
 		{
 			Id = idEvento;
             Fecha = fecha;
