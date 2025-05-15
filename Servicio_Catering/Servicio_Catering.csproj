@@ -72,6 +72,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UIGerente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIGerente.Designer.cs">
+      <DependentUpon>UIGerente.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ChefVista.resx">
       <DependentUpon>ChefVista.cs</DependentUpon>
     </EmbeddedResource>
@@ -93,6 +99,9 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="UIGerente.resx">
+      <DependentUpon>UIGerente.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>

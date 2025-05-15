@@ -49,6 +49,13 @@ namespace Servicio_Catering
                         Administracion ventanaChef = new Administracion(user);
                         ventanaChef.ShowDialog();
                     }
+                    if (user.Perfil == Perfil.GERENTE.ToString())
+                    {
+                        UIGerente ventanaGerente = new UIGerente();
+                        ventanaGerente.ShowDialog();
+
+                    }
+
                     else
                     {
                         MessageBox.Show("Pantallas en construcción");
@@ -64,5 +71,9 @@ namespace Servicio_Catering
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
