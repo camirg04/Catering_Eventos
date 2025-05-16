@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="EmpleadosBLL.cs" />
+    <Compile Include="UsuarioBLL.cs" />
     <Compile Include="EventosBLL.cs" />
     <Compile Include="InsumoBLL.cs" />
     <Compile Include="LoginService.cs" />

@@ -6,13 +6,18 @@ using System.Threading.Tasks;
 
 namespace Entity_Catering
 {
-    public class Usuario : Empleado
+    public class Usuario
     {
         private int _idUsuario;
         private string _mail;
         private string _clave;
         private string _perfil;
         private string _email;
+        private string _dni;
+        private string _nombre;
+        private string _apellido;
+        private string _domicilio;
+        private string _telefono;
         private DateTime? _fechaCreacion;
         private DateTime? _fechaBajaUsuario;
 
@@ -59,6 +64,51 @@ namespace Entity_Catering
             }
         }
 
+        public string DNI
+        {
+            get { return _dni; }
+            set
+            {
+                _dni = value;
+            }
+        }
+
+        public string Nombre
+        {
+            get { return _nombre; }
+            set
+            {
+                _nombre = value;
+            }
+        }
+
+        public string Apellido
+        {
+            get { return _apellido; }
+            set
+            {
+                _apellido = value;
+            }
+        }
+
+        public string Domicilio
+        {
+            get { return _domicilio; }
+            set
+            {
+                _domicilio = value;
+            }
+        }
+
+        public string Telefono
+        {
+            get { return _telefono; }
+            set
+            {
+                _telefono = value;
+            }
+        }
+
         public DateTime? FechaCreacion
         {
             get { return _fechaCreacion; }
@@ -83,7 +133,7 @@ namespace Entity_Catering
         {
         }
 
-        public Usuario(int idUsuario, string mail, string clave, string perfil, string email, DateTime? fechaCreacion, DateTime? fechaBajaUsuario)
+        public Usuario(int idUsuario, string mail, string clave, string perfil, string email, DateTime? fechaCreacion, DateTime? fechaBajaUsuario, string dniEmpleado, string nombre, string apellido, string domicilio, string telefono)
         {
             _idUsuario = idUsuario;
             _mail = mail;
@@ -92,6 +142,11 @@ namespace Entity_Catering
             _email = email;
             _fechaCreacion = fechaCreacion;
             _fechaBajaUsuario = fechaBajaUsuario;
+            _dni = dniEmpleado;
+            _nombre = nombre;
+            _apellido = apellido;
+            _domicilio = domicilio;
+            _telefono = telefono;
         }
 
 

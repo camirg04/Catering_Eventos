@@ -15,13 +15,13 @@ namespace Servicio_Catering
 {
     public partial class UIGerente : Form
     {
-        private readonly EmpleadosBLL _empleadosBLL;
+        private readonly UsuarioBLL _empleadosBLL;
         private readonly MenusBLL _menusBLL;
         private readonly EventosBLL _eventosBLL;
         public UIGerente()
         {
             InitializeComponent();
-            _empleadosBLL = new EmpleadosBLL();
+            _empleadosBLL = new UsuarioBLL();
             _menusBLL = new MenusBLL();
             _eventosBLL = new EventosBLL();
         }
@@ -31,7 +31,7 @@ namespace Servicio_Catering
             try
             {
 
-                List<Entity_Catering.Empleado> empleados = _empleadosBLL.ListarEmpleados();
+                List<Usuario> empleados = _empleadosBLL.ListarEmpleados();
 
                 dgvVisualiza.DataSource = empleados;
                 dgvVisualiza.Columns["FechaBajaEmpleado"].Visible = false;
