@@ -274,5 +274,10 @@ namespace Servicio_Catering
         {
 
         }
+
+        private void CerrarSesion_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
