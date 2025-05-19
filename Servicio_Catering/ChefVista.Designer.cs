@@ -125,7 +125,6 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(809, 464);
             this.tabControl1.TabIndex = 1;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -297,7 +296,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Menús";
             this.tabPage2.UseVisualStyleBackColor = true;
-            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // button1
             // 
@@ -308,7 +306,6 @@
             this.button1.TabIndex = 25;
             this.button1.Text = "Buscar";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox1
             // 
@@ -317,7 +314,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(147, 20);
             this.textBox1.TabIndex = 24;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // comboBox2
             // 
@@ -328,7 +324,6 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(147, 21);
             this.comboBox2.TabIndex = 23;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // comboBox3
             // 
@@ -339,7 +334,6 @@
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(149, 21);
             this.comboBox3.TabIndex = 22;
-            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -351,7 +345,6 @@
             this.label4.Size = new System.Drawing.Size(40, 15);
             this.label4.TabIndex = 21;
             this.label4.Text = "Plato";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
@@ -363,7 +356,6 @@
             this.label5.Size = new System.Drawing.Size(98, 15);
             this.label5.TabIndex = 20;
             this.label5.Text = "Buscar menús";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 
@@ -375,7 +367,6 @@
             this.label6.Size = new System.Drawing.Size(58, 15);
             this.label6.TabIndex = 19;
             this.label6.Text = "Nombre";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
             // 
@@ -387,7 +378,6 @@
             this.label7.Size = new System.Drawing.Size(35, 15);
             this.label7.TabIndex = 18;
             this.label7.Text = "Tipo";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // button2
             // 
@@ -398,7 +388,6 @@
             this.button2.TabIndex = 15;
             this.button2.Text = "Eliminar";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -409,7 +398,6 @@
             this.button3.TabIndex = 16;
             this.button3.Text = "Agregar";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -420,7 +408,6 @@
             this.button4.TabIndex = 17;
             this.button4.Text = "Ver detalle";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // dataGridView2
             // 
@@ -432,7 +419,6 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(635, 432);
             this.dataGridView2.TabIndex = 14;
-            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
             // tabPage3
             // 
@@ -456,7 +442,6 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Eventos";
             this.tabPage3.UseVisualStyleBackColor = true;
-            this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
             // 
             // fechaHastaEvento
             // 
@@ -465,7 +450,6 @@
             this.fechaHastaEvento.Name = "fechaHastaEvento";
             this.fechaHastaEvento.Size = new System.Drawing.Size(147, 20);
             this.fechaHastaEvento.TabIndex = 29;
-            this.fechaHastaEvento.ValueChanged += new System.EventHandler(this.fechaHastaEvento_ValueChanged);
             // 
             // label13
             // 
@@ -477,7 +461,6 @@
             this.label13.Size = new System.Drawing.Size(39, 13);
             this.label13.TabIndex = 28;
             this.label13.Text = "Hasta";
-            this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
             // label12
             // 
@@ -489,7 +472,6 @@
             this.label12.Size = new System.Drawing.Size(43, 13);
             this.label12.TabIndex = 27;
             this.label12.Text = "Desde";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // fechaDesdeEvento
             // 
@@ -498,7 +480,6 @@
             this.fechaDesdeEvento.Name = "fechaDesdeEvento";
             this.fechaDesdeEvento.Size = new System.Drawing.Size(147, 20);
             this.fechaDesdeEvento.TabIndex = 26;
-            this.fechaDesdeEvento.ValueChanged += new System.EventHandler(this.fechaDesdeEvento_ValueChanged);
             // 
             // button5
             // 
@@ -517,7 +498,6 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(147, 20);
             this.textBox2.TabIndex = 24;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // comboBox4
             // 
@@ -528,7 +508,6 @@
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(147, 21);
             this.comboBox4.TabIndex = 23;
-            this.comboBox4.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
             // 
             // label8
             // 
@@ -540,7 +519,6 @@
             this.label8.Size = new System.Drawing.Size(46, 15);
             this.label8.TabIndex = 21;
             this.label8.Text = "Fecha";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label9
             // 
@@ -552,7 +530,6 @@
             this.label9.Size = new System.Drawing.Size(104, 15);
             this.label9.TabIndex = 20;
             this.label9.Text = "Buscar eventos";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // label10
             // 
@@ -564,7 +541,6 @@
             this.label10.Size = new System.Drawing.Size(70, 15);
             this.label10.TabIndex = 19;
             this.label10.Text = "Localidad";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // label11
             // 
@@ -576,7 +552,6 @@
             this.label11.Size = new System.Drawing.Size(51, 15);
             this.label11.TabIndex = 18;
             this.label11.Text = "Estado";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // button7
             // 
@@ -646,7 +621,6 @@
             this.dateTimeHasta.Name = "dateTimeHasta";
             this.dateTimeHasta.Size = new System.Drawing.Size(147, 20);
             this.dateTimeHasta.TabIndex = 38;
-            this.dateTimeHasta.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // label3
             // 
@@ -658,7 +632,6 @@
             this.label3.Size = new System.Drawing.Size(43, 13);
             this.label3.TabIndex = 37;
             this.label3.Text = "Desde";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // dateTimeDesde
             // 
@@ -667,7 +640,6 @@
             this.dateTimeDesde.Name = "dateTimeDesde";
             this.dateTimeDesde.Size = new System.Drawing.Size(147, 20);
             this.dateTimeDesde.TabIndex = 36;
-            this.dateTimeDesde.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // cbProductos
             // 
@@ -678,7 +650,6 @@
             this.cbProductos.Name = "cbProductos";
             this.cbProductos.Size = new System.Drawing.Size(147, 21);
             this.cbProductos.TabIndex = 34;
-            this.cbProductos.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label14
             // 
@@ -690,7 +661,6 @@
             this.label14.Size = new System.Drawing.Size(46, 15);
             this.label14.TabIndex = 33;
             this.label14.Text = "Fecha";
-            this.label14.Click += new System.EventHandler(this.label14_Click);
             // 
             // label15
             // 
@@ -702,7 +672,6 @@
             this.label15.Size = new System.Drawing.Size(133, 15);
             this.label15.TabIndex = 32;
             this.label15.Text = "Filtrar vencimientos";
-            this.label15.Click += new System.EventHandler(this.label15_Click);
             // 
             // label17
             // 
@@ -714,7 +683,6 @@
             this.label17.Size = new System.Drawing.Size(64, 15);
             this.label17.TabIndex = 30;
             this.label17.Text = "Producto";
-            this.label17.Click += new System.EventHandler(this.label17_Click);
             // 
             // dataGridView1
             // 

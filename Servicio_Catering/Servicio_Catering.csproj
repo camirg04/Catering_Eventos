@@ -78,6 +78,12 @@
     <Compile Include="UIGerente.Designer.cs">
       <DependentUpon>UIGerente.cs</DependentUpon>
     </Compile>
+    <Compile Include="UILogistica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UILogistica.Designer.cs">
+      <DependentUpon>UILogistica.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ChefVista.resx">
       <DependentUpon>ChefVista.cs</DependentUpon>
     </EmbeddedResource>
@@ -101,6 +107,9 @@
     </Content>
     <EmbeddedResource Include="UIGerente.resx">
       <DependentUpon>UIGerente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UILogistica.resx">
+      <DependentUpon>UILogistica.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
