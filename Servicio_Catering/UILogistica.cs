@@ -42,7 +42,27 @@ namespace Servicio_Catering
             lblBienvenida.Text = darBienvenida(_usuario.Nombre);
         }
 
-        private void button10_Click(object sender, EventArgs e)
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
