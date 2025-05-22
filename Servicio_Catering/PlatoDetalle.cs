@@ -208,49 +208,73 @@ namespace Servicio_Catering
 
         private void btnAgregarIngrediente_Click(object sender, EventArgs e)
         {
-            List<string> errores = new List<string>();
-            errores.Add(_platoBLL.cantidadInvalida(txtCantidad.Text));
-            errores.Add(_platoBLL.platoDuplicado((int)cbIngredientes.SelectedValue, _listaInsumosPlato));
-            foreach (string error in errores)
+            try
             {
-                if (error != null)
+                List<string> errores = new List<string>();
+                errores.Add(_platoBLL.cantidadInvalida(txtCantidad.Text));
+                errores.Add(_platoBLL.platoDuplicado((int)cbIngredientes.SelectedValue, _listaInsumosPlato));
+                foreach (string error in errores)
                 {
-                    MessageBox.Show(error);
-                    return;
+                    if (error != null)
+                    {
+                        MessageBox.Show(error);
+                        return;
+                    }
                 }
-            }
 
-            int idInsumo = (int)cbIngredientes.SelectedValue;
-            Insumo ins = _insumos.Find(_insumo=> _insumo.IdInsumo == idInsumo);
-            InsumoPlatoDTO insumoPlato = new InsumoPlatoDTO(0, ins.IdInsumo, Decimal.Parse(txtCantidad.Text, new CultureInfo("es-ES")), ins.Nombre, ins.UnidadMedida);
-            _listaInsumosPlato.Add(insumoPlato);
+                int idInsumo = (int)cbIngredientes.SelectedValue;
+                Insumo ins = _insumos.Find(_insumo => _insumo.IdInsumo == idInsumo);
+                InsumoPlatoDTO insumoPlato = new InsumoPlatoDTO(0, ins.IdInsumo, Decimal.Parse(txtCantidad.Text, new CultureInfo("es-ES")), ins.Nombre, ins.UnidadMedida);
+                _listaInsumosPlato.Add(insumoPlato);
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Error al editar grilla ingrediente");
+            }
+            
         }
 
         private void eliminarPlato_Click(object sender, EventArgs e)
         {
-            InsumoPlatoDTO insumo = (InsumoPlatoDTO)dgvIngredientes.CurrentRow.DataBoundItem;
-            _listaInsumosPlato.Remove(insumo);
+            try
+            {
+                InsumoPlatoDTO insumo = (InsumoPlatoDTO)dgvIngredientes.CurrentRow.DataBoundItem;
+                _listaInsumosPlato.Remove(insumo);
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Error al editar grilla ingrediente");
+            }
+            
         }
 
       
 
         private void btnEditarIngrediente_Click(object sender, EventArgs e)
         {
-            InsumoPlatoDTO insumoSeleccionado = (InsumoPlatoDTO)dgvIngredientes.CurrentRow.DataBoundItem;
-            List<string> errores = new List<string>();
-            errores.Add(_platoBLL.sinPlatoSeleccionado(insumoSeleccionado));
-            errores.Add(_platoBLL.cantidadInvalida(txtCantidad.Text));
-            errores.Add(_platoBLL.platoDuplicado((int)cbIngredientes.SelectedValue, _listaInsumosPlato));
-            foreach (string error in errores)
+            try
             {
-                if (error != null)
+                InsumoPlatoDTO insumoSeleccionado = (InsumoPlatoDTO)dgvIngredientes.CurrentRow.DataBoundItem;
+                List<string> errores = new List<string>();
+                errores.Add(_platoBLL.sinPlatoSeleccionado(insumoSeleccionado));
+                errores.Add(_platoBLL.cantidadInvalida(txtCantidad.Text));
+                errores.Add(_platoBLL.platoDuplicado((int)cbIngredientes.SelectedValue, _listaInsumosPlato));
+                foreach (string error in errores)
                 {
-                    MessageBox.Show(error);
-                    return;
+                    if (error != null)
+                    {
+                        MessageBox.Show(error);
+                        return;
+                    }
                 }
+
+                _platoBLL.editarInsumo(insumoSeleccionado, _insumos, (int)cbIngredientes.SelectedValue, txtCantidad.Text);
+            }
+            catch  (Exception ex)
+            {
+                logger.Error("Error al editar grilla ingrediente");
             }
             
-            _platoBLL.editarInsumo(insumoSeleccionado, _insumos, (int)cbIngredientes.SelectedValue, txtCantidad.Text);
         }
 
         public void getListaInsumos()

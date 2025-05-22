@@ -24,8 +24,8 @@ namespace DAL_Catering
             try
             {
                 // Consulta SQL parametrizada
-                string consulta = @"select id_usuario, email, perfil,e.nombre, u.clave from usuarios u inner join empleado e  on u.id_empleado = e.id_empleado
-                where email = @Email and u.fecha_baja is null ";
+                string consulta = @"select id_usuario, email, perfil, nombre, clave from usuarios
+                where email = @Email and fecha_baja is null ";
 
                 // Crear parámetros
                 SqlParameter[] parametros = new SqlParameter[]

@@ -100,7 +100,7 @@ namespace BLL_Catering
                 }
             }
 
-            if (mismoInsumo > 1)
+            if (mismoInsumo >= 1)
             {
                 return "No se puede duplicar el insumo en el plato";
             }

@@ -10,27 +10,27 @@ using System.Data.SqlClient;
 
 namespace DAL_Catering
 {
-    public class EmpleadoDAL
+    public class UsuarioDAL
     {
         private readonly Conexion conexion;
-        public EmpleadoDAL(){
+        public UsuarioDAL(){
             conexion = new Conexion();
         }
-        public List<Entity_Catering.Empleado> Listar()
+        public List<Usuario> Listar()
         {
 
            // Conexion conexion = new Conexion();
 
-            List<Entity_Catering.Empleado> empleados = new List<Entity_Catering.Empleado>();
+            List<Usuario> empleados = new List<Usuario>();
             DataTable dt = conexion.LeerPorStoreProcedure("sp_todoEmpleados2");
 
 
             foreach (DataRow fila in dt.Rows)
             {
 
-                Entity_Catering.Empleado unEmpleado = new Entity_Catering.Empleado();
+                Usuario unEmpleado = new Usuario();
 
-                unEmpleado.IdEmpleado = int.Parse(fila["ID"].ToString());
+                unEmpleado.IdUsuario = int.Parse(fila["ID"].ToString());
                 unEmpleado.DNI = fila["DNI"].ToString();
                 unEmpleado.Nombre = fila["Nombre"].ToString();
                 unEmpleado.Apellido = fila["Apellido"].ToString();

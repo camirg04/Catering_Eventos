@@ -49,13 +49,16 @@ namespace Servicio_Catering
                         Administracion ventanaChef = new Administracion(user);
                         ventanaChef.ShowDialog();
                     }
-                    if (user.Perfil == Perfil.GERENTE.ToString())
+                    else if (user.Perfil == Perfil.GERENTE.ToString())
                     {
                         UIGerente ventanaGerente = new UIGerente();
                         ventanaGerente.ShowDialog();
 
+                    }else if (user.Perfil == Perfil.LOGISTICA.ToString())
+                    {
+                        UILogistica ventanaLogistica = new UILogistica(user);
+                        ventanaLogistica.ShowDialog();
                     }
-
                     else
                     {
                         MessageBox.Show("Pantallas en construcción");

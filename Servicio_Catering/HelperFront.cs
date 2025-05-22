@@ -25,6 +25,20 @@ namespace Servicio_Catering
             }
         }
 
+        public void cargarComboEstadoAlerta(ComboBox combo)
+        {
+            combo.Items.Clear();
+            List<string> lista = Enum.GetValues(typeof(EstadoAlertaStock))
+                .Cast<EstadoAlertaStock>()
+                .Select(e => e.ToString()).ToList();
+
+
+            foreach (var item in lista)
+            {
+                combo.Items.Add(item);
+            }
+        }
+
         public void cargarComboSiNo(ComboBox combo)
         {
             combo.Items.Clear();

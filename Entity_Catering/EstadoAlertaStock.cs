@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Entity_Catering
 {
-    public class Class1
+    public enum EstadoAlertaStock
     {
+        PENDIENTE,
+        RESUELTO
     }
+    
 }
