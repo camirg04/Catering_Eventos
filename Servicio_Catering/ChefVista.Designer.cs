@@ -80,21 +80,21 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvVencimientos = new System.Windows.Forms.DataGridView();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.btnEditarAlerta = new System.Windows.Forms.Button();
+            this.btnBuscarAlerta = new System.Windows.Forms.Button();
+            this.cbEstadoAlerta = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.dataGridView4 = new System.Windows.Forms.DataGridView();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dgvAlertas = new System.Windows.Forms.DataGridView();
+            this.dateTimeHastaAlerta = new System.Windows.Forms.DateTimePicker();
             this.label22 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimeDesdeAlerta = new System.Windows.Forms.DateTimePicker();
             this.label20 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbProductoAlerta = new System.Windows.Forms.ComboBox();
             this.CerrarSesion = new System.Windows.Forms.Button();
             this.lblBienvenida = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
@@ -105,9 +105,9 @@
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVencimientos)).BeginInit();
             this.tabPage5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlertas)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -595,7 +595,7 @@
             this.tabPage4.Controls.Add(this.label14);
             this.tabPage4.Controls.Add(this.label15);
             this.tabPage4.Controls.Add(this.label17);
-            this.tabPage4.Controls.Add(this.dataGridView1);
+            this.tabPage4.Controls.Add(this.dgvVencimientos);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(936, 529);
@@ -694,32 +694,32 @@
             this.label17.TabIndex = 30;
             this.label17.Text = "Producto";
             // 
-            // dataGridView1
+            // dgvVencimientos
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgvVencimientos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(739, 529);
-            this.dataGridView1.TabIndex = 15;
+            this.dgvVencimientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvVencimientos.Location = new System.Drawing.Point(0, 0);
+            this.dgvVencimientos.Name = "dgvVencimientos";
+            this.dgvVencimientos.Size = new System.Drawing.Size(739, 529);
+            this.dgvVencimientos.TabIndex = 15;
             // 
             // tabPage5
             // 
-            this.tabPage5.Controls.Add(this.button10);
-            this.tabPage5.Controls.Add(this.button9);
-            this.tabPage5.Controls.Add(this.comboBox5);
+            this.tabPage5.Controls.Add(this.btnEditarAlerta);
+            this.tabPage5.Controls.Add(this.btnBuscarAlerta);
+            this.tabPage5.Controls.Add(this.cbEstadoAlerta);
             this.tabPage5.Controls.Add(this.label23);
             this.tabPage5.Controls.Add(this.label18);
-            this.tabPage5.Controls.Add(this.dataGridView4);
-            this.tabPage5.Controls.Add(this.dateTimePicker1);
+            this.tabPage5.Controls.Add(this.dgvAlertas);
+            this.tabPage5.Controls.Add(this.dateTimeHastaAlerta);
             this.tabPage5.Controls.Add(this.label22);
             this.tabPage5.Controls.Add(this.label19);
             this.tabPage5.Controls.Add(this.label21);
-            this.tabPage5.Controls.Add(this.dateTimePicker2);
+            this.tabPage5.Controls.Add(this.dateTimeDesdeAlerta);
             this.tabPage5.Controls.Add(this.label20);
-            this.tabPage5.Controls.Add(this.comboBox1);
+            this.tabPage5.Controls.Add(this.cbProductoAlerta);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Size = new System.Drawing.Size(936, 529);
@@ -727,35 +727,35 @@
             this.tabPage5.Text = "Alertas Stock";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // button10
+            // btnEditarAlerta
             // 
-            this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button10.Location = new System.Drawing.Point(753, 23);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(180, 29);
-            this.button10.TabIndex = 52;
-            this.button10.Text = "Editar";
-            this.button10.UseVisualStyleBackColor = true;
+            this.btnEditarAlerta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditarAlerta.Location = new System.Drawing.Point(753, 23);
+            this.btnEditarAlerta.Name = "btnEditarAlerta";
+            this.btnEditarAlerta.Size = new System.Drawing.Size(180, 29);
+            this.btnEditarAlerta.TabIndex = 52;
+            this.btnEditarAlerta.Text = "Editar";
+            this.btnEditarAlerta.UseVisualStyleBackColor = true;
             // 
-            // button9
+            // btnBuscarAlerta
             // 
-            this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button9.Location = new System.Drawing.Point(799, 384);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(90, 30);
-            this.button9.TabIndex = 51;
-            this.button9.Text = "Buscar";
-            this.button9.UseVisualStyleBackColor = true;
+            this.btnBuscarAlerta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBuscarAlerta.Location = new System.Drawing.Point(799, 384);
+            this.btnBuscarAlerta.Name = "btnBuscarAlerta";
+            this.btnBuscarAlerta.Size = new System.Drawing.Size(90, 30);
+            this.btnBuscarAlerta.TabIndex = 51;
+            this.btnBuscarAlerta.Text = "Buscar";
+            this.btnBuscarAlerta.UseVisualStyleBackColor = true;
             // 
-            // comboBox5
+            // cbEstadoAlerta
             // 
-            this.comboBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(753, 180);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(180, 21);
-            this.comboBox5.TabIndex = 50;
+            this.cbEstadoAlerta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbEstadoAlerta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbEstadoAlerta.FormattingEnabled = true;
+            this.cbEstadoAlerta.Location = new System.Drawing.Point(753, 180);
+            this.cbEstadoAlerta.Name = "cbEstadoAlerta";
+            this.cbEstadoAlerta.Size = new System.Drawing.Size(180, 21);
+            this.cbEstadoAlerta.TabIndex = 50;
             // 
             // label23
             // 
@@ -779,24 +779,24 @@
             this.label18.TabIndex = 48;
             this.label18.Text = "Hasta";
             // 
-            // dataGridView4
+            // dgvAlertas
             // 
-            this.dataGridView4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgvAlertas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Location = new System.Drawing.Point(-4, 0);
-            this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.Size = new System.Drawing.Size(748, 529);
-            this.dataGridView4.TabIndex = 40;
+            this.dgvAlertas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAlertas.Location = new System.Drawing.Point(-4, 0);
+            this.dgvAlertas.Name = "dgvAlertas";
+            this.dgvAlertas.Size = new System.Drawing.Size(748, 529);
+            this.dgvAlertas.TabIndex = 40;
             // 
-            // dateTimePicker1
+            // dateTimeHastaAlerta
             // 
-            this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(753, 338);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(180, 20);
-            this.dateTimePicker1.TabIndex = 47;
+            this.dateTimeHastaAlerta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTimeHastaAlerta.Location = new System.Drawing.Point(753, 338);
+            this.dateTimeHastaAlerta.Name = "dateTimeHastaAlerta";
+            this.dateTimeHastaAlerta.Size = new System.Drawing.Size(180, 20);
+            this.dateTimeHastaAlerta.TabIndex = 47;
             // 
             // label22
             // 
@@ -831,13 +831,13 @@
             this.label21.TabIndex = 42;
             this.label21.Text = "Filtrar alertas";
             // 
-            // dateTimePicker2
+            // dateTimeDesdeAlerta
             // 
-            this.dateTimePicker2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePicker2.Location = new System.Drawing.Point(753, 274);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(180, 20);
-            this.dateTimePicker2.TabIndex = 45;
+            this.dateTimeDesdeAlerta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTimeDesdeAlerta.Location = new System.Drawing.Point(753, 274);
+            this.dateTimeDesdeAlerta.Name = "dateTimeDesdeAlerta";
+            this.dateTimeDesdeAlerta.Size = new System.Drawing.Size(180, 20);
+            this.dateTimeDesdeAlerta.TabIndex = 45;
             // 
             // label20
             // 
@@ -850,15 +850,15 @@
             this.label20.TabIndex = 43;
             this.label20.Text = "Fecha";
             // 
-            // comboBox1
+            // cbProductoAlerta
             // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(753, 127);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(180, 21);
-            this.comboBox1.TabIndex = 44;
+            this.cbProductoAlerta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbProductoAlerta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbProductoAlerta.FormattingEnabled = true;
+            this.cbProductoAlerta.Location = new System.Drawing.Point(753, 127);
+            this.cbProductoAlerta.Name = "cbProductoAlerta";
+            this.cbProductoAlerta.Size = new System.Drawing.Size(180, 21);
+            this.cbProductoAlerta.TabIndex = 44;
             // 
             // CerrarSesion
             // 
@@ -904,10 +904,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVencimientos)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlertas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -947,7 +947,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DateTimePicker fechaHastaEvento;
         private System.Windows.Forms.Label lblBienvenida;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvVencimientos;
         private System.Windows.Forms.DateTimePicker dateTimeHasta;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dateTimeDesde;
@@ -971,18 +971,18 @@
         private System.Windows.Forms.Button verPlato;
         private System.Windows.Forms.DataGridView dgvPlatos;
         private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.Button btnEditarAlerta;
+        private System.Windows.Forms.Button btnBuscarAlerta;
+        private System.Windows.Forms.ComboBox cbEstadoAlerta;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.DataGridView dataGridView4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DataGridView dgvAlertas;
+        private System.Windows.Forms.DateTimePicker dateTimeHastaAlerta;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dateTimeDesdeAlerta;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbProductoAlerta;
     }
 }
