@@ -28,6 +28,24 @@ namespace BLL_Catering
             return eventosAux;
         }
 
+        public List<Evento> OneEvento(int id_evento)
+        {
+            DAL_Catering.EventoDAL dalEventos = new DAL_Catering.EventoDAL();
+
+            List<Entity_Catering.Evento> eventosAux = dalEventos.OneEvento(id_evento);
+
+            return eventosAux;
+        }
+
+        public Boolean AddEvento(Evento creaEvento)
+        {
+            DAL_Catering.EventoDAL dalEventos = new DAL_Catering.EventoDAL();
+
+            Boolean boolEvento = dalEventos.AddEvento(creaEvento);
+
+            return boolEvento;
+        }
+
 
 
     }

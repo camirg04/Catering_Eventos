@@ -63,19 +63,22 @@
             this.tabPage5.Controls.Add(this.dateTimePicker2);
             this.tabPage5.Controls.Add(this.label20);
             this.tabPage5.Controls.Add(this.comboBox1);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Location = new System.Drawing.Point(4, 25);
+            this.tabPage5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(802, 406);
+            this.tabPage5.Size = new System.Drawing.Size(1072, 503);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Stock";
             this.tabPage5.UseVisualStyleBackColor = true;
+            this.tabPage5.Click += new System.EventHandler(this.tabPage5_Click);
             // 
             // button10
             // 
             this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button10.Location = new System.Drawing.Point(640, 23);
+            this.button10.Location = new System.Drawing.Point(853, 28);
+            this.button10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(146, 29);
+            this.button10.Size = new System.Drawing.Size(195, 36);
             this.button10.TabIndex = 52;
             this.button10.Text = "Editar";
             this.button10.UseVisualStyleBackColor = true;
@@ -84,9 +87,10 @@
             // button9
             // 
             this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button9.Location = new System.Drawing.Point(643, 325);
+            this.button9.Location = new System.Drawing.Point(857, 400);
+            this.button9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(92, 30);
+            this.button9.Size = new System.Drawing.Size(123, 37);
             this.button9.TabIndex = 51;
             this.button9.Text = "Buscar";
             this.button9.UseVisualStyleBackColor = true;
@@ -96,9 +100,10 @@
             this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(640, 262);
+            this.label18.Location = new System.Drawing.Point(853, 322);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(39, 13);
+            this.label18.Size = new System.Drawing.Size(44, 15);
             this.label18.TabIndex = 48;
             this.label18.Text = "Hasta";
             // 
@@ -108,17 +113,20 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Location = new System.Drawing.Point(-4, 0);
+            this.dataGridView4.Location = new System.Drawing.Point(-5, 0);
+            this.dataGridView4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.Size = new System.Drawing.Size(625, 403);
+            this.dataGridView4.RowHeadersWidth = 51;
+            this.dataGridView4.Size = new System.Drawing.Size(833, 496);
             this.dataGridView4.TabIndex = 40;
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(640, 278);
+            this.dateTimePicker1.Location = new System.Drawing.Point(853, 342);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(147, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(195, 22);
             this.dateTimePicker1.TabIndex = 47;
             // 
             // label22
@@ -126,9 +134,10 @@
             this.label22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(640, 109);
+            this.label22.Location = new System.Drawing.Point(853, 134);
+            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(64, 15);
+            this.label22.Size = new System.Drawing.Size(77, 18);
             this.label22.TabIndex = 41;
             this.label22.Text = "Producto";
             // 
@@ -137,9 +146,10 @@
             this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(640, 198);
+            this.label19.Location = new System.Drawing.Point(853, 244);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(43, 13);
+            this.label19.Size = new System.Drawing.Size(48, 15);
             this.label19.TabIndex = 46;
             this.label19.Text = "Desde";
             // 
@@ -148,18 +158,20 @@
             this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(640, 83);
+            this.label21.Location = new System.Drawing.Point(853, 102);
+            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(82, 15);
+            this.label21.Size = new System.Drawing.Size(99, 18);
             this.label21.TabIndex = 42;
             this.label21.Text = "Filtrar stock";
             // 
             // dateTimePicker2
             // 
             this.dateTimePicker2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePicker2.Location = new System.Drawing.Point(640, 214);
+            this.dateTimePicker2.Location = new System.Drawing.Point(853, 263);
+            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(147, 20);
+            this.dateTimePicker2.Size = new System.Drawing.Size(195, 22);
             this.dateTimePicker2.TabIndex = 45;
             // 
             // label20
@@ -167,9 +179,10 @@
             this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(640, 156);
+            this.label20.Location = new System.Drawing.Point(853, 192);
+            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(46, 15);
+            this.label20.Size = new System.Drawing.Size(54, 18);
             this.label20.TabIndex = 43;
             this.label20.Text = "Fecha";
             // 
@@ -178,9 +191,10 @@
             this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(643, 127);
+            this.comboBox1.Location = new System.Drawing.Point(857, 156);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(147, 21);
+            this.comboBox1.Size = new System.Drawing.Size(195, 24);
             this.comboBox1.TabIndex = 44;
             // 
             // tabControl1
@@ -191,26 +205,29 @@
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(-2, 29);
+            this.tabControl1.Location = new System.Drawing.Point(-3, 36);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(810, 432);
+            this.tabControl1.Size = new System.Drawing.Size(1080, 532);
             this.tabControl1.TabIndex = 2;
             // 
             // tabPage1
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(802, 406);
+            this.tabPage1.Size = new System.Drawing.Size(1072, 503);
             this.tabPage1.TabIndex = 5;
             this.tabPage1.Text = "Pedidos";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(802, 406);
+            this.tabPage2.Size = new System.Drawing.Size(1072, 503);
             this.tabPage2.TabIndex = 6;
             this.tabPage2.Text = "Insumos";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -218,9 +235,10 @@
             // CerrarSesion
             // 
             this.CerrarSesion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CerrarSesion.Location = new System.Drawing.Point(691, 5);
+            this.CerrarSesion.Location = new System.Drawing.Point(921, 6);
+            this.CerrarSesion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CerrarSesion.Name = "CerrarSesion";
-            this.CerrarSesion.Size = new System.Drawing.Size(97, 29);
+            this.CerrarSesion.Size = new System.Drawing.Size(129, 36);
             this.CerrarSesion.TabIndex = 3;
             this.CerrarSesion.Text = "Cerrar sesión";
             this.CerrarSesion.UseVisualStyleBackColor = true;
@@ -230,20 +248,22 @@
             // 
             this.lblBienvenida.AutoSize = true;
             this.lblBienvenida.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBienvenida.Location = new System.Drawing.Point(12, 9);
+            this.lblBienvenida.Location = new System.Drawing.Point(16, 11);
+            this.lblBienvenida.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBienvenida.Name = "lblBienvenida";
-            this.lblBienvenida.Size = new System.Drawing.Size(98, 15);
+            this.lblBienvenida.Size = new System.Drawing.Size(112, 18);
             this.lblBienvenida.TabIndex = 15;
             this.lblBienvenida.Text = "¡Bienvenido/a!";
             // 
             // UILogistica
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(807, 460);
+            this.ClientSize = new System.Drawing.Size(1076, 566);
             this.Controls.Add(this.lblBienvenida);
             this.Controls.Add(this.CerrarSesion);
             this.Controls.Add(this.tabControl1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UILogistica";
             this.Text = "UILogistica";
             this.Load += new System.EventHandler(this.UILogistica_Load);
