@@ -36,6 +36,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgvVisualizaReporte = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -56,7 +57,6 @@
             this.btnVerDetalles = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btnPlatos = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -74,7 +74,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.btnTodoEmpleados = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVisualizaReporte)).BeginInit();
@@ -163,7 +162,7 @@
             this.dgvVisualizaReporte.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVisualizaReporte.Location = new System.Drawing.Point(6, 6);
             this.dgvVisualizaReporte.Name = "dgvVisualizaReporte";
-            this.dgvVisualizaReporte.Size = new System.Drawing.Size(960, 507);
+            this.dgvVisualizaReporte.Size = new System.Drawing.Size(960, 583);
             this.dgvVisualizaReporte.TabIndex = 0;
             // 
             // groupBox1
@@ -185,9 +184,19 @@
             this.groupBox1.Controls.Add(this.btnTodasLasVentas);
             this.groupBox1.Location = new System.Drawing.Point(972, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(284, 513);
+            this.groupBox1.Size = new System.Drawing.Size(284, 589);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(89, 99);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(117, 23);
+            this.button2.TabIndex = 14;
+            this.button2.Text = "Ver mas detalles";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // comboBox2
             // 
@@ -348,7 +357,6 @@
             this.groupBox2.Controls.Add(this.btnVerDetalles);
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Controls.Add(this.btnPlatos);
             this.groupBox2.Controls.Add(this.button4);
             this.groupBox2.Controls.Add(this.label18);
             this.groupBox2.Controls.Add(this.label19);
@@ -362,7 +370,7 @@
             // btnVerDetalles
             // 
             this.btnVerDetalles.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVerDetalles.Location = new System.Drawing.Point(79, 97);
+            this.btnVerDetalles.Location = new System.Drawing.Point(79, 82);
             this.btnVerDetalles.Name = "btnVerDetalles";
             this.btnVerDetalles.Size = new System.Drawing.Size(117, 23);
             this.btnVerDetalles.TabIndex = 13;
@@ -385,16 +393,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(154, 23);
             this.textBox1.TabIndex = 11;
-            // 
-            // btnPlatos
-            // 
-            this.btnPlatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPlatos.Location = new System.Drawing.Point(79, 68);
-            this.btnPlatos.Name = "btnPlatos";
-            this.btnPlatos.Size = new System.Drawing.Size(117, 23);
-            this.btnPlatos.TabIndex = 10;
-            this.btnPlatos.Text = "Platos";
-            this.btnPlatos.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
@@ -568,16 +566,6 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(89, 99);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(117, 23);
-            this.button2.TabIndex = 14;
-            this.button2.Text = "Ver mas detalles";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // UIGerente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -643,7 +631,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Button btnMenus;
-        private System.Windows.Forms.Button btnPlatos;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnVerDetalles;
