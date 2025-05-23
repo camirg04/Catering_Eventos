@@ -89,6 +89,16 @@ namespace Servicio_Catering
                 dgvVencimientos.DataSource = getMockLotes();
                 dgvVencimientos.Columns["IdLoteInsumo"].Visible = false;
                 dgvVencimientos.Columns["IdInsumo"].Visible = false;
+
+                //Cargas iniciales de eventos
+                dgvEventos.ReadOnly = true;
+                dgvEventos.DataSource = getMockEvento();
+                dgvEventos.Columns["IdEvento"].Visible = false;
+                dgvEventos.Columns["IdCliente"].Visible = false;
+                dgvEventos.Columns["IdMenu"].Visible = false;
+                dgvEventos.Columns["DescuentoAplicado"].DefaultCellStyle.Format = "P2";
+
+
             }
             catch (Exception ex)
             {
@@ -197,6 +207,36 @@ namespace Servicio_Catering
             return LoteInsumoDTO.mapLoteInsumoListToLoteInsumoDTOList(lista);
         }
 
+
+
+        private List<EventoDTO> getMockEvento()
+        {
+            var eventos = new List<Evento>();
+
+            var cliente1 = new Cliente("Lucía", "Pérez", "lucia.perez@mail.com", "1123456789", "Av. Siempre Viva 123", "33111222");
+            var cliente2 = new Cliente("Carlos", "Gómez", "carlos.gomez@mail.com", "1133344555", "Calle Falsa 456", "22123456");
+            var cliente3 = new Cliente("María", "Fernández", "maria.fernandez@mail.com", "1144556677", "San Martín 789", "27272727");
+            var cliente4 = new Cliente("Julián", "Lopez", "julian.lopez@mail.com", "1166778899", "Independencia 321", "30303030");
+            var cliente5 = new Cliente("Sofía", "Martínez", "sofia.martinez@mail.com", "1199887766", "Belgrano 654", "34343434");
+
+            var menu1 = new Entity_Catering.Menu("Menú Clásico", 2500);
+            var menu2 = new Entity_Catering.Menu("Menú Premium", 4500);
+            var menu3 = new Entity_Catering.Menu("Menú Vegetariano", 2800);
+            var menu4 = new Entity_Catering.Menu("Menú Gourmet", 5000);
+            var menu5 = new Entity_Catering.Menu("Menú Infantil", 2000);
+
+            var usuario1 = new Usuario(1, "venta1@mail.com", "clave123", "Vendedor", "venta1@mail.com", DateTime.Now.AddMonths(-2), null, "12345678", "Juan", "Pérez", "Mitre 123", "1122334455");
+            var usuario2 = new Usuario(2, "venta2@mail.com", "clave456", "Vendedor", "venta2@mail.com", DateTime.Now.AddMonths(-1), null, "87654321", "Ana", "García", "Rivadavia 456", "1166778899");
+
+            // Crear eventos
+            eventos.Add(new Evento(cliente1, menu1, usuario1, new DateTime(2025, 7, 15), 0.2m, "Salón A", "Palermo", "Confirmado", 100, 250000m, false));
+            eventos.Add(new Evento(cliente2, menu2, usuario2, new DateTime(2025, 8, 20), 0.5m, "Quinta Los Robles", "Tigre", "Pendiente", 150, 675000m, false));
+            eventos.Add(new Evento(cliente3, menu3, usuario1, new DateTime(2025, 9, 10), 0m, "Salón Azul", "Recoleta", "Confirmado", 80, 224000m, true));
+            eventos.Add(new Evento(cliente4, menu4, usuario2, new DateTime(2025, 10, 5), 0.1m, "Estancia La María", "Pilar", "Cancelado", 200, 990000m, false));
+            eventos.Add(new Evento(cliente5, menu5, usuario1, new DateTime(2025, 12, 24), 0.2m, "Club Social", "San Isidro", "Confirmado", 60, 118000m, true));
+
+            return EventoDTO.mapEventoListToEventoDTOList(eventos);
+        }
 
     }
 }

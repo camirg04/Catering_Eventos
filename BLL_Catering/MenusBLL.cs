@@ -24,11 +24,11 @@ namespace BLL_Catering
         }
 
 
-        public List<Menus> ListarMenus()
+        public List<Menu> ListarMenus()
         {
             DAL_Catering.MenuDAL dalMenu = new DAL_Catering.MenuDAL();
 
-            List<Entity_Catering.Menus> menus = dalMenu.Listar();
+            List<Entity_Catering.Menu> menus = dalMenu.Listar();
 
             return menus;
 

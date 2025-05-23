@@ -9,149 +9,49 @@ namespace Entity_Catering
 	public class Evento
 	{
 
-        private int _id;
-
-        public int Id
-        {
-            get { return _id; }
-            set { _id = value; }
-        }
-
-
-        private DateTime _fecha;
-
-		public DateTime Fecha
-		{
-			get { return _fecha; }
-			set { _fecha = value; }
-		}
-
-
-		
-		private string _direccion;
-
-		public  string Direccion
-		{
-			get { return _direccion; }
-			set { _direccion = value; }
-		}
-
-		private string _localidad;
-
-		public  string Localidad
-		{
-			get { return _localidad; }
-			set { _localidad = value; }
-		}
-
-
-		private string _estado;
-
-		public string Estado
-		{
-			get { return _estado; }
-			set { _estado = value; }
-		}
-
-		private int _cantidadPersonas;
-
-		public int CantidadPersonas
-		{
-			get { return _cantidadPersonas; }
-			set { _cantidadPersonas = value; }
-		}
-
-		private float _totalEstimado;
-
-		public float Total
-		{
-			get { return _totalEstimado; }
-			set { _totalEstimado = value; }
-		}
-
-		private int _pago;
-        public int Pago
-		{
-			get { return _pago; }
-			set { _pago = value; }
-		}
-
-        private float _descuentoAplicado;
-
-        public float DescuentoAplicado
-        {
-            get { return _descuentoAplicado; }
-            set { _descuentoAplicado = value; }
-        }
-
-        private int _idUsuarioVenta;
-
-		public int IdUsuarioVenta
-		{
-			get { return _idUsuarioVenta; }
-			set { _idUsuarioVenta = value; }
-		}
-
-		private int _idMenu;
-
-		public int IdMenu
-		{
-			get { return _idMenu; }
-			set { _idMenu = value; }
-		}
-
-		private int _idCliente;
-
-		public int IdCliente
-		{
-			get { return _idCliente; }
-			set { _idCliente = value; }
-		}
-
-
-		//para construir el objeto desde la bd
-		public Evento(int idEvento, DateTime fecha,  string direccion, string localidad, string estado, float totalEstimado, int cantidadPersonas,  int descuentoAplicado, int pago, int id_usuario_venta, int idMenu, int idCliente)
-		{
-			Id = idEvento;
-            Fecha = fecha;
-            DescuentoAplicado = descuentoAplicado;
-            Direccion = direccion;
-            Localidad = localidad;
-            Estado = estado;
-            CantidadPersonas = cantidadPersonas;
-            Total = totalEstimado;
-            Pago = pago;
-            IdUsuarioVenta = id_usuario_venta;
-            IdMenu = idMenu;
-            IdCliente = idCliente;
-        }
-        //para construir un objeto nuevo
-
-        public Evento(DateTime fecha, float descuentoAplicado, string direccion, string localidad, string estado, int cantidadPersonas, float totalEstimado, int pago, int id_usuario_venta, int idMenu, int idCliente)
-        {
-
-            Fecha = fecha;
-            DescuentoAplicado = descuentoAplicado;
-            Direccion = direccion;
-            Localidad = localidad;
-            Estado = estado;
-            CantidadPersonas = cantidadPersonas;
-			Total = totalEstimado;
-			Pago = pago;
-			IdUsuarioVenta = id_usuario_venta;
-			IdMenu = idMenu;
-			IdCliente = idCliente;
-
-        }
+        private int _idEvento;
+        private Cliente _cliente;
+        private Menu menu;
+        private Usuario _usuarioVenta;
+        private DateTime _fechaEvento;
+        private Decimal _descuentoAplicado;
+        private string _direccion;
+        private string _localidad;
+        private string _estadoEvento;
+        private int _cantidadPersonas;
+        private Decimal _totalEstimado;
+        private bool _eventoPago;
 
         public Evento()
-		{
+        {
+        }
 
-		}
+        public Evento(Cliente cliente, Menu menu, Usuario usuarioVenta, DateTime fechaEvento, Decimal descuentoAplicado, string direccion, string localidad, string estadoEvento, int cantidadPersonas, Decimal totalEstimado, bool eventoPago)
+        {
+            Cliente = cliente;
+            this.Menu = menu;
+            UsuarioVenta = usuarioVenta;
+            FechaEvento = fechaEvento;
+            DescuentoAplicado = descuentoAplicado;
+            Direccion = direccion;
+            Localidad = localidad;
+            EstadoEvento = estadoEvento;
+            CantidadPersonas = cantidadPersonas;
+            TotalEstimado = totalEstimado;
+            EventoPago = eventoPago;
+        }
 
-
-
-
-
-	}
+        public int IdEvento { get => _idEvento; set => _idEvento = value; }
+        public Cliente Cliente { get => _cliente; set => _cliente = value; }
+        public Menu Menu { get => menu; set => menu = value; }
+        public Usuario UsuarioVenta { get => _usuarioVenta; set => _usuarioVenta = value; }
+        public DateTime FechaEvento { get => _fechaEvento; set => _fechaEvento = value; }
+        public decimal DescuentoAplicado { get => _descuentoAplicado; set => _descuentoAplicado = value; }
+        public string Direccion { get => _direccion; set => _direccion = value; }
+        public string Localidad { get => _localidad; set => _localidad = value; }
+        public string EstadoEvento { get => _estadoEvento; set => _estadoEvento = value; }
+        public int CantidadPersonas { get => _cantidadPersonas; set => _cantidadPersonas = value; }
+        public decimal TotalEstimado { get => _totalEstimado; set => _totalEstimado = value; }
+        public bool EventoPago { get => _eventoPago; set => _eventoPago = value; }
+    }
 }

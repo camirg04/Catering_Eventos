@@ -29,18 +29,18 @@ namespace DAL_Catering
             {
                 Entity_Catering.Evento unEvento = new Entity_Catering.Evento();  
 
-                unEvento.Id = int.Parse(fila["id_evento"].ToString());
-                unEvento.IdCliente = int.Parse(fila["id_cliente"].ToString());
-                unEvento.IdMenu = int.Parse(fila["id_menu"].ToString());
-                unEvento.Fecha = DateTime.Parse(fila["fecha_evento"].ToString());
-                unEvento.DescuentoAplicado = float.Parse(fila["descuento_aplicado"].ToString());
+                unEvento.IdEvento = int.Parse(fila["id_evento"].ToString());
+                unEvento.Cliente.Id = int.Parse(fila["id_cliente"].ToString());
+                unEvento.Menu.IdMenu = int.Parse(fila["id_menu"].ToString());
+                unEvento.FechaEvento = DateTime.Parse(fila["fecha_evento"].ToString());
+                unEvento.DescuentoAplicado = Decimal.Parse(fila["descuento_aplicado"].ToString());
                 unEvento.Direccion = fila["direccion"].ToString();
                 unEvento.Localidad = fila["localidad"].ToString();
-                unEvento.Estado = fila["estado_evento"].ToString();
+                unEvento.EstadoEvento = fila["estado_evento"].ToString();
                 unEvento.CantidadPersonas = int.Parse(fila["cantidad_personas"].ToString());
-                unEvento.Total = float.Parse(fila["total_estimado"].ToString());
+                unEvento.TotalEstimado = Decimal.Parse(fila["total_estimado"].ToString());
              //   unEvento.Pago = int.Parse(fila["evento_pago"].ToString());
-                unEvento.IdUsuarioVenta = int.Parse(fila["id_usuario_venta"].ToString());
+                unEvento.UsuarioVenta.IdUsuario = int.Parse(fila["id_usuario_venta"].ToString());
 
                 eventos.Add(unEvento);
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Entity_Catering
 {
-    public class Menus
+    public class Menu
     {
 
         private int _idMenu;
@@ -16,18 +16,18 @@ namespace Entity_Catering
         private float _precioPorPersona;
         private DateTime _fechaBaja;
 
-        public Menus()
+        public Menu()
         {
 
         }
 
-        public Menus(string nombre, float precioPorPersona)
+        public Menu(string nombre, float precioPorPersona)
         {
             Nombre = nombre;
             PrecioPorPersona = precioPorPersona;
 
         }
-        public Menus(string nombre, float precioPorPersona, int idMenu)
+        public Menu(string nombre, float precioPorPersona, int idMenu)
         {
             Nombre = nombre;
             PrecioPorPersona = precioPorPersona;
@@ -35,7 +35,7 @@ namespace Entity_Catering
 
         }
 
-        public Menus(string nombre, float precioPorPersona, int idMenu, DateTime fechaBaja)
+        public Menu(string nombre, float precioPorPersona, int idMenu, DateTime fechaBaja)
         {
             Nombre = nombre;
             PrecioPorPersona = precioPorPersona;
