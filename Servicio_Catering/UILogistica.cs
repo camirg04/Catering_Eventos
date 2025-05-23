@@ -66,5 +66,10 @@ namespace Servicio_Catering
         {
 
         }
+
+        private void tabPage5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

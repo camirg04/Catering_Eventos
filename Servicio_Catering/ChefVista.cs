@@ -135,20 +135,6 @@ namespace Servicio_Catering
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         //MOCKS DATOS
         private List<AlertaStockDTO> getMockAlertas()
         {
@@ -196,7 +182,5 @@ namespace Servicio_Catering
             };
             return LoteInsumoDTO.mapLoteInsumoListToLoteInsumoDTOList(lista);
         }
-
-
     }
 }

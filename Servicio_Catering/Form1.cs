@@ -59,6 +59,11 @@ namespace Servicio_Catering
                         UILogistica ventanaLogistica = new UILogistica(user);
                         ventanaLogistica.ShowDialog();
                     }
+                    else if (user.Perfil == Perfil.VENDEDOR.ToString())
+                    {
+                        UIVendedor ventanaVendedor = new UIVendedor(user);
+                        ventanaVendedor.ShowDialog();
+                    }
                     else
                     {
                         MessageBox.Show("Pantallas en construcción");
