@@ -21,6 +21,8 @@ namespace Servicio_Catering
         private readonly Usuario _usuario;
         private readonly HelperFront _helperFront;
         private readonly PlatoBLL _platoBLL;
+        private readonly LoteInsumoBLL _loteInsumoBLL;
+        private readonly InsumoBLL _insumoBLL;
 
         public Administracion(Usuario user)
         {
@@ -28,6 +30,8 @@ namespace Servicio_Catering
             _usuario = user;
             _helperFront = new HelperFront();
             _platoBLL = new PlatoBLL();
+            _loteInsumoBLL = new LoteInsumoBLL();
+            _insumoBLL = new InsumoBLL();
         }
 
 
@@ -86,7 +90,8 @@ namespace Servicio_Catering
 
                 //Cargas iniciales de vencimientos
                 dgvVencimientos.ReadOnly = true;
-                dgvVencimientos.DataSource = getMockLotes();
+                dgvVencimientos.DataSource = _loteInsumoBLL.ObtenerLotesInsumos();
+                _helperFront.cargarComboIsumos(cbInsumosVencimientos, _insumoBLL.ObtenerInsumosActivos());
                 dgvVencimientos.Columns["IdLoteInsumo"].Visible = false;
                 dgvVencimientos.Columns["IdInsumo"].Visible = false;
 

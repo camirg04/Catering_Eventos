@@ -75,7 +75,7 @@
             this.dateTimeHasta = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.dateTimeDesde = new System.Windows.Forms.DateTimePicker();
-            this.cbProductos = new System.Windows.Forms.ComboBox();
+            this.cbInsumosVencimientos = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -579,7 +579,7 @@
             this.tabPage4.Controls.Add(this.dateTimeHasta);
             this.tabPage4.Controls.Add(this.label3);
             this.tabPage4.Controls.Add(this.dateTimeDesde);
-            this.tabPage4.Controls.Add(this.cbProductos);
+            this.tabPage4.Controls.Add(this.cbInsumosVencimientos);
             this.tabPage4.Controls.Add(this.label14);
             this.tabPage4.Controls.Add(this.label15);
             this.tabPage4.Controls.Add(this.label17);
@@ -639,15 +639,15 @@
             this.dateTimeDesde.Size = new System.Drawing.Size(185, 20);
             this.dateTimeDesde.TabIndex = 36;
             // 
-            // cbProductos
+            // cbInsumosVencimientos
             // 
-            this.cbProductos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbProductos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbProductos.FormattingEnabled = true;
-            this.cbProductos.Location = new System.Drawing.Point(748, 128);
-            this.cbProductos.Name = "cbProductos";
-            this.cbProductos.Size = new System.Drawing.Size(185, 21);
-            this.cbProductos.TabIndex = 34;
+            this.cbInsumosVencimientos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbInsumosVencimientos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbInsumosVencimientos.FormattingEnabled = true;
+            this.cbInsumosVencimientos.Location = new System.Drawing.Point(748, 128);
+            this.cbInsumosVencimientos.Name = "cbInsumosVencimientos";
+            this.cbInsumosVencimientos.Size = new System.Drawing.Size(185, 21);
+            this.cbInsumosVencimientos.TabIndex = 34;
             // 
             // label14
             // 
@@ -938,7 +938,7 @@
         private System.Windows.Forms.DateTimePicker dateTimeHasta;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dateTimeDesde;
-        private System.Windows.Forms.ComboBox cbProductos;
+        private System.Windows.Forms.ComboBox cbInsumosVencimientos;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label17;

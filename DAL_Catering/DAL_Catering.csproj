@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Conexion.cs" />
     <Compile Include="EmailService.cs" />
+    <Compile Include="LoteInsumoDAL.cs" />
     <Compile Include="UsuarioDAL.cs" />
     <Compile Include="EventoDAL.cs" />
     <Compile Include="InsumoDAL.cs" />
