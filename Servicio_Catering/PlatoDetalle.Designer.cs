@@ -152,7 +152,7 @@
             this.dgvIngredientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvIngredientes.Location = new System.Drawing.Point(15, 133);
             this.dgvIngredientes.Name = "dgvIngredientes";
-            this.dgvIngredientes.Size = new System.Drawing.Size(566, 266);
+            this.dgvIngredientes.Size = new System.Drawing.Size(535, 251);
             this.dgvIngredientes.TabIndex = 19;
             this.dgvIngredientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvIngredientes_CellContentClick);
             this.dgvIngredientes.SelectionChanged += new System.EventHandler(this.dgvIngredientes_SelectionChanged);
@@ -160,7 +160,7 @@
             // btnEliminarIngrediente
             // 
             this.btnEliminarIngrediente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEliminarIngrediente.Location = new System.Drawing.Point(586, 262);
+            this.btnEliminarIngrediente.Location = new System.Drawing.Point(557, 262);
             this.btnEliminarIngrediente.Name = "btnEliminarIngrediente";
             this.btnEliminarIngrediente.Size = new System.Drawing.Size(58, 22);
             this.btnEliminarIngrediente.TabIndex = 20;
@@ -171,8 +171,8 @@
             // 
             // btnEditarPlato
             // 
-            this.btnEditarPlato.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEditarPlato.Location = new System.Drawing.Point(15, 436);
+            this.btnEditarPlato.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnEditarPlato.Location = new System.Drawing.Point(20, 400);
             this.btnEditarPlato.Name = "btnEditarPlato";
             this.btnEditarPlato.Size = new System.Drawing.Size(146, 29);
             this.btnEditarPlato.TabIndex = 25;
@@ -182,8 +182,8 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGuardar.Location = new System.Drawing.Point(600, 436);
+            this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGuardar.Location = new System.Drawing.Point(568, 400);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(146, 29);
             this.btnGuardar.TabIndex = 26;
@@ -194,18 +194,20 @@
             // 
             // cbIngredientes
             // 
+            this.cbIngredientes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbIngredientes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbIngredientes.FormattingEnabled = true;
-            this.cbIngredientes.Location = new System.Drawing.Point(588, 190);
+            this.cbIngredientes.Location = new System.Drawing.Point(559, 190);
             this.cbIngredientes.Name = "cbIngredientes";
             this.cbIngredientes.Size = new System.Drawing.Size(158, 21);
             this.cbIngredientes.TabIndex = 30;
             // 
             // lblCantidad
             // 
+            this.lblCantidad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCantidad.AutoSize = true;
             this.lblCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidad.Location = new System.Drawing.Point(587, 220);
+            this.lblCantidad.Location = new System.Drawing.Point(558, 220);
             this.lblCantidad.Name = "lblCantidad";
             this.lblCantidad.Size = new System.Drawing.Size(61, 13);
             this.lblCantidad.TabIndex = 29;
@@ -213,16 +215,18 @@
             // 
             // txtCantidad
             // 
-            this.txtCantidad.Location = new System.Drawing.Point(586, 236);
+            this.txtCantidad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCantidad.Location = new System.Drawing.Point(557, 236);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(157, 20);
             this.txtCantidad.TabIndex = 28;
             // 
             // lblIngrediente
             // 
+            this.lblIngrediente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblIngrediente.AutoSize = true;
             this.lblIngrediente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIngrediente.Location = new System.Drawing.Point(585, 174);
+            this.lblIngrediente.Location = new System.Drawing.Point(556, 174);
             this.lblIngrediente.Name = "lblIngrediente";
             this.lblIngrediente.Size = new System.Drawing.Size(75, 13);
             this.lblIngrediente.TabIndex = 27;
@@ -231,7 +235,7 @@
             // btnAgregarIngrediente
             // 
             this.btnAgregarIngrediente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAgregarIngrediente.Location = new System.Drawing.Point(642, 262);
+            this.btnAgregarIngrediente.Location = new System.Drawing.Point(613, 262);
             this.btnAgregarIngrediente.Name = "btnAgregarIngrediente";
             this.btnAgregarIngrediente.Size = new System.Drawing.Size(61, 22);
             this.btnAgregarIngrediente.TabIndex = 32;
@@ -243,7 +247,7 @@
             // btnEditarIngrediente
             // 
             this.btnEditarIngrediente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEditarIngrediente.Location = new System.Drawing.Point(700, 262);
+            this.btnEditarIngrediente.Location = new System.Drawing.Point(671, 262);
             this.btnEditarIngrediente.Name = "btnEditarIngrediente";
             this.btnEditarIngrediente.Size = new System.Drawing.Size(46, 22);
             this.btnEditarIngrediente.TabIndex = 33;
@@ -256,7 +260,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(755, 477);
+            this.ClientSize = new System.Drawing.Size(726, 448);
             this.Controls.Add(this.btnEditarIngrediente);
             this.Controls.Add(this.btnAgregarIngrediente);
             this.Controls.Add(this.cbIngredientes);

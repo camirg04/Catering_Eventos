@@ -25,6 +25,7 @@ namespace Servicio_Catering
         {
             warningMail.Text = "";
             warningPass.Text = "";
+
         }
 
 
