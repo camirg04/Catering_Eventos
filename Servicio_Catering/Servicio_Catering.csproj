@@ -72,10 +72,16 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UIGerente.cs">
+    <Compile Include="UIAdminstrador\UIAdministrador.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UIGerente.Designer.cs">
+    <Compile Include="UIAdminstrador\UIAdministrador.Designer.cs">
+      <DependentUpon>UIAdministrador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIGerente\UIGerente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIGerente\UIGerente.Designer.cs">
       <DependentUpon>UIGerente.cs</DependentUpon>
     </Compile>
     <Compile Include="UILogistica.cs">
@@ -105,7 +111,10 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="UIGerente.resx">
+    <EmbeddedResource Include="UIAdminstrador\UIAdministrador.resx">
+      <DependentUpon>UIAdministrador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIGerente\UIGerente.resx">
       <DependentUpon>UIGerente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UILogistica.resx">
