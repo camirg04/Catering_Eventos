@@ -11,7 +11,7 @@ namespace Entity_Catering
 
         private int _idEvento;
         private Cliente _cliente;
-        private Menu menu;
+        private Menus menu;
         private Usuario _usuarioVenta;
         private DateTime _fechaEvento;
         private Decimal _descuentoAplicado;
@@ -26,7 +26,7 @@ namespace Entity_Catering
         {
         }
 
-        public Evento(Cliente cliente, Menu menu, Usuario usuarioVenta, DateTime fechaEvento, Decimal descuentoAplicado, string direccion, string localidad, string estadoEvento, int cantidadPersonas, Decimal totalEstimado, bool eventoPago)
+        public Evento(Cliente cliente, Menus menu, Usuario usuarioVenta, DateTime fechaEvento, Decimal descuentoAplicado, string direccion, string localidad, string estadoEvento, int cantidadPersonas, Decimal totalEstimado, bool eventoPago)
         {
             Cliente = cliente;
             this.Menu = menu;
@@ -43,7 +43,7 @@ namespace Entity_Catering
 
         public int IdEvento { get => _idEvento; set => _idEvento = value; }
         public Cliente Cliente { get => _cliente; set => _cliente = value; }
-        public Menu Menu { get => menu; set => menu = value; }
+        public Menus Menu { get => menu; set => menu = value; }
         public Usuario UsuarioVenta { get => _usuarioVenta; set => _usuarioVenta = value; }
         public DateTime FechaEvento { get => _fechaEvento; set => _fechaEvento = value; }
         public decimal DescuentoAplicado { get => _descuentoAplicado; set => _descuentoAplicado = value; }

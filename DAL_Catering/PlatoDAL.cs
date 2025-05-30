@@ -47,7 +47,7 @@ namespace DAL_Catering
                 logger.Error(ex, "Error al agregar ingrediente a plato en DAL " + consulta);
                 throw;
             }
-      
+
 
         }
 
@@ -88,7 +88,7 @@ namespace DAL_Catering
         {
             string consulta = @"delete from plato_insumo where id_plato_insumo = @Id_plato_insumo";
             try
-            {           
+            {
                 // Crear parámetros
                 SqlParameter[] parametros = new SqlParameter[]
                 {
@@ -190,9 +190,10 @@ namespace DAL_Catering
 
                 if (parametros.Any())
                 {
-                    resultado = conexion.LeerPorComando(consulta,parametros.ToArray());
+                    resultado = conexion.LeerPorComando(consulta, parametros.ToArray());
                 }
-                else { 
+                else
+                {
                     resultado = conexion.LeerPorComando(consulta);
                 }
 
@@ -254,6 +255,40 @@ namespace DAL_Catering
             }
 
 
+        }
+
+
+
+        public List<Plato> obtenerPlatosPorMenu(int idMenu)
+        {
+            try
+            {
+                SqlParameter[] paramPlatos = new SqlParameter[]
+                {
+                    new SqlParameter("@idMenu", SqlDbType.BigInt, 100) { Value = idMenu }
+
+                };
+                DataTable dtPlatos = conexion.LeerPorStoreProcedure("sp_ObtenerPlatosMenu", paramPlatos);
+                var platos = new List<Plato>();
+                foreach (DataRow row in dtPlatos.Rows)
+                {
+                    var plato = new Plato();
+                    plato.IdPlato = int.Parse(row["id_plato"].ToString());
+                    plato.Nombre = row["nombre"].ToString();
+                    plato.TipoPlato = row["tipo_plato"].ToString();
+                    if (row["fecha_baja"] != DBNull.Value)
+                    {
+                        plato.FechaBaja = DateTime.Parse(row["fecha_baja"].ToString());
+                    }
+                    platos.Add(plato);
+                }
+                return platos;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al obtener platos por menu en DAL");
+                throw;
+            }
         }
     }
 }

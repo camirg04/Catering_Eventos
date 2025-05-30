@@ -79,7 +79,6 @@
             this.label1.Size = new System.Drawing.Size(92, 13);
             this.label1.TabIndex = 12;
             this.label1.Text = "Fecha de baja:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -90,7 +89,6 @@
             this.label2.Size = new System.Drawing.Size(47, 13);
             this.label2.TabIndex = 13;
             this.label2.Text = "Activo:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // cbTipoPlato
             // 
@@ -120,7 +118,6 @@
             this.txtNombrePlato.Name = "txtNombrePlato";
             this.txtNombrePlato.Size = new System.Drawing.Size(120, 20);
             this.txtNombrePlato.TabIndex = 16;
-            this.txtNombrePlato.TextChanged += new System.EventHandler(this.txtNombrePlato_TextChanged);
             // 
             // lbFechaBaja
             // 
@@ -131,7 +128,6 @@
             this.lbFechaBaja.Size = new System.Drawing.Size(75, 13);
             this.lbFechaBaja.TabIndex = 17;
             this.lbFechaBaja.Text = "01/01/2020";
-            this.lbFechaBaja.Click += new System.EventHandler(this.lbFechaBaja_Click);
             // 
             // lblIngredientes
             // 

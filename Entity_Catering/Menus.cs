@@ -1,47 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
 
 
 namespace Entity_Catering
 {
-    public class Menu
+    public class Menus
     {
-
         private int _idMenu;
         private string _nombre;
         private float _precioPorPersona;
-        private DateTime _fechaBaja;
+        private List<Plato> _platos = new List<Plato>();
+        private DateTime? _fechaBaja;
 
-        public Menu()
+        public Menus()
         {
-
+            _platos = new List<Plato>();
         }
 
-        public Menu(string nombre, float precioPorPersona)
+        public Menus(string nombre, float precioPorPersona)
         {
             Nombre = nombre;
             PrecioPorPersona = precioPorPersona;
+            _platos = new List<Plato>();
 
         }
-        public Menu(string nombre, float precioPorPersona, int idMenu)
+        public Menus(string nombre, float precioPorPersona, int idMenu)
         {
             Nombre = nombre;
             PrecioPorPersona = precioPorPersona;
             IdMenu = idMenu;
-
+            _platos = new List<Plato>();
         }
 
-        public Menu(string nombre, float precioPorPersona, int idMenu, DateTime fechaBaja)
+        public Menus(string nombre, float precioPorPersona, int idMenu, DateTime fechaBaja, List<Plato> platos)
         {
             Nombre = nombre;
             PrecioPorPersona = precioPorPersona;
             IdMenu = idMenu;
             FechaDeBaja = fechaBaja;
-
+            Platos = platos;
         }
 
         public int IdMenu
@@ -58,21 +56,21 @@ namespace Entity_Catering
         }
 
 
+        [DisplayName("Precio por persona")]
         public float PrecioPorPersona
         {
             get { return _precioPorPersona; }
             set { _precioPorPersona = value; }
         }
 
-  
 
-        public DateTime FechaDeBaja
+        [DisplayName("Fecha de baja")]
+        public DateTime? FechaDeBaja
         {
             get { return _fechaBaja; }
             set { _fechaBaja = value; }
         }
 
-
-
+        public List<Plato> Platos { get => _platos; set => _platos = value; }
     }
 }

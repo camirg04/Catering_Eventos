@@ -108,15 +108,6 @@ namespace Servicio_Catering
             dgvIngredientes.Columns["IdInsumoPlato"].Visible = false;
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void cbPlatoActivo_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -135,28 +126,6 @@ namespace Servicio_Catering
                 }
                 
             }
-        }
-
-        private void lbFechaBaja_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void verPlato_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void agregarPlato_Click(object sender, EventArgs e)
-        {
-
-        }
-
-      
-
-        private void txtNombrePlato_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void btnEditarPlato_Click(object sender, EventArgs e)
@@ -198,11 +167,6 @@ namespace Servicio_Catering
             btnEliminarIngrediente.Visible = false;
             btnAgregarIngrediente.Visible = false;
             btnEditarIngrediente.Visible = false;
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
         }
 
 

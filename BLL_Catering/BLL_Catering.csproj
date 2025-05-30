@@ -57,6 +57,7 @@
     <Compile Include="PlatoBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValidacionesBLL.cs" />
+    <Compile Include="ValidacionException.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL_Catering\DAL_Catering.csproj">

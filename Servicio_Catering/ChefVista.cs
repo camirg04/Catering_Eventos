@@ -23,6 +23,7 @@ namespace Servicio_Catering
         private readonly PlatoBLL _platoBLL;
         private readonly LoteInsumoBLL _loteInsumoBLL;
         private readonly InsumoBLL _insumoBLL;
+        private readonly MenusBLL _menuBLL;
 
         public Administracion(Usuario user)
         {
@@ -32,6 +33,7 @@ namespace Servicio_Catering
             _platoBLL = new PlatoBLL();
             _loteInsumoBLL = new LoteInsumoBLL();
             _insumoBLL = new InsumoBLL();
+            _menuBLL = new MenusBLL();
         }
 
 
@@ -68,6 +70,12 @@ namespace Servicio_Catering
                 //tamaño mímimo de la ventana al inicializar componente
                 this.MinimumSize = new Size(1000, 600);
                 lblBienvenida.Text = darBienvenida(_usuario.Nombre);
+
+                //Cargas iniciales de menu
+                dgvMenu.ReadOnly = true;
+                dgvMenu.DataSource = _menuBLL.ListarMenus(null,null,null,null);
+                dgvMenu.Columns["IdMenu"].Visible = false;
+                dgvMenu.Columns["PrecioPorPersona"].DefaultCellStyle.Format = "C2";
 
                 //Cargas iniciales de evento
                 //para que el date time picker se vea como dd/mm/yyyy
@@ -183,37 +191,6 @@ namespace Servicio_Catering
             return AlertaStockDTO.mapListAlertaStockToListAlertaStockDTO(lista);
         }
 
-
-        private List<LoteInsumoDTO> getMockLotes()
-        {
-            var usuario1 = new Usuario(1, "admin@mail.com", "1234", "Admin", "admin@mail.com", DateTime.Now.AddMonths(-3), null, "12345678", "Juan", "Pérez", "Calle 123", "123456789");
-            var usuario2 = new Usuario(2, "chef@mail.com", "chef123", "Chef", "chef@mail.com", DateTime.Now.AddMonths(-2), null, "87654321", "María", "Gómez", "Calle 456", "987654321");
-
-            var insumo1 = new Insumo(1, "Harina", "Kg", true, 50, null);
-            var insumo2 = new Insumo(2, "Aceite", "Litros", false, 20, null);
-
-            var pedido1 = new PedidoInsumo(1, insumo1, usuario1, 100, DateTime.Now.AddDays(-15), "PENDIENTE");
-            var pedido2 = new PedidoInsumo(2, insumo2, usuario2, 50, DateTime.Now.AddDays(-10), "RESUELTO");
-
-            var lote1 = new LoteInsumo(1, insumo1, pedido1, 100, 150.75m, DateTime.Now.AddDays(-14), DateTime.Now.AddMonths(6));
-            var lote2 = new LoteInsumo(2, insumo2, pedido2, 50, 300.00m, DateTime.Now.AddDays(-9), null);
-            var lote3 = new LoteInsumo(3, insumo1, pedido1, 30, 155.00m, DateTime.Now.AddDays(-5), DateTime.Now.AddMonths(5));
-            var lote4 = new LoteInsumo(4, insumo2, pedido2, 80, 290.00m, DateTime.Now.AddDays(-20), null);
-            var lote5 = new LoteInsumo(5, insumo1, pedido1, 120, 148.25m, DateTime.Now.AddDays(-2), DateTime.Now.AddMonths(4));
-            
-            var lista = new List<LoteInsumo>
-            {
-                lote1,
-                lote2,
-                lote3,
-                lote4,
-                lote5
-            };
-            return LoteInsumoDTO.mapLoteInsumoListToLoteInsumoDTOList(lista);
-        }
-
-
-
         private List<EventoDTO> getMockEvento()
         {
             var eventos = new List<Evento>();
@@ -224,11 +201,11 @@ namespace Servicio_Catering
             var cliente4 = new Cliente("Julián", "Lopez", "julian.lopez@mail.com", "1166778899", "Independencia 321", "30303030");
             var cliente5 = new Cliente("Sofía", "Martínez", "sofia.martinez@mail.com", "1199887766", "Belgrano 654", "34343434");
 
-            var menu1 = new Entity_Catering.Menu("Menú Clásico", 2500);
-            var menu2 = new Entity_Catering.Menu("Menú Premium", 4500);
-            var menu3 = new Entity_Catering.Menu("Menú Vegetariano", 2800);
-            var menu4 = new Entity_Catering.Menu("Menú Gourmet", 5000);
-            var menu5 = new Entity_Catering.Menu("Menú Infantil", 2000);
+            var menu1 = new Entity_Catering.Menus("Menú Clásico", 2500);
+            var menu2 = new Entity_Catering.Menus("Menú Premium", 4500);
+            var menu3 = new Entity_Catering.Menus("Menú Vegetariano", 2800);
+            var menu4 = new Entity_Catering.Menus("Menú Gourmet", 5000);
+            var menu5 = new Entity_Catering.Menus("Menú Infantil", 2000);
 
             var usuario1 = new Usuario(1, "venta1@mail.com", "clave123", "Vendedor", "venta1@mail.com", DateTime.Now.AddMonths(-2), null, "12345678", "Juan", "Pérez", "Mitre 123", "1122334455");
             var usuario2 = new Usuario(2, "venta2@mail.com", "clave456", "Vendedor", "venta2@mail.com", DateTime.Now.AddMonths(-1), null, "87654321", "Ana", "García", "Rivadavia 456", "1166778899");
@@ -243,5 +220,16 @@ namespace Servicio_Catering
             return EventoDTO.mapEventoListToEventoDTOList(eventos);
         }
 
+
+
+        private void btnDetalleMenu_Click(object sender, EventArgs e)
+        {
+            var menu = (Menus)dgvMenu.CurrentRow.DataBoundItem;
+
+            var menuDelalle = new MenuDetalle(menu, "verDetalle");
+            menuDelalle.ShowDialog();
+            //resetear el data source del dgvMenu
+
+        }
     }
 }

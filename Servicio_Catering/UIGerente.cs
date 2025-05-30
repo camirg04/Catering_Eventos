@@ -51,7 +51,7 @@ namespace Servicio_Catering
             try
             {
 
-                List<Entity_Catering.Menu> menus = _menusBLL.ListarMenus();
+                List<Entity_Catering.Menus> menus = _menusBLL.ListarMenus();
                 dgvVisualizaProductos.DataSource = menus;
                 dgvVisualizaProductos.Columns["FechaDeBaja"].Visible = false;
 

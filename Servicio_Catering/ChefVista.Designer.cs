@@ -51,10 +51,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.btnEliminarMenu = new System.Windows.Forms.Button();
+            this.btnAgregarMenu = new System.Windows.Forms.Button();
+            this.btnDetalleMenu = new System.Windows.Forms.Button();
+            this.dgvMenu = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.fechaHastaEvento = new System.Windows.Forms.DateTimePicker();
             this.label13 = new System.Windows.Forms.Label();
@@ -100,7 +100,7 @@
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlatos)).BeginInit();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMenu)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEventos)).BeginInit();
             this.tabPage4.SuspendLayout();
@@ -284,10 +284,10 @@
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Controls.Add(this.label7);
-            this.tabPage2.Controls.Add(this.button2);
-            this.tabPage2.Controls.Add(this.button3);
-            this.tabPage2.Controls.Add(this.button4);
-            this.tabPage2.Controls.Add(this.dataGridView2);
+            this.tabPage2.Controls.Add(this.btnEliminarMenu);
+            this.tabPage2.Controls.Add(this.btnAgregarMenu);
+            this.tabPage2.Controls.Add(this.btnDetalleMenu);
+            this.tabPage2.Controls.Add(this.dgvMenu);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -378,46 +378,47 @@
             this.label7.TabIndex = 18;
             this.label7.Text = "Tipo";
             // 
-            // button2
+            // btnEliminarMenu
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(731, 88);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(199, 31);
-            this.button2.TabIndex = 15;
-            this.button2.Text = "Eliminar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnEliminarMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEliminarMenu.Location = new System.Drawing.Point(731, 88);
+            this.btnEliminarMenu.Name = "btnEliminarMenu";
+            this.btnEliminarMenu.Size = new System.Drawing.Size(199, 31);
+            this.btnEliminarMenu.TabIndex = 15;
+            this.btnEliminarMenu.Text = "Eliminar";
+            this.btnEliminarMenu.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnAgregarMenu
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(731, 53);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(199, 29);
-            this.button3.TabIndex = 16;
-            this.button3.Text = "Agregar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnAgregarMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAgregarMenu.Location = new System.Drawing.Point(731, 53);
+            this.btnAgregarMenu.Name = "btnAgregarMenu";
+            this.btnAgregarMenu.Size = new System.Drawing.Size(199, 29);
+            this.btnAgregarMenu.TabIndex = 16;
+            this.btnAgregarMenu.Text = "Agregar";
+            this.btnAgregarMenu.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnDetalleMenu
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(731, 18);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(202, 29);
-            this.button4.TabIndex = 17;
-            this.button4.Text = "Ver detalle";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnDetalleMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDetalleMenu.Location = new System.Drawing.Point(731, 18);
+            this.btnDetalleMenu.Name = "btnDetalleMenu";
+            this.btnDetalleMenu.Size = new System.Drawing.Size(202, 29);
+            this.btnDetalleMenu.TabIndex = 17;
+            this.btnDetalleMenu.Text = "Ver detalle";
+            this.btnDetalleMenu.UseVisualStyleBackColor = true;
+            this.btnDetalleMenu.Click += new System.EventHandler(this.btnDetalleMenu_Click);
             // 
-            // dataGridView2
+            // dgvMenu
             // 
-            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgvMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(726, 529);
-            this.dataGridView2.TabIndex = 14;
+            this.dgvMenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMenu.Location = new System.Drawing.Point(0, 0);
+            this.dgvMenu.Name = "dgvMenu";
+            this.dgvMenu.Size = new System.Drawing.Size(726, 529);
+            this.dgvMenu.TabIndex = 14;
             // 
             // tabPage3
             // 
@@ -886,7 +887,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlatos)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMenu)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEventos)).EndInit();
@@ -916,10 +917,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Button btnEliminarMenu;
+        private System.Windows.Forms.Button btnAgregarMenu;
+        private System.Windows.Forms.Button btnDetalleMenu;
+        private System.Windows.Forms.DataGridView dgvMenu;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.ComboBox comboBox4;
