@@ -18,16 +18,17 @@ namespace Servicio_Catering
     public partial class Administracion : Form, PerfilUsuario
     {
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
-        private readonly Usuario _usuario;
+        private readonly Chef _usuario;
         private readonly HelperFront _helperFront;
-        private readonly PlatoBLL _platoBLL;
+        private readonly ChefBLL _chefBLL;
 
-        public Administracion(Usuario user)
+
+        public Administracion(Chef user)
         {
             InitializeComponent();
             _usuario = user;
             _helperFront = new HelperFront();
-            _platoBLL = new PlatoBLL();
+            _chefBLL = new ChefBLL();
         }
 
 
@@ -38,7 +39,7 @@ namespace Servicio_Catering
                 string nombrePLato = txtNombre.Text;
                 string tipoPlato = cbTipoPlato.Text;
                 string activo = cbActivo.Text;
-                List<Plato> platos = _platoBLL.BuscarPlatos(nombrePLato, tipoPlato, activo);
+                List<Plato> platos = _chefBLL.BuscarPlatos(nombrePLato, tipoPlato, activo);
                 dgvPlatos.DataSource = platos;
             }
             catch (Exception ex)

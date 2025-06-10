@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL_Catering;
 using Entity_Catering;
+using NLog;
 
 namespace BLL_Catering
 {
@@ -12,6 +13,7 @@ namespace BLL_Catering
     {
 
         private readonly UsuarioDAL _empleadosDal;
+        private static readonly Logger logger = LogManager.GetCurrentClassLogger();
 
         public UsuarioBLL() {
             _empleadosDal = new UsuarioDAL();
@@ -30,6 +32,47 @@ namespace BLL_Catering
             return auxEmpleado;
         }
 
+
+        public string ValidarUsuario(string usuario)
+        {
+            string response = !(usuario == null || usuario.Trim() == "") ? "" : "El usuario no puede estar vacío";
+            return response;
+        }
+        public string ValidarClave(string clave)
+        {
+            string response = !(clave == null || clave.Trim() == "") ? "" : "La clave no puede estar vacía";
+            return response;
+        }
+
+        public Usuario LoginUsuario(string mail, string clave)
+        {
+            try
+            {
+                DAL_Catering.LoginDAL loginDAL = new DAL_Catering.LoginDAL();
+                Usuario usuario = loginDAL.BuscarUsuarioPorCredenciales(mail);
+                if (usuario == null)
+                {
+                    return null;
+                }
+                else
+                {
+                    if (usuario.Clave != clave)
+                    {
+                        return null;
+                    }
+                    else
+                    {
+                        return usuario;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al intentar loguear usuario en BLL");
+                throw ex;
+            }
+
+        }
 
     }
 }
