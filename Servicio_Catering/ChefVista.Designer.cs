@@ -73,13 +73,11 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.button6 = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
-            this.dateTimeHasta = new System.Windows.Forms.DateTimePicker();
+            this.dateTimeHastaVencimiento = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
-            this.dateTimeDesde = new System.Windows.Forms.DateTimePicker();
-            this.cbProductos = new System.Windows.Forms.ComboBox();
+            this.dateTimeDesdeVencimiento = new System.Windows.Forms.DateTimePicker();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
             this.dgvVencimientos = new System.Windows.Forms.DataGridView();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.btnEditarAlerta = new System.Windows.Forms.Button();
@@ -89,12 +87,10 @@
             this.label18 = new System.Windows.Forms.Label();
             this.dgvAlertas = new System.Windows.Forms.DataGridView();
             this.dateTimeHastaAlerta = new System.Windows.Forms.DateTimePicker();
-            this.label22 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.dateTimeDesdeAlerta = new System.Windows.Forms.DateTimePicker();
             this.label20 = new System.Windows.Forms.Label();
-            this.cbProductoAlerta = new System.Windows.Forms.ComboBox();
             this.CerrarSesion = new System.Windows.Forms.Button();
             this.lblBienvenida = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
@@ -588,13 +584,11 @@
             // 
             this.tabPage4.Controls.Add(this.button6);
             this.tabPage4.Controls.Add(this.label16);
-            this.tabPage4.Controls.Add(this.dateTimeHasta);
+            this.tabPage4.Controls.Add(this.dateTimeHastaVencimiento);
             this.tabPage4.Controls.Add(this.label3);
-            this.tabPage4.Controls.Add(this.dateTimeDesde);
-            this.tabPage4.Controls.Add(this.cbProductos);
+            this.tabPage4.Controls.Add(this.dateTimeDesdeVencimiento);
             this.tabPage4.Controls.Add(this.label14);
             this.tabPage4.Controls.Add(this.label15);
-            this.tabPage4.Controls.Add(this.label17);
             this.tabPage4.Controls.Add(this.dgvVencimientos);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
@@ -624,13 +618,13 @@
             this.label16.TabIndex = 39;
             this.label16.Text = "Hasta";
             // 
-            // dateTimeHasta
+            // dateTimeHastaVencimiento
             // 
-            this.dateTimeHasta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimeHasta.Location = new System.Drawing.Point(748, 269);
-            this.dateTimeHasta.Name = "dateTimeHasta";
-            this.dateTimeHasta.Size = new System.Drawing.Size(185, 20);
-            this.dateTimeHasta.TabIndex = 38;
+            this.dateTimeHastaVencimiento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTimeHastaVencimiento.Location = new System.Drawing.Point(748, 269);
+            this.dateTimeHastaVencimiento.Name = "dateTimeHastaVencimiento";
+            this.dateTimeHastaVencimiento.Size = new System.Drawing.Size(185, 20);
+            this.dateTimeHastaVencimiento.TabIndex = 38;
             // 
             // label3
             // 
@@ -643,23 +637,13 @@
             this.label3.TabIndex = 37;
             this.label3.Text = "Desde";
             // 
-            // dateTimeDesde
+            // dateTimeDesdeVencimiento
             // 
-            this.dateTimeDesde.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimeDesde.Location = new System.Drawing.Point(748, 220);
-            this.dateTimeDesde.Name = "dateTimeDesde";
-            this.dateTimeDesde.Size = new System.Drawing.Size(185, 20);
-            this.dateTimeDesde.TabIndex = 36;
-            // 
-            // cbProductos
-            // 
-            this.cbProductos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbProductos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbProductos.FormattingEnabled = true;
-            this.cbProductos.Location = new System.Drawing.Point(748, 128);
-            this.cbProductos.Name = "cbProductos";
-            this.cbProductos.Size = new System.Drawing.Size(185, 21);
-            this.cbProductos.TabIndex = 34;
+            this.dateTimeDesdeVencimiento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTimeDesdeVencimiento.Location = new System.Drawing.Point(748, 220);
+            this.dateTimeDesdeVencimiento.Name = "dateTimeDesdeVencimiento";
+            this.dateTimeDesdeVencimiento.Size = new System.Drawing.Size(185, 20);
+            this.dateTimeDesdeVencimiento.TabIndex = 36;
             // 
             // label14
             // 
@@ -683,17 +667,6 @@
             this.label15.TabIndex = 32;
             this.label15.Text = "Filtrar vencimientos";
             // 
-            // label17
-            // 
-            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(745, 106);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(64, 15);
-            this.label17.TabIndex = 30;
-            this.label17.Text = "Producto";
-            // 
             // dgvVencimientos
             // 
             this.dgvVencimientos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -714,12 +687,10 @@
             this.tabPage5.Controls.Add(this.label18);
             this.tabPage5.Controls.Add(this.dgvAlertas);
             this.tabPage5.Controls.Add(this.dateTimeHastaAlerta);
-            this.tabPage5.Controls.Add(this.label22);
             this.tabPage5.Controls.Add(this.label19);
             this.tabPage5.Controls.Add(this.label21);
             this.tabPage5.Controls.Add(this.dateTimeDesdeAlerta);
             this.tabPage5.Controls.Add(this.label20);
-            this.tabPage5.Controls.Add(this.cbProductoAlerta);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Size = new System.Drawing.Size(936, 529);
@@ -798,17 +769,6 @@
             this.dateTimeHastaAlerta.Size = new System.Drawing.Size(180, 20);
             this.dateTimeHastaAlerta.TabIndex = 47;
             // 
-            // label22
-            // 
-            this.label22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(750, 109);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(64, 15);
-            this.label22.TabIndex = 41;
-            this.label22.Text = "Producto";
-            // 
             // label19
             // 
             this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -849,16 +809,6 @@
             this.label20.Size = new System.Drawing.Size(46, 15);
             this.label20.TabIndex = 43;
             this.label20.Text = "Fecha";
-            // 
-            // cbProductoAlerta
-            // 
-            this.cbProductoAlerta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbProductoAlerta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbProductoAlerta.FormattingEnabled = true;
-            this.cbProductoAlerta.Location = new System.Drawing.Point(753, 127);
-            this.cbProductoAlerta.Name = "cbProductoAlerta";
-            this.cbProductoAlerta.Size = new System.Drawing.Size(180, 21);
-            this.cbProductoAlerta.TabIndex = 44;
             // 
             // CerrarSesion
             // 
@@ -948,13 +898,11 @@
         private System.Windows.Forms.DateTimePicker fechaHastaEvento;
         private System.Windows.Forms.Label lblBienvenida;
         private System.Windows.Forms.DataGridView dgvVencimientos;
-        private System.Windows.Forms.DateTimePicker dateTimeHasta;
+        private System.Windows.Forms.DateTimePicker dateTimeHastaVencimiento;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dateTimeDesde;
-        private System.Windows.Forms.ComboBox cbProductos;
+        private System.Windows.Forms.DateTimePicker dateTimeDesdeVencimiento;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.TabPage tabPage1;
@@ -978,11 +926,9 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.DataGridView dgvAlertas;
         private System.Windows.Forms.DateTimePicker dateTimeHastaAlerta;
-        private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.DateTimePicker dateTimeDesdeAlerta;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.ComboBox cbProductoAlerta;
     }
 }

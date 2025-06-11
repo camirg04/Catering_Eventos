@@ -21,7 +21,7 @@ namespace Servicio_Catering
         private readonly Chef _usuario;
         private readonly HelperFront _helperFront;
         private readonly ChefBLL _chefBLL;
-
+        private readonly InsumoBLL _insumoBLL;
 
         public Administracion(Chef user)
         {
@@ -29,6 +29,7 @@ namespace Servicio_Catering
             _usuario = user;
             _helperFront = new HelperFront();
             _chefBLL = new ChefBLL();
+            _insumoBLL = new InsumoBLL();
         }
 
 
@@ -71,7 +72,7 @@ namespace Servicio_Catering
                 fechaDesdeEvento.Format = DateTimePickerFormat.Short;
                 fechaHastaEvento.Format = DateTimePickerFormat.Short;
 
-                
+
                 //Cargas iniciales de plato
                 dgvPlatos.ReadOnly = true;
                 ObtenerPlatosFiltro();
@@ -79,16 +80,26 @@ namespace Servicio_Catering
                 _helperFront.cargarComboSiNo(cbActivo);
 
                 //Cargas iniciales de alertas
+                dateTimeDesdeAlerta.Format = DateTimePickerFormat.Short;
+                dateTimeHastaAlerta.Format = DateTimePickerFormat.Short;
+                dateTimeDesdeAlerta.Value = DateTime.Now.AddDays(-10);
+                dateTimeHastaAlerta.Value = DateTime.Now;
                 _helperFront.cargarComboEstadoAlerta(cbEstadoAlerta);
                 dgvAlertas.ReadOnly = true;
-                dgvAlertas.DataSource = getMockAlertas();
+                dgvAlertas.DataSource = _chefBLL.ObtenerAlertasStock(dateTimeDesdeAlerta.Value,dateTimeHastaAlerta.Value,null);
                 dgvAlertas.Columns["IdAlertaStock"].Visible = false;
                 dgvAlertas.Columns["IdInsumo"].Visible = false;
+                AlertaSeveridadCritica(dgvAlertas);
 
                 //Cargas iniciales de vencimientos
+                dateTimeDesdeVencimiento.Format = DateTimePickerFormat.Short;
+                dateTimeHastaVencimiento.Format = DateTimePickerFormat.Short;
+                dateTimeDesdeVencimiento.Value = DateTime.Now;
+                dateTimeHastaVencimiento.Value = DateTime.Now.AddDays(7);
                 dgvVencimientos.ReadOnly = true;
-                dgvVencimientos.DataSource = getMockLotes();
+                dgvVencimientos.DataSource = _chefBLL.ObtenerLotesInsumosPerecederos(dateTimeDesdeVencimiento.Value, dateTimeHastaVencimiento.Value);
                 dgvVencimientos.Columns["IdLoteInsumo"].Visible = false;
+                dgvVencimientos.Columns["IdPedidoInsumo"].Visible = false;
                 dgvVencimientos.Columns["IdInsumo"].Visible = false;
             }
             catch (Exception ex)
@@ -138,6 +149,26 @@ namespace Servicio_Catering
 
 
 
+        private void AlertaSeveridadCritica(DataGridView dgv)
+        {
+            bool critico = false;
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                var estado = row.Cells["Severidad"].Value?.ToString();
+
+                if (estado == "Crítica")
+                {
+                    critico = true;
+                }
+
+            }
+
+            if (critico)
+            {
+                MessageBox.Show("¡Tiene alertas de stock en estado crítico!");
+            }
+        
+        }
 
 
 

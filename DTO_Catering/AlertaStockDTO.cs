@@ -15,6 +15,7 @@ namespace DTO_Catering
         private string _nombreInsumo;
         private string _estadoAlerta;
         private DateTime? _fechaAlerta;
+        private string _severidad;
         public AlertaStockDTO() { }
         public AlertaStockDTO(int idAlertaStock, int idInsumo, string nombreInsumo, string estadoAlerta, DateTime? fechaAlerta)
         {
@@ -23,6 +24,7 @@ namespace DTO_Catering
             _nombreInsumo = nombreInsumo;
             _estadoAlerta = estadoAlerta;
             _fechaAlerta = fechaAlerta;
+            _severidad = "Baja"; // Valor por defecto
         }
 
         public int IdAlertaStock
@@ -35,6 +37,14 @@ namespace DTO_Catering
         {
             get { return _idInsumo; }
             set { _idInsumo = value; }
+        }
+        public string Severidad 
+        {
+            get
+            {
+                return _severidad;
+            }
+            set { _severidad = value.ToString(); }
         }
 
         [DisplayName("Nombre")]
