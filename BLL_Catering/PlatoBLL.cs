@@ -69,54 +69,7 @@ namespace BLL_Catering
         }
 
 
-        public string sinPlatoSeleccionado(InsumoPlatoDTO insumoSeleccionado)
-        {
-            if (insumoSeleccionado == null)
-            {
-                return "Seleccione un insumo para editar";
-            }
 
-            return null;
-        }
-
-        public string cantidadInvalida(string cantidad)
-        {
-            bool esDecimal = _validaciones.esDecimal(cantidad);
-            if (!esDecimal)
-            {
-                return "Formato numero incorrecto";
-            }
-            return null;
-        }
-
-        public string platoDuplicado(int idInsumo, BindingList<InsumoPlatoDTO> listInsumos)
-        {
-            int mismoInsumo = 0;
-            foreach (InsumoPlatoDTO insumo in listInsumos)
-            {
-                if (insumo.IdInsumo == idInsumo)
-                {
-                    mismoInsumo++;
-                }
-            }
-
-            if (mismoInsumo >= 1)
-            {
-                return "No se puede duplicar el insumo en el plato";
-            }
-            return null;
-        }
-
-
-
-        public void editarInsumo(InsumoPlatoDTO insumo, List<Insumo> insumos ,int idInsumo, string cantidad)
-        {
-            Insumo ins = insumos.Find(_insumo => _insumo.IdInsumo == idInsumo);
-            insumo.CantidadNecesaria = Decimal.Parse(cantidad, new CultureInfo("es-ES"));
-            insumo.IdInsumo = ins.IdInsumo;
-            insumo.NombreInsumo = ins.Nombre;
-            insumo.UnidadMedida = ins.UnidadMedida;
-        }
 
 
         public bool guardarCambiosPlato(string accion, Plato plato, List<InsumoPlatoDTO> platosAgregar, List<InsumoPlatoDTO> platosEditar, List<InsumoPlatoDTO> platosEliminar)
@@ -151,7 +104,7 @@ namespace BLL_Catering
             
         }
 
-        public bool modificarIngredientes(int id_plato,List<InsumoPlatoDTO> platosAgregar, List<InsumoPlatoDTO> platosEditar, List<InsumoPlatoDTO> platosEliminar) {
+        private bool modificarIngredientes(int id_plato,List<InsumoPlatoDTO> platosAgregar, List<InsumoPlatoDTO> platosEditar, List<InsumoPlatoDTO> platosEliminar) {
 
             try
             {

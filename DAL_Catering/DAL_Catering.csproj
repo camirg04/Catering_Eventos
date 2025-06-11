@@ -46,8 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClienteDAL.cs" />
+    <Compile Include="AlertaStockDAL.cs" />
     <Compile Include="Conexion.cs" />
+    <Compile Include="LoteInsumoDAL.cs" />
     <Compile Include="UsuarioDAL.cs" />
     <Compile Include="EventoDAL.cs" />
     <Compile Include="InsumoDAL.cs" />

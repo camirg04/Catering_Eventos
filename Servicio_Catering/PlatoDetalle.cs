@@ -19,7 +19,7 @@ namespace Servicio_Catering
     public partial class PlatoDetalle : Form
     {
         private readonly Plato _plato;
-        private readonly PlatoBLL _platoBLL;     
+        private readonly ChefBLL _chefBLL;     
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
         private readonly HelperFront _helperFront;
         private readonly string _modo;
@@ -38,7 +38,7 @@ namespace Servicio_Catering
             _insumosEliminar = new List<InsumoPlatoDTO>();
             _insumosAgregar = new List<InsumoPlatoDTO>();
             _insumosEditar = new List<InsumoPlatoDTO>();
-            _platoBLL = new PlatoBLL();
+            _chefBLL = new ChefBLL();
             InitializeComponent();
         }
 
@@ -211,8 +211,8 @@ namespace Servicio_Catering
             try
             {
                 List<string> errores = new List<string>();
-                errores.Add(_platoBLL.cantidadInvalida(txtCantidad.Text));
-                errores.Add(_platoBLL.platoDuplicado((int)cbIngredientes.SelectedValue, _listaInsumosPlato));
+                errores.Add(_chefBLL.cantidadInvalida(txtCantidad.Text));
+                errores.Add(_chefBLL.platoDuplicado((int)cbIngredientes.SelectedValue, _listaInsumosPlato));
                 foreach (string error in errores)
                 {
                     if (error != null)
@@ -256,9 +256,9 @@ namespace Servicio_Catering
             {
                 InsumoPlatoDTO insumoSeleccionado = (InsumoPlatoDTO)dgvIngredientes.CurrentRow.DataBoundItem;
                 List<string> errores = new List<string>();
-                errores.Add(_platoBLL.sinPlatoSeleccionado(insumoSeleccionado));
-                errores.Add(_platoBLL.cantidadInvalida(txtCantidad.Text));
-                errores.Add(_platoBLL.platoDuplicado((int)cbIngredientes.SelectedValue, _listaInsumosPlato));
+                errores.Add(_chefBLL.sinPlatoSeleccionado(insumoSeleccionado));
+                errores.Add(_chefBLL.cantidadInvalida(txtCantidad.Text));
+                errores.Add(_chefBLL.platoDuplicado((int)cbIngredientes.SelectedValue, _listaInsumosPlato));
                 foreach (string error in errores)
                 {
                     if (error != null)
@@ -268,7 +268,7 @@ namespace Servicio_Catering
                     }
                 }
 
-                _platoBLL.editarInsumo(insumoSeleccionado, _insumos, (int)cbIngredientes.SelectedValue, txtCantidad.Text);
+                _chefBLL.editarInsumo(insumoSeleccionado, _insumos, (int)cbIngredientes.SelectedValue, txtCantidad.Text);
             }
             catch  (Exception ex)
             {
@@ -356,7 +356,7 @@ namespace Servicio_Catering
                 _plato.FechaBaja = cbPlatoActivo.Text == "Si" ? null : (DateTime?)DateTime.Now;
                 cambiosIngredientes();
 
-                bool exito = _platoBLL.guardarCambiosPlato(_modo, _plato, _insumosAgregar, _insumosEditar, _insumosEliminar);
+                bool exito = _chefBLL.guardarCambiosPlato(_modo, _plato, _insumosAgregar, _insumosEditar, _insumosEliminar);
                 if(exito)
                 {
                     MessageBox.Show("Se guardaron los cambios");

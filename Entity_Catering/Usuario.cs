@@ -154,6 +154,5 @@ namespace Entity_Catering
         {
             return !FechaBajaUsuario.HasValue;
         }
-
     }
 }

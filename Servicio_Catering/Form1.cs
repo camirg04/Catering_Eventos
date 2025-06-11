@@ -30,14 +30,14 @@ namespace Servicio_Catering
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            LoginService loginService = new LoginService();
-            warningMail.Text = loginService.ValidarUsuario(tbMail.Text);
-            warningPass.Text = loginService.ValidarClave(tbPass.Text);
+            UsuarioBLL usuarioBLL = new UsuarioBLL();
+            warningMail.Text = usuarioBLL.ValidarUsuario(tbMail.Text);
+            warningPass.Text = usuarioBLL.ValidarClave(tbPass.Text);
             if (warningMail.Text == "" && warningPass.Text == "")
             {
                 try
                 {
-                    Usuario user = loginService.LoginUsuario(tbMail.Text, tbPass.Text);
+                    Usuario user = usuarioBLL.LoginUsuario(tbMail.Text, tbPass.Text);
                     if (user == null)
                     {
                         MessageBox.Show("Mail o clave incorrecta");
@@ -46,7 +46,7 @@ namespace Servicio_Catering
 
                     if (user.Perfil == Perfil.CHEF.ToString())
                     {
-                        Administracion ventanaChef = new Administracion(user);
+                        Administracion ventanaChef = new Administracion(new Chef(user));
                         ventanaChef.ShowDialog();
                     }
                     else if (user.Perfil == Perfil.GERENTE.ToString())

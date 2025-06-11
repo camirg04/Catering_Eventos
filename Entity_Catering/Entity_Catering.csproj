@@ -41,12 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="AlertaStock.cs" />
+    <Compile Include="Chef.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="Evento.cs" />
     <Compile Include="Insumo.cs" />
+    <Compile Include="LoteInsumo.cs" />
     <Compile Include="Menus.cs" />
+    <Compile Include="PedidoInsumo.cs" />
     <Compile Include="PlatoInsumo.cs" />
+    <Compile Include="EstadoAlertaStock.cs" />
+    <Compile Include="EstadoPedidoInsumo.cs" />
     <Compile Include="TipoPlato.cs" />
     <Compile Include="Perfil.cs" />
     <Compile Include="Plato.cs" />
