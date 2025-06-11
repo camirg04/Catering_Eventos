@@ -46,7 +46,7 @@ namespace Servicio_Catering
 
                     if (user.Perfil == Perfil.CHEF.ToString())
                     {
-                        Administracion ventanaChef = new Administracion(user);
+                        Administracion ventanaChef = new Administracion(new Chef(user));
                         ventanaChef.ShowDialog();
                     }
                     else if (user.Perfil == Perfil.GERENTE.ToString())
