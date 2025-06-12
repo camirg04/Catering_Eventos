@@ -61,6 +61,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.fechaDesdeEvento = new System.Windows.Forms.DateTimePicker();
             this.button5 = new System.Windows.Forms.Button();
+            this.cbEstadoEvento = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -90,7 +91,6 @@
             this.label20 = new System.Windows.Forms.Label();
             this.CerrarSesion = new System.Windows.Forms.Button();
             this.lblBienvenida = new System.Windows.Forms.Label();
-            this.cbEstadoEvento = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlatos)).BeginInit();
@@ -136,8 +136,8 @@
             this.tabPage1.Controls.Add(this.dgvPlatos);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage1.Size = new System.Drawing.Size(700, 425);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage1.Size = new System.Drawing.Size(807, 425);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Platos";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -146,7 +146,7 @@
             // 
             this.btnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBuscar.Location = new System.Drawing.Point(590, 299);
-            this.btnBuscar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(2);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(74, 24);
             this.btnBuscar.TabIndex = 13;
@@ -158,7 +158,7 @@
             // 
             this.txtNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNombre.Location = new System.Drawing.Point(561, 177);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(2);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(138, 20);
             this.txtNombre.TabIndex = 12;
@@ -169,7 +169,7 @@
             this.cbTipoPlato.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTipoPlato.FormattingEnabled = true;
             this.cbTipoPlato.Location = new System.Drawing.Point(561, 221);
-            this.cbTipoPlato.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbTipoPlato.Margin = new System.Windows.Forms.Padding(2);
             this.cbTipoPlato.Name = "cbTipoPlato";
             this.cbTipoPlato.Size = new System.Drawing.Size(138, 21);
             this.cbTipoPlato.TabIndex = 11;
@@ -180,7 +180,7 @@
             this.cbActivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbActivo.FormattingEnabled = true;
             this.cbActivo.Location = new System.Drawing.Point(561, 264);
-            this.cbActivo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbActivo.Margin = new System.Windows.Forms.Padding(2);
             this.cbActivo.Name = "cbActivo";
             this.cbActivo.Size = new System.Drawing.Size(138, 21);
             this.cbActivo.TabIndex = 10;
@@ -237,7 +237,7 @@
             // 
             this.eliminarPlato.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.eliminarPlato.Location = new System.Drawing.Point(561, 70);
-            this.eliminarPlato.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.eliminarPlato.Margin = new System.Windows.Forms.Padding(2);
             this.eliminarPlato.Name = "eliminarPlato";
             this.eliminarPlato.Size = new System.Drawing.Size(136, 24);
             this.eliminarPlato.TabIndex = 2;
@@ -248,7 +248,7 @@
             // 
             this.agregarPlato.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.agregarPlato.Location = new System.Drawing.Point(561, 41);
-            this.agregarPlato.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.agregarPlato.Margin = new System.Windows.Forms.Padding(2);
             this.agregarPlato.Name = "agregarPlato";
             this.agregarPlato.Size = new System.Drawing.Size(136, 24);
             this.agregarPlato.TabIndex = 3;
@@ -260,7 +260,7 @@
             // 
             this.verPlato.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.verPlato.Location = new System.Drawing.Point(561, 13);
-            this.verPlato.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.verPlato.Margin = new System.Windows.Forms.Padding(2);
             this.verPlato.Name = "verPlato";
             this.verPlato.Size = new System.Drawing.Size(136, 24);
             this.verPlato.TabIndex = 4;
@@ -296,7 +296,7 @@
             this.tabPage2.Controls.Add(this.dataGridView2);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage2.Size = new System.Drawing.Size(807, 425);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Menús";
@@ -306,7 +306,7 @@
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Location = new System.Drawing.Point(684, 301);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 24);
             this.button1.TabIndex = 25;
@@ -317,7 +317,7 @@
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Location = new System.Drawing.Point(655, 179);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(150, 20);
             this.textBox1.TabIndex = 24;
@@ -328,7 +328,7 @@
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(655, 223);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(150, 21);
             this.comboBox2.TabIndex = 23;
@@ -339,7 +339,7 @@
             this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Location = new System.Drawing.Point(655, 266);
-            this.comboBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox3.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(150, 21);
             this.comboBox3.TabIndex = 22;
@@ -396,7 +396,7 @@
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.Location = new System.Drawing.Point(655, 72);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(149, 25);
             this.button2.TabIndex = 15;
@@ -407,7 +407,7 @@
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.Location = new System.Drawing.Point(655, 43);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(149, 24);
             this.button3.TabIndex = 16;
@@ -418,7 +418,7 @@
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button4.Location = new System.Drawing.Point(655, 15);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(152, 24);
             this.button4.TabIndex = 17;
@@ -432,7 +432,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(651, 430);
             this.dataGridView2.TabIndex = 14;
@@ -462,7 +462,7 @@
             // 
             this.fechaHastaEvento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.fechaHastaEvento.Location = new System.Drawing.Point(670, 271);
-            this.fechaHastaEvento.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.fechaHastaEvento.Margin = new System.Windows.Forms.Padding(2);
             this.fechaHastaEvento.Name = "fechaHastaEvento";
             this.fechaHastaEvento.Size = new System.Drawing.Size(125, 20);
             this.fechaHastaEvento.TabIndex = 29;
@@ -495,7 +495,7 @@
             // 
             this.fechaDesdeEvento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.fechaDesdeEvento.Location = new System.Drawing.Point(670, 235);
-            this.fechaDesdeEvento.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.fechaDesdeEvento.Margin = new System.Windows.Forms.Padding(2);
             this.fechaDesdeEvento.Name = "fechaDesdeEvento";
             this.fechaDesdeEvento.Size = new System.Drawing.Size(125, 20);
             this.fechaDesdeEvento.TabIndex = 26;
@@ -504,12 +504,23 @@
             // 
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button5.Location = new System.Drawing.Point(691, 301);
-            this.button5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(86, 24);
             this.button5.TabIndex = 25;
             this.button5.Text = "Buscar";
             this.button5.UseVisualStyleBackColor = true;
+            // 
+            // cbEstadoEvento
+            // 
+            this.cbEstadoEvento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbEstadoEvento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbEstadoEvento.FormattingEnabled = true;
+            this.cbEstadoEvento.Location = new System.Drawing.Point(670, 168);
+            this.cbEstadoEvento.Margin = new System.Windows.Forms.Padding(2);
+            this.cbEstadoEvento.Name = "cbEstadoEvento";
+            this.cbEstadoEvento.Size = new System.Drawing.Size(125, 21);
+            this.cbEstadoEvento.TabIndex = 23;
             // 
             // label8
             // 
@@ -551,7 +562,7 @@
             // 
             this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button7.Location = new System.Drawing.Point(670, 46);
-            this.button7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button7.Margin = new System.Windows.Forms.Padding(2);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(136, 24);
             this.button7.TabIndex = 16;
@@ -562,7 +573,7 @@
             // 
             this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button8.Location = new System.Drawing.Point(670, 17);
-            this.button8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button8.Margin = new System.Windows.Forms.Padding(2);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(136, 24);
             this.button8.TabIndex = 17;
@@ -576,7 +587,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvEventos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEventos.Location = new System.Drawing.Point(2, 0);
-            this.dgvEventos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvEventos.Margin = new System.Windows.Forms.Padding(2);
             this.dgvEventos.Name = "dgvEventos";
             this.dgvEventos.Size = new System.Drawing.Size(662, 430);
             this.dgvEventos.TabIndex = 14;
@@ -592,7 +603,7 @@
             this.tabPage4.Controls.Add(this.label15);
             this.tabPage4.Controls.Add(this.dgvVencimientos);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(807, 425);
             this.tabPage4.TabIndex = 3;
@@ -603,7 +614,7 @@
             // 
             this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button6.Location = new System.Drawing.Point(688, 249);
-            this.button6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(89, 26);
             this.button6.TabIndex = 40;
@@ -626,7 +637,7 @@
             // 
             this.dateTimeHastaVencimiento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimeHastaVencimiento.Location = new System.Drawing.Point(665, 225);
-            this.dateTimeHastaVencimiento.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimeHastaVencimiento.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimeHastaVencimiento.Name = "dateTimeHastaVencimiento";
             this.dateTimeHastaVencimiento.Size = new System.Drawing.Size(140, 20);
             this.dateTimeHastaVencimiento.TabIndex = 38;
@@ -647,7 +658,7 @@
             // 
             this.dateTimeDesdeVencimiento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimeDesdeVencimiento.Location = new System.Drawing.Point(665, 175);
-            this.dateTimeDesdeVencimiento.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimeDesdeVencimiento.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimeDesdeVencimiento.Name = "dateTimeDesdeVencimiento";
             this.dateTimeDesdeVencimiento.Size = new System.Drawing.Size(140, 20);
             this.dateTimeDesdeVencimiento.TabIndex = 36;
@@ -683,7 +694,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvVencimientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVencimientos.Location = new System.Drawing.Point(0, 0);
-            this.dgvVencimientos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvVencimientos.Margin = new System.Windows.Forms.Padding(2);
             this.dgvVencimientos.Name = "dgvVencimientos";
             this.dgvVencimientos.Size = new System.Drawing.Size(661, 430);
             this.dgvVencimientos.TabIndex = 15;
@@ -702,7 +713,7 @@
             this.tabPage5.Controls.Add(this.dateTimeDesdeAlerta);
             this.tabPage5.Controls.Add(this.label20);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage5.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Size = new System.Drawing.Size(807, 425);
             this.tabPage5.TabIndex = 4;
@@ -713,7 +724,7 @@
             // 
             this.btnEditarAlerta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEditarAlerta.Location = new System.Drawing.Point(672, 19);
-            this.btnEditarAlerta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEditarAlerta.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditarAlerta.Name = "btnEditarAlerta";
             this.btnEditarAlerta.Size = new System.Drawing.Size(135, 24);
             this.btnEditarAlerta.TabIndex = 52;
@@ -724,12 +735,13 @@
             // 
             this.btnBuscarAlerta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBuscarAlerta.Location = new System.Drawing.Point(706, 312);
-            this.btnBuscarAlerta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBuscarAlerta.Margin = new System.Windows.Forms.Padding(2);
             this.btnBuscarAlerta.Name = "btnBuscarAlerta";
             this.btnBuscarAlerta.Size = new System.Drawing.Size(68, 24);
             this.btnBuscarAlerta.TabIndex = 51;
             this.btnBuscarAlerta.Text = "Buscar";
             this.btnBuscarAlerta.UseVisualStyleBackColor = true;
+            this.btnBuscarAlerta.Click += new System.EventHandler(this.btnBuscarAlerta_Click);
             // 
             // cbEstadoAlerta
             // 
@@ -737,7 +749,7 @@
             this.cbEstadoAlerta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbEstadoAlerta.FormattingEnabled = true;
             this.cbEstadoAlerta.Location = new System.Drawing.Point(672, 146);
-            this.cbEstadoAlerta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbEstadoAlerta.Margin = new System.Windows.Forms.Padding(2);
             this.cbEstadoAlerta.Name = "cbEstadoAlerta";
             this.cbEstadoAlerta.Size = new System.Drawing.Size(125, 21);
             this.cbEstadoAlerta.TabIndex = 50;
@@ -773,16 +785,17 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvAlertas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAlertas.Location = new System.Drawing.Point(-3, 0);
-            this.dgvAlertas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvAlertas.Margin = new System.Windows.Forms.Padding(2);
             this.dgvAlertas.Name = "dgvAlertas";
             this.dgvAlertas.Size = new System.Drawing.Size(668, 430);
             this.dgvAlertas.TabIndex = 40;
+            this.dgvAlertas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvAlertas_CellFormatting);
             // 
             // dateTimeHastaAlerta
             // 
             this.dateTimeHastaAlerta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimeHastaAlerta.Location = new System.Drawing.Point(672, 275);
-            this.dateTimeHastaAlerta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimeHastaAlerta.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimeHastaAlerta.Name = "dateTimeHastaAlerta";
             this.dateTimeHastaAlerta.Size = new System.Drawing.Size(125, 20);
             this.dateTimeHastaAlerta.TabIndex = 47;
@@ -815,7 +828,7 @@
             // 
             this.dateTimeDesdeAlerta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimeDesdeAlerta.Location = new System.Drawing.Point(672, 223);
-            this.dateTimeDesdeAlerta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimeDesdeAlerta.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimeDesdeAlerta.Name = "dateTimeDesdeAlerta";
             this.dateTimeDesdeAlerta.Size = new System.Drawing.Size(125, 20);
             this.dateTimeDesdeAlerta.TabIndex = 45;
@@ -836,7 +849,7 @@
             // 
             this.CerrarSesion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CerrarSesion.Location = new System.Drawing.Point(726, 3);
-            this.CerrarSesion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CerrarSesion.Margin = new System.Windows.Forms.Padding(2);
             this.CerrarSesion.Name = "CerrarSesion";
             this.CerrarSesion.Size = new System.Drawing.Size(97, 29);
             this.CerrarSesion.TabIndex = 0;
@@ -853,17 +866,6 @@
             this.lblBienvenida.Size = new System.Drawing.Size(98, 15);
             this.lblBienvenida.TabIndex = 14;
             this.lblBienvenida.Text = "¡Bienvenido/a!";
-            // 
-            // cbEstadoEvento
-            // 
-            this.cbEstadoEvento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbEstadoEvento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbEstadoEvento.FormattingEnabled = true;
-            this.cbEstadoEvento.Location = new System.Drawing.Point(670, 168);
-            this.cbEstadoEvento.Margin = new System.Windows.Forms.Padding(2);
-            this.cbEstadoEvento.Name = "cbEstadoEvento";
-            this.cbEstadoEvento.Size = new System.Drawing.Size(125, 21);
-            this.cbEstadoEvento.TabIndex = 23;
             // 
             // Administracion
             // 

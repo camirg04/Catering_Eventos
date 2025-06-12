@@ -43,6 +43,11 @@ namespace BLL_Catering
             DateTime fechaAlerta = alerta.FechaAlerta.Value;
             TimeSpan diferencia = DateTime.Now - fechaAlerta;
             int dias = diferencia.Days;
+            if(alerta.EstadoAlerta == "RESUELTO")
+            {
+                alerta.Severidad = "-";
+                return;
+            }
             if (dias >= 7)
             {
                 alerta.Severidad = "Crítica";
