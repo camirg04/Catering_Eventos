@@ -5,14 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL_Catering;
 using Entity_Catering;
+using NLog;
 
 namespace BLL_Catering
 {
     public class EventosBLL
     {
         private readonly EventoDAL _eventosDAL;
-
-
+        private static readonly Logger logger = LogManager.GetCurrentClassLogger();
 
         public EventosBLL()
         {
@@ -53,6 +53,22 @@ namespace BLL_Catering
             Boolean boolEvento = dalEventos.UpdateEvento(UpdateEvento);
 
             return boolEvento;
+        }
+
+        public List<EventoEntity> BuscarEventosPorFechaYEstado(DateTime fechaDesde, DateTime fechaHasta, string estado)
+        {
+            try
+            {
+                if (fechaDesde > fechaHasta)
+                {
+                    throw new ArgumentException("La fecha de inicio no puede ser mayor que la fecha de fin.");
+                }
+                return _eventosDAL.BuscarEventoPorFechaYEstado(fechaDesde, fechaHasta, estado);
+            }
+            catch (Exception ex) { 
+                logger.Error(ex);
+                throw;
+            }
         }
 
 

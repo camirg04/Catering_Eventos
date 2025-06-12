@@ -71,7 +71,17 @@ namespace Servicio_Catering
                 //para que el date time picker se vea como dd/mm/yyyy
                 fechaDesdeEvento.Format = DateTimePickerFormat.Short;
                 fechaHastaEvento.Format = DateTimePickerFormat.Short;
-
+                fechaDesdeEvento.Value = DateTime.Now;
+                fechaHastaEvento.Value = DateTime.Now.AddDays(60);
+                dgvEventos.DataSource = _chefBLL.ObtenerEventosPorFechaYEstado(fechaDesdeEvento.Value, fechaHastaEvento.Value, null);
+                dgvEventos.Columns["IdEvento"].Visible = false;
+                dgvEventos.Columns["IdCliente"].Visible = false;
+                dgvEventos.Columns["IdMenu"].Visible = false;
+                dgvEventos.Columns["IdEvento"].Visible = false;
+                dgvEventos.Columns["UsuarioVenta"].Visible = false;
+                dgvEventos.Columns["DescuentoAplicado"].Visible = false;
+                dgvEventos.Columns["TotalEstimado"].Visible = false;
+                dgvEventos.Columns["EventoPago"].Visible = false;
 
                 //Cargas iniciales de plato
                 dgvPlatos.ReadOnly = true;
