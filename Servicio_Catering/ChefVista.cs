@@ -12,6 +12,7 @@ using BLL_Catering;
 using NLog;
 using System.IO;
 using DTO_Catering;
+using System.Xml.Serialization;
 
 namespace Servicio_Catering
 {
@@ -95,10 +96,7 @@ namespace Servicio_Catering
                 dateTimeDesdeAlerta.Value = DateTime.Now.AddDays(-10);
                 dateTimeHastaAlerta.Value = DateTime.Now;
                 _helperFront.cargarComboEstadoAlerta(cbEstadoAlerta);
-                dgvAlertas.ReadOnly = true;
-                dgvAlertas.DataSource = _chefBLL.ObtenerAlertasStock(dateTimeDesdeAlerta.Value,dateTimeHastaAlerta.Value,null);
-                dgvAlertas.Columns["IdAlertaStock"].Visible = false;
-                dgvAlertas.Columns["IdInsumo"].Visible = false;
+                CargarDgvAlerta(_chefBLL.ObtenerAlertasStock(dateTimeDesdeAlerta.Value, dateTimeHastaAlerta.Value, null));
                 AlertaSeveridadCritica(dgvAlertas);
 
                 //Cargas iniciales de vencimientos
@@ -111,6 +109,8 @@ namespace Servicio_Catering
                 dgvVencimientos.Columns["IdLoteInsumo"].Visible = false;
                 dgvVencimientos.Columns["IdPedidoInsumo"].Visible = false;
                 dgvVencimientos.Columns["IdInsumo"].Visible = false;
+
+                dgvAlertas.CellFormatting += dgvAlertas_CellFormatting;
             }
             catch (Exception ex)
             {
@@ -180,65 +180,52 @@ namespace Servicio_Catering
         
         }
 
-
-
-
-
-
-
-
-
-
-
-
-        //MOCKS DATOS
-        private List<AlertaStockDTO> getMockAlertas()
+        private void dgvAlertas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            var lista = new List<AlertaStock>
+            // Nos aseguramos de que no sea una fila de encabezado ni una celda vacía
+            var fila = dgvAlertas.Rows[e.RowIndex];
+
+            if (fila.Cells["Severidad"].Value == null)
+                return;
+
+            string estado = fila.Cells["Severidad"].Value.ToString();
+
+            if (estado == "Crítica")
             {
-                new AlertaStock(1, new Insumo(1, "Harina", "kg", false, 20, null), "PENDIENTE", DateTime.Now.AddDays(-1)),
-                new AlertaStock(2, new Insumo(2, "Leche", "litros", true, 10, null), "RESUELTO", DateTime.Now.AddDays(-2)),
-                new AlertaStock(3, new Insumo(3, "Huevos", "docena", true, 5, null), "PENDIENTE", DateTime.Now.AddDays(-3)),
-                new AlertaStock(4, new Insumo(4, "Azúcar", "kg", false, 15, null), "RESUELTO", DateTime.Now.AddDays(-4)),
-                new AlertaStock(5, new Insumo(5, "Manteca", "kg", true, 8, null), "PENDIENTE", DateTime.Now.AddDays(-5)),
-                new AlertaStock(6, new Insumo(6, "Sal", "kg", false, 12, null), "RESUELTO", DateTime.Now.AddDays(-6)),
-                new AlertaStock(7, new Insumo(7, "Queso", "kg", true, 6, null), "PENDIENTE", DateTime.Now.AddDays(-7)),
-                new AlertaStock(8, new Insumo(8, "Aceite", "litros", false, 18, null), "RESUELTO", DateTime.Now.AddDays(-8)),
-                new AlertaStock(9, new Insumo(9, "Tomate", "kg", true, 9, null), "PENDIENTE", DateTime.Now.AddDays(-9)),
-                new AlertaStock(10, new Insumo(10, "Pimienta", "gr", false, 2, null), "RESUELTO", DateTime.Now.AddDays(-10))
-            };
-            return AlertaStockDTO.mapListAlertaStockToListAlertaStockDTO(lista);
+                fila.DefaultCellStyle.BackColor = Color.Red;
+                fila.DefaultCellStyle.ForeColor = Color.White;
+            }else if (estado == "Mayor")
+            {
+                fila.DefaultCellStyle.BackColor = Color.Orange;
+                fila.DefaultCellStyle.ForeColor = Color.White;
+            }else if(estado == "Menor")
+            {
+                fila.DefaultCellStyle.BackColor = Color.Yellow;
+                fila.DefaultCellStyle.ForeColor = Color.Black;
+            }
+            else
+            {
+                fila.DefaultCellStyle.BackColor = Color.Green;
+                fila.DefaultCellStyle.ForeColor = Color.White;
+            }
         }
 
 
-        private List<LoteInsumoDTO> getMockLotes()
+        private void CargarDgvAlerta(List<AlertaStockDTO> alertas)
         {
-            var usuario1 = new Usuario(1, "admin@mail.com", "1234", "Admin", "admin@mail.com", DateTime.Now.AddMonths(-3), null, "12345678", "Juan", "Pérez", "Calle 123", "123456789");
-            var usuario2 = new Usuario(2, "chef@mail.com", "chef123", "Chef", "chef@mail.com", DateTime.Now.AddMonths(-2), null, "87654321", "María", "Gómez", "Calle 456", "987654321");
-
-            var insumo1 = new Insumo(1, "Harina", "Kg", true, 50, null);
-            var insumo2 = new Insumo(2, "Aceite", "Litros", false, 20, null);
-
-            var pedido1 = new PedidoInsumo(1, insumo1, usuario1, 100, DateTime.Now.AddDays(-15), "PENDIENTE");
-            var pedido2 = new PedidoInsumo(2, insumo2, usuario2, 50, DateTime.Now.AddDays(-10), "RESUELTO");
-
-            var lote1 = new LoteInsumo(1, insumo1, pedido1, 100, 150.75m, DateTime.Now.AddDays(-14), DateTime.Now.AddMonths(6));
-            var lote2 = new LoteInsumo(2, insumo2, pedido2, 50, 300.00m, DateTime.Now.AddDays(-9), null);
-            var lote3 = new LoteInsumo(3, insumo1, pedido1, 30, 155.00m, DateTime.Now.AddDays(-5), DateTime.Now.AddMonths(5));
-            var lote4 = new LoteInsumo(4, insumo2, pedido2, 80, 290.00m, DateTime.Now.AddDays(-20), null);
-            var lote5 = new LoteInsumo(5, insumo1, pedido1, 120, 148.25m, DateTime.Now.AddDays(-2), DateTime.Now.AddMonths(4));
-            
-            var lista = new List<LoteInsumo>
-            {
-                lote1,
-                lote2,
-                lote3,
-                lote4,
-                lote5
-            };
-            return LoteInsumoDTO.mapLoteInsumoListToLoteInsumoDTOList(lista);
+            dgvAlertas.ReadOnly = true;
+            dgvAlertas.DataSource = alertas;
+            dgvAlertas.Columns["IdAlertaStock"].Visible = false;
+            dgvAlertas.Columns["IdInsumo"].Visible = false;
         }
 
 
+        private void btnBuscarAlerta_Click(object sender, EventArgs e)
+        {
+            var fechaDesde = dateTimeDesdeAlerta.Value;
+            var fechaHasta = dateTimeHastaAlerta.Value;
+            string estado = cbEstadoAlerta?.Text == "" ? null : cbEstadoAlerta.Text;
+            CargarDgvAlerta(_chefBLL.ObtenerAlertasStock(fechaDesde, fechaHasta, estado));
+        }
     }
 }
