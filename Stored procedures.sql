@@ -290,5 +290,39 @@ set
 where id_evento = @id_evento
 return
 
+// 12/06
+CREATE PROCEDURE ObtenerEventosPorEstadoYFechas
+    @estado_evento VARCHAR(50) = NULL,
+    @fecha_desde DATE = NULL,
+    @fecha_hasta DATE = NULL
+AS
+BEGIN
+    SELECT 
+        e.fecha_evento,
+        e.descuento_aplicado,
+        e.direccion,
+        e.localidad,
+        e.estado_evento,
+        e.cantidad_personas,
+        e.total_estimado,
+        e.evento_pago,
+        e.id_usuario_venta,
+        u.nombre AS nombre_vendedor,
+        u.apellido AS apellido_vendedor,
+        e.id_cliente,
+        c.nombre AS nombre_cliente,
+        c.apellido AS apellido_cliente,
+        e.id_menu,
+        m.nombre AS nombre_menu
+    FROM evento e
+    INNER JOIN menu m ON m.id_menu = e.id_menu
+    INNER JOIN usuarios u ON u.id_usuario = e.id_usuario_venta
+    INNER JOIN clientes c ON c.id_cliente = e.id_cliente
+    WHERE (@estado_evento IS NULL OR e.estado_evento = @estado_evento)
+      AND (@fecha_desde IS NULL OR e.fecha_evento >= @fecha_desde)
+      AND (@fecha_hasta IS NULL OR e.fecha_evento <= @fecha_hasta);
+END;
+
+
 
 

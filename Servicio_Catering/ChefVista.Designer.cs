@@ -835,7 +835,7 @@
             // CerrarSesion
             // 
             this.CerrarSesion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CerrarSesion.Location = new System.Drawing.Point(748, 2);
+            this.CerrarSesion.Location = new System.Drawing.Point(726, 3);
             this.CerrarSesion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.CerrarSesion.Name = "CerrarSesion";
             this.CerrarSesion.Size = new System.Drawing.Size(97, 29);
