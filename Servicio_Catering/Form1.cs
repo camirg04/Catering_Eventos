@@ -10,8 +10,8 @@ using System.Windows.Forms;
 using BLL_Catering;
 using Entity_Catering;
 using NLog;
-
-namespace Servicio_Catering
+using Servicio_Catering.UIAdminstrador;
+    namespace Servicio_Catering
 {
     public partial class Form1 : Form
     {
@@ -58,6 +58,11 @@ namespace Servicio_Catering
                     {
                         UILogistica ventanaLogistica = new UILogistica(user);
                         ventanaLogistica.ShowDialog();
+                    }
+                    else if (user.Perfil == Perfil.ADMINISTRADOR.ToString())
+                    {
+                        UIAdministrador ventanaAdministrador = new UIAdministrador();
+                        ventanaAdministrador.ShowDialog();
                     }
                     else
                     {
