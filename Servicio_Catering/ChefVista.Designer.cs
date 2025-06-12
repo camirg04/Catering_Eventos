@@ -108,15 +108,16 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
-            this.tabControl1.Location = new System.Drawing.Point(12, 32);
+            this.tabControl1.Location = new System.Drawing.Point(16, 39);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(944, 555);
@@ -136,13 +137,15 @@
             this.tabPage1.Controls.Add(this.agregarPlato);
             this.tabPage1.Controls.Add(this.verPlato);
             this.tabPage1.Controls.Add(this.dgvPlatos);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(936, 529);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Platos";
             this.tabPage1.UseVisualStyleBackColor = true;
+            //this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // btnBuscar
             // 
@@ -190,7 +193,7 @@
             this.lblActivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblActivo.Location = new System.Drawing.Point(748, 307);
             this.lblActivo.Name = "lblActivo";
-            this.lblActivo.Size = new System.Drawing.Size(44, 15);
+            this.lblActivo.Size = new System.Drawing.Size(54, 18);
             this.lblActivo.TabIndex = 9;
             this.lblActivo.Text = "Activo";
             // 
@@ -201,7 +204,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(792, 161);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 15);
+            this.label2.Size = new System.Drawing.Size(112, 18);
             this.label2.TabIndex = 8;
             this.label2.Text = "Buscar platos";
             // 
@@ -212,7 +215,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(748, 200);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 15);
+            this.label1.Size = new System.Drawing.Size(68, 18);
             this.label1.TabIndex = 7;
             this.label1.Text = "Nombre";
             // 
@@ -223,7 +226,7 @@
             this.lbFiltrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbFiltrar.Location = new System.Drawing.Point(748, 254);
             this.lbFiltrar.Name = "lbFiltrar";
-            this.lbFiltrar.Size = new System.Drawing.Size(35, 15);
+            this.lbFiltrar.Size = new System.Drawing.Size(41, 18);
             this.lbFiltrar.TabIndex = 6;
             this.lbFiltrar.Text = "Tipo";
             // 
@@ -261,12 +264,13 @@
             // 
             // dgvPlatos
             // 
-            this.dgvPlatos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgvPlatos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvPlatos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPlatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPlatos.Location = new System.Drawing.Point(0, 0);
+            this.dgvPlatos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvPlatos.Name = "dgvPlatos";
             this.dgvPlatos.Size = new System.Drawing.Size(742, 526);
             this.dgvPlatos.TabIndex = 0;
@@ -285,7 +289,8 @@
             this.tabPage2.Controls.Add(this.button3);
             this.tabPage2.Controls.Add(this.button4);
             this.tabPage2.Controls.Add(this.dataGridView2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(936, 529);
@@ -338,7 +343,7 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(728, 309);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 15);
+            this.label4.Size = new System.Drawing.Size(47, 18);
             this.label4.TabIndex = 21;
             this.label4.Text = "Plato";
             // 
@@ -349,7 +354,7 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(749, 165);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(98, 15);
+            this.label5.Size = new System.Drawing.Size(116, 18);
             this.label5.TabIndex = 20;
             this.label5.Text = "Buscar menús";
             // 
@@ -360,7 +365,7 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(728, 202);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(58, 15);
+            this.label6.Size = new System.Drawing.Size(68, 18);
             this.label6.TabIndex = 19;
             this.label6.Text = "Nombre";
             // 
@@ -371,7 +376,7 @@
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(728, 256);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 15);
+            this.label7.Size = new System.Drawing.Size(41, 18);
             this.label7.TabIndex = 18;
             this.label7.Text = "Tipo";
             // 
@@ -407,8 +412,8 @@
             // 
             // dataGridView2
             // 
-            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(0, 0);
@@ -432,7 +437,8 @@
             this.tabPage3.Controls.Add(this.button7);
             this.tabPage3.Controls.Add(this.button8);
             this.tabPage3.Controls.Add(this.dataGridView3);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(936, 529);
             this.tabPage3.TabIndex = 2;
@@ -454,7 +460,7 @@
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(753, 317);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(39, 13);
+            this.label13.Size = new System.Drawing.Size(44, 15);
             this.label13.TabIndex = 28;
             this.label13.Text = "Hasta";
             // 
@@ -465,7 +471,7 @@
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(753, 273);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(43, 13);
+            this.label12.Size = new System.Drawing.Size(48, 15);
             this.label12.TabIndex = 27;
             this.label12.Text = "Desde";
             // 
@@ -512,7 +518,7 @@
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(753, 245);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(46, 15);
+            this.label8.Size = new System.Drawing.Size(54, 18);
             this.label8.TabIndex = 21;
             this.label8.Text = "Fecha";
             // 
@@ -523,7 +529,7 @@
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(789, 108);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(104, 15);
+            this.label9.Size = new System.Drawing.Size(125, 18);
             this.label9.TabIndex = 20;
             this.label9.Text = "Buscar eventos";
             // 
@@ -534,7 +540,7 @@
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(748, 138);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(70, 15);
+            this.label10.Size = new System.Drawing.Size(80, 18);
             this.label10.TabIndex = 19;
             this.label10.Text = "Localidad";
             // 
@@ -545,7 +551,7 @@
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(748, 189);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(51, 15);
+            this.label11.Size = new System.Drawing.Size(61, 18);
             this.label11.TabIndex = 18;
             this.label11.Text = "Estado";
             // 
@@ -571,11 +577,12 @@
             // 
             // dataGridView3
             // 
-            this.dataGridView3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dataGridView3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(2, 0);
+            this.dataGridView3.Location = new System.Drawing.Point(3, 0);
+            this.dataGridView3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.Size = new System.Drawing.Size(740, 529);
             this.dataGridView3.TabIndex = 14;
@@ -614,7 +621,7 @@
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(748, 253);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(39, 13);
+            this.label16.Size = new System.Drawing.Size(44, 15);
             this.label16.TabIndex = 39;
             this.label16.Text = "Hasta";
             // 
@@ -633,7 +640,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(748, 197);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 13);
+            this.label3.Size = new System.Drawing.Size(48, 15);
             this.label3.TabIndex = 37;
             this.label3.Text = "Desde";
             // 
@@ -652,7 +659,7 @@
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(745, 168);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(46, 15);
+            this.label14.Size = new System.Drawing.Size(54, 18);
             this.label14.TabIndex = 33;
             this.label14.Text = "Fecha";
             // 
@@ -663,14 +670,14 @@
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.Location = new System.Drawing.Point(772, 50);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(133, 15);
+            this.label15.Size = new System.Drawing.Size(156, 18);
             this.label15.TabIndex = 32;
             this.label15.Text = "Filtrar vencimientos";
             // 
             // dgvVencimientos
             // 
-            this.dgvVencimientos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgvVencimientos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvVencimientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVencimientos.Location = new System.Drawing.Point(0, 0);
@@ -752,8 +759,8 @@
             // 
             // dgvAlertas
             // 
-            this.dgvAlertas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgvAlertas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvAlertas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAlertas.Location = new System.Drawing.Point(-4, 0);
@@ -815,7 +822,7 @@
             this.CerrarSesion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CerrarSesion.Location = new System.Drawing.Point(859, 3);
             this.CerrarSesion.Name = "CerrarSesion";
-            this.CerrarSesion.Size = new System.Drawing.Size(97, 29);
+            this.CerrarSesion.Size = new System.Drawing.Size(129, 36);
             this.CerrarSesion.TabIndex = 0;
             this.CerrarSesion.Text = "Cerrar sesión";
             this.CerrarSesion.UseVisualStyleBackColor = true;
@@ -825,20 +832,22 @@
             // 
             this.lblBienvenida.AutoSize = true;
             this.lblBienvenida.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBienvenida.Location = new System.Drawing.Point(13, 9);
+            this.lblBienvenida.Location = new System.Drawing.Point(17, 11);
+            this.lblBienvenida.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBienvenida.Name = "lblBienvenida";
-            this.lblBienvenida.Size = new System.Drawing.Size(98, 15);
+            this.lblBienvenida.Size = new System.Drawing.Size(112, 18);
             this.lblBienvenida.TabIndex = 14;
             this.lblBienvenida.Text = "¡Bienvenido/a!";
             // 
             // Administracion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(968, 599);
             this.Controls.Add(this.lblBienvenida);
             this.Controls.Add(this.CerrarSesion);
             this.Controls.Add(this.tabControl1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Administracion";
             this.Text = "Administración Catering";
             this.Load += new System.EventHandler(this.Administracion_Load);

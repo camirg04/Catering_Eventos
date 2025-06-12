@@ -63,6 +63,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="UIVendedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIVendedor.Designer.cs">
+      <DependentUpon>UIVendedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="HelperFront.cs" />
     <Compile Include="PlatoDetalle.cs">
       <SubType>Form</SubType>
@@ -119,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UILogistica.resx">
       <DependentUpon>UILogistica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIVendedor.resx">
+      <DependentUpon>UIVendedor.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>

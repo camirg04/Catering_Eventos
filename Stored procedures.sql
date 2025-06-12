@@ -83,3 +83,212 @@ BEGIN
         (@estado IS NULL OR estado_alerta = @estado)
     ORDER BY fecha_alerta DESC;
 END;
+
+
+/*AGREGAR EVENTOS*/
+USE [CATERINGDB]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_addEvento]    Script Date: 11/06/2025 22:27:40 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE proc [dbo].[sp_addEvento] 
+@id_cliente bigint,
+@id_menu bigint,
+@fecha_evento date,
+@descuento_aplicado decimal(10,2),
+@direccion varchar(45),
+@localidad varchar(100),
+@estado_evento varchar(45),
+@cantidad_personas bigint,
+@total_estimado decimal(10,2),
+@id_usuario_venta bigint,
+@evento_pago bit
+
+
+as 
+
+INSERT INTO evento( 
+      id_cliente
+      ,id_menu
+      ,fecha_evento
+      ,descuento_aplicado
+      ,direccion
+      ,localidad
+      ,estado_evento
+      ,cantidad_personas
+      ,total_estimado
+      ,id_usuario_venta,evento_pago)
+       
+values(@id_cliente,@id_menu,@fecha_evento,@descuento_aplicado,@direccion,@localidad,@estado_evento,@cantidad_personas,@total_estimado,@id_usuario_venta,@evento_pago)
+
+return
+
+/*OBTENER 1 EVENTO*/
+USE [CATERINGDB]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_onlyEvento]    Script Date: 11/06/2025 22:30:46 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE proc [dbo].[sp_onlyEvento] 
+(@id_evento bigint)
+as 
+
+SELECT 
+       id_evento
+      ,id_cliente
+      ,id_menu
+      ,fecha_evento
+      ,descuento_aplicado
+      ,direccion
+      ,localidad
+      ,estado_evento
+      ,cantidad_personas
+      ,total_estimado
+      ,evento_pago
+      ,id_usuario_venta
+       
+FROM evento 
+where id_evento = @id_evento
+ORDER BY id_evento 
+
+return
+
+
+/*OBTIENE TODOS LOS CLIENTES*/
+USE [CATERINGDB]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_allCliente]    Script Date: 11/06/2025 22:29:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE proc [dbo].[sp_allCliente] as 
+
+SELECT [id_cliente]
+      ,[nombre]
+      ,[apellido]
+      ,[email]
+      ,[telefono]
+      ,[domicilio]
+      ,[dni]
+       
+FROM clientes 
+
+
+return
+
+/*AGREGA CLIENTE*/
+USE [CATERINGDB]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_addCliente]    Script Date: 11/06/2025 22:33:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE proc [dbo].[sp_addCliente] 
+@nombre varchar(100),
+@apellido varchar(100),
+@email varchar(100),
+@telefono varchar(20),
+@domicilio varchar(100),
+@dni varchar(45)
+
+as 
+
+INSERT INTO clientes( 
+      nombre
+      ,apellido
+      ,email
+      ,telefono
+      ,domicilio
+      ,dni)
+       
+values(@nombre,@apellido,@email,@telefono,@domicilio,@dni)
+
+return
+
+/*ACTUALIZAMOS CLIENTE*/
+USE [CATERINGDB]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_updateCliente]    Script Date: 11/06/2025 22:36:00 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE proc [dbo].[sp_updateCliente] 
+@id_cliente bigint,
+@nombre varchar(100),
+@apellido varchar(100),
+@email varchar(100),
+@telefono varchar(20),
+@domicilio varchar(100),
+@dni varchar(45)
+
+as 
+
+UPDATE clientes
+
+set nombre = @nombre
+      ,apellido = @apellido
+      ,email = @email
+      ,telefono = @email
+      ,domicilio = @domicilio
+      ,dni = @dni
+where id_cliente = @id_cliente
+
+return
+
+/*ACTUALIZAMOS EVENTO*/
+USE [CATERINGDB]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_updateEvento]    Script Date: 11/06/2025 22:36:29 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE proc [dbo].[sp_updateEvento] 
+@id_cliente bigint,
+@id_menu bigint,
+@fecha_evento date,
+@descuento_aplicado decimal(10,2),
+@direccion varchar(45),
+@localidad varchar(100),
+@estado_evento varchar(45),
+@cantidad_personas bigint,
+@total_estimado decimal(10,2),
+@id_usuario_venta bigint,
+@evento_pago bit,
+@id_evento bigint
+
+
+as 
+
+update evento
+set 
+      id_cliente = @id_cliente
+      ,id_menu = @id_menu
+      ,fecha_evento = @fecha_evento
+      ,descuento_aplicado = @descuento_aplicado
+      ,direccion = @direccion
+      ,localidad = @localidad
+      ,estado_evento = @estado_evento
+      ,cantidad_personas = @cantidad_personas
+      ,total_estimado = @total_estimado
+      ,id_usuario_venta = @id_usuario_venta, 
+      evento_pago = @evento_pago
+where id_evento = @id_evento
+return
+
+
+
