@@ -17,12 +17,14 @@ namespace BLL_Catering
         private readonly LoteInsumoBLL _loteInsumoBLL;
         private readonly ValidacionesBLL _validaciones;
         private readonly AlertaStockBLL _alertaStockBLL;
+        private readonly EventosBLL _eventosBLL;
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
         public ChefBLL() {
             _platoBLL = new PlatoBLL();
             _validaciones = new ValidacionesBLL();
             _loteInsumoBLL = new LoteInsumoBLL();
             _alertaStockBLL = new AlertaStockBLL();
+            _eventosBLL = new EventosBLL();
         }
 
 
@@ -120,6 +122,19 @@ namespace BLL_Catering
             }
             catch (Exception e)
             {
+                logger.Error(e.ToString());
+                throw;
+            }
+        }
+
+        public List<EventoDTO> ObtenerEventosPorFechaYEstado(DateTime fechaDesde, DateTime fechaHasta, string estado)
+        {
+            try
+            {
+                var eventos = _eventosBLL.BuscarEventosPorFechaYEstado(fechaDesde,fechaHasta,estado);
+                return EventoDTO.mapEventoListToEventoDTOList(eventos);
+            }
+            catch (Exception e) { 
                 logger.Error(e.ToString());
                 throw;
             }

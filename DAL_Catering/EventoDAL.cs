@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entity_Catering;
 using NLog;
 
 namespace DAL_Catering
@@ -87,9 +88,9 @@ namespace DAL_Catering
 
         }
 
+
         public Boolean AddEvento(Entity_Catering.Evento creaEvento)
         {
-
             SqlParameter[] valores = {
                 //new SqlParameter("id_evento", creaEvento.Id),
                 new SqlParameter("id_cliente", creaEvento.IdCliente),
@@ -154,6 +155,77 @@ namespace DAL_Catering
             }
 
             //return false;
+        }
+
+        public List<EventoEntity> BuscarEventoPorFechaYEstado(DateTime fechaDesde, DateTime fechaHasta, string estado)
+        {
+            try
+            {
+                var lista = new List<EventoEntity>();
+                SqlParameter[] parametros = new SqlParameter[]
+                {
+                new SqlParameter("@fecha_desde", SqlDbType.Date, 100) { Value =  fechaDesde},
+                new SqlParameter("@fecha_hasta", SqlDbType.Date, 100) { Value = fechaHasta },
+                new SqlParameter("@estado_evento", SqlDbType.VarChar, 50) { Value = estado }
+                };
+                var dt = conexion.LeerPorStoreProcedure("ObtenerEventosPorEstadoYFechas", parametros);
+
+                foreach (DataRow fila in dt.Rows)
+                {
+                    var evento = new EventoEntity();
+
+                    evento.EstadoEvento = fila["estado_evento"].ToString();
+
+                    evento.FechaEvento = fila["fecha_evento"] != DBNull.Value
+                        ? DateTime.Parse(fila["fecha_evento"].ToString())
+                        : DateTime.MinValue;
+
+                    evento.DescuentoAplicado = fila["descuento_aplicado"] != DBNull.Value ? Decimal.Parse(fila["descuento_aplicado"].ToString()) : 0;
+
+                    evento.Direccion = fila["direccion"].ToString();
+                    evento.Localidad = fila["localidad"].ToString();
+
+                    evento.CantidadPersonas = fila["cantidad_personas"] != DBNull.Value ? int.Parse(fila["cantidad_personas"].ToString()) : 0;
+
+                    evento.TotalEstimado = fila["total_estimado"] != DBNull.Value ? Decimal.Parse(fila["total_estimado"].ToString()) : 0;
+
+                    evento.EventoPago = fila["evento_pago"] != DBNull.Value
+                        ? bool.Parse(fila["evento_pago"].ToString())
+                        : false;
+
+                    evento.UsuarioVenta = new Vendedor();
+                    evento.UsuarioVenta.IdUsuario = fila["id_usuario_venta"] != DBNull.Value
+                        ? int.Parse(fila["id_usuario_venta"].ToString())
+                        : 0;
+
+                    evento.UsuarioVenta.Nombre = fila["nombre_vendedor"].ToString();
+                    evento.UsuarioVenta.Apellido = fila["apellido_vendedor"].ToString();
+
+                    evento.Cliente = new Cliente();
+                    evento.Cliente.Id = fila["id_cliente"] != DBNull.Value
+                        ? int.Parse(fila["id_cliente"].ToString())
+                        : 0;
+
+                    evento.Cliente.Nombre = fila["nombre_cliente"].ToString();
+                    evento.Cliente.Apellido = fila["apellido_cliente"].ToString();
+
+                    evento.Menu = new Menus();
+                    evento.Menu.IdMenu = fila["id_menu"] != DBNull.Value
+                        ? int.Parse(fila["id_menu"].ToString())
+                        : 0;
+
+                    evento.Menu.Nombre = fila["nombre_menu"].ToString();
+
+                    lista.Add(evento);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex);
+                throw;
+            }
         }
     }
 }
