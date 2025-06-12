@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlertaStockDAL.cs" />
+    <Compile Include="ClienteDAL.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="LoteInsumoDAL.cs" />
     <Compile Include="UsuarioDAL.cs" />

@@ -46,6 +46,15 @@ namespace BLL_Catering
             return boolEvento;
         }
 
+        public Boolean UpdateEvento(Evento UpdateEvento)
+        {
+            DAL_Catering.EventoDAL dalEventos = new DAL_Catering.EventoDAL();
+
+            Boolean boolEvento = dalEventos.UpdateEvento(UpdateEvento);
+
+            return boolEvento;
+        }
+
 
 
     }

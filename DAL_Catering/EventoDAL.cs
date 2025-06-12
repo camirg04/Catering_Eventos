@@ -91,7 +91,7 @@ namespace DAL_Catering
         {
 
             SqlParameter[] valores = {
-                new SqlParameter("id_evento", creaEvento.Id),
+                //new SqlParameter("id_evento", creaEvento.Id),
                 new SqlParameter("id_cliente", creaEvento.IdCliente),
                 new SqlParameter("id_menu", creaEvento.IdMenu ),
                 new SqlParameter("fecha_evento", creaEvento.Fecha),
@@ -101,7 +101,9 @@ namespace DAL_Catering
                 new SqlParameter("estado_evento", creaEvento.Estado ),
                 new SqlParameter("cantidad_personas", creaEvento.CantidadPersonas ),
                 new SqlParameter("total_estimado",creaEvento.Total ),
-                new SqlParameter("id_usuario_venta", creaEvento.IdUsuarioVenta)
+                new SqlParameter("id_usuario_venta", creaEvento.IdUsuarioVenta),
+                new SqlParameter("evento_pago", creaEvento.Pago)
+
             };
 
             try
@@ -112,7 +114,42 @@ namespace DAL_Catering
             }
             catch (Exception ex)
             {
-                logger.Error("Tuvimos un error al guardar"+ex.Message);
+                //logger.Error("Tuvimos un error al guardar"+ex.Message);
+                Console.WriteLine(ex.ToString());
+                return false;
+            }
+
+            //return false;
+        }
+        public Boolean UpdateEvento(Entity_Catering.Evento UpdateEvento)
+        {
+
+            SqlParameter[] valores = {
+                new SqlParameter("id_evento", UpdateEvento.Id),
+                new SqlParameter("id_cliente", UpdateEvento.IdCliente),
+                new SqlParameter("id_menu", UpdateEvento.IdMenu ),
+                new SqlParameter("fecha_evento", UpdateEvento.Fecha),
+                new SqlParameter("descuento_aplicado", UpdateEvento.DescuentoAplicado),
+                new SqlParameter("direccion", UpdateEvento.Direccion ),
+                new SqlParameter("localidad", UpdateEvento.Localidad ),
+                new SqlParameter("estado_evento", UpdateEvento.Estado ),
+                new SqlParameter("cantidad_personas", UpdateEvento.CantidadPersonas ),
+                new SqlParameter("total_estimado",UpdateEvento.Total ),
+                new SqlParameter("id_usuario_venta", UpdateEvento.IdUsuarioVenta),
+                new SqlParameter("evento_pago", UpdateEvento.Pago)
+
+            };
+
+            try
+            {
+                // Ejecutar consulta
+                int filasAfectadas = conexion.EscribirPorStoreProcedure("sp_updateEvento", valores);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                //logger.Error("Tuvimos un error al guardar"+ex.Message);
+                Console.WriteLine(ex.ToString());
                 return false;
             }
 

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -38,6 +39,67 @@ namespace DAL_Catering
             }
 
             return clientes;
+
+        }
+
+        public bool AddCliente(Cliente cliente)
+        {
+            /*@nombre varchar(100),
+            @apellido varchar(100),
+            @email varchar(100),
+            @telefono varchar(20),
+            @domicilio varchar(100),
+            @dni varchar(45)*/
+            SqlParameter[] valores = {
+                new SqlParameter("nombre", cliente.Nombre),
+                new SqlParameter("apellido", cliente.Apellido ),
+                new SqlParameter("email", cliente.Email),
+                new SqlParameter("telefono", cliente.Telefono),
+                new SqlParameter("domicilio", cliente.Direccion ),
+                new SqlParameter("dni", cliente.DNI )
+            };
+
+            try
+            {
+                // Ejecutar consulta
+                int filasAfectadas = conexion.EscribirPorStoreProcedure("sp_addCliente", valores);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                //logger.Error("Tuvimos un error al guardar"+ex.Message);
+                Console.WriteLine(ex.ToString());
+                throw ex;
+
+            }
+
+        }
+
+        public  bool UpdateCliente(Cliente cliente)
+        {
+            SqlParameter[] valores = {
+                new SqlParameter("id_cliente", cliente.Id),
+                new SqlParameter("nombre", cliente.Nombre),
+                new SqlParameter("apellido", cliente.Apellido ),
+                new SqlParameter("email", cliente.Email),
+                new SqlParameter("telefono", cliente.Telefono),
+                new SqlParameter("domicilio", cliente.Direccion ),
+                new SqlParameter("dni", cliente.DNI )
+            };
+
+            try
+            {
+                // Ejecutar consulta
+                int filasAfectadas = conexion.EscribirPorStoreProcedure("sp_updateCliente", valores);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                //logger.Error("Tuvimos un error al guardar"+ex.Message);
+                Console.WriteLine(ex.ToString());
+                throw ex;
+
+            }
 
         }
 
