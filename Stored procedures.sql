@@ -442,6 +442,15 @@ where id_cliente = @id_cliente
 
 return
 
+CREATE proc [dbo].[sp_getEventoByCliente] 
+@id_cliente bigint
+
+as 
+
+select * from evento where id_cliente = @id_cliente
+
+return
+
 
 CREATE PROCEDURE sp_ObtenerPlatosPorMenu
     @id_menu INT

@@ -84,7 +84,14 @@ namespace BLL_Catering
             }
         }
 
+        public List<Evento> GetEventoByIdCliente(int id)
+        {
+            DAL_Catering.EventoDAL dalEventos = new DAL_Catering.EventoDAL();
 
+            List<Entity_Catering.Evento> eventosAux = dalEventos.GetEventoByIdCliente(id);
+
+            return eventosAux;
+        }
 
     }
 }

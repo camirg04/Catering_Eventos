@@ -97,6 +97,8 @@ namespace Servicio_Catering
             int cantidad = eventos1[eventos1.Count()-1].Id;
 
             textBox16.Text = (cantidad + 1).ToString();
+            comboBox6.SelectedIndex = -1;
+
 
             /* try
              {
@@ -140,6 +142,7 @@ namespace Servicio_Catering
             gb_crea_evento.Visible = false;
             gb_mod_evento.Visible = true;
             dataGridView2.DataSource = eventos1.ToList();
+            comboBox4.SelectedIndex = -1;
             //EventosBLL eventoguardar = new EventosBLL();
         }
 
@@ -399,6 +402,13 @@ namespace Servicio_Catering
                 ClienteBLL clienteBLL = new ClienteBLL();
                 Cliente cliente = new Cliente(textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text, textBox10.Text, textBox6.Text);
                 clienteBLL.AddCliente(cliente);
+                MessageBox.Show("Se creo el cliente");
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+                textBox4.Text = "";
+                textBox10.Text = "";
+                textBox6.Text = "";
             }
             catch (Exception ex)
             {
@@ -471,6 +481,342 @@ namespace Servicio_Catering
 
 
 
+        }
+
+        private void gb_mod_cliente_Enter(object sender, EventArgs e)
+        {
+
+        }
+       
+
+        private void textBox22_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                string cantidad = textBox22.Text.ToString();
+                int menuId = -1;
+                if (comboBox3.SelectedIndex != -1)
+                {
+                    menuId = int.Parse(comboBox3.SelectedValue.ToString());
+                }
+                float precioMenu = 0;
+                int porcentaje = 0;
+                if ((cantidad != "" || cantidad != null) && menuId != -1)
+                {
+                    foreach (Menus menuItem in MenusVende)
+                    {
+                        if (menuItem.IdMenu == menuId)
+                        {
+                            precioMenu = menuItem.PrecioPorPersona;
+
+                        }
+                    }
+                    //calcula %
+                    porcentaje = devuelvePorcentaje(int.Parse(cantidad.ToString()));
+                    textBox24.Text = porcentaje.ToString();
+                    textBox21.Text = calculaTotal(porcentaje, int.Parse(cantidad.ToString()), precioMenu).ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private int devuelvePorcentaje(int cantidad)
+        {
+            int clienteId = -1;
+            List<Evento> eventosByCliente = new List<Evento>();
+            EventosBLL eventosByClienteBll = new EventosBLL();
+            int porcentaje=0;
+            if (comboBox4.SelectedIndex != -1)
+            {
+                clienteId = int.Parse(comboBox4.SelectedValue.ToString());
+                eventosByCliente = eventosByClienteBll.GetEventoByIdCliente(clienteId);
+            }
+            if (comboBox6.SelectedIndex != -1)
+            {
+                clienteId = int.Parse(comboBox6.SelectedValue.ToString());
+                eventosByCliente = eventosByClienteBll.GetEventoByIdCliente(clienteId);
+            }
+
+            if (eventosByCliente.Count >= 3)
+            {
+                porcentaje = 5;
+            }
+
+            Console.WriteLine(cantidad);
+            Console.WriteLine(eventosByCliente.Count);
+
+            if (cantidad >= 200 )
+            {
+                return porcentaje + 10;
+
+            }
+            else if (cantidad >= 100)
+            {
+                return porcentaje + 5;
+            }
+            else
+            {
+                return porcentaje;
+            }
+
+        }
+
+        private double calculaTotal(int porcentaje, int cantidad, double precioMenu)
+        {
+            if (porcentaje>100)
+            {
+                throw new Exception("El porcentaje no puede valer mas de 100");
+            }
+            return (cantidad*precioMenu - ((cantidad * precioMenu) * (porcentaje / 100f)));
+        }
+
+        private void comboBox3_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                string cantidad = textBox22.Text.ToString();
+                int menuId = -1;
+                if (comboBox3.SelectedIndex != -1)
+                {
+                    menuId = int.Parse(comboBox3.SelectedValue.ToString());
+                }
+                float precioMenu = 0;
+                int porcentaje = 0;
+                if ((cantidad != "" || cantidad != null) && menuId != -1)
+                {
+                    foreach (Menus menuItem in MenusVende)
+                    {
+                        if (menuItem.IdMenu == menuId)
+                        {
+                            precioMenu = menuItem.PrecioPorPersona;
+
+                        }
+                    }
+                    //calcula %
+                    porcentaje = devuelvePorcentaje(int.Parse(cantidad.ToString()));
+                    textBox24.Text = porcentaje.ToString();
+                    textBox21.Text = calculaTotal(porcentaje, int.Parse(cantidad.ToString()), precioMenu).ToString();
+                }
+            }
+            catch (Exception ex) { 
+                MessageBox.Show(ex.Message);
+            }
+            
+
+        }
+
+        private void textBox24_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                string cantidad = textBox22.Text.ToString();
+                int menuId = -1;
+                if (comboBox3.SelectedIndex != -1)
+                {
+                    menuId = int.Parse(comboBox3.SelectedValue.ToString());
+                }
+                float precioMenu = 0;
+                int porcentaje = 0;
+                if ((cantidad != "" || cantidad != null) && menuId != -1)
+                {
+                    foreach (Menus menuItem in MenusVende)
+                    {
+                        if (menuItem.IdMenu == menuId)
+                        {
+                            precioMenu = menuItem.PrecioPorPersona;
+
+                        }
+                    }
+                    //calcula %
+                    if (textBox24.Text != "" || textBox24.Text != null)
+                    {
+                        porcentaje = int.Parse(textBox24.Text);
+                    }
+                    else
+                    {
+                        porcentaje = devuelvePorcentaje(int.Parse(cantidad.ToString()));
+                    }
+                    textBox24.Text = porcentaje.ToString();
+                    textBox21.Text = calculaTotal(porcentaje, int.Parse(cantidad.ToString()), precioMenu).ToString();
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                textBox24.Text = "";
+                textBox21.Text = "";
+            }
+        }
+
+        private void comboBox4_Leave(object sender, EventArgs e)
+        {
+            //textBox24.Leave += comboBox4_Leave;
+            int porcentaje = 0;
+            string cantidad = textBox22.Text.ToString();
+            double precioMenu = 0;
+            if (comboBox3.SelectedIndex != -1 && textBox24.Text != "")
+            {
+                int menuId = -1;
+                if (comboBox3.SelectedIndex != -1)
+                {
+                    menuId = int.Parse(comboBox3.SelectedValue.ToString());
+                }
+                foreach (Menus menuItem in MenusVende)
+                {
+                    if (menuItem.IdMenu == menuId)
+                    {
+                        precioMenu = menuItem.PrecioPorPersona;
+
+                    }
+                }
+                porcentaje = devuelvePorcentaje(int.Parse(cantidad.ToString()));
+                textBox24.Text = porcentaje.ToString();
+                textBox21.Text = calculaTotal(porcentaje, int.Parse(cantidad.ToString()), precioMenu).ToString();
+
+            }
+        }
+
+        //PARTE DE MODIFICAR EVENTO 
+        private void textBox27_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                string cantidad = textBox27.Text.ToString();
+                int menuId = -1;
+                if (comboBox5.SelectedIndex != -1)
+                {
+                    menuId = int.Parse(comboBox5.SelectedValue.ToString());
+                }
+                float precioMenu = 0;
+                int porcentaje = 0;
+                if ((cantidad != "" || cantidad != null) && menuId != -1)
+                {
+                    foreach (Menus menuItem in MenusVende)
+                    {
+                        if (menuItem.IdMenu == menuId)
+                        {
+                            precioMenu = menuItem.PrecioPorPersona;
+
+                        }
+                    }
+                    //calcula %
+                    porcentaje = devuelvePorcentaje(int.Parse(cantidad.ToString()));
+                    textBox25.Text = porcentaje.ToString();
+                    textBox28.Text = calculaTotal(porcentaje, int.Parse(cantidad.ToString()), precioMenu).ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void comboBox5_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                string cantidad = textBox27.Text.ToString();
+                int menuId = -1;
+                if (comboBox5.SelectedIndex != -1)
+                {
+                    menuId = int.Parse(comboBox5.SelectedValue.ToString());
+                }
+                float precioMenu = 0;
+                int porcentaje = 0;
+                if ((cantidad != "" || cantidad != null) && menuId != -1)
+                {
+                    foreach (Menus menuItem in MenusVende)
+                    {
+                        if (menuItem.IdMenu == menuId)
+                        {
+                            precioMenu = menuItem.PrecioPorPersona;
+
+                        }
+                    }
+                    //calcula %
+                    porcentaje = devuelvePorcentaje(int.Parse(cantidad.ToString()));
+                    textBox25.Text = porcentaje.ToString();
+                    textBox28.Text = calculaTotal(porcentaje, int.Parse(cantidad.ToString()), precioMenu).ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void textBox25_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                string cantidad = textBox27.Text.ToString();
+                int menuId = -1;
+                if (comboBox5.SelectedIndex != -1)
+                {
+                    menuId = int.Parse(comboBox5.SelectedValue.ToString());
+                }
+                float precioMenu = 0;
+                int porcentaje = 0;
+                if ((cantidad != "" || cantidad != null) && menuId != -1)
+                {
+                    foreach (Menus menuItem in MenusVende)
+                    {
+                        if (menuItem.IdMenu == menuId)
+                        {
+                            precioMenu = menuItem.PrecioPorPersona;
+
+                        }
+                    }
+                    //calcula %
+                    if (textBox25.Text != "" || textBox25.Text != null)
+                    {
+                        porcentaje = int.Parse(textBox25.Text);
+                    }
+                    else
+                    {
+                        porcentaje = devuelvePorcentaje(int.Parse(cantidad.ToString()));
+                    }
+                    textBox25.Text = porcentaje.ToString();
+                    textBox28.Text = calculaTotal(porcentaje, int.Parse(cantidad.ToString()), precioMenu).ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                textBox25.Text = "";
+                textBox28.Text = "";
+            }
+        }
+
+        private void comboBox6_Leave(object sender, EventArgs e)
+        {
+            int porcentaje = 0;
+            string cantidad = textBox27.Text.ToString();
+            double precioMenu = 0;
+            if (comboBox5.SelectedIndex != -1 && textBox27.Text != "")
+            {
+                int menuId = -1;
+                if (comboBox5.SelectedIndex != -1)
+                {
+                    menuId = int.Parse(comboBox5.SelectedValue.ToString());
+                }
+                foreach (Menus menuItem in MenusVende)
+                {
+                    if (menuItem.IdMenu == menuId)
+                    {
+                        precioMenu = menuItem.PrecioPorPersona;
+
+                    }
+                }
+                porcentaje = devuelvePorcentaje(int.Parse(cantidad.ToString()));
+                textBox25.Text = porcentaje.ToString();
+                textBox28.Text = calculaTotal(porcentaje, int.Parse(cantidad.ToString()), precioMenu).ToString();
+
+            }
         }
     }
 }
