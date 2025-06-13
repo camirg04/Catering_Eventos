@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Data;
 using Entity_Catering;
 using System.Data.SqlClient;
+using NLog;
+using System.CodeDom;
 
 
 namespace DAL_Catering
@@ -13,6 +15,7 @@ namespace DAL_Catering
     public class UsuarioDAL
     {
         private readonly Conexion conexion;
+        private static readonly Logger logger = LogManager.GetCurrentClassLogger();
         public UsuarioDAL(){
             conexion = new Conexion();
         }
@@ -46,6 +49,31 @@ namespace DAL_Catering
             }
 
             return empleados;
+        }
+
+
+        public List<string> ObtenerMailsLogisticaChefs()
+        {
+
+            try
+            {
+                List<string> mails = new List<string>();
+                DataTable dt = conexion.LeerPorStoreProcedure("sp_ObtenerMailsLogisticaChefs");
+
+                foreach (DataRow fila in dt.Rows)
+                {
+
+                    mails.Add(fila["email"].ToString());
+
+
+                }
+                return mails;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex);
+                throw;
+            }
         }
 
 

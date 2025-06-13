@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace DTO_Catering
         private Decimal _costoUnitario;
         private DateTime _fechaIngreso;
         private DateTime? _fechaVencimiento;
+        private string _severidad;
 
         public LoteInsumoDTO() { }
 
@@ -32,16 +34,28 @@ namespace DTO_Catering
             CostoUnitario = costoUnitario;
             FechaIngreso = fechaIngreso;
             FechaVencimiento = fechaVencimiento;
+            Severidad = "Nula";
         }
 
         public int IdLoteInsumo { get => _idLoteInsumo; set => _idLoteInsumo = value; }
         public int IdInsumo { get => _idInsumo; set => _idInsumo = value; }
+
+        public string Severidad { get => _severidad; set => _severidad = value; }
+
+        [DisplayName("Insumo")]
         public string NombreInsumo { get => _nombreInsumo; set => _nombreInsumo = value; }
+
+        [DisplayName("Unidad medida")]
         public string UnidadMedida { get => _unidadMedida; set => _unidadMedida = value; }
         public int IdPedidoInsumo { get => _idPedidoInsumo; set => _idPedidoInsumo = value; }
+
         public decimal Cantidad { get => _cantidad; set => _cantidad = value; }
+        [DisplayName("Costo unitario")]
         public decimal CostoUnitario { get => _costoUnitario; set => _costoUnitario = value; }
+
+        [DisplayName("Ingreso")]
         public DateTime FechaIngreso { get => _fechaIngreso; set => _fechaIngreso = value; }
+        [DisplayName("Vencimiento")]
         public DateTime? FechaVencimiento { get => _fechaVencimiento; set => _fechaVencimiento = value; }
 
 

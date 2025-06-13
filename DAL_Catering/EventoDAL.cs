@@ -175,6 +175,7 @@ namespace DAL_Catering
                     var evento = new EventoEntity();
 
                     evento.EstadoEvento = fila["estado_evento"].ToString();
+                    evento.IdEvento = Convert.ToInt32(fila["id_evento"]);
 
                     evento.FechaEvento = fila["fecha_evento"] != DBNull.Value
                         ? DateTime.Parse(fila["fecha_evento"].ToString())
@@ -227,5 +228,26 @@ namespace DAL_Catering
                 throw;
             }
         }
+
+
+        public int ActualizarEstadoEvento(int idEvento, string nuevoEstado)
+        {
+            try
+            {
+                SqlParameter[] parametros = new SqlParameter[]
+                {
+            new SqlParameter("@id_evento", SqlDbType.Int) { Value = idEvento },
+            new SqlParameter("@estado", SqlDbType.NVarChar, 50) { Value = nuevoEstado }
+                };
+
+                return conexion.EscribirPorStoreProcedure("sp_ActualizarEstadoEvento", parametros);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al actualizar el estado del evento");
+                throw;
+            }
+        }
+
     }
 }

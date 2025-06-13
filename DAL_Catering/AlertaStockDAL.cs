@@ -54,5 +54,23 @@ namespace DAL_Catering
                 throw;
             }
         }
+
+        public int InsertarAlertaStock(int idInsumo)
+        {
+            try
+            {
+                SqlParameter[] parametros = new SqlParameter[]
+                {
+            new SqlParameter("@id_insumo", SqlDbType.Int) { Value = idInsumo }
+                };
+
+                return conexion.EscribirPorStoreProcedure("sp_InsertarAlertaStock", parametros);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al insertar alerta de stock");
+                throw;
+            }
+        }
     }
 }

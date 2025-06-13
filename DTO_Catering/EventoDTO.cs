@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,15 +34,24 @@ namespace DTO_Catering
         public int IdCliente { get => _IdCliente; set => _IdCliente = value; }
         public string Cliente { get => _cliente; set => _cliente = value; }
         public int IdMenu { get => _idMenu; set => _idMenu = value; }
+
+        [DisplayName("Menú")]
         public string NombreMenu { get => _nombreMenu; set => _nombreMenu = value; }
+        [DisplayName("Vendedor")]
         public string UsuarioVenta { get => _usuarioVenta; set => _usuarioVenta = value; }
+        [DisplayName("Fecha evento")]
         public DateTime FechaEvento { get => _fechaEvento; set => _fechaEvento = value; }
+        [DisplayName("Descuento")]
         public decimal DescuentoAplicado { get => _descuentoAplicado; set => _descuentoAplicado = value; }
         public string Direccion { get => _direccion; set => _direccion = value; }
         public string Localidad { get => _localidad; set => _localidad = value; }
+        [DisplayName("Estado")]
         public string EstadoEvento { get => _estadoEvento; set => _estadoEvento = value; }
+        [DisplayName("Cantidad personas")]
         public int CantidadPersonas { get => _cantidadPersonas; set => _cantidadPersonas = value; }
+        [DisplayName("Total")]
         public decimal TotalEstimado { get => _totalEstimado; set => _totalEstimado = value; }
+        [DisplayName("Pago")]
         public string EventoPago { get => _eventoPago; set => _eventoPago = value; }
 
 

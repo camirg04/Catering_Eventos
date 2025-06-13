@@ -62,5 +62,18 @@ namespace BLL_Catering
             }
 
         }
+
+        public int InsertarAlertaStock(int idInsumo)
+        {
+            try
+            {
+                return _alertaStockDAL.InsertarAlertaStock(idInsumo);
+            }
+            catch (Exception ex)
+            {
+                // Aquí podrías manejar la excepción de manera más específica o registrar el error
+                throw new Exception("Error al filtrar alertas de stock", ex);
+            }
+        }
     }
 }
