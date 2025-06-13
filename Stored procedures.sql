@@ -290,5 +290,23 @@ set
 where id_evento = @id_evento
 return
 
+USE [CATERINGDB]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_getEventoByCliente]    Script Date: 13/06/2025 1:01:19 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE proc [dbo].[sp_getEventoByCliente] 
+@id_cliente bigint
+
+as 
+
+select * from evento where id_cliente = @id_cliente
+
+return
+
+
 
 

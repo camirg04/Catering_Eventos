@@ -108,8 +108,8 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
@@ -117,7 +117,7 @@
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Location = new System.Drawing.Point(16, 39);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(944, 555);
@@ -138,14 +138,13 @@
             this.tabPage1.Controls.Add(this.verPlato);
             this.tabPage1.Controls.Add(this.dgvPlatos);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(936, 529);
+            this.tabPage1.Size = new System.Drawing.Size(936, 526);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Platos";
             this.tabPage1.UseVisualStyleBackColor = true;
-            //this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // btnBuscar
             // 
@@ -163,7 +162,7 @@
             this.txtNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNombre.Location = new System.Drawing.Point(748, 218);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(182, 20);
+            this.txtNombre.Size = new System.Drawing.Size(182, 22);
             this.txtNombre.TabIndex = 12;
             // 
             // cbTipoPlato
@@ -173,7 +172,7 @@
             this.cbTipoPlato.FormattingEnabled = true;
             this.cbTipoPlato.Location = new System.Drawing.Point(748, 272);
             this.cbTipoPlato.Name = "cbTipoPlato";
-            this.cbTipoPlato.Size = new System.Drawing.Size(182, 21);
+            this.cbTipoPlato.Size = new System.Drawing.Size(182, 24);
             this.cbTipoPlato.TabIndex = 11;
             // 
             // cbActivo
@@ -183,7 +182,7 @@
             this.cbActivo.FormattingEnabled = true;
             this.cbActivo.Location = new System.Drawing.Point(748, 325);
             this.cbActivo.Name = "cbActivo";
-            this.cbActivo.Size = new System.Drawing.Size(182, 21);
+            this.cbActivo.Size = new System.Drawing.Size(182, 24);
             this.cbActivo.TabIndex = 10;
             // 
             // lblActivo
@@ -264,14 +263,15 @@
             // 
             // dgvPlatos
             // 
-            this.dgvPlatos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.dgvPlatos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvPlatos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPlatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPlatos.Location = new System.Drawing.Point(0, 0);
-            this.dgvPlatos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvPlatos.Margin = new System.Windows.Forms.Padding(4);
             this.dgvPlatos.Name = "dgvPlatos";
+            this.dgvPlatos.RowHeadersWidth = 51;
             this.dgvPlatos.Size = new System.Drawing.Size(742, 526);
             this.dgvPlatos.TabIndex = 0;
             // 
@@ -290,10 +290,10 @@
             this.tabPage2.Controls.Add(this.button4);
             this.tabPage2.Controls.Add(this.dataGridView2);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(936, 529);
+            this.tabPage2.Size = new System.Drawing.Size(936, 526);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Menús";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -313,7 +313,7 @@
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Location = new System.Drawing.Point(731, 220);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(199, 20);
+            this.textBox1.Size = new System.Drawing.Size(199, 22);
             this.textBox1.TabIndex = 24;
             // 
             // comboBox2
@@ -323,7 +323,7 @@
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(731, 274);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(199, 21);
+            this.comboBox2.Size = new System.Drawing.Size(199, 24);
             this.comboBox2.TabIndex = 23;
             // 
             // comboBox3
@@ -333,7 +333,7 @@
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Location = new System.Drawing.Point(731, 327);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(199, 21);
+            this.comboBox3.Size = new System.Drawing.Size(199, 24);
             this.comboBox3.TabIndex = 22;
             // 
             // label4
@@ -412,12 +412,13 @@
             // 
             // dataGridView2
             // 
-            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(0, 0);
             this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.Size = new System.Drawing.Size(726, 529);
             this.dataGridView2.TabIndex = 14;
             // 
@@ -438,9 +439,9 @@
             this.tabPage3.Controls.Add(this.button8);
             this.tabPage3.Controls.Add(this.dataGridView3);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(936, 529);
+            this.tabPage3.Size = new System.Drawing.Size(936, 526);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Eventos";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -450,7 +451,7 @@
             this.fechaHastaEvento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.fechaHastaEvento.Location = new System.Drawing.Point(751, 333);
             this.fechaHastaEvento.Name = "fechaHastaEvento";
-            this.fechaHastaEvento.Size = new System.Drawing.Size(182, 20);
+            this.fechaHastaEvento.Size = new System.Drawing.Size(182, 22);
             this.fechaHastaEvento.TabIndex = 29;
             // 
             // label13
@@ -480,7 +481,7 @@
             this.fechaDesdeEvento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.fechaDesdeEvento.Location = new System.Drawing.Point(751, 289);
             this.fechaDesdeEvento.Name = "fechaDesdeEvento";
-            this.fechaDesdeEvento.Size = new System.Drawing.Size(182, 20);
+            this.fechaDesdeEvento.Size = new System.Drawing.Size(182, 22);
             this.fechaDesdeEvento.TabIndex = 26;
             // 
             // button5
@@ -498,7 +499,7 @@
             this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox2.Location = new System.Drawing.Point(751, 156);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(182, 20);
+            this.textBox2.Size = new System.Drawing.Size(182, 22);
             this.textBox2.TabIndex = 24;
             // 
             // comboBox4
@@ -508,7 +509,7 @@
             this.comboBox4.FormattingEnabled = true;
             this.comboBox4.Location = new System.Drawing.Point(751, 207);
             this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(182, 21);
+            this.comboBox4.Size = new System.Drawing.Size(182, 24);
             this.comboBox4.TabIndex = 23;
             // 
             // label8
@@ -577,13 +578,14 @@
             // 
             // dataGridView3
             // 
-            this.dataGridView3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.dataGridView3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Location = new System.Drawing.Point(3, 0);
-            this.dataGridView3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView3.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.RowHeadersWidth = 51;
             this.dataGridView3.Size = new System.Drawing.Size(740, 529);
             this.dataGridView3.TabIndex = 14;
             // 
@@ -597,9 +599,9 @@
             this.tabPage4.Controls.Add(this.label14);
             this.tabPage4.Controls.Add(this.label15);
             this.tabPage4.Controls.Add(this.dgvVencimientos);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(936, 529);
+            this.tabPage4.Size = new System.Drawing.Size(936, 526);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Vencimientos";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -630,7 +632,7 @@
             this.dateTimeHastaVencimiento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimeHastaVencimiento.Location = new System.Drawing.Point(748, 269);
             this.dateTimeHastaVencimiento.Name = "dateTimeHastaVencimiento";
-            this.dateTimeHastaVencimiento.Size = new System.Drawing.Size(185, 20);
+            this.dateTimeHastaVencimiento.Size = new System.Drawing.Size(185, 22);
             this.dateTimeHastaVencimiento.TabIndex = 38;
             // 
             // label3
@@ -649,7 +651,7 @@
             this.dateTimeDesdeVencimiento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimeDesdeVencimiento.Location = new System.Drawing.Point(748, 220);
             this.dateTimeDesdeVencimiento.Name = "dateTimeDesdeVencimiento";
-            this.dateTimeDesdeVencimiento.Size = new System.Drawing.Size(185, 20);
+            this.dateTimeDesdeVencimiento.Size = new System.Drawing.Size(185, 22);
             this.dateTimeDesdeVencimiento.TabIndex = 36;
             // 
             // label14
@@ -676,12 +678,13 @@
             // 
             // dgvVencimientos
             // 
-            this.dgvVencimientos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.dgvVencimientos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvVencimientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVencimientos.Location = new System.Drawing.Point(0, 0);
             this.dgvVencimientos.Name = "dgvVencimientos";
+            this.dgvVencimientos.RowHeadersWidth = 51;
             this.dgvVencimientos.Size = new System.Drawing.Size(739, 529);
             this.dgvVencimientos.TabIndex = 15;
             // 
@@ -698,9 +701,9 @@
             this.tabPage5.Controls.Add(this.label21);
             this.tabPage5.Controls.Add(this.dateTimeDesdeAlerta);
             this.tabPage5.Controls.Add(this.label20);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Location = new System.Drawing.Point(4, 25);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(936, 529);
+            this.tabPage5.Size = new System.Drawing.Size(936, 526);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Alertas Stock";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -732,7 +735,7 @@
             this.cbEstadoAlerta.FormattingEnabled = true;
             this.cbEstadoAlerta.Location = new System.Drawing.Point(753, 180);
             this.cbEstadoAlerta.Name = "cbEstadoAlerta";
-            this.cbEstadoAlerta.Size = new System.Drawing.Size(180, 21);
+            this.cbEstadoAlerta.Size = new System.Drawing.Size(180, 24);
             this.cbEstadoAlerta.TabIndex = 50;
             // 
             // label23
@@ -742,7 +745,7 @@
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.Location = new System.Drawing.Point(750, 162);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(51, 15);
+            this.label23.Size = new System.Drawing.Size(61, 18);
             this.label23.TabIndex = 49;
             this.label23.Text = "Estado";
             // 
@@ -753,18 +756,19 @@
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.Location = new System.Drawing.Point(750, 322);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(39, 13);
+            this.label18.Size = new System.Drawing.Size(44, 15);
             this.label18.TabIndex = 48;
             this.label18.Text = "Hasta";
             // 
             // dgvAlertas
             // 
-            this.dgvAlertas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.dgvAlertas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvAlertas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAlertas.Location = new System.Drawing.Point(-4, 0);
             this.dgvAlertas.Name = "dgvAlertas";
+            this.dgvAlertas.RowHeadersWidth = 51;
             this.dgvAlertas.Size = new System.Drawing.Size(748, 529);
             this.dgvAlertas.TabIndex = 40;
             // 
@@ -773,7 +777,7 @@
             this.dateTimeHastaAlerta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimeHastaAlerta.Location = new System.Drawing.Point(753, 338);
             this.dateTimeHastaAlerta.Name = "dateTimeHastaAlerta";
-            this.dateTimeHastaAlerta.Size = new System.Drawing.Size(180, 20);
+            this.dateTimeHastaAlerta.Size = new System.Drawing.Size(180, 22);
             this.dateTimeHastaAlerta.TabIndex = 47;
             // 
             // label19
@@ -783,7 +787,7 @@
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.Location = new System.Drawing.Point(755, 258);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(43, 13);
+            this.label19.Size = new System.Drawing.Size(48, 15);
             this.label19.TabIndex = 46;
             this.label19.Text = "Desde";
             // 
@@ -794,7 +798,7 @@
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.Location = new System.Drawing.Point(796, 81);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(93, 15);
+            this.label21.Size = new System.Drawing.Size(108, 18);
             this.label21.TabIndex = 42;
             this.label21.Text = "Filtrar alertas";
             // 
@@ -803,7 +807,7 @@
             this.dateTimeDesdeAlerta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimeDesdeAlerta.Location = new System.Drawing.Point(753, 274);
             this.dateTimeDesdeAlerta.Name = "dateTimeDesdeAlerta";
-            this.dateTimeDesdeAlerta.Size = new System.Drawing.Size(180, 20);
+            this.dateTimeDesdeAlerta.Size = new System.Drawing.Size(180, 22);
             this.dateTimeDesdeAlerta.TabIndex = 45;
             // 
             // label20
@@ -813,7 +817,7 @@
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.Location = new System.Drawing.Point(755, 225);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(46, 15);
+            this.label20.Size = new System.Drawing.Size(54, 18);
             this.label20.TabIndex = 43;
             this.label20.Text = "Fecha";
             // 
@@ -847,7 +851,7 @@
             this.Controls.Add(this.lblBienvenida);
             this.Controls.Add(this.CerrarSesion);
             this.Controls.Add(this.tabControl1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Administracion";
             this.Text = "Administración Catering";
             this.Load += new System.EventHandler(this.Administracion_Load);

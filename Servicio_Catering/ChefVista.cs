@@ -112,20 +112,21 @@ namespace Servicio_Catering
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            try {
+            try
+            {
                 ObtenerPlatosFiltro();
             }
             catch (Exception ex)
             {
                 logger.Error(ex, "Error al buscar platos en UI");
                 MessageBox.Show("Error al buscar platos");
-            }            
+            }
         }
 
         private void agregarPlato_Click(object sender, EventArgs e)
         {
             Plato plato = new Plato();
-            PlatoDetalle platoDetalle = new PlatoDetalle(plato,"agregar");
+            PlatoDetalle platoDetalle = new PlatoDetalle(plato, "agregar");
             platoDetalle.ShowDialog();
             ObtenerPlatosFiltro();
         }
@@ -156,7 +157,7 @@ namespace Servicio_Catering
             {
                 var estado = row.Cells["Severidad"].Value?.ToString();
 
-                if (estado == "Crítica")
+                if (estado != "Crítica")
                 {
                     critico = true;
                 }
@@ -167,7 +168,7 @@ namespace Servicio_Catering
             {
                 MessageBox.Show("¡Tiene alertas de stock en estado crítico!");
             }
-        
+
         }
 
 
@@ -217,7 +218,7 @@ namespace Servicio_Catering
             var lote3 = new LoteInsumo(3, insumo1, pedido1, 30, 155.00m, DateTime.Now.AddDays(-5), DateTime.Now.AddMonths(5));
             var lote4 = new LoteInsumo(4, insumo2, pedido2, 80, 290.00m, DateTime.Now.AddDays(-20), null);
             var lote5 = new LoteInsumo(5, insumo1, pedido1, 120, 148.25m, DateTime.Now.AddDays(-2), DateTime.Now.AddMonths(4));
-            
+
             var lista = new List<LoteInsumo>
             {
                 lote1,
@@ -228,7 +229,6 @@ namespace Servicio_Catering
             };
             return LoteInsumoDTO.mapLoteInsumoListToLoteInsumoDTOList(lista);
         }
-
 
     }
 }
