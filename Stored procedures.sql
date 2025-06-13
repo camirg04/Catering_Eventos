@@ -549,5 +549,113 @@ BEGIN
     WHERE id_evento = @id_evento;
 END;
 
+USE [CATERINGDB]
+GO
+/****** Object:  StoredProcedure [dbo].[ObtenerLotesDeInsumosxId]    Script Date: 13/06/2025 14:56:40 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[ObtenerLotesDeInsumosxId]
+@id_insumo bigint,
+@fecha_ingreso_inicio date,
+@fecha_ingreso_fin date
+AS
+BEGIN
+  select li.id_lote, li.id_insumo, i.nombre, i.unidad_medida, li.id_pedido, li.cantidad, li.costo_unitario,li.fecha_ingreso,li.fecha_vencimiento 
+  from lotes_insumo li 
+  inner join insumo i on i.id_insumo = li.id_insumo
+   where li.id_insumo = @id_insumo and li.fecha_ingreso >= @fecha_ingreso_inicio and li.fecha_ingreso <= @fecha_ingreso_fin
+END;
 
+USE [CATERINGDB]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_allInsumo]    Script Date: 13/06/2025 14:58:05 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE proc [dbo].[sp_allInsumo] as 
+
+SELECT *
+	   
+FROM insumo 
+
+
+return
+
+USE [CATERINGDB]
+GO
+/****** Object:  StoredProcedure [dbo].[addPedidoInsumo]    Script Date: 13/06/2025 14:58:37 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[addPedidoInsumo]
+@id_insumo bigint,
+@cantidad decimal(10,2),
+@fecha_pedido date,
+@estado_pedido varchar(45),
+@id_usuario_pedido bigint
+AS
+BEGIN
+  INSERT pedido_insumo (id_insumo,cantidad,fecha_pedido,estado_pedido,id_usuario_pedido)
+  values(@id_insumo,@cantidad,@fecha_pedido,@estado_pedido,@id_usuario_pedido)
+END;
+
+USE [CATERINGDB]
+GO
+/****** Object:  StoredProcedure [dbo].[ObtenerPedidosDeInsumos]    Script Date: 13/06/2025 14:59:57 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[ObtenerPedidosDeInsumos]
+AS
+BEGIN
+  select p.*,i.*,u.*
+  from pedido_insumo p 
+  inner join insumo i on i.id_insumo = p.id_insumo
+  inner join usuarios u on u.id_usuario = p.id_usuario_pedido
+END;
+
+
+USE [CATERINGDB]
+GO
+/****** Object:  StoredProcedure [dbo].[UpdatePedidosDeInsumos]    Script Date: 13/06/2025 15:08:32 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[UpdatePedidosDeInsumos]
+@id_pedidoInsumo bigint,
+@id_insumo bigint,
+@cantidad decimal(10,2),
+@fecha_pedido date,
+@estado_pedido varchar(45),
+@costo_unitario decimal(10,2)
+AS
+BEGIN
+
+  if exists (select * from pedido_insumo where id_pedido_insumo = @id_pedidoInsumo and estado_pedido = 'ENTREGADO')
+  BEGIN
+   UPDATE pedido_insumo
+	  set id_insumo = @id_insumo, cantidad=@cantidad, fecha_pedido=@fecha_pedido, estado_pedido = @estado_pedido
+	  where id_pedido_insumo = @id_pedidoInsumo
+  END
+  ELSE
+  BEGIN
+	UPDATE pedido_insumo
+	  set id_insumo = @id_insumo, cantidad=@cantidad, fecha_pedido=@fecha_pedido, estado_pedido = @estado_pedido
+	  where id_pedido_insumo = @id_pedidoInsumo
+	  IF @estado_pedido = 'ENTREGADO'
+	  BEGIN
+		INSERT INTO lotes_insumo (id_insumo,cantidad,fecha_ingreso,fecha_vencimiento,costo_unitario,id_pedido) 
+		values(@id_insumo,@cantidad,GETDATE(),DATEADD(DAY,+30,GETDATE()),@costo_unitario,@id_pedidoInsumo);
+	  END
+  
+  END
+ 
+END;
 
