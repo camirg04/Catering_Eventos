@@ -113,6 +113,18 @@ namespace BLL_Catering
                 throw;
             }
         }
+        public int ActualizarCostoFechaLote(int idLote, decimal costo, DateTime vence)
+        {
+            try
+            {
+                return _loteInsumoDal.ActualizarCostoFechaLote(idLote, costo, vence);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al obtener lotes de insumos");
+                throw;
+            }
+        }
 
 
         public List<LoteInsumoDTO> BuscarLotePorId(int idIsumo, string fechaIngresoInicio, string fechaIngresoFin)

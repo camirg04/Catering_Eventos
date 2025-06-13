@@ -51,6 +51,11 @@ namespace Servicio_Catering
             this.comboBox7.DisplayMember = "Nombre";
             this.comboBox7.ValueMember = "IdInsumo";
             this.comboBox7.SelectedIndex = -1;
+
+            this.comboBox4.DataSource = _insumo.ToList();
+            this.comboBox4.DisplayMember = "Nombre";
+            this.comboBox4.ValueMember = "IdInsumo";
+            this.comboBox4.SelectedIndex = -1;
         }
 
 
@@ -237,6 +242,104 @@ namespace Servicio_Catering
 
         }
 
+        private void button8_Click(object sender, EventArgs e)
+        {
+            DateTime fecha_pedido = dateTimePicker5.Value;
+            decimal cantidad = decimal.Parse(textBox1.Text);
+            string estado = comboBox5.Text;
+            int idInsumo = int.Parse(comboBox4.SelectedValue.ToString());
+            int idUsuario = _usuario.IdUsuario;
+            int idPedidoInsumo = dataGridView1.Rows.Count;
+
+            if ((comboBox4.SelectedValue.ToString() != "" || idInsumo != -1) && textBox1.Text.ToString() != "" && comboBox5.Text != "")
+            {
+                idPedidoInsumo++;
+                PedidoInsumoBLL pedidoInsumo = new PedidoInsumoBLL();
+                pedidoInsumo.AddPedidoInsumoBll(idPedidoInsumo, idInsumo, fecha_pedido, estado, cantidad, idUsuario);
+                dateTimePicker5.Value = DateTime.Now;
+                textBox1.Text = "";
+                comboBox4.SelectedIndex= -1;
+                comboBox5.SelectedIndex= -1;
+            }
+            else
+            {
+                MessageBox.Show("Tiene que tener todos los campos llenos");
+            }
+
+                
+        }
+
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+
+                if (e.RowIndex != -1)
+                {
+                    if (dataGridView2.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() != "")
+                    {
+                        //text 5 -> insumo
+                        //text6 -> unidad medida
+                        //text7 -> cantidad ->
+                        //text8 -> costo unit
+                        //datetime 7 -> fechavence
+                        decimal cantidad = decimal.Parse(dataGridView2.Rows[e.RowIndex].Cells["Cantidad"].Value.ToString());//decimal.Parse(textBox5.Text);
+                        DateTime fecha_vence = DateTime.Parse(dataGridView2.Rows[e.RowIndex].Cells[8].Value.ToString());
+                        string insumo = dataGridView2.Rows[e.RowIndex].Cells[3].Value.ToString();
+                        string idPedidoInsumo = dataGridView2.Rows[e.RowIndex].Cells["idLoteInsumo"].Value.ToString();
+                        string unidad = dataGridView2.Rows[e.RowIndex].Cells[4].Value.ToString();
+                        decimal costo = decimal.Parse(dataGridView2.Rows[e.RowIndex].Cells[7].Value.ToString());
+
+                        textBox5.Text = insumo;
+                        textBox6.Text = unidad;
+                        textBox7.Text = cantidad.ToString();
+                        textBox8.Text = costo.ToString();
+                        textBox9.Text  = idPedidoInsumo.ToString();
+                        dateTimePicker7.Value = fecha_vence;
+                    }
+                }
+
+            }
+            catch(Exception ex) {  MessageBox.Show(ex.Message); }
+
+        }
+
+        private void label27_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (textBox9.Text != "")
+                {
+                    int idLote = int.Parse(textBox9.Text);
+                    decimal costo = Decimal.Parse(textBox8.Text);
+                    DateTime vence = dateTimePicker7.Value;
+                    LoteInsumoBLL loteBll = new LoteInsumoBLL();
+                    loteBll.ActualizarCostoFechaLote(idLote, costo, vence);
+
+                    textBox5.Text = "";
+                    textBox6.Text = "";
+                    textBox7.Text = "";
+                    textBox8.Text = "";
+                    textBox9.Text = "";
+                    dateTimePicker7.Value = DateTime.Now;
+                    MessageBox.Show("Los datos se actualizaron");
+
+                }
+            }
+            catch(Exception ex) { MessageBox.Show(ex.Message); }
+
+
+        }
 
         /*EVENTOS  PARA STOCK*/
 

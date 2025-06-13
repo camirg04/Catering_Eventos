@@ -82,6 +82,19 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.dateTimePicker7 = new System.Windows.Forms.DateTimePicker();
+            this.button9 = new System.Windows.Forms.Button();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -107,6 +120,19 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.textBox9);
+            this.tabPage3.Controls.Add(this.label22);
+            this.tabPage3.Controls.Add(this.button9);
+            this.tabPage3.Controls.Add(this.dateTimePicker7);
+            this.tabPage3.Controls.Add(this.textBox8);
+            this.tabPage3.Controls.Add(this.textBox7);
+            this.tabPage3.Controls.Add(this.textBox6);
+            this.tabPage3.Controls.Add(this.textBox5);
+            this.tabPage3.Controls.Add(this.label29);
+            this.tabPage3.Controls.Add(this.label28);
+            this.tabPage3.Controls.Add(this.label25);
+            this.tabPage3.Controls.Add(this.label27);
+            this.tabPage3.Controls.Add(this.label24);
             this.tabPage3.Controls.Add(this.label21);
             this.tabPage3.Controls.Add(this.button3);
             this.tabPage3.Controls.Add(this.dataGridView2);
@@ -138,6 +164,7 @@
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.Size = new System.Drawing.Size(739, 321);
             this.dataGridView2.TabIndex = 75;
+            this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             // 
             // button4
             // 
@@ -561,8 +588,7 @@
             this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox5.FormattingEnabled = true;
             this.comboBox5.Items.AddRange(new object[] {
-            "PENDIENTE",
-            "ENTREGADO"});
+            "PENDIENTE"});
             this.comboBox5.Location = new System.Drawing.Point(664, 408);
             this.comboBox5.Name = "comboBox5";
             this.comboBox5.Size = new System.Drawing.Size(146, 24);
@@ -678,6 +704,7 @@
             this.button8.TabIndex = 84;
             this.button8.Text = "Agregar";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // textBox3
             // 
@@ -702,11 +729,137 @@
             this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(14, 348);
+            this.label21.Location = new System.Drawing.Point(14, 338);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(121, 18);
             this.label21.TabIndex = 77;
             this.label21.Text = "Modifica Stock";
+            // 
+            // label24
+            // 
+            this.label24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(14, 442);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(58, 15);
+            this.label24.TabIndex = 80;
+            this.label24.Text = "Insumo ";
+            // 
+            // label25
+            // 
+            this.label25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(125, 379);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(68, 15);
+            this.label25.TabIndex = 83;
+            this.label25.Text = "Cantidad ";
+            // 
+            // label27
+            // 
+            this.label27.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(123, 442);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(105, 15);
+            this.label27.TabIndex = 81;
+            this.label27.Text = "Unidad medida";
+            this.label27.Click += new System.EventHandler(this.label27_Click);
+            // 
+            // label28
+            // 
+            this.label28.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(258, 442);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(98, 15);
+            this.label28.TabIndex = 84;
+            this.label28.Text = "Costo Unitario";
+            // 
+            // label29
+            // 
+            this.label29.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Location = new System.Drawing.Point(258, 379);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(86, 15);
+            this.label29.TabIndex = 85;
+            this.label29.Text = "Vencimiento";
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(10, 475);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
+            this.textBox5.Size = new System.Drawing.Size(100, 22);
+            this.textBox5.TabIndex = 86;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(128, 475);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
+            this.textBox6.Size = new System.Drawing.Size(100, 22);
+            this.textBox6.TabIndex = 87;
+            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(128, 412);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.ReadOnly = true;
+            this.textBox7.Size = new System.Drawing.Size(100, 22);
+            this.textBox7.TabIndex = 88;
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(261, 475);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(100, 22);
+            this.textBox8.TabIndex = 89;
+            // 
+            // dateTimePicker7
+            // 
+            this.dateTimePicker7.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker7.Location = new System.Drawing.Point(261, 412);
+            this.dateTimePicker7.Name = "dateTimePicker7";
+            this.dateTimePicker7.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePicker7.TabIndex = 90;
+            // 
+            // button9
+            // 
+            this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button9.Location = new System.Drawing.Point(522, 401);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(123, 65);
+            this.button9.TabIndex = 91;
+            this.button9.Text = "Guardar";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(10, 412);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.ReadOnly = true;
+            this.textBox9.Size = new System.Drawing.Size(100, 22);
+            this.textBox9.TabIndex = 93;
+            // 
+            // label22
+            // 
+            this.label22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(14, 379);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(35, 15);
+            this.label22.TabIndex = 92;
+            this.label22.Text = "Lote";
             // 
             // UILogistica
             // 
@@ -788,5 +941,18 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.DateTimePicker dateTimePicker7;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.Label label22;
     }
 }
