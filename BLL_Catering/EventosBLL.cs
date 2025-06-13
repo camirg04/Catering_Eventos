@@ -71,6 +71,19 @@ namespace BLL_Catering
             }
         }
 
+        public int ActualizarEstadoEvento(int idEvento, string nuevoEstado)
+        {
+            try
+            {
+                return _eventosDAL.ActualizarEstadoEvento(idEvento, nuevoEstado);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex);
+                throw;
+            }
+        }
+
 
 
     }

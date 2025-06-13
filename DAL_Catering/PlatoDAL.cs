@@ -255,5 +255,72 @@ namespace DAL_Catering
 
 
         }
+
+
+        public List<Plato> BuscarPlatosPorMenu(int idMenu)
+        {
+            try
+            {
+                var idPlatos = new List<int>();
+                SqlParameter[] parametros = new SqlParameter[]
+                    {
+                new SqlParameter("@id_menu", SqlDbType.BigInt, 50) { Value = idMenu }
+                    };
+                var dt = conexion.LeerPorStoreProcedure("sp_ObtenerPlatosPorMenu", parametros);
+
+
+                // Si no hay resultados, retornar null
+                if (dt?.Rows.Count == 0)
+                    return null;
+
+                foreach (DataRow row in dt.Rows)
+                {
+                   idPlatos.Add(Convert.ToInt32(row["id_plato"]));
+                }
+
+                var platos = new List<Plato>();
+
+                foreach(var id in idPlatos)
+                {
+                    var plato = new Plato();
+                    var ingredientes = new List<PlatoInsumo>();
+                    plato.IdPlato = id;
+                    parametros = new SqlParameter[]
+                    {
+                        new SqlParameter("@id_plato", SqlDbType.BigInt, 50) { Value = idMenu }
+                    };
+                    dt = conexion.LeerPorStoreProcedure("sp_ObtenerIngredientesPlatoPorPlato", parametros);
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        PlatoInsumo platoInsumo = new PlatoInsumo();
+                        platoInsumo.Insumo = new Insumo();
+                        platoInsumo.IdPlatoInsumo = Convert.ToInt32(row["id_plato_insumo"]);
+                        platoInsumo.Insumo.IdInsumo = Convert.ToInt32(row["id_insumo"]);
+                        platoInsumo.CantidadNecesaria = Convert.ToDecimal(row["cantidad_necesaria"]);
+                        platoInsumo.Insumo.Nombre = row["nombre_insumo"].ToString();
+                        platoInsumo.Insumo.UnidadMedida = row["unidad_medida"].ToString();
+                        platoInsumo.Insumo.Perecedero = Convert.ToBoolean(Convert.ToInt32(row["perecedero"]));
+                        platoInsumo.Insumo.FechaBaja = row["insumo_fecha_baja"] as DateTime?;
+                        platoInsumo.Insumo.StockMinimo = Convert.ToDecimal(row["stock_minimo"]);
+                        ingredientes.Add(platoInsumo);
+                    }
+                    plato.ListaInsumos = ingredientes;
+                    platos.Add(plato);
+                }
+                return platos;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al buscar platos por menú en DAL");
+                throw;
+            }
+
+
+        }
+
+
+
+
     }
 }

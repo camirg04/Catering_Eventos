@@ -56,16 +56,16 @@
             this.button4 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.cbEditarEstadoEvento = new System.Windows.Forms.ComboBox();
             this.fechaHastaEvento = new System.Windows.Forms.DateTimePicker();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.fechaDesdeEvento = new System.Windows.Forms.DateTimePicker();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnBuscarEventos = new System.Windows.Forms.Button();
             this.cbEstadoEvento = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.dgvEventos = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -119,6 +119,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(815, 451);
             this.tabControl1.TabIndex = 1;
+            this.tabControl1.Click += new System.EventHandler(this.tabControl1_Click);
             // 
             // tabPage1
             // 
@@ -439,16 +440,16 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.cbEditarEstadoEvento);
             this.tabPage3.Controls.Add(this.fechaHastaEvento);
             this.tabPage3.Controls.Add(this.label13);
             this.tabPage3.Controls.Add(this.label12);
             this.tabPage3.Controls.Add(this.fechaDesdeEvento);
-            this.tabPage3.Controls.Add(this.button5);
+            this.tabPage3.Controls.Add(this.btnBuscarEventos);
             this.tabPage3.Controls.Add(this.cbEstadoEvento);
             this.tabPage3.Controls.Add(this.label8);
             this.tabPage3.Controls.Add(this.label9);
             this.tabPage3.Controls.Add(this.label11);
-            this.tabPage3.Controls.Add(this.button7);
             this.tabPage3.Controls.Add(this.button8);
             this.tabPage3.Controls.Add(this.dgvEventos);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -457,11 +458,23 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Eventos";
             this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
+            // 
+            // cbEditarEstadoEvento
+            // 
+            this.cbEditarEstadoEvento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbEditarEstadoEvento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbEditarEstadoEvento.FormattingEnabled = true;
+            this.cbEditarEstadoEvento.Location = new System.Drawing.Point(672, 22);
+            this.cbEditarEstadoEvento.Margin = new System.Windows.Forms.Padding(2);
+            this.cbEditarEstadoEvento.Name = "cbEditarEstadoEvento";
+            this.cbEditarEstadoEvento.Size = new System.Drawing.Size(125, 21);
+            this.cbEditarEstadoEvento.TabIndex = 31;
             // 
             // fechaHastaEvento
             // 
             this.fechaHastaEvento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.fechaHastaEvento.Location = new System.Drawing.Point(670, 271);
+            this.fechaHastaEvento.Location = new System.Drawing.Point(670, 274);
             this.fechaHastaEvento.Margin = new System.Windows.Forms.Padding(2);
             this.fechaHastaEvento.Name = "fechaHastaEvento";
             this.fechaHastaEvento.Size = new System.Drawing.Size(125, 20);
@@ -484,7 +497,7 @@
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(672, 222);
+            this.label12.Location = new System.Drawing.Point(672, 219);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(43, 13);
@@ -500,23 +513,24 @@
             this.fechaDesdeEvento.Size = new System.Drawing.Size(125, 20);
             this.fechaDesdeEvento.TabIndex = 26;
             // 
-            // button5
+            // btnBuscarEventos
             // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(691, 301);
-            this.button5.Margin = new System.Windows.Forms.Padding(2);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(86, 24);
-            this.button5.TabIndex = 25;
-            this.button5.Text = "Buscar";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnBuscarEventos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBuscarEventos.Location = new System.Drawing.Point(691, 301);
+            this.btnBuscarEventos.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBuscarEventos.Name = "btnBuscarEventos";
+            this.btnBuscarEventos.Size = new System.Drawing.Size(86, 24);
+            this.btnBuscarEventos.TabIndex = 25;
+            this.btnBuscarEventos.Text = "Buscar";
+            this.btnBuscarEventos.UseVisualStyleBackColor = true;
+            this.btnBuscarEventos.Click += new System.EventHandler(this.btnBuscarEventos_Click);
             // 
             // cbEstadoEvento
             // 
             this.cbEstadoEvento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbEstadoEvento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbEstadoEvento.FormattingEnabled = true;
-            this.cbEstadoEvento.Location = new System.Drawing.Point(670, 168);
+            this.cbEstadoEvento.Location = new System.Drawing.Point(670, 169);
             this.cbEstadoEvento.Margin = new System.Windows.Forms.Padding(2);
             this.cbEstadoEvento.Name = "cbEstadoEvento";
             this.cbEstadoEvento.Size = new System.Drawing.Size(125, 21);
@@ -527,7 +541,7 @@
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(672, 199);
+            this.label8.Location = new System.Drawing.Point(672, 195);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(46, 15);
@@ -539,7 +553,7 @@
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(699, 88);
+            this.label9.Location = new System.Drawing.Point(677, 122);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(104, 15);
@@ -551,34 +565,24 @@
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(668, 154);
+            this.label11.Location = new System.Drawing.Point(668, 149);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(51, 15);
             this.label11.TabIndex = 18;
             this.label11.Text = "Estado";
             // 
-            // button7
-            // 
-            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button7.Location = new System.Drawing.Point(670, 46);
-            this.button7.Margin = new System.Windows.Forms.Padding(2);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(136, 24);
-            this.button7.TabIndex = 16;
-            this.button7.Text = "Agregar";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
             // button8
             // 
             this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button8.Location = new System.Drawing.Point(670, 17);
+            this.button8.Location = new System.Drawing.Point(668, 49);
             this.button8.Margin = new System.Windows.Forms.Padding(2);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(136, 24);
             this.button8.TabIndex = 17;
-            this.button8.Text = "Ver detalle";
+            this.button8.Text = "Editar estado";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // dgvEventos
             // 
@@ -591,6 +595,7 @@
             this.dgvEventos.Name = "dgvEventos";
             this.dgvEventos.Size = new System.Drawing.Size(662, 430);
             this.dgvEventos.TabIndex = 14;
+            this.dgvEventos.SelectionChanged += new System.EventHandler(this.dgvEventos_SelectionChanged);
             // 
             // tabPage4
             // 
@@ -620,6 +625,7 @@
             this.button6.TabIndex = 40;
             this.button6.Text = "Buscar";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // label16
             // 
@@ -918,12 +924,10 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnBuscarEventos;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
         private System.Windows.Forms.DataGridView dgvEventos;
         private System.Windows.Forms.DateTimePicker fechaDesdeEvento;
         private System.Windows.Forms.Label label13;
@@ -964,5 +968,7 @@
         private System.Windows.Forms.DateTimePicker dateTimeDesdeAlerta;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.ComboBox cbEstadoEvento;
+        private System.Windows.Forms.ComboBox cbEditarEstadoEvento;
+        private System.Windows.Forms.Button button8;
     }
 }

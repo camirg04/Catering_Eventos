@@ -66,6 +66,22 @@ namespace BLL_Catering
                 throw ex;
             }
            
+
+        }
+
+
+        public List<Plato> BuscarPlatosPorMenu(int idMenu)
+        {
+            try
+            {
+                return _platoDAL.BuscarPlatosPorMenu(idMenu);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al filtrar platos en BLL");
+                throw ex;
+            }
+
         }
 
 

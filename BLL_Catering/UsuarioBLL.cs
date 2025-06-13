@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using DAL_Catering;
@@ -72,6 +73,20 @@ namespace BLL_Catering
                 throw ex;
             }
 
+        }
+
+
+        public List<string> ObtenerMailsLogisticaChefs()
+        {
+            try
+            {
+               return _empleadosDal.ObtenerMailsLogisticaChefs();
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al buscar mails en BLL");
+                throw ex;
+            }
         }
 
     }

@@ -42,8 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlertaStock.cs" />
+    <Compile Include="CalculoStock.cs" />
     <Compile Include="Chef.cs" />
     <Compile Include="Cliente.cs" />
+    <Compile Include="EstadoEvento.cs" />
     <Compile Include="Evento.cs" />
     <Compile Include="EventoEntity.cs" />
     <Compile Include="Insumo.cs" />
