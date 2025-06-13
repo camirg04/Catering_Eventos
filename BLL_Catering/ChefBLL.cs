@@ -178,7 +178,7 @@ namespace BLL_Catering
             {
                 try
                 {
-                    //EnviarMailSock(stockNecesario);
+                    EnviarMailSock(stockNecesario);
                     Console.WriteLine("Se enviaron los mails");
                 }
                 catch (Exception ex)
