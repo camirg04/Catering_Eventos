@@ -31,6 +31,11 @@ namespace BLL_Catering
             return true;
 
         }
+        public bool AddPedidoInsumoBll(int idPedidoInsumo, int idInsumo, DateTime fecha_pedido, string estado, Decimal cantidad, int idUsuario)
+        {
+            _pedidoInsumoDAL.AddPedidoInsumoDAL(idPedidoInsumo, idInsumo, fecha_pedido, estado, cantidad, idUsuario);
+            return true;
+        }
 
     }
 }

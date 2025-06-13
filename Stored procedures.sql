@@ -659,3 +659,23 @@ BEGIN
  
 END;
 
+USE [CATERINGDB]
+GO
+/****** Object:  StoredProcedure [dbo].[ActualizarStockLote]    Script Date: 13/06/2025 16:37:34 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[ActualizarCostoyFechaLote]
+    @idLote INT,
+    @costo DECIMAL(18, 2),
+	@fecha_vence date
+AS
+BEGIN
+    UPDATE lotes_insumo
+    SET costo_unitario = @costo,fecha_vencimiento = @fecha_vence
+    WHERE id_lote = @idLote
+END
+
+
+

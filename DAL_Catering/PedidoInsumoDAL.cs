@@ -81,5 +81,30 @@ namespace DAL_Catering
             return true;
 
         }
+
+        public bool AddPedidoInsumoDAL(int idPedidoInsumo, int idInsumo, DateTime fecha_pedido, string estado, Decimal cantidad, int idUsuario)
+        {
+
+            try
+            {
+                SqlParameter[] parametros = new SqlParameter[]
+                {
+                    new SqlParameter("id_pedido_insumo", idPedidoInsumo) ,
+                    new SqlParameter("id_insumo", idInsumo) ,
+                    new SqlParameter("cantidad", cantidad) ,
+                    new SqlParameter("fecha_pedido", fecha_pedido) ,
+                    new SqlParameter("estado_pedido", estado) ,
+                    new SqlParameter("id_usuario_pedido", idUsuario)
+                };
+
+                conexion.EscribirPorStoreProcedure("AddPedidosDeInsumos", parametros);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+
+            return true;
+        }
     }
 }

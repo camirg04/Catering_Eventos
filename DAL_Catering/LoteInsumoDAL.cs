@@ -157,6 +157,26 @@ namespace DAL_Catering
             }
         }
 
+        public int ActualizarCostoFechaLote(int idLote, decimal costo, DateTime vence)
+        {
+            try
+            {
+                SqlParameter[] parametros = new SqlParameter[]
+                {
+                    new SqlParameter("IdLote", idLote),
+                    new SqlParameter("costo", costo),
+                    new SqlParameter("fecha_vence", vence)
+                };
+
+                return conexion.EscribirPorStoreProcedure("ActualizarCostoyFechaLote", parametros);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, $"Error al actualizar la cantidad del lote con ID {idLote}");
+                throw;
+            }
+        }
+
         public List<LoteInsumo> BuscarLotePorId(int idInsumo, string fechaIngresoInicio, string fechaIngresoFin)
         {
 
