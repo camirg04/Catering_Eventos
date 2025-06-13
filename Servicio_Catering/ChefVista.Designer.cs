@@ -768,7 +768,7 @@
             this.label23.Location = new System.Drawing.Point(669, 132);
             this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(51, 15);
+            this.label23.Size = new System.Drawing.Size(61, 18);
             this.label23.TabIndex = 49;
             this.label23.Text = "Estado";
             // 
@@ -780,7 +780,7 @@
             this.label18.Location = new System.Drawing.Point(669, 262);
             this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(39, 13);
+            this.label18.Size = new System.Drawing.Size(44, 15);
             this.label18.TabIndex = 48;
             this.label18.Text = "Hasta";
             // 
@@ -814,7 +814,7 @@
             this.label19.Location = new System.Drawing.Point(673, 210);
             this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(43, 13);
+            this.label19.Size = new System.Drawing.Size(48, 15);
             this.label19.TabIndex = 46;
             this.label19.Text = "Desde";
             // 
@@ -826,7 +826,7 @@
             this.label21.Location = new System.Drawing.Point(704, 66);
             this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(93, 15);
+            this.label21.Size = new System.Drawing.Size(108, 18);
             this.label21.TabIndex = 42;
             this.label21.Text = "Filtrar alertas";
             // 
@@ -847,7 +847,7 @@
             this.label20.Location = new System.Drawing.Point(673, 183);
             this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(46, 15);
+            this.label20.Size = new System.Drawing.Size(54, 18);
             this.label20.TabIndex = 43;
             this.label20.Text = "Fecha";
             // 

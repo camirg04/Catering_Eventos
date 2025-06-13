@@ -116,20 +116,21 @@ namespace Servicio_Catering
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            try {
+            try
+            {
                 ObtenerPlatosFiltro();
             }
             catch (Exception ex)
             {
                 logger.Error(ex, "Error al buscar platos en UI");
                 MessageBox.Show("Error al buscar platos");
-            }            
+            }
         }
 
         private void agregarPlato_Click(object sender, EventArgs e)
         {
             Plato plato = new Plato();
-            PlatoDetalle platoDetalle = new PlatoDetalle(plato,"agregar");
+            PlatoDetalle platoDetalle = new PlatoDetalle(plato, "agregar");
             platoDetalle.ShowDialog();
             ObtenerPlatosFiltro();
         }
@@ -160,7 +161,7 @@ namespace Servicio_Catering
             {
                 var estado = row.Cells["Severidad"].Value?.ToString();
 
-                if (estado == "Crítica")
+                if (estado != "Crítica")
                 {
                     critico = true;
                 }
@@ -171,7 +172,7 @@ namespace Servicio_Catering
             {
                 MessageBox.Show("¡Tiene " + item + " en estado crítico!");
             }
-        
+
         }
 
         private void dgvAlertas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

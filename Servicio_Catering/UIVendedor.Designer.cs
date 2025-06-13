@@ -88,6 +88,7 @@
             this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabCliente = new System.Windows.Forms.TabPage();
             this.gb_mod_cliente = new System.Windows.Forms.GroupBox();
+            this.textBox13 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button3 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
@@ -119,7 +120,6 @@
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.crearClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBox13 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabEvento.SuspendLayout();
             this.gb_mod_evento.SuspendLayout();
@@ -140,7 +140,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 1);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(567, 516);
+            this.tabControl1.Size = new System.Drawing.Size(566, 516);
             this.tabControl1.TabIndex = 0;
             // 
             // tabEvento
@@ -151,7 +151,7 @@
             this.tabEvento.Location = new System.Drawing.Point(4, 25);
             this.tabEvento.Name = "tabEvento";
             this.tabEvento.Padding = new System.Windows.Forms.Padding(3);
-            this.tabEvento.Size = new System.Drawing.Size(559, 487);
+            this.tabEvento.Size = new System.Drawing.Size(558, 487);
             this.tabEvento.TabIndex = 0;
             this.tabEvento.Text = "Evento";
             this.tabEvento.UseVisualStyleBackColor = true;
@@ -184,7 +184,7 @@
             this.gb_mod_evento.Controls.Add(this.label41);
             this.gb_mod_evento.Controls.Add(this.textBox32);
             this.gb_mod_evento.Controls.Add(this.textBox33);
-            this.gb_mod_evento.Location = new System.Drawing.Point(18, 37);
+            this.gb_mod_evento.Location = new System.Drawing.Point(18, 31);
             this.gb_mod_evento.Name = "gb_mod_evento";
             this.gb_mod_evento.Size = new System.Drawing.Size(519, 450);
             this.gb_mod_evento.TabIndex = 25;
@@ -198,6 +198,7 @@
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(140, 24);
             this.comboBox6.TabIndex = 27;
+            this.comboBox6.Leave += new System.EventHandler(this.comboBox6_Leave);
             // 
             // comboBox5
             // 
@@ -206,6 +207,7 @@
             this.comboBox5.Name = "comboBox5";
             this.comboBox5.Size = new System.Drawing.Size(200, 24);
             this.comboBox5.TabIndex = 27;
+            this.comboBox5.Leave += new System.EventHandler(this.comboBox5_Leave);
             // 
             // dataGridView2
             // 
@@ -274,6 +276,7 @@
             this.textBox25.Name = "textBox25";
             this.textBox25.Size = new System.Drawing.Size(100, 22);
             this.textBox25.TabIndex = 19;
+            this.textBox25.Leave += new System.EventHandler(this.textBox25_Leave);
             // 
             // label32
             // 
@@ -308,6 +311,7 @@
             this.textBox27.Name = "textBox27";
             this.textBox27.Size = new System.Drawing.Size(40, 22);
             this.textBox27.TabIndex = 15;
+            this.textBox27.Leave += new System.EventHandler(this.textBox27_Leave);
             // 
             // label34
             // 
@@ -322,6 +326,7 @@
             // 
             this.textBox28.Location = new System.Drawing.Point(176, 344);
             this.textBox28.Name = "textBox28";
+            this.textBox28.ReadOnly = true;
             this.textBox28.Size = new System.Drawing.Size(100, 22);
             this.textBox28.TabIndex = 13;
             // 
@@ -462,6 +467,7 @@
             this.comboBox4.Size = new System.Drawing.Size(140, 24);
             this.comboBox4.TabIndex = 26;
             this.comboBox4.SelectionChangeCommitted += new System.EventHandler(this.comboBox4_SelectionChangeCommitted);
+            this.comboBox4.Leave += new System.EventHandler(this.comboBox4_Leave);
             // 
             // comboBox3
             // 
@@ -471,6 +477,7 @@
             this.comboBox3.Size = new System.Drawing.Size(200, 24);
             this.comboBox3.TabIndex = 25;
             this.comboBox3.SelectionChangeCommitted += new System.EventHandler(this.comboBox3_SelectionChangeCommitted);
+            this.comboBox3.Leave += new System.EventHandler(this.comboBox3_Leave);
             // 
             // button1
             // 
@@ -530,6 +537,7 @@
             this.textBox24.Size = new System.Drawing.Size(100, 22);
             this.textBox24.TabIndex = 19;
             this.textBox24.TextChanged += new System.EventHandler(this.textBox24_TextChanged);
+            this.textBox24.Leave += new System.EventHandler(this.textBox24_Leave);
             // 
             // label25
             // 
@@ -564,6 +572,7 @@
             this.textBox22.Name = "textBox22";
             this.textBox22.Size = new System.Drawing.Size(40, 22);
             this.textBox22.TabIndex = 15;
+            this.textBox22.Leave += new System.EventHandler(this.textBox22_Leave);
             // 
             // label23
             // 
@@ -578,6 +587,7 @@
             // 
             this.textBox21.Location = new System.Drawing.Point(173, 287);
             this.textBox21.Name = "textBox21";
+            this.textBox21.ReadOnly = true;
             this.textBox21.Size = new System.Drawing.Size(100, 22);
             this.textBox21.TabIndex = 13;
             this.textBox21.TextChanged += new System.EventHandler(this.textBox21_TextChanged);
@@ -687,7 +697,7 @@
             this.modificarToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(3, 3);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(553, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(552, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -713,7 +723,7 @@
             this.tabCliente.Location = new System.Drawing.Point(4, 25);
             this.tabCliente.Name = "tabCliente";
             this.tabCliente.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCliente.Size = new System.Drawing.Size(559, 487);
+            this.tabCliente.Size = new System.Drawing.Size(558, 487);
             this.tabCliente.TabIndex = 1;
             this.tabCliente.Text = "Cliente";
             this.tabCliente.UseVisualStyleBackColor = true;
@@ -735,12 +745,22 @@
             this.gb_mod_cliente.Controls.Add(this.textBox9);
             this.gb_mod_cliente.Controls.Add(this.textBox11);
             this.gb_mod_cliente.Controls.Add(this.textBox12);
-            this.gb_mod_cliente.Location = new System.Drawing.Point(45, 46);
+            this.gb_mod_cliente.Location = new System.Drawing.Point(53, 46);
             this.gb_mod_cliente.Name = "gb_mod_cliente";
             this.gb_mod_cliente.Size = new System.Drawing.Size(455, 430);
             this.gb_mod_cliente.TabIndex = 18;
             this.gb_mod_cliente.TabStop = false;
             this.gb_mod_cliente.Text = "Modificar Cliente";
+            this.gb_mod_cliente.Enter += new System.EventHandler(this.gb_mod_cliente_Enter);
+            // 
+            // textBox13
+            // 
+            this.textBox13.Location = new System.Drawing.Point(178, 244);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.ReadOnly = true;
+            this.textBox13.Size = new System.Drawing.Size(100, 22);
+            this.textBox13.TabIndex = 19;
+            this.textBox13.Visible = false;
             // 
             // dataGridView1
             // 
@@ -886,7 +906,7 @@
             // 
             // btnCrearC
             // 
-            this.btnCrearC.Location = new System.Drawing.Point(104, 213);
+            this.btnCrearC.Location = new System.Drawing.Point(141, 213);
             this.btnCrearC.Name = "btnCrearC";
             this.btnCrearC.Size = new System.Drawing.Size(84, 35);
             this.btnCrearC.TabIndex = 17;
@@ -999,7 +1019,7 @@
             this.modificarToolStripMenuItem1});
             this.menuStrip2.Location = new System.Drawing.Point(3, 3);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(553, 28);
+            this.menuStrip2.Size = new System.Drawing.Size(552, 28);
             this.menuStrip2.TabIndex = 0;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -1017,20 +1037,11 @@
             this.modificarToolStripMenuItem1.Text = "Modificar";
             this.modificarToolStripMenuItem1.Click += new System.EventHandler(this.modificarToolStripMenuItem1_Click);
             // 
-            // textBox13
-            // 
-            this.textBox13.Location = new System.Drawing.Point(178, 244);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.ReadOnly = true;
-            this.textBox13.Size = new System.Drawing.Size(100, 22);
-            this.textBox13.TabIndex = 19;
-            this.textBox13.Visible = false;
-            // 
             // UIVendedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(568, 514);
+            this.ClientSize = new System.Drawing.Size(567, 514);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
