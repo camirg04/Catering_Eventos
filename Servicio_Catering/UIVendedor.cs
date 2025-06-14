@@ -7,6 +7,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,381 +20,113 @@ namespace Servicio_Catering
         private Usuario Vendedor;
         private List<Menus> MenusVende = new List<Menus>();
         private List<Cliente> ClienteVende = new List<Cliente>();
-        private List<Evento> eventos1 = new List<Evento>();
-
+        private List<Evento> eventosLista = new List<Evento>();
+        private MenusBLL _menu = new MenusBLL();
+        private ClienteBLL _cliente = new ClienteBLL();
+        private EventosBLL _evento = new EventosBLL();
         public UIVendedor(Usuario user)
         {
             InitializeComponent();
-
             Vendedor = user;
-
-            BLL_Catering.MenusBLL Menu = new MenusBLL();
-            BLL_Catering.ClienteBLL cliente = new ClienteBLL();
-            EventosBLL eventos = new EventosBLL();
-
-
-
-            MenusVende.AddRange(Menu.ListarMenus());
-            this.comboBox3.DataSource = MenusVende.ToList();
-            this.comboBox3.DisplayMember = "Nombre";
-            this.comboBox3.ValueMember = "IdMenu";
-            this.comboBox3.SelectedIndex = -1;
-
-            this.comboBox5.DataSource = MenusVende.ToList();
-            this.comboBox5.DisplayMember = "Nombre";
-            this.comboBox5.ValueMember = "IdMenu";
-            this.comboBox5.SelectedIndex = -1;
-
-            ClienteVende.AddRange(cliente.ListarClientes());
-            this.comboBox4.DataSource = ClienteVende.ToList();
-            this.comboBox4.DisplayMember = "Nombre";
-            this.comboBox4.ValueMember = "Id";
-            this.comboBox4.SelectedIndex = -1;
-
-            this.comboBox6.DataSource = ClienteVende.ToList();
-            this.comboBox6.DisplayMember = "Nombre";
-            this.comboBox6.ValueMember = "Id";
-            this.comboBox6.SelectedIndex = -1;
-
-
-
-            eventos1.AddRange(eventos.ListarEventos());
-
+            eventosLista.AddRange(_evento.ListarEventos());
         }
 
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void UIVendedor_Load(object sender, EventArgs e)
         {
+            /*PANTALLA CARGA EVENTO*/
             gb_crea_evento.Visible = false;
             gb_mod_evento.Visible = false;
             gb_crear_cliente.Visible = false;
             gb_mod_cliente.Visible = false;
+            /*PANTALLA CARGA EVENTO*/
         }
 
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void cotizarEventoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void moToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        /*INICI PANTALLA EVENTO*/
         private void cotizarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            gb_crea_evento.Visible = true;
-            gb_mod_evento.Visible = false;
-            textBox23.Text = Vendedor.IdUsuario.ToString();
-            int cantidad = eventos1[eventos1.Count()-1].Id;
+            try
+            {
+                /*PANTALLA CREAR EVENTO*/
+                gb_crea_evento.Visible = true;
+                gb_mod_evento.Visible = false;
+                textBox23.Text = Vendedor.IdUsuario.ToString();
+                int cantidad = eventosLista[eventosLista.Count() - 1].Id;
+                textBox16.Text = (cantidad + 1).ToString();
+                comboBox6.SelectedIndex = -1;
 
-            textBox16.Text = (cantidad + 1).ToString();
-            comboBox6.SelectedIndex = -1;
 
+                /*COMBO BOX CLIENTES*/
+                ClienteVende.Clear();
+                ClienteVende.AddRange(_cliente.ListarClientes());
+                this.comboBox4.DataSource = ClienteVende.ToList();
+                this.comboBox4.DisplayMember = "Nombre";
+                this.comboBox4.ValueMember = "Id";
+                this.comboBox4.SelectedIndex = -1;
 
-            /* try
-             {
-                 EventosBLL eventos = new EventosBLL();
-                 List<Evento> eventos1 = eventos.ListarEventos();
-
-                 int cantidad = eventos1.Count;
-                 gb_crea_evento.Visible = true;
-                 gb_mod_evento.Visible = false;
-                 textBox23.Text = Vendedor.IdUsuario.ToString();
-                 textBox16.Text = (cantidad + 1).ToString();
-             }
-             catch (Exception ex) { 
-                 MessageBox.Show(ex.Message);
-             }*/
+                /*COMBO BOX MENUS*/
+                MenusVende.Clear();
+                MenusVende.AddRange(_menu.ListarMenus());
+                this.comboBox3.DataSource = MenusVende.ToList();
+                this.comboBox3.DisplayMember = "Nombre";
+                this.comboBox3.ValueMember = "IdMenu";
+                this.comboBox3.SelectedIndex = -1;
+                /*PANTALLA CREAR EVENTO*/
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
         }
 
+        /*INICIA PANTALLA MUESTRA CREAR CLIENTE*/
         private void crearClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             gb_crear_cliente.Visible = true;
             gb_mod_cliente.Visible = false;
         }
 
-        private void nuevoEventoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
-        }
-
+        /*INICIA PANTALLA MODIFICAR EVENTO*/
         private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             gb_crea_evento.Visible = false;
             gb_mod_evento.Visible = true;
-            dataGridView2.DataSource = eventos1.ToList();
+            /*CARGAMOS GRID*/
+            eventosLista.Clear();
+            eventosLista.AddRange(_evento.ListarEventos());
+            dataGridView2.DataSource = eventosLista.ToList();
             comboBox4.SelectedIndex = -1;
-            //EventosBLL eventoguardar = new EventosBLL();
+            /*COMBO BOX MENUS*/
+            MenusVende.Clear();
+            MenusVende.AddRange(_menu.ListarMenus());
+            this.comboBox5.DataSource = MenusVende.ToList();
+            this.comboBox5.DisplayMember = "Nombre";
+            this.comboBox5.ValueMember = "IdMenu";
+            this.comboBox5.SelectedIndex = -1;
+            /*COMBO BOX CLIENTES*/
+            ClienteVende.Clear();
+            ClienteVende.AddRange(_cliente.ListarClientes());
+            this.comboBox6.DataSource = ClienteVende.ToList();
+            this.comboBox6.DisplayMember = "Nombre";
+            this.comboBox6.ValueMember = "Id";
+            this.comboBox6.SelectedIndex = -1;
+            /*PANTALLA MODIFICAR EVENTO*/
         }
 
-        private void label16_Click(object sender, EventArgs e)
-        {
 
-        }
 
-        private void label22_Click(object sender, EventArgs e)
-        {
+        // COMIENZA CLIENTES
 
-        }
-
-        private void textBox21_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label21_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox20_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label25_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox24_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        // INICIA PANTALLA CLIENTE
         private void modificarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             gb_crear_cliente.Visible = false;
             gb_mod_cliente.Visible = true;
+            ClienteVende.Clear();
+            ClienteVende.AddRange(_cliente.ListarClientes());
             dataGridView1.DataSource = ClienteVende.ToList();
         }
 
-        private void textBox26_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox33_LostFocus(object sender, EventArgs e)
-        {
-            //EventosBLL eventosObtener = new EventosBLL();
-
-            //List<Evento> evento = eventosObtener.OneEvento(Int32.Parse(textBox33.Text));
-            ////MessageBox.Show(evento[0].Fecha.ToString());
-            //if (evento.Count != 0)
-            //{
-
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Evento no encontrado");
-            //}
-
-        }
-
-        private void textBox33_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox33_Leave(object sender, EventArgs e)
-        {
-            /*EventosBLL eventosObtener = new EventosBLL();
-
-            try
-            {
-                List<Evento> evento = eventosObtener.OneEvento(Int32.Parse(textBox33.Text));
-                if (evento.Count != 0)
-                {
-                    textBox25.Text = evento[0].Id.ToString();
-                    textBox26.Text = evento[0].IdUsuarioVenta.ToString();
-                    textBox27.Text = evento[0].CantidadPersonas.ToString();
-                    textBox28.Text = evento[0].Total.ToString();
-                    textBox29.Text = evento[0].Localidad.ToString();
-                    textBox30.Text = evento[0].IdMenu.ToString();
-                    textBox31.Text = evento[0].IdCliente.ToString();
-                    textBox32.Text = evento[0].Direccion.ToString();
-                    //comboBox2.SelectedIndex = evento[0].Pago;
-                    dateTimePicker2.Value = DateTime.Parse(evento[0].Fecha.ToString());
-                }
-                else
-                {
-                    MessageBox.Show("Evento no encontrado");
-                }
-            }
-            catch (Exception ex)
-            { 
-            
-                    MessageBox.Show(ex.Message);
-
-            }*/
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-            EventosBLL eventoguardar = new EventosBLL();
-
-            try
-            {
-                Evento evento = new Evento(DateTime.Parse(dateTimePicker1.Text), float.Parse(textBox24.Text), textBox17.Text, textBox20.Text, "PENDIENTE", int.Parse(textBox22.Text), float.Parse(textBox21.Text), comboBox1.Text == "si" ? 1 : 0, int.Parse(textBox23.Text), int.Parse(this.comboBox3.SelectedValue.ToString()), int.Parse(this.comboBox4.SelectedValue.ToString()));
-                eventoguardar.AddEvento(evento);
-                //(cantidad + 1).ToString()
-                evento.Id = int.Parse(textBox16.Text.ToString());
-                eventos1.Add(evento);
-                MessageBox.Show("Evento generado");
-                textBox24.Text = "";
-                textBox17.Text = "";
-                textBox20.Text = "";
-                textBox22.Text = "";
-                textBox21.Text = "";
-                comboBox1.Text = "";
-                this.comboBox3.SelectedIndex = -1;
-                this.comboBox4.SelectedIndex = -1;
-                textBox16.Text = (int.Parse(textBox16.Text.ToString()) + 1).ToString();
-            }
-            catch (Exception ex)
-            {
-                //MessageBox.Show(ex.Message);
-                MessageBox.Show("Hubo un error en guardar los datos");
-            }
-
-
-
-            /*EventosBLL eventoguardar = new EventosBLL();
-            //int idEvento, DateTime fecha,  string direccion, string localidad, string estado, float totalEstimado, int cantidadPersonas,  int descuentoAplicado, int pago, int id_usuario_venta, int idMenu, int idCliente
-            try
-            {
-                Evento evento = new Evento(DateTime.Parse(dateTimePicker1.Text), float.Parse(textBox24.Text), textBox17.Text, textBox17.Text, "PENDIENTE", int.Parse(textBox22.Text), float.Parse(textBox21.Text), comboBox1.Text == "SI" ? 1 : 0, int.Parse(textBox23.Text), int.Parse(textBox19.Text), int.Parse(textBox18.Text));
-                eventoguardar.AddEvento(evento);
-            }
-            catch (Exception ex)
-            {
-                //MessageBox.Show(ex.Message);
-                MessageBox.Show("Hubo un error en guardar los datos");
-            }*/
-        }
-
-        private void comboBox4_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            //MessageBox.Show(this.comboBox4.SelectedValue.ToString());
-            foreach(Cliente clienteOne in ClienteVende)
-            {
-                if (clienteOne.Id == int.Parse(this.comboBox4.SelectedValue.ToString()))
-                {
-                    this.textBox17.Text = clienteOne.Direccion.ToString();
-                }
-            }
-            
-        }
-
-        private void comboBox3_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            //MessageBox.Show(this.comboBox3.SelectedValue.ToString());
-
-        }
-
-        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                if (e.RowIndex != -1 )
-                {
-                    Evento eventoRelleno = new Evento();
-                    //eventoRelleno = dataGridView2.Rows[e.RowIndex].Cells["Id"].Value as Evento;
-
-
-                    //int idEvento, DateTime fecha,  string direccion, string localidad, string estado, float totalEstimado, int cantidadPersonas,  int descuentoAplicado, int pago, int id_usuario_venta, int idMenu, int idCliente
-                    this.comboBox5.SelectedValue = int.Parse(dataGridView2.Rows[e.RowIndex].Cells["IdMenu"].Value.ToString());
-                    this.comboBox6.SelectedValue = int.Parse(dataGridView2.Rows[e.RowIndex].Cells["IdCliente"].Value.ToString());
-                    this.comboBox2.SelectedIndex = int.Parse(dataGridView2.Rows[e.RowIndex].Cells["Pago"].Value.ToString());
-
-                    textBox33.Text = dataGridView2.Rows[e.RowIndex].Cells["Id"].Value.ToString();
-                    dateTimePicker2.Text = dataGridView2.Rows[e.RowIndex].Cells["Fecha"].Value.ToString();
-                    textBox26.Text = dataGridView2.Rows[e.RowIndex].Cells["IdUsuarioVenta"].Value.ToString();
-                    textBox27.Text = dataGridView2.Rows[e.RowIndex].Cells["CantidadPersonas"].Value.ToString();
-                    textBox32.Text = dataGridView2.Rows[e.RowIndex].Cells["Direccion"].Value.ToString();
-                    textBox29.Text = dataGridView2.Rows[e.RowIndex].Cells["Localidad"].Value.ToString();
-                    textBox25.Text = dataGridView2.Rows[e.RowIndex].Cells["DescuentoAplicado"].Value.ToString();
-                    textBox28.Text = dataGridView2.Rows[e.RowIndex].Cells["Total"].Value.ToString();
-
-
-                }
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"{ex.Message}");
-            }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Evento evento = new Evento(DateTime.Parse(dateTimePicker2.Text), float.Parse(textBox25.Text), textBox32.Text, textBox29.Text, "PENDIENTE", int.Parse(textBox27.Text), float.Parse(textBox28.Text),
-                comboBox2.Text == "si" ? 1 : 0, int.Parse(textBox26.Text), int.Parse(this.comboBox5.SelectedValue.ToString()), int.Parse(this.comboBox6.SelectedValue.ToString()));
-                evento.Id = int.Parse(textBox33.Text.ToString());
-
-                EventosBLL updateEvento = new EventosBLL();
-                updateEvento.UpdateEvento(evento);
-                MessageBox.Show("Se actualizaron los cambios");
-
-
-                textBox33.Text = "";
-                dateTimePicker2.Value = DateTime.Today;
-                textBox26.Text = "";
-                textBox27.Text = "";
-                textBox32.Text = "";
-                textBox29.Text = "";
-                textBox25.Text = "";
-                textBox28.Text = "";
-                comboBox5.SelectedIndex = -1;
-                comboBox6.SelectedIndex = -1;
-                comboBox2.SelectedIndex = -1;
-
-                var indexEvento = eventos1.FindIndex(w => w.Id == evento.Id);
-                if (indexEvento != -1)
-                {
-                    eventos1[indexEvento] = evento;
-                }
-                dataGridView2.DataSource = eventos1.ToList();
-
-
-                //eventoOneUpdat
-
-
-            }
-            catch (Exception ex) {
-                MessageBox.Show(ex.Message);
-            }
-
-
-        }
+        /*BOTON CREAR CLIENTE*/
 
         private void btnCrearC_Click(object sender, EventArgs e)
         {
@@ -415,7 +148,9 @@ namespace Servicio_Catering
                 MessageBox.Show(ex.Message);
             }
         }
+        /*BOTON CREAR CLIENTE*/
 
+        /*EVENTO GRID PARA CARGAR LOS CLIENTES Y PODER MODIFICARLOS*/
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -443,18 +178,19 @@ namespace Servicio_Catering
                 Console.WriteLine($"{ex.Message}");
             }
         }
+        /*EVENTO GRID PARA CARGAR LOS CLIENTES Y PODER MODIFICARLOS*/
+
+        /*BOTON GUARDAR CLIENTE MODIFICADO*/
 
         private void button3_Click(object sender, EventArgs e)
         {
             //int idCliente, string nombre, string apellido, string email, string telefono, string domicilio, string dni
-           
-
             try
             {
                 Cliente clienteUpdate = new Cliente(int.Parse(textBox13.Text.ToString()), textBox12.Text, textBox11.Text, textBox9.Text,
                     textBox8.Text, textBox5.Text, textBox7.Text);
-                ClienteBLL clienteBLL = new ClienteBLL();
-                clienteBLL.UpdateCliente(clienteUpdate);
+                //ClienteBLL clienteBLL = new ClienteBLL();
+                _cliente.UpdateCliente(clienteUpdate);
                 var index = ClienteVende.FindIndex(ele => ele.Id == clienteUpdate.Id);
 
                 if (index != -1)
@@ -478,17 +214,14 @@ namespace Servicio_Catering
             {
                 MessageBox.Show(ex.Message);
             }
-
-
-
         }
+        /*BOTON GUARDAR CLIENTE MODIFICADO*/
 
-        private void gb_mod_cliente_Enter(object sender, EventArgs e)
-        {
+        //FIN CODIGO CLIENTE
 
-        }
-       
+        //COMIENZA CODIGO EVENTO
 
+        /*EVENTO BOX SOBRE CALCULO DE % DE BENIFICIO*/
         private void textBox22_Leave(object sender, EventArgs e)
         {
             try
@@ -522,31 +255,32 @@ namespace Servicio_Catering
                 MessageBox.Show(ex.Message);
             }
         }
+        /*EVENTO BOX SOBRE CALCULO DE % DE BENIFICIO*/
+
+        /*FUNCION QUE EVALUA EL PORCENTAJE SEGUN CANTIDAD DE PERSONAS Y CANTIDAD DE COMPRAS REALIZADAS*/
+
         private int devuelvePorcentaje(int cantidad)
         {
             int clienteId = -1;
             List<Evento> eventosByCliente = new List<Evento>();
-            EventosBLL eventosByClienteBll = new EventosBLL();
             int porcentaje=0;
+            /*VEMOS QUE COMBO REALIZA EL CAMBIO*/
             if (comboBox4.SelectedIndex != -1)
             {
                 clienteId = int.Parse(comboBox4.SelectedValue.ToString());
-                eventosByCliente = eventosByClienteBll.GetEventoByIdCliente(clienteId);
+                eventosByCliente = _evento.GetEventoByIdCliente(clienteId);
             }
             if (comboBox6.SelectedIndex != -1)
             {
                 clienteId = int.Parse(comboBox6.SelectedValue.ToString());
-                eventosByCliente = eventosByClienteBll.GetEventoByIdCliente(clienteId);
+                eventosByCliente = _evento.GetEventoByIdCliente(clienteId);
             }
-
+            /*VEMOS SI TIENE MAS DE 3 EVENTOS*/
             if (eventosByCliente.Count >= 3)
             {
                 porcentaje = 5;
             }
-
-            Console.WriteLine(cantidad);
-            Console.WriteLine(eventosByCliente.Count);
-
+            /*VEMOS LA CANTIDAD DE PERSONAS*/
             if (cantidad >= 200 )
             {
                 return porcentaje + 10;
@@ -562,7 +296,9 @@ namespace Servicio_Catering
             }
 
         }
+        /*FUNCION QUE EVALUA EL PORCENTAJE SEGUN CANTIDAD DE PERSONAS Y CANTIDAD DE COMPRAS REALIZADAS*/
 
+        /*FUNCION DE CALCULO DEL TOTAL*/
         private double calculaTotal(int porcentaje, int cantidad, double precioMenu)
         {
             if (porcentaje>100)
@@ -571,7 +307,9 @@ namespace Servicio_Catering
             }
             return (cantidad*precioMenu - ((cantidad * precioMenu) * (porcentaje / 100f)));
         }
+        /*FUNCION DE CALCULO DEL TOTAL*/
 
+        /*EVENTO COMBO PARA CALCULAR EL TOTAL Y LOS DECUENTOS SEGUN MENU*/
         private void comboBox3_Leave(object sender, EventArgs e)
         {
             try
@@ -603,9 +341,10 @@ namespace Servicio_Catering
             catch (Exception ex) { 
                 MessageBox.Show(ex.Message);
             }
-            
-
         }
+        /*EVENTO COMBO PARA CALCULAR EL TOTAL Y LOS DECUENTOS SEGUN MENU*/
+
+        /*EVENTO BOX PARA CALCULAR EL TOTAL Y LOS DECUENTOS SEGUN % BENEFICIO*/
 
         private void textBox24_Leave(object sender, EventArgs e)
         {
@@ -649,7 +388,9 @@ namespace Servicio_Catering
                 textBox21.Text = "";
             }
         }
+        /*EVENTO BOX PARA CALCULAR EL TOTAL Y LOS DECUENTOS SEGUN % BENEFICIO*/
 
+        /*EVENTO COMBO PARA CALCULAR EL TOTAL Y LOS DECUENTOS SEGUN CLIENTE*/
         private void comboBox4_Leave(object sender, EventArgs e)
         {
             //textBox24.Leave += comboBox4_Leave;
@@ -677,8 +418,13 @@ namespace Servicio_Catering
 
             }
         }
+        /*EVENTO COMBO PARA CALCULAR EL TOTAL Y LOS DECUENTOS SEGUN CLIENTE*/
+
 
         //PARTE DE MODIFICAR EVENTO 
+
+
+        /*EVENTO BOX PARA CALCULAR EL TOTAL Y LOS DECUENTOS SEGUN CANTIDAD DE PERSONAS*/
         private void textBox27_Leave(object sender, EventArgs e)
         {
             try
@@ -713,7 +459,9 @@ namespace Servicio_Catering
             }
 
         }
+        /*EVENTO BOX PARA CALCULAR EL TOTAL Y LOS DECUENTOS SEGUN CANTIDAD DE PERSONAS*/
 
+        /*EVENTO COMBO PARA CALCULAR EL TOTAL Y LOS DECUENTOS SEGUN MENU*/
         private void comboBox5_Leave(object sender, EventArgs e)
         {
             try
@@ -748,9 +496,13 @@ namespace Servicio_Catering
             }
 
         }
+        /*EVENTO COMBO PARA CALCULAR EL TOTAL Y LOS DECUENTOS SEGUN MENU*/
+
+        /*EVENTO BOX PARA CALCULAR EL TOTAL Y LOS DECUENTOS SEGUN % BENEFICIO*/
 
         private void textBox25_Leave(object sender, EventArgs e)
         {
+            Console.WriteLine("EJECUTO EL LEAVE  DE TEXTBOX25");
             try
             {
                 string cantidad = textBox27.Text.ToString();
@@ -791,6 +543,9 @@ namespace Servicio_Catering
                 textBox28.Text = "";
             }
         }
+        /*EVENTO BOX PARA CALCULAR EL TOTAL Y LOS DECUENTOS SEGUN % BENEFICIO*/
+
+        /*EVENTO COMBO PARA CALCULAR EL TOTAL Y LOS DECUENTOS SEGUN CLIENTE*/
 
         private void comboBox6_Leave(object sender, EventArgs e)
         {
@@ -818,5 +573,120 @@ namespace Servicio_Catering
 
             }
         }
+
+        /*EVENTO COMBO PARA CALCULAR EL TOTAL Y LOS DECUENTOS SEGUN CLIENTE*/
+
+        /*BOTON CREAMOS EVENTO*/
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Evento evento = new Evento(DateTime.Parse(dateTimePicker1.Text), float.Parse(textBox24.Text), textBox17.Text, textBox20.Text, "PENDIENTE", int.Parse(textBox22.Text), float.Parse(textBox21.Text), comboBox1.Text == "si" ? 1 : 0, int.Parse(textBox23.Text), int.Parse(this.comboBox3.SelectedValue.ToString()), int.Parse(this.comboBox4.SelectedValue.ToString()));
+                _evento.AddEvento(evento);
+                evento.Id = int.Parse(textBox16.Text.ToString());
+                eventosLista.Add(evento);
+                MessageBox.Show("Evento generado");
+                textBox24.Text = "";
+                textBox17.Text = "";
+                textBox20.Text = "";
+                textBox22.Text = "";
+                textBox21.Text = "";
+                comboBox1.Text = "";
+                this.comboBox3.SelectedIndex = -1;
+                this.comboBox4.SelectedIndex = -1;
+                textBox16.Text = (int.Parse(textBox16.Text.ToString()) + 1).ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hubo un error en guardar los datos");
+            }
+        }
+        /*BOTON CREAMOS EVENTO*/
+
+        /*COMBO CARGAMOS LOS DATOS DEL CLIENTE CUANDO CAMBIA EL BOX DEL CLIENTE*/
+        private void comboBox4_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            foreach (Cliente clienteOne in ClienteVende)
+            {
+                if (clienteOne.Id == int.Parse(this.comboBox4.SelectedValue.ToString()))
+                {
+                    this.textBox17.Text = clienteOne.Direccion.ToString();
+                }
+            }
+
+        }
+        /*EVENTO GRID PARA CARGAR LOS EVENTOS Y PODER MODIFICARLOS*/
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex != -1)
+                {
+                    //Evento eventoRelleno = new Evento();
+
+                    //int idEvento, DateTime fecha,  string direccion, string localidad, string estado, float totalEstimado, int cantidadPersonas,  int descuentoAplicado, int pago, int id_usuario_venta, int idMenu, int idCliente
+                    this.comboBox5.SelectedValue = int.Parse(dataGridView2.Rows[e.RowIndex].Cells["IdMenu"].Value.ToString());
+                    this.comboBox6.SelectedValue = int.Parse(dataGridView2.Rows[e.RowIndex].Cells["IdCliente"].Value.ToString());
+                    this.comboBox2.SelectedIndex = int.Parse(dataGridView2.Rows[e.RowIndex].Cells["Pago"].Value.ToString());
+
+                    textBox33.Text = dataGridView2.Rows[e.RowIndex].Cells["Id"].Value.ToString();
+                    dateTimePicker2.Text = dataGridView2.Rows[e.RowIndex].Cells["Fecha"].Value.ToString();
+                    textBox26.Text = dataGridView2.Rows[e.RowIndex].Cells["IdUsuarioVenta"].Value.ToString();
+                    textBox27.Text = dataGridView2.Rows[e.RowIndex].Cells["CantidadPersonas"].Value.ToString();
+                    textBox32.Text = dataGridView2.Rows[e.RowIndex].Cells["Direccion"].Value.ToString();
+                    textBox29.Text = dataGridView2.Rows[e.RowIndex].Cells["Localidad"].Value.ToString();
+                    textBox25.Text = dataGridView2.Rows[e.RowIndex].Cells["DescuentoAplicado"].Value.ToString();
+                    textBox28.Text = dataGridView2.Rows[e.RowIndex].Cells["Total"].Value.ToString();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"{ex.Message}");
+            }
+        }
+        /*EVENTO GRID PARA CARGAR LOS EVENTOS Y PODER MODIFICARLOS*/
+
+
+        /*BOTON GUARDA EVENTO MODIFICADO*/
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Evento evento = new Evento(DateTime.Parse(dateTimePicker2.Text), float.Parse(textBox25.Text), textBox32.Text, textBox29.Text, "PENDIENTE", int.Parse(textBox27.Text), float.Parse(textBox28.Text),
+                comboBox2.Text == "si" ? 1 : 0, int.Parse(textBox26.Text), int.Parse(this.comboBox5.SelectedValue.ToString()), int.Parse(this.comboBox6.SelectedValue.ToString()));
+                evento.Id = int.Parse(textBox33.Text.ToString());
+
+                EventosBLL updateEvento = new EventosBLL();
+                updateEvento.UpdateEvento(evento);
+                var indexEvento = eventosLista.FindIndex(w => w.Id == evento.Id);
+                if (indexEvento != -1)
+                {
+                    eventosLista[indexEvento] = evento;
+                    dataGridView2.DataSource = eventosLista.ToList();
+                }
+                MessageBox.Show("Se actualizaron los cambios");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            textBox33.Text = "";
+            dateTimePicker2.Value = DateTime.Today;
+            textBox26.Text = "";
+            textBox27.Text = "";
+            textBox32.Text = "";
+            textBox29.Text = "";
+            textBox28.Text = "";
+            comboBox5.SelectedIndex = -1;
+            comboBox6.SelectedIndex = -1;
+            comboBox2.SelectedIndex = -1;
+            textBox25.Text = "";
+        }
+
+
+        /*BOTON GUARDA EVENTO MODIFICADO*/
+
     }
 }
