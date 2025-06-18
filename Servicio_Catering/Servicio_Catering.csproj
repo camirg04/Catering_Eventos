@@ -63,6 +63,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="UIAdminstrador\UIAgregarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIAdminstrador\UIAgregarUsuario.Designer.cs">
+      <DependentUpon>UIAgregarUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="UIVendedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,9 @@
     </Content>
     <EmbeddedResource Include="UIAdminstrador\UIAdministrador.resx">
       <DependentUpon>UIAdministrador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIAdminstrador\UIAgregarUsuario.resx">
+      <DependentUpon>UIAgregarUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UIGerente\UIGerente.resx">
       <DependentUpon>UIGerente.cs</DependentUpon>

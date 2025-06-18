@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblBienvenida = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.dgvVisualiza = new System.Windows.Forms.DataGridView();
+            this.dgvVisualizaUsuarios = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tboxInApellido = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.btnAgregarEmpleado = new System.Windows.Forms.Button();
+            this.btnAgregarUsuario = new System.Windows.Forms.Button();
             this.tboxInDNI = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -48,7 +48,7 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVisualiza)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVisualizaUsuarios)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,15 +62,15 @@
             this.label3.TabIndex = 16;
             this.label3.Text = "Administración";
             // 
-            // label2
+            // lblBienvenida
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(1003, 33);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(109, 17);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "Nombre usuario";
+            this.lblBienvenida.AutoSize = true;
+            this.lblBienvenida.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBienvenida.Location = new System.Drawing.Point(976, 36);
+            this.lblBienvenida.Name = "lblBienvenida";
+            this.lblBienvenida.Size = new System.Drawing.Size(109, 17);
+            this.lblBienvenida.TabIndex = 15;
+            this.lblBienvenida.Text = "Nombre usuario";
             // 
             // button1
             // 
@@ -102,37 +102,37 @@
             this.tabControl1.Location = new System.Drawing.Point(7, 62);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1272, 624);
+            this.tabControl1.Size = new System.Drawing.Size(1272, 593);
             this.tabControl1.TabIndex = 12;
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.dgvVisualiza);
+            this.tabPage3.Controls.Add(this.dgvVisualizaUsuarios);
             this.tabPage3.Controls.Add(this.groupBox3);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1264, 595);
+            this.tabPage3.Size = new System.Drawing.Size(1264, 564);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Usuarios";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // dgvVisualiza
+            // dgvVisualizaUsuarios
             // 
-            this.dgvVisualiza.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgvVisualizaUsuarios.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvVisualiza.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvVisualiza.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvVisualiza.Location = new System.Drawing.Point(6, 9);
-            this.dgvVisualiza.Name = "dgvVisualiza";
-            this.dgvVisualiza.Size = new System.Drawing.Size(956, 583);
-            this.dgvVisualiza.TabIndex = 4;
+            this.dgvVisualizaUsuarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvVisualizaUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvVisualizaUsuarios.Location = new System.Drawing.Point(6, 9);
+            this.dgvVisualizaUsuarios.Name = "dgvVisualizaUsuarios";
+            this.dgvVisualizaUsuarios.Size = new System.Drawing.Size(956, 552);
+            this.dgvVisualizaUsuarios.TabIndex = 4;
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.tboxInApellido);
             this.groupBox3.Controls.Add(this.label13);
-            this.groupBox3.Controls.Add(this.btnAgregarEmpleado);
+            this.groupBox3.Controls.Add(this.btnAgregarUsuario);
             this.groupBox3.Controls.Add(this.tboxInDNI);
             this.groupBox3.Controls.Add(this.label16);
             this.groupBox3.Controls.Add(this.btnBuscar);
@@ -162,15 +162,16 @@
             this.label13.TabIndex = 17;
             this.label13.Text = "Ingrese el apellido:";
             // 
-            // btnAgregarEmpleado
+            // btnAgregarUsuario
             // 
-            this.btnAgregarEmpleado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarEmpleado.Location = new System.Drawing.Point(83, 99);
-            this.btnAgregarEmpleado.Name = "btnAgregarEmpleado";
-            this.btnAgregarEmpleado.Size = new System.Drawing.Size(117, 23);
-            this.btnAgregarEmpleado.TabIndex = 16;
-            this.btnAgregarEmpleado.Text = "Agregar usuario";
-            this.btnAgregarEmpleado.UseVisualStyleBackColor = true;
+            this.btnAgregarUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarUsuario.Location = new System.Drawing.Point(83, 99);
+            this.btnAgregarUsuario.Name = "btnAgregarUsuario";
+            this.btnAgregarUsuario.Size = new System.Drawing.Size(117, 23);
+            this.btnAgregarUsuario.TabIndex = 16;
+            this.btnAgregarUsuario.Text = "Agregar usuario";
+            this.btnAgregarUsuario.UseVisualStyleBackColor = true;
+            this.btnAgregarUsuario.Click += new System.EventHandler(this.btnAgregarUsuario_Click);
             // 
             // tboxInDNI
             // 
@@ -198,6 +199,7 @@
             this.btnBuscar.TabIndex = 6;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // label14
             // 
@@ -227,12 +229,13 @@
             this.btnTodoEmpleados.TabIndex = 0;
             this.btnTodoEmpleados.Text = "Todos los usuarios";
             this.btnTodoEmpleados.UseVisualStyleBackColor = true;
+            this.btnTodoEmpleados.Click += new System.EventHandler(this.btnTodoEmpleados_Click);
             // 
             // tabPage4
             // 
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1264, 595);
+            this.tabPage4.Size = new System.Drawing.Size(1264, 564);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
@@ -242,15 +245,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1284, 692);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblBienvenida);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tabControl1);
             this.Name = "UIAdministrador";
             this.Text = "UIAdministrador";
+            this.Load += new System.EventHandler(this.UIAdministrador_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVisualiza)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVisualizaUsuarios)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
@@ -261,16 +265,16 @@
         #endregion
 
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblBienvenida;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.DataGridView dgvVisualiza;
+        private System.Windows.Forms.DataGridView dgvVisualizaUsuarios;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox tboxInApellido;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button btnAgregarEmpleado;
+        private System.Windows.Forms.Button btnAgregarUsuario;
         private System.Windows.Forms.TextBox tboxInDNI;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button btnBuscar;

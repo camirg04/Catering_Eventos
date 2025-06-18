@@ -31,7 +31,7 @@ namespace Servicio_Catering
             try
             {
 
-                List<Usuario> empleados = _empleadosBLL.ListarEmpleados();
+                List<Usuario> empleados = _empleadosBLL.ListarActivos();
 
                 dgvVisualiza.DataSource = empleados;
                 dgvVisualiza.Columns["FechaBajaEmpleado"].Visible = false;

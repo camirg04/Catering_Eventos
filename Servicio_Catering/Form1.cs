@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using BLL_Catering;
 using Entity_Catering;
 using NLog;
+using Servicio_Catering.UIAdminstrador;
 
 namespace Servicio_Catering
 {
@@ -63,6 +64,11 @@ namespace Servicio_Catering
                     {
                         UIVendedor ventanaVendedor = new UIVendedor(user);
                         ventanaVendedor.ShowDialog();
+                    }
+                    else if(user.Perfil == Perfil.ADMINISTRADOR.ToString())
+                    {
+                        UIAdministrador ventanaAdministrador = new UIAdministrador(user);
+                        ventanaAdministrador.ShowDialog();
                     }
                     else
                     {

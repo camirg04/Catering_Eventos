@@ -21,16 +21,56 @@ namespace BLL_Catering
         }
 
 
-        public List<Usuario> ListarEmpleados()
+        //creo una lista de los usuarios activos del sistema.
+        public List<Usuario> ListarActivos()
         {
-            DAL_Catering.UsuarioDAL dalEmpleado = new DAL_Catering.UsuarioDAL();
+            DAL_Catering.UsuarioDAL dalUsuario = new DAL_Catering.UsuarioDAL();
 
-            List<Usuario> empleados = dalEmpleado.Listar();
+            List<Usuario> usuariosActivos = dalUsuario.ListarActivos();
 
-            List<Usuario> auxEmpleado = empleados;
+            return usuariosActivos;
+        }
+
+        public List<Usuario> BuscarActivos(string dniAux, string apellidoAux)
+        {
+            DAL_Catering.UsuarioDAL dalUsuario = new DAL_Catering.UsuarioDAL();
+
+            List<Usuario> listAux = dalUsuario.ListarActivos();
+            List<Usuario> aux = new List<Usuario>();
 
 
-            return auxEmpleado;
+
+            foreach (Usuario u in listAux)
+            {
+                if (u.DNI == dniAux)
+                {
+                    aux.Add(u);
+                }
+                else if (u.Apellido == apellidoAux)
+                {
+                    aux.Add(u);
+                }
+
+            }
+            return aux;
+
+        }
+        public Usuario CrearUsuario(string nombre, string apellido, string dni, string domicilio,string telefono, string perfil,string email, string clave, DateTime fechaCreacion)
+        {
+            Usuario userAux = new Usuario();
+
+            userAux.Nombre = nombre;
+            userAux.Apellido = apellido;
+            userAux.DNI = dni;
+            userAux.Domicilio = domicilio;
+            userAux.Telefono = telefono;
+            userAux.Perfil = perfil;
+            userAux.Email = email;
+            userAux.Clave = clave;
+            userAux.FechaCreacion = fechaCreacion;
+
+            return userAux;
+
         }
 
 
