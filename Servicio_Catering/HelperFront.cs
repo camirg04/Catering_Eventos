@@ -68,5 +68,13 @@ namespace Servicio_Catering
             combo.SelectedIndex = -1;
         }
 
+        public void cargarComboPlatos(ComboBox combo, List<Plato> platos)
+        {
+            combo.DataSource = platos;
+            combo.DisplayMember = "Nombre";
+            combo.ValueMember = "IdPlato";
+            combo.SelectedIndex = -1;
+        }
+
     }
 }

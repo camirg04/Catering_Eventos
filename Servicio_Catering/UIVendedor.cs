@@ -232,7 +232,7 @@ namespace Servicio_Catering
                 {
                     menuId = int.Parse(comboBox3.SelectedValue.ToString());
                 }
-                float precioMenu = 0;
+                Decimal precioMenu = 0;
                 int porcentaje = 0;
                 if ((cantidad != "" || cantidad != null) && menuId != -1)
                 {
@@ -299,13 +299,14 @@ namespace Servicio_Catering
         /*FUNCION QUE EVALUA EL PORCENTAJE SEGUN CANTIDAD DE PERSONAS Y CANTIDAD DE COMPRAS REALIZADAS*/
 
         /*FUNCION DE CALCULO DEL TOTAL*/
-        private double calculaTotal(int porcentaje, int cantidad, double precioMenu)
+        private double calculaTotal(int porcentaje, int cantidad, Decimal precioMenu)
         {
             if (porcentaje>100)
             {
                 throw new Exception("El porcentaje no puede valer mas de 100");
             }
-            return (cantidad*precioMenu - ((cantidad * precioMenu) * (porcentaje / 100f)));
+            double precio = (double)precioMenu;
+            return (cantidad * precio - ((cantidad * precio) * (porcentaje / 100.0)));
         }
         /*FUNCION DE CALCULO DEL TOTAL*/
 
@@ -320,7 +321,7 @@ namespace Servicio_Catering
                 {
                     menuId = int.Parse(comboBox3.SelectedValue.ToString());
                 }
-                float precioMenu = 0;
+                Decimal precioMenu = 0;
                 int porcentaje = 0;
                 if ((cantidad != "" || cantidad != null) && menuId != -1)
                 {
@@ -356,7 +357,7 @@ namespace Servicio_Catering
                 {
                     menuId = int.Parse(comboBox3.SelectedValue.ToString());
                 }
-                float precioMenu = 0;
+                Decimal precioMenu = 0;
                 int porcentaje = 0;
                 if ((cantidad != "" || cantidad != null) && menuId != -1)
                 {
@@ -396,7 +397,7 @@ namespace Servicio_Catering
             //textBox24.Leave += comboBox4_Leave;
             int porcentaje = 0;
             string cantidad = textBox22.Text.ToString();
-            double precioMenu = 0;
+            Decimal precioMenu = 0;
             if (comboBox3.SelectedIndex != -1 && textBox24.Text != "")
             {
                 int menuId = -1;
@@ -435,7 +436,7 @@ namespace Servicio_Catering
                 {
                     menuId = int.Parse(comboBox5.SelectedValue.ToString());
                 }
-                float precioMenu = 0;
+                Decimal precioMenu = 0;
                 int porcentaje = 0;
                 if ((cantidad != "" || cantidad != null) && menuId != -1)
                 {
@@ -472,7 +473,7 @@ namespace Servicio_Catering
                 {
                     menuId = int.Parse(comboBox5.SelectedValue.ToString());
                 }
-                float precioMenu = 0;
+                Decimal precioMenu = 0;
                 int porcentaje = 0;
                 if ((cantidad != "" || cantidad != null) && menuId != -1)
                 {
@@ -511,7 +512,7 @@ namespace Servicio_Catering
                 {
                     menuId = int.Parse(comboBox5.SelectedValue.ToString());
                 }
-                float precioMenu = 0;
+                Decimal precioMenu = 0;
                 int porcentaje = 0;
                 if ((cantidad != "" || cantidad != null) && menuId != -1)
                 {
@@ -551,7 +552,7 @@ namespace Servicio_Catering
         {
             int porcentaje = 0;
             string cantidad = textBox27.Text.ToString();
-            double precioMenu = 0;
+            Decimal precioMenu = 0;
             if (comboBox5.SelectedIndex != -1 && textBox27.Text != "")
             {
                 int menuId = -1;

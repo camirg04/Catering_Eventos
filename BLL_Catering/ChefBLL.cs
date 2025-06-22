@@ -21,6 +21,7 @@ namespace BLL_Catering
         private readonly EventosBLL _eventosBLL;
         private readonly UsuarioBLL _usuarioBLL;
         private readonly EmailService _emailService;
+        private readonly MenusBLL _menuBLL;
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
         private bool _bajoStockMinimo = false;
         private bool _bajoStockCritico = false;
@@ -33,9 +34,11 @@ namespace BLL_Catering
             _eventosBLL = new EventosBLL();
             _usuarioBLL = new UsuarioBLL();
             _emailService = new EmailService();
+            _menuBLL = new MenusBLL();
         }
 
 
+        //Métodos platos
 
         public List<Plato> BuscarPlatos(string nombre, string tipo, string activo)
         {
@@ -69,7 +72,7 @@ namespace BLL_Catering
             return null;
         }
 
-        public string platoDuplicado(int idInsumo, BindingList<InsumoPlatoDTO> listInsumos)
+        public string IngredienteDuplicado(int idInsumo, BindingList<InsumoPlatoDTO> listInsumos)
         {
             int mismoInsumo = 0;
             foreach (InsumoPlatoDTO insumo in listInsumos)
@@ -96,18 +99,85 @@ namespace BLL_Catering
             insumo.UnidadMedida = ins.UnidadMedida;
         }
 
-        public bool guardarCambiosPlato(string accion, Plato plato, List<InsumoPlatoDTO> platosAgregar, List<InsumoPlatoDTO> platosEditar, List<InsumoPlatoDTO> platosEliminar)
+        public bool EditarPlato(Plato plato)
         {
             try
             {
-                return _platoBLL.guardarCambiosPlato(accion,plato,platosAgregar,platosEditar,platosEliminar);
+                return _platoBLL.EditarPlato(plato);
             }
-            catch (Exception e)
+            catch (ArgumentException ex)
             {
-                logger.Error(e.ToString());
-                throw;
+                logger.Error(ex, "Error de validación al agregar plato en BLL");
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al editar plato en BLL");
+                throw ex;
             }
         }
+
+        public bool AgregarPlato(Plato plato)
+        {
+            try
+            {
+                return _platoBLL.AgregarPlato(plato);
+            }
+            catch (ArgumentException ex)
+            {
+                logger.Error(ex, "Error de validación al agregar plato en BLL");
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al editar plato en BLL");
+                throw ex;
+            }
+        }
+
+        public bool EliminarIngredientePlato(InsumoPlatoDTO insumo)
+        {
+            try
+            {
+                return _platoBLL.EliminarIngredientePlato(insumo);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al eliminar plato en BLL");
+                throw ex;
+            }
+        }
+
+
+        public bool EditarIngredientePlato(int id_plato, InsumoPlatoDTO insumo)
+        {
+            try
+            {
+                return _platoBLL.EditarIngredientePlato(id_plato, insumo);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al editar plato en BLL");
+                throw ex;
+            }
+        }
+
+
+        public bool AgregarIngredientePlato(int id_plato, InsumoPlatoDTO insumo)
+        {
+            try
+            {
+                return _platoBLL.AgregarIngredientePlato(id_plato, insumo);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al agregar plato en BLL");
+                throw ex;
+            }
+        }
+
+        
+        //Métodos vencimientos
 
         public List<LoteInsumoDTO> ObtenerLotesInsumosPerecederos(DateTime fechaDesde, DateTime fechaHasta)
         {
@@ -122,6 +192,10 @@ namespace BLL_Catering
             }
         }
 
+
+        
+        //Métodos alertas de stock
+
         public List<AlertaStockDTO> ObtenerAlertasStock(DateTime fechaDesde, DateTime fechaHasta, string estado)
         {
             try
@@ -134,6 +208,9 @@ namespace BLL_Catering
                 throw;
             }
         }
+
+        
+        //Métodos evento / descuento stock
 
         public List<EventoDTO> ObtenerEventosPorFechaYEstado(DateTime fechaDesde, DateTime fechaHasta, string estado)
         {
@@ -165,7 +242,6 @@ namespace BLL_Catering
             }
             
         }
-
 
 
         private void GestionarStock(int id_menu, int cantidadPersonas)
@@ -356,6 +432,124 @@ namespace BLL_Catering
             }
 
             return result;
+        }
+
+
+
+        //Métodos menús
+
+        public List<Menus> BuscarMenus(string nombre, string activos)
+        {
+            try
+            {
+                return _menuBLL.BuscarMenus(nombre, activos);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al buscar menus en BLL");
+                throw;
+            }
+        }
+
+        private Decimal obtenerPrecio(string precio)
+        {
+            if (string.IsNullOrEmpty(precio))
+            {
+                throw new ArgumentException("El precio del menú no puede estar vacío.");
+            }
+            if (!_validaciones.esDecimal(precio))
+            {
+                throw new ArgumentException("El precio debe ser un número válido.");
+            }
+            return Decimal.Parse(precio, new CultureInfo("es-ES"));
+        }
+
+        public int CrearMenu(string nombre, string precio, DateTime? fechaBaja)
+        {         
+            try
+            {
+                return _menuBLL.CrearMenu(nombre, obtenerPrecio(precio), fechaBaja);
+            }
+            catch (ArgumentException ex)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al agregar menu a plato en BLL ");
+                throw;
+            }
+        }
+
+        public int EditarMenu(int idMenu, string nombre, string precio, DateTime? fechaBaja)
+        {
+            try
+            {
+                return _menuBLL.EditarMenu(idMenu, nombre, obtenerPrecio(precio), fechaBaja);
+
+            }
+            catch (ArgumentException ex)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al editar menu a plato en BLL ");
+                throw;
+            }
+        }
+
+        public string PlatoDuplicado(int idPlato, List<Plato> listaPlatos)
+        {
+            int mismoPlato = 0;
+            foreach (var plato in listaPlatos)
+            {
+                if (plato.IdPlato == idPlato)
+                {
+                    mismoPlato++;
+                }
+            }
+
+            if (mismoPlato >= 1)
+            {
+                return "No se puede duplicar el plato en el menú";
+            }
+            return null;
+        }
+
+        public int AgregarPlatoMenu(int idMenu, int idPlato)
+        {
+            try
+            {
+                return _menuBLL.AgregarPlatoMenu(idMenu, idPlato);
+            }
+            catch (ArgumentException ex)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al agregar menu a plato en DAL ");
+                throw;
+            }
+        }
+
+        public int EliminarPlatoMenu(int idMenu, int idPlato)
+        {
+            try
+            {
+                return _menuBLL.EliminarPlatoMenu(idMenu, idPlato);
+            }
+            catch (ArgumentException ex)
+            {
+                logger.Error(ex, "Error al agregar menu a plato en DAL ");
+                throw;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al agregar menu a plato en DAL ");
+                throw;
+            }
         }
     }
 }
