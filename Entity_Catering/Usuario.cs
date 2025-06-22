@@ -10,9 +10,9 @@ namespace Entity_Catering
     {
         private int _idUsuario;
         private string _mail;
-        private string _clave;
         private string _perfil;
         private string _email;
+        private string _clave; 
         private string _dni;
         private string _nombre;
         private string _apellido;
@@ -36,16 +36,6 @@ namespace Entity_Catering
                 _mail = value;
             }
         }
-
-        public string Clave
-        {
-            get { return _clave; }
-            set
-            {
-                _clave = value;
-            }
-        }
-
         public string Perfil
         {
             get { return _perfil; }
@@ -54,13 +44,20 @@ namespace Entity_Catering
                 _perfil = value;
             }
         }
-
         public string Email
         {
             get { return _email; }
             set
             {
                 _email = value;
+            }
+        }
+        public string Clave
+        {
+            get { return _clave; }
+            set
+            {
+                _clave = value;
             }
         }
 
