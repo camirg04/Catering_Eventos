@@ -11,6 +11,7 @@ using System.Data;
 using DTO_Catering;
 using System.Globalization;
 using System.ComponentModel;
+using System.IO;
 
 namespace BLL_Catering
 {
@@ -85,77 +86,102 @@ namespace BLL_Catering
         }
 
 
-
-
-
-        public bool guardarCambiosPlato(string accion, Plato plato, List<InsumoPlatoDTO> platosAgregar, List<InsumoPlatoDTO> platosEditar, List<InsumoPlatoDTO> platosEliminar)
+        public bool EditarPlato(Plato plato)
         {
-            try
+            try {
+                ValidarDatosPlato(plato);
+                return _platoDAL.EditarPlato(plato.Nombre, plato.TipoPlato, plato.FechaBaja, plato.IdPlato) <= 0 ? false : true;
+            }
+            catch (ArgumentException ex)
             {
-                int ok = 0;
-                if (accion == "editar")
-                {
-                    ok = _platoDAL.EditarPlato(plato.Nombre, plato.TipoPlato, plato.FechaBaja, plato.IdPlato);
-                }
-                else
-                {
-                    plato.IdPlato = _platoDAL.AgregarPlato(plato.Nombre, plato.TipoPlato, plato.FechaBaja);
-                    ok = plato.IdPlato;
-                }
-                if(ok <= 0)
-                {
-                    return false;
-                }
-
-                modificarIngredientes(plato.IdPlato, platosAgregar, platosEditar, platosEliminar);
-
-                return true;
-
+                logger.Error(ex, "Error de validación al agregar plato en BLL");
+                throw ex;
             }
             catch (Exception ex)
             {
-                logger.Error(ex, "Error al guardar cambios en BLL");
-                throw;
-            }
-            
-        }
-
-        private bool modificarIngredientes(int id_plato,List<InsumoPlatoDTO> platosAgregar, List<InsumoPlatoDTO> platosEditar, List<InsumoPlatoDTO> platosEliminar) {
-
-            try
-            {
-                bool exito = true;
-                foreach (InsumoPlatoDTO insumo in platosAgregar)
-                {
-                    if (!_platoDAL.AgregarIngrediente(id_plato,insumo.IdInsumo,insumo.CantidadNecesaria))
-                    {
-                        exito =  false;
-                    }
-                }
-                foreach (InsumoPlatoDTO insumo in platosEditar)
-                {
-                    if (!_platoDAL.EditarIngrediente(id_plato, insumo.IdInsumo, insumo.CantidadNecesaria,insumo.IdInsumoPlato))
-                    {
-                        exito = false;
-                    }
-                }
-                foreach (InsumoPlatoDTO insumo in platosEliminar)
-                {
-                    if (!_platoDAL.EliminarIngrediente(insumo.IdInsumoPlato))
-                    {
-                        exito = false;
-                    }
-                }
-                return exito;
-            }
-            catch (Exception ex)
-            {
-                logger.Error(ex, "Error al modificar ingredientes en BLL");
+                logger.Error(ex, "Error al editar plato en BLL");
                 throw ex;
             }
         }
-        
 
-        
+        public bool AgregarPlato(Plato plato)
+        {
+            try
+            {
+                ValidarDatosPlato(plato);
+                plato.IdPlato = _platoDAL.AgregarPlato(plato.Nombre, plato.TipoPlato, plato.FechaBaja);
+                return plato.IdPlato <=0 ? false : true;
+            }
+            catch (ArgumentException ex)
+            {
+                logger.Error(ex, "Error de validación al agregar plato en BLL");
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al editar plato en BLL");
+                throw ex;
+            }
+        }
+
+        private void ValidarDatosPlato(Plato plato)
+        {
+            if(plato == null)
+            {
+                throw new ArgumentException("El plato no puede ser nulo.");
+            }
+            if (string.IsNullOrWhiteSpace(plato.Nombre))
+            {
+                throw new ArgumentException("El nombre del plato no puede estar vacío.");
+            }
+            if(string.IsNullOrWhiteSpace(plato.TipoPlato))
+            {
+                throw new ArgumentException("El tipo de plato no puede estar vacío.");
+            }
+        }
+
+
+        public bool EliminarIngredientePlato(InsumoPlatoDTO insumo)
+        {
+            try
+            {
+                return _platoDAL.EliminarIngrediente(insumo.IdInsumoPlato);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al eliminar plato en BLL");
+                throw ex;
+            }
+        }
+
+
+        public bool EditarIngredientePlato(int id_plato, InsumoPlatoDTO insumo)
+        {
+            try
+            {
+                return _platoDAL.EditarIngrediente(id_plato, insumo.IdInsumo, insumo.CantidadNecesaria, insumo.IdInsumoPlato);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al editar plato en BLL");
+                throw ex;
+            }
+        }
+
+
+        public bool AgregarIngredientePlato(int id_plato, InsumoPlatoDTO insumo)
+        {
+            try
+            {
+                return _platoDAL.AgregarIngrediente(id_plato, insumo.IdInsumo, insumo.CantidadNecesaria);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al agregar plato en BLL");
+                throw ex;
+            }
+        }
+
+    
     }
 }

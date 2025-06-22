@@ -14,6 +14,7 @@ using System.IO;
 using DTO_Catering;
 using System.Xml.Serialization;
 using static System.Net.WebRequestMethods;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Servicio_Catering
 {
@@ -23,7 +24,6 @@ namespace Servicio_Catering
         private readonly Chef _usuario;
         private readonly HelperFront _helperFront;
         private readonly ChefBLL _chefBLL;
-        private readonly InsumoBLL _insumoBLL;
 
         public Administracion(Chef user)
         {
@@ -31,7 +31,6 @@ namespace Servicio_Catering
             _usuario = user;
             _helperFront = new HelperFront();
             _chefBLL = new ChefBLL();
-            _insumoBLL = new InsumoBLL();
         }
 
 
@@ -52,12 +51,28 @@ namespace Servicio_Catering
             }
         }
 
+        private void CargarDgvMenus()
+        {
+            try
+            {
+                string nombreMenu = tbNombreMenu.Text;
+                string activo = cbMenuActivo.Text;
+                dgvMenu.DataSource = _chefBLL.BuscarMenus(nombreMenu, activo);
+                dgvMenu.Columns["IdMenu"].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al buscar menus en UI");
+                throw ex;
+            }
+        }
+
         private void verPlato_Click(object sender, EventArgs e)
         {
             Plato plato = (Plato)dgvPlatos.CurrentRow.DataBoundItem;
 
-            PlatoDetalle platoDetalle = new PlatoDetalle(plato, "editar");
-            platoDetalle.ShowDialog();
+            EditarPlato editarPlato = new EditarPlato(plato,"editar");
+            editarPlato.ShowDialog();
             ObtenerPlatosFiltro();
         }
 
@@ -101,6 +116,13 @@ namespace Servicio_Catering
                 dateTimeHastaVencimiento.Value = DateTime.Now.AddDays(7);
                 CargarDgvVencimientos(_chefBLL.ObtenerLotesInsumosPerecederos(dateTimeDesdeVencimiento.Value, dateTimeHastaVencimiento.Value));
 
+
+                //Cargas iniciales de menú
+                _helperFront.cargarComboSiNo(cbMenuActivo);
+                dgvMenu.ReadOnly = true;
+                CargarDgvMenus();
+
+
                 dgvAlertas.CellFormatting += dgvAlertas_CellFormatting;
                 dgvVencimientos.CellFormatting += dgvVencimientos_CellFormatting;
                 //AlertaSeveridadCritica(dgvAlertas, "alertas de stock");
@@ -130,8 +152,8 @@ namespace Servicio_Catering
         private void agregarPlato_Click(object sender, EventArgs e)
         {
             Plato plato = new Plato();
-            PlatoDetalle platoDetalle = new PlatoDetalle(plato, "agregar");
-            platoDetalle.ShowDialog();
+            EditarPlato editarPlato = new EditarPlato(plato, "agregar");
+            editarPlato.ShowDialog();
             ObtenerPlatosFiltro();
         }
 
@@ -150,8 +172,6 @@ namespace Servicio_Catering
         {
             this.Close();
         }
-
-
 
 
         private void AlertaSeveridadCritica(DataGridView dgv, string item)
@@ -273,10 +293,6 @@ namespace Servicio_Catering
             CargarDgvVencimientos(_chefBLL.ObtenerLotesInsumosPerecederos(fechaDesde, fechaHasta));
         }
 
-        private void tabPage3_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnBuscarEventos_Click(object sender, EventArgs e)
         {
@@ -328,9 +344,33 @@ namespace Servicio_Catering
 
         }
 
-        private void tabControl1_Click(object sender, EventArgs e)
+        private void btnBuscarMenu_Click(object sender, EventArgs e)
         {
-           
+            try
+            {
+                CargarDgvMenus();
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al buscar menús en UI");
+                MessageBox.Show("Error al buscar menús");
+            }
+        }
+
+        private void btnVerDetalleMenu_Click(object sender, EventArgs e)
+        {
+            var menu = (Menus)dgvMenu.CurrentRow.DataBoundItem;
+
+            var editarMenu = new EditarMenu(menu, "editar");
+            editarMenu.ShowDialog();
+            CargarDgvMenus();
+        }
+
+        private void btnAgregarMenu_Click(object sender, EventArgs e)
+        {
+            var editarMenu = new EditarMenu(new Menus(), "agregar");
+            editarMenu.ShowDialog();
+            CargarDgvMenus();
         }
     }
 }
