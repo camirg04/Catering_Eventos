@@ -106,6 +106,7 @@ namespace Servicio_Catering
                 dateTimeDesdeAlerta.Value = DateTime.Now.AddDays(-10);
                 dateTimeHastaAlerta.Value = DateTime.Now;
                 _helperFront.cargarComboEstadoAlerta(cbEstadoAlerta);
+                _helperFront.cargarComboEstadoAlerta(cbEstadoAlertaEditar);
                 CargarDgvAlerta(_chefBLL.ObtenerAlertasStock(dateTimeDesdeAlerta.Value, dateTimeHastaAlerta.Value, null));
                 
 
@@ -371,6 +372,57 @@ namespace Servicio_Catering
             var editarMenu = new EditarMenu(new Menus(), "agregar");
             editarMenu.ShowDialog();
             CargarDgvMenus();
+        }
+
+        private void btnEditarAlerta_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvAlertas_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                AlertaStockDTO alerta = (AlertaStockDTO)dgvAlertas.CurrentRow.DataBoundItem;
+                if (alerta == null)
+                    return;
+                cbEstadoAlertaEditar.Text = alerta.EstadoAlerta;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al seleccionar insumo en la grilla");
+            }
+        }
+
+        private void btnEditarEstadoAlerta_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var nuevoEstado = cbEstadoAlertaEditar.Text;
+                AlertaStockDTO evento = (AlertaStockDTO)dgvAlertas.CurrentRow.DataBoundItem;
+                int exito = _chefBLL.EditarEstadoAlertaStock(evento.IdAlertaStock, nuevoEstado);
+
+                if (exito > 0)
+                {
+                    MessageBox.Show("El estado de la alerta se actualizó correctamente");
+                    var fechaDesde = dateTimeDesdeAlerta.Value;
+                    var fechaHasta = dateTimeHastaAlerta.Value;
+                    string estado = cbEstadoAlerta?.Text == "" ? null : cbEstadoAlerta.Text;
+                    CargarDgvAlerta(_chefBLL.ObtenerAlertasStock(fechaDesde, fechaHasta, estado));
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo actualizar el estado de la alerta");
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                 MessageBox.Show("Ocurrió un error al modificar el estado de la alerta");
+            }
         }
     }
 }

@@ -209,7 +209,24 @@ namespace BLL_Catering
             }
         }
 
-        
+
+        public int EditarEstadoAlertaStock(int idInsumo, string estado)
+        {
+            try
+            {
+                return _alertaStockBLL.EditarEstadoAlertaStock(idInsumo, estado);
+            }
+            catch (ArgumentException ex)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al filtrar alertas de stock", ex);
+            }
+        }
+
+
         //Métodos evento / descuento stock
 
         public List<EventoDTO> ObtenerEventosPorFechaYEstado(DateTime fechaDesde, DateTime fechaHasta, string estado)
@@ -250,6 +267,7 @@ namespace BLL_Catering
             Dictionary<int, CalculoStock> stockNecesario = ObtenerCantidadesNecesarias(platos, cantidadPersonas);
             var lotes = new List<EventoDTO>();
             CalcularStockDisponible(stockNecesario);
+            bool errorMail = false;
             if (_bajoStockCritico || _bajoStockMinimo)
             {
                 try
@@ -259,12 +277,18 @@ namespace BLL_Catering
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Error al mails de alerta");
+                    errorMail = true;
+                    logger.Error("No se pudo enviar el mail de alerta de stock: " + ex.Message);
                 }
 
                 if (_bajoStockCritico)
                 {
-                    throw new Exception("Stock insuficiente de insumos. \nNo se puede iniciar preparación.\nRevise las alertas de stock");
+                    string mensaje = "Stock insuficiente de insumos. \nNo se puede iniciar preparación.\nRevise las alertas de stock";
+                    if(errorMail)
+                    {
+                        mensaje += "\nNo se pudo enviar el mail de alerta de stock.";
+                    }
+                    throw new Exception(mensaje);
                 }
             }
             DescontarStock(stockNecesario);

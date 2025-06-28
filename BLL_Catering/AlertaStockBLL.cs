@@ -71,7 +71,22 @@ namespace BLL_Catering
             }
             catch (Exception ex)
             {
-                // Aquí podrías manejar la excepción de manera más específica o registrar el error
+                throw new Exception("Error al filtrar alertas de stock", ex);
+            }
+        }
+
+        public int EditarEstadoAlertaStock(int idInsumo,string estado)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(estado))
+                {
+                    throw new ArgumentException("El estado no puede ser nulo o vacío", nameof(estado));
+                }
+                return _alertaStockDAL.EditarEstadoAlertaStock(idInsumo,estado);
+            }
+            catch (Exception ex)
+            {
                 throw new Exception("Error al filtrar alertas de stock", ex);
             }
         }

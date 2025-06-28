@@ -72,5 +72,24 @@ namespace DAL_Catering
                 throw;
             }
         }
+
+        public int EditarEstadoAlertaStock(int idInsumo, string estado)
+        {
+            try
+            {
+                SqlParameter[] parametros = new SqlParameter[]
+                {
+                    new SqlParameter("@id_alerta", SqlDbType.Int) { Value = idInsumo },
+                    new SqlParameter("@nuevo_estado", SqlDbType.VarChar) { Value = estado }
+                };
+
+                return conexion.EscribirPorStoreProcedure("sp_EditarEstadoAlerta", parametros);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al insertar alerta de stock");
+                throw;
+            }
+        }
     }
 }

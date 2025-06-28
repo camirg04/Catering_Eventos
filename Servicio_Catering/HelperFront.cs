@@ -53,6 +53,7 @@ namespace Servicio_Catering
             }
         }
 
+
         public void cargarComboSiNo(ComboBox combo)
         {
             combo.Items.Clear();

@@ -64,7 +64,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.button8 = new System.Windows.Forms.Button();
+            this.btnEditarEstadoEvento = new System.Windows.Forms.Button();
             this.dgvEventos = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.button6 = new System.Windows.Forms.Button();
@@ -76,7 +76,8 @@
             this.label15 = new System.Windows.Forms.Label();
             this.dgvVencimientos = new System.Windows.Forms.DataGridView();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.btnEditarAlerta = new System.Windows.Forms.Button();
+            this.cbEstadoAlertaEditar = new System.Windows.Forms.ComboBox();
+            this.btnEditarEstadoAlerta = new System.Windows.Forms.Button();
             this.btnBuscarAlerta = new System.Windows.Forms.Button();
             this.cbEstadoAlerta = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
@@ -426,7 +427,7 @@
             this.tabPage3.Controls.Add(this.label8);
             this.tabPage3.Controls.Add(this.label9);
             this.tabPage3.Controls.Add(this.label11);
-            this.tabPage3.Controls.Add(this.button8);
+            this.tabPage3.Controls.Add(this.btnEditarEstadoEvento);
             this.tabPage3.Controls.Add(this.dgvEventos);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
@@ -547,17 +548,17 @@
             this.label11.TabIndex = 18;
             this.label11.Text = "Estado";
             // 
-            // button8
+            // btnEditarEstadoEvento
             // 
-            this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button8.Location = new System.Drawing.Point(668, 49);
-            this.button8.Margin = new System.Windows.Forms.Padding(2);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(136, 24);
-            this.button8.TabIndex = 17;
-            this.button8.Text = "Editar estado";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.btnEditarEstadoEvento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditarEstadoEvento.Location = new System.Drawing.Point(668, 49);
+            this.btnEditarEstadoEvento.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEditarEstadoEvento.Name = "btnEditarEstadoEvento";
+            this.btnEditarEstadoEvento.Size = new System.Drawing.Size(136, 24);
+            this.btnEditarEstadoEvento.TabIndex = 17;
+            this.btnEditarEstadoEvento.Text = "Editar estado";
+            this.btnEditarEstadoEvento.UseVisualStyleBackColor = true;
+            this.btnEditarEstadoEvento.Click += new System.EventHandler(this.button8_Click);
             // 
             // dgvEventos
             // 
@@ -684,7 +685,8 @@
             // 
             // tabPage5
             // 
-            this.tabPage5.Controls.Add(this.btnEditarAlerta);
+            this.tabPage5.Controls.Add(this.cbEstadoAlertaEditar);
+            this.tabPage5.Controls.Add(this.btnEditarEstadoAlerta);
             this.tabPage5.Controls.Add(this.btnBuscarAlerta);
             this.tabPage5.Controls.Add(this.cbEstadoAlerta);
             this.tabPage5.Controls.Add(this.label23);
@@ -703,16 +705,28 @@
             this.tabPage5.Text = "Alertas Stock";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // btnEditarAlerta
+            // cbEstadoAlertaEditar
             // 
-            this.btnEditarAlerta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEditarAlerta.Location = new System.Drawing.Point(672, 19);
-            this.btnEditarAlerta.Margin = new System.Windows.Forms.Padding(2);
-            this.btnEditarAlerta.Name = "btnEditarAlerta";
-            this.btnEditarAlerta.Size = new System.Drawing.Size(135, 24);
-            this.btnEditarAlerta.TabIndex = 52;
-            this.btnEditarAlerta.Text = "Editar";
-            this.btnEditarAlerta.UseVisualStyleBackColor = true;
+            this.cbEstadoAlertaEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbEstadoAlertaEditar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbEstadoAlertaEditar.FormattingEnabled = true;
+            this.cbEstadoAlertaEditar.Location = new System.Drawing.Point(672, 22);
+            this.cbEstadoAlertaEditar.Margin = new System.Windows.Forms.Padding(2);
+            this.cbEstadoAlertaEditar.Name = "cbEstadoAlertaEditar";
+            this.cbEstadoAlertaEditar.Size = new System.Drawing.Size(125, 21);
+            this.cbEstadoAlertaEditar.TabIndex = 53;
+            // 
+            // btnEditarEstadoAlerta
+            // 
+            this.btnEditarEstadoAlerta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditarEstadoAlerta.Location = new System.Drawing.Point(668, 49);
+            this.btnEditarEstadoAlerta.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEditarEstadoAlerta.Name = "btnEditarEstadoAlerta";
+            this.btnEditarEstadoAlerta.Size = new System.Drawing.Size(136, 24);
+            this.btnEditarEstadoAlerta.TabIndex = 52;
+            this.btnEditarEstadoAlerta.Text = "Editar estado";
+            this.btnEditarEstadoAlerta.UseVisualStyleBackColor = true;
+            this.btnEditarEstadoAlerta.Click += new System.EventHandler(this.btnEditarEstadoAlerta_Click);
             // 
             // btnBuscarAlerta
             // 
@@ -774,6 +788,7 @@
             this.dgvAlertas.Size = new System.Drawing.Size(668, 430);
             this.dgvAlertas.TabIndex = 40;
             this.dgvAlertas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvAlertas_CellFormatting);
+            this.dgvAlertas.SelectionChanged += new System.EventHandler(this.dgvAlertas_SelectionChanged);
             // 
             // dateTimeHastaAlerta
             // 
@@ -932,7 +947,6 @@
         private System.Windows.Forms.Button verPlato;
         private System.Windows.Forms.DataGridView dgvPlatos;
         private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.Button btnEditarAlerta;
         private System.Windows.Forms.Button btnBuscarAlerta;
         private System.Windows.Forms.ComboBox cbEstadoAlerta;
         private System.Windows.Forms.Label label23;
@@ -945,6 +959,8 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.ComboBox cbEstadoEvento;
         private System.Windows.Forms.ComboBox cbEditarEstadoEvento;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button btnEditarEstadoEvento;
+        private System.Windows.Forms.ComboBox cbEstadoAlertaEditar;
+        private System.Windows.Forms.Button btnEditarEstadoAlerta;
     }
 }
