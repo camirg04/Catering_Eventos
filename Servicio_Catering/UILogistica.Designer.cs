@@ -90,17 +90,26 @@
             this.label5 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnEliminarMenu = new System.Windows.Forms.Button();
+            this.btnAgregarMenu = new System.Windows.Forms.Button();
+            this.btnVerDetalleMenu = new System.Windows.Forms.Button();
+            this.btnBuscarMenu = new System.Windows.Forms.Button();
+            this.tbNombreInsumo = new System.Windows.Forms.TextBox();
+            this.cbInsumoActivo = new System.Windows.Forms.ComboBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.dgvInsumos = new System.Windows.Forms.DataGridView();
             this.CerrarSesion = new System.Windows.Forms.Button();
             this.lblBienvenida = new System.Windows.Forms.Label();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInsumos)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -115,9 +124,8 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(759, 456);
+            this.tabControl1.Size = new System.Drawing.Size(771, 446);
             this.tabControl1.TabIndex = 2;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage3
             // 
@@ -150,7 +158,7 @@
             this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage3.Size = new System.Drawing.Size(737, 426);
+            this.tabPage3.Size = new System.Drawing.Size(763, 420);
             this.tabPage3.TabIndex = 7;
             this.tabPage3.Text = "Stock";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -220,7 +228,6 @@
             this.textBox6.ReadOnly = true;
             this.textBox6.Size = new System.Drawing.Size(76, 20);
             this.textBox6.TabIndex = 87;
-            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // textBox5
             // 
@@ -274,7 +281,6 @@
             this.label27.Size = new System.Drawing.Size(90, 13);
             this.label27.TabIndex = 81;
             this.label27.Text = "Unidad medida";
-            this.label27.Click += new System.EventHandler(this.label27_Click);
             // 
             // label24
             // 
@@ -301,10 +307,10 @@
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(677, 218);
+            this.button3.Location = new System.Drawing.Point(697, 218);
             this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(46, 24);
+            this.button3.Size = new System.Drawing.Size(61, 24);
             this.button3.TabIndex = 76;
             this.button3.Text = "Limpiar";
             this.button3.UseVisualStyleBackColor = true;
@@ -320,17 +326,17 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.Size = new System.Drawing.Size(608, 274);
+            this.dataGridView2.Size = new System.Drawing.Size(629, 274);
             this.dataGridView2.TabIndex = 75;
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             // 
             // button4
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(615, 218);
+            this.button4.Location = new System.Drawing.Point(635, 218);
             this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(46, 24);
+            this.button4.Size = new System.Drawing.Size(58, 24);
             this.button4.TabIndex = 73;
             this.button4.Text = "Buscar";
             this.button4.UseVisualStyleBackColor = true;
@@ -341,7 +347,7 @@
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(615, 170);
+            this.label6.Location = new System.Drawing.Point(635, 170);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(39, 13);
@@ -352,7 +358,7 @@
             // 
             this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(615, 183);
+            this.dateTimePicker1.Location = new System.Drawing.Point(635, 183);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(111, 20);
@@ -363,7 +369,7 @@
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(615, 39);
+            this.label7.Location = new System.Drawing.Point(635, 39);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(64, 15);
@@ -375,7 +381,7 @@
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(615, 118);
+            this.label8.Location = new System.Drawing.Point(635, 118);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(43, 13);
@@ -387,7 +393,7 @@
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(633, 12);
+            this.label9.Location = new System.Drawing.Point(653, 12);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(82, 15);
@@ -398,7 +404,7 @@
             // 
             this.dateTimePicker2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(615, 131);
+            this.dateTimePicker2.Location = new System.Drawing.Point(635, 131);
             this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(111, 20);
@@ -409,7 +415,7 @@
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(615, 96);
+            this.label10.Location = new System.Drawing.Point(635, 96);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(98, 15);
@@ -421,7 +427,7 @@
             this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(615, 56);
+            this.comboBox1.Location = new System.Drawing.Point(635, 56);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(110, 21);
@@ -465,11 +471,10 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(751, 430);
+            this.tabPage1.Size = new System.Drawing.Size(763, 420);
             this.tabPage1.TabIndex = 5;
             this.tabPage1.Text = "Pedidos";
             this.tabPage1.UseVisualStyleBackColor = true;
-            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // textBox4
             // 
@@ -705,10 +710,10 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(674, 214);
+            this.button1.Location = new System.Drawing.Point(705, 218);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(46, 24);
+            this.button1.Size = new System.Drawing.Size(53, 24);
             this.button1.TabIndex = 63;
             this.button1.Text = "Limpiar";
             this.button1.UseVisualStyleBackColor = true;
@@ -716,10 +721,10 @@
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(616, 214);
+            this.button2.Location = new System.Drawing.Point(647, 218);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(46, 24);
+            this.button2.Size = new System.Drawing.Size(54, 24);
             this.button2.TabIndex = 62;
             this.button2.Text = "Buscar";
             this.button2.UseVisualStyleBackColor = true;
@@ -729,7 +734,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(616, 162);
+            this.label1.Location = new System.Drawing.Point(647, 166);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(39, 13);
@@ -746,7 +751,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(608, 249);
+            this.dataGridView1.Size = new System.Drawing.Size(635, 249);
             this.dataGridView1.TabIndex = 53;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -754,7 +759,7 @@
             // 
             this.dateTimePicker3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker3.Location = new System.Drawing.Point(616, 176);
+            this.dateTimePicker3.Location = new System.Drawing.Point(647, 180);
             this.dateTimePicker3.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker3.Name = "dateTimePicker3";
             this.dateTimePicker3.Size = new System.Drawing.Size(111, 20);
@@ -765,20 +770,19 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(616, 38);
+            this.label2.Location = new System.Drawing.Point(647, 42);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 15);
             this.label2.TabIndex = 54;
             this.label2.Text = "Producto";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(616, 110);
+            this.label3.Location = new System.Drawing.Point(647, 114);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 13);
@@ -790,7 +794,7 @@
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(616, 2);
+            this.label4.Location = new System.Drawing.Point(647, 6);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(101, 15);
@@ -801,7 +805,7 @@
             // 
             this.dateTimePicker4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker4.Location = new System.Drawing.Point(616, 124);
+            this.dateTimePicker4.Location = new System.Drawing.Point(647, 128);
             this.dateTimePicker4.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker4.Name = "dateTimePicker4";
             this.dateTimePicker4.Size = new System.Drawing.Size(111, 20);
@@ -812,7 +816,7 @@
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(616, 76);
+            this.label5.Location = new System.Drawing.Point(647, 80);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(46, 15);
@@ -824,64 +828,153 @@
             this.comboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(616, 53);
+            this.comboBox2.Location = new System.Drawing.Point(647, 57);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(110, 21);
             this.comboBox2.TabIndex = 57;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.comboBox3);
-            this.tabPage2.Controls.Add(this.button6);
-            this.tabPage2.Controls.Add(this.button5);
+            this.tabPage2.Controls.Add(this.btnLimpiar);
+            this.tabPage2.Controls.Add(this.btnEliminarMenu);
+            this.tabPage2.Controls.Add(this.btnAgregarMenu);
+            this.tabPage2.Controls.Add(this.btnVerDetalleMenu);
+            this.tabPage2.Controls.Add(this.btnBuscarMenu);
+            this.tabPage2.Controls.Add(this.tbNombreInsumo);
+            this.tabPage2.Controls.Add(this.cbInsumoActivo);
+            this.tabPage2.Controls.Add(this.label23);
+            this.tabPage2.Controls.Add(this.label26);
+            this.tabPage2.Controls.Add(this.label30);
+            this.tabPage2.Controls.Add(this.dgvInsumos);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(751, 430);
+            this.tabPage2.Size = new System.Drawing.Size(763, 420);
             this.tabPage2.TabIndex = 6;
             this.tabPage2.Text = "Insumos";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // comboBox3
+            // btnEliminarMenu
             // 
-            this.comboBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(616, 115);
-            this.comboBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(110, 21);
-            this.comboBox3.TabIndex = 66;
+            this.btnEliminarMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEliminarMenu.Location = new System.Drawing.Point(589, 71);
+            this.btnEliminarMenu.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEliminarMenu.Name = "btnEliminarMenu";
+            this.btnEliminarMenu.Size = new System.Drawing.Size(164, 25);
+            this.btnEliminarMenu.TabIndex = 74;
+            this.btnEliminarMenu.Text = "Eliminar";
+            this.btnEliminarMenu.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btnAgregarMenu
             // 
-            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button6.Location = new System.Drawing.Point(616, 63);
-            this.button6.Margin = new System.Windows.Forms.Padding(2);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(100, 24);
-            this.button6.TabIndex = 65;
-            this.button6.Text = "Eliminar";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.btnAgregarMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAgregarMenu.Location = new System.Drawing.Point(589, 42);
+            this.btnAgregarMenu.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAgregarMenu.Name = "btnAgregarMenu";
+            this.btnAgregarMenu.Size = new System.Drawing.Size(164, 24);
+            this.btnAgregarMenu.TabIndex = 75;
+            this.btnAgregarMenu.Text = "Agregar";
+            this.btnAgregarMenu.UseVisualStyleBackColor = true;
+            this.btnAgregarMenu.Click += new System.EventHandler(this.btnAgregarMenu_Click);
             // 
-            // button5
+            // btnVerDetalleMenu
             // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(616, 35);
-            this.button5.Margin = new System.Windows.Forms.Padding(2);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(100, 24);
-            this.button5.TabIndex = 64;
-            this.button5.Text = "Editar";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnVerDetalleMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnVerDetalleMenu.Location = new System.Drawing.Point(589, 14);
+            this.btnVerDetalleMenu.Margin = new System.Windows.Forms.Padding(2);
+            this.btnVerDetalleMenu.Name = "btnVerDetalleMenu";
+            this.btnVerDetalleMenu.Size = new System.Drawing.Size(163, 24);
+            this.btnVerDetalleMenu.TabIndex = 76;
+            this.btnVerDetalleMenu.Text = "Ver detalle";
+            this.btnVerDetalleMenu.UseVisualStyleBackColor = true;
+            this.btnVerDetalleMenu.Click += new System.EventHandler(this.btnVerDetalleMenu_Click);
+            // 
+            // btnBuscarMenu
+            // 
+            this.btnBuscarMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBuscarMenu.Location = new System.Drawing.Point(589, 269);
+            this.btnBuscarMenu.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBuscarMenu.Name = "btnBuscarMenu";
+            this.btnBuscarMenu.Size = new System.Drawing.Size(72, 24);
+            this.btnBuscarMenu.TabIndex = 73;
+            this.btnBuscarMenu.Text = "Buscar";
+            this.btnBuscarMenu.UseVisualStyleBackColor = true;
+            this.btnBuscarMenu.Click += new System.EventHandler(this.btnBuscarMenu_Click);
+            // 
+            // tbNombreInsumo
+            // 
+            this.tbNombreInsumo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbNombreInsumo.Location = new System.Drawing.Point(587, 182);
+            this.tbNombreInsumo.Margin = new System.Windows.Forms.Padding(2);
+            this.tbNombreInsumo.Name = "tbNombreInsumo";
+            this.tbNombreInsumo.Size = new System.Drawing.Size(150, 20);
+            this.tbNombreInsumo.TabIndex = 72;
+            // 
+            // cbInsumoActivo
+            // 
+            this.cbInsumoActivo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbInsumoActivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbInsumoActivo.FormattingEnabled = true;
+            this.cbInsumoActivo.Location = new System.Drawing.Point(588, 232);
+            this.cbInsumoActivo.Margin = new System.Windows.Forms.Padding(2);
+            this.cbInsumoActivo.Name = "cbInsumoActivo";
+            this.cbInsumoActivo.Size = new System.Drawing.Size(150, 21);
+            this.cbInsumoActivo.TabIndex = 71;
+            // 
+            // label23
+            // 
+            this.label23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(586, 217);
+            this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(44, 15);
+            this.label23.TabIndex = 70;
+            this.label23.Text = "Activo";
+            // 
+            // label26
+            // 
+            this.label26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(601, 137);
+            this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(109, 15);
+            this.label26.TabIndex = 69;
+            this.label26.Text = "Buscar insumos";
+            // 
+            // label30
+            // 
+            this.label30.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Location = new System.Drawing.Point(585, 167);
+            this.label30.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(58, 15);
+            this.label30.TabIndex = 68;
+            this.label30.Text = "Nombre";
+            // 
+            // dgvInsumos
+            // 
+            this.dgvInsumos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvInsumos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvInsumos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvInsumos.Location = new System.Drawing.Point(0, 2);
+            this.dgvInsumos.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvInsumos.Name = "dgvInsumos";
+            this.dgvInsumos.Size = new System.Drawing.Size(579, 416);
+            this.dgvInsumos.TabIndex = 67;
             // 
             // CerrarSesion
             // 
             this.CerrarSesion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CerrarSesion.Location = new System.Drawing.Point(672, 4);
+            this.CerrarSesion.Location = new System.Drawing.Point(672, 3);
             this.CerrarSesion.Margin = new System.Windows.Forms.Padding(2);
             this.CerrarSesion.Name = "CerrarSesion";
             this.CerrarSesion.Size = new System.Drawing.Size(97, 29);
@@ -900,11 +993,23 @@
             this.lblBienvenida.TabIndex = 15;
             this.lblBienvenida.Text = "¡Bienvenido/a!";
             // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLimpiar.Location = new System.Drawing.Point(666, 269);
+            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(72, 24);
+            this.btnLimpiar.TabIndex = 77;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
             // UILogistica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(759, 486);
+            this.ClientSize = new System.Drawing.Size(771, 476);
             this.Controls.Add(this.lblBienvenida);
             this.Controls.Add(this.CerrarSesion);
             this.Controls.Add(this.tabControl1);
@@ -919,6 +1024,8 @@
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInsumos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -951,9 +1058,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
@@ -992,5 +1096,16 @@
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.DataGridView dgvInsumos;
+        private System.Windows.Forms.Button btnBuscarMenu;
+        private System.Windows.Forms.TextBox tbNombreInsumo;
+        private System.Windows.Forms.ComboBox cbInsumoActivo;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Button btnEliminarMenu;
+        private System.Windows.Forms.Button btnAgregarMenu;
+        private System.Windows.Forms.Button btnVerDetalleMenu;
+        private System.Windows.Forms.Button btnLimpiar;
     }
 }

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using BLL_Catering;
 using DTO_Catering;
 using Entity_Catering;
+using NLog;
 
 namespace Servicio_Catering
 {
@@ -19,10 +20,17 @@ namespace Servicio_Catering
         private List<LoteInsumoDTO> _lote = new List<LoteInsumoDTO>();
         private List<Insumo> _insumo = new List<Insumo>();
         private List<PedidoInsumo> _pedido= new List<PedidoInsumo>();
+        private readonly LogisticaBLL _logisticaBLL;
+        private readonly HelperFront _helperFront;
+        private static readonly Logger logger = LogManager.GetCurrentClassLogger();
+
         public UILogistica(Usuario user)
         {
             InitializeComponent();
             _usuario = user;
+            _logisticaBLL = new LogisticaBLL();
+            _helperFront = new HelperFront();
+
             //instancio blllote para trearme todos los lotes
             LoteInsumoBLL loteInsumoBLL = new LoteInsumoBLL();
             _lote.AddRange(loteInsumoBLL.ObtenerLotesInsumos());
@@ -56,6 +64,8 @@ namespace Servicio_Catering
             this.comboBox4.DisplayMember = "Nombre";
             this.comboBox4.ValueMember = "IdInsumo";
             this.comboBox4.SelectedIndex = -1;
+
+            
         }
 
 
@@ -77,37 +87,22 @@ namespace Servicio_Catering
         private void UILogistica_Load(object sender, EventArgs e)
         {
             lblBienvenida.Text = darBienvenida(_usuario.Nombre);
+
+            //cargar insumos
+            cargarDgvInsumos(_logisticaBLL.BuscarInsumos(null, null));
+            _helperFront.cargarComboSiNo(cbInsumoActivo);
+           
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void cargarDgvInsumos(List<Insumo> insumos)
         {
-
+            dgvInsumos.DataSource = null;
+            dgvInsumos.ReadOnly = true;
+            dgvInsumos.DataSource = insumos;
+            dgvInsumos.Columns["IdInsumo"].Visible = false;
+            dgvInsumos.Columns["Perecedero"].Visible = false;
         }
 
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabPage5_Click(object sender, EventArgs e)
-        {
-
-        }
         /*EVENTOS  PARA STOCK*/
         private void button4_Click(object sender, EventArgs e)
         {
@@ -304,16 +299,6 @@ namespace Servicio_Catering
 
         }
 
-        private void label27_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox6_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void button9_Click(object sender, EventArgs e)
         {
             try
@@ -341,13 +326,45 @@ namespace Servicio_Catering
 
         }
 
-        private void label21_Click(object sender, EventArgs e)
+        private void btnBuscarMenu_Click(object sender, EventArgs e)
         {
+            try
+            {
+                string nombre = tbNombreInsumo.Text;
+                string activo = cbInsumoActivo.Text;
+                cargarDgvInsumos(_logisticaBLL.BuscarInsumos(nombre, activo));
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al buscar insumos");
+                MessageBox.Show("Error al buscar insumos");
 
+            }
         }
 
-        /*EVENTOS  PARA STOCK*/
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            cargarDgvInsumos(_logisticaBLL.BuscarInsumos(null, null));
+        }
 
+        private void btnVerDetalleMenu_Click(object sender, EventArgs e)
+        {
+            if (dgvInsumos.CurrentRow == null)
+            {
+                return;
+            }
+            var insumo = (Insumo)dgvInsumos.CurrentRow.DataBoundItem;
 
+            var editarInsumo = new DetalleInsumo(insumo, "editar");
+            editarInsumo.ShowDialog();
+            cargarDgvInsumos(_logisticaBLL.BuscarInsumos(null, null));
+        }
+
+        private void btnAgregarMenu_Click(object sender, EventArgs e)
+        {
+            var editarInsumo = new DetalleInsumo(new Insumo(), "agregar");
+            editarInsumo.ShowDialog();
+            cargarDgvInsumos(_logisticaBLL.BuscarInsumos(null, null));
+        }
     }
 }

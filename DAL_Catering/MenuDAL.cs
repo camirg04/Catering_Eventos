@@ -56,7 +56,7 @@ namespace DAL_Catering
 
                 SqlParameter[] parametros = new SqlParameter[]
                 {
-                    new SqlParameter("@activos", SqlDbType.TinyInt, 100) { Value = activos == "" ? DBNull.Value : (object)(activos == "Si" ? 1 : 0)  },
+                    new SqlParameter("@activos", SqlDbType.TinyInt, 100) { Value = activos == "" || activos == null ? DBNull.Value : (object)(activos == "Si" ? 1 : 0)  },
                     new SqlParameter("@nombre", SqlDbType.VarChar, 100) { Value = nombre }
                 };
                 var dt = conexion.LeerPorStoreProcedure("BuscarMenu", parametros);

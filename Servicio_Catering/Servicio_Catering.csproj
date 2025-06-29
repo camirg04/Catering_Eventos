@@ -57,6 +57,12 @@
     <Compile Include="ChefVista.Designer.cs">
       <DependentUpon>ChefVista.cs</DependentUpon>
     </Compile>
+    <Compile Include="DetalleInsumo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetalleInsumo.Designer.cs">
+      <DependentUpon>DetalleInsumo.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditarMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,9 @@
     </Compile>
     <EmbeddedResource Include="ChefVista.resx">
       <DependentUpon>ChefVista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetalleInsumo.resx">
+      <DependentUpon>DetalleInsumo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditarMenu.resx">
       <DependentUpon>EditarMenu.cs</DependentUpon>
