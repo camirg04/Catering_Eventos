@@ -424,5 +424,6 @@ namespace Servicio_Catering
                  MessageBox.Show("Ocurrió un error al modificar el estado de la alerta");
             }
         }
+
     }
 }
