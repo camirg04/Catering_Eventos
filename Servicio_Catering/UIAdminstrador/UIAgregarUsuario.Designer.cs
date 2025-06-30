@@ -47,18 +47,18 @@
             this.tboxClave = new System.Windows.Forms.TextBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnBorrarTodo = new System.Windows.Forms.Button();
-            this.warningNombre = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 31);
+            this.label1.Location = new System.Drawing.Point(12, 32);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(418, 20);
+            this.label1.Size = new System.Drawing.Size(665, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Para crear un usuario nuevo, ingrese los datos requeridos.";
+            this.label1.Text = "Para crear un usuario nuevo, ingrese los datos requeridos. Todos los campos son o" +
+    "bligatorios";
             // 
             // tboxNombre
             // 
@@ -169,6 +169,7 @@
             // 
             // cboxPerfil
             // 
+            this.cboxPerfil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboxPerfil.FormattingEnabled = true;
             this.cboxPerfil.Items.AddRange(new object[] {
             "ADMINISTRADOR",
@@ -213,24 +214,13 @@
             this.btnBorrarTodo.TabIndex = 18;
             this.btnBorrarTodo.Text = "Borrar todo";
             this.btnBorrarTodo.UseVisualStyleBackColor = true;
-            // 
-            // warningNombre
-            // 
-            this.warningNombre.AutoSize = true;
-            this.warningNombre.Font = new System.Drawing.Font("Microsoft Tai Le", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.warningNombre.ForeColor = System.Drawing.Color.Red;
-            this.warningNombre.Location = new System.Drawing.Point(445, 81);
-            this.warningNombre.Name = "warningNombre";
-            this.warningNombre.Size = new System.Drawing.Size(94, 13);
-            this.warningNombre.TabIndex = 19;
-            this.warningNombre.Text = "Ingrese un nombre";
+            this.btnBorrarTodo.Click += new System.EventHandler(this.btnBorrarTodo_Click);
             // 
             // UIAgregarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.warningNombre);
             this.Controls.Add(this.btnBorrarTodo);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.tboxClave);
@@ -251,8 +241,8 @@
             this.Controls.Add(this.tboxNombre);
             this.Controls.Add(this.label1);
             this.Name = "UIAgregarUsuario";
-            this.Text = "UIAgregarUsuario";
-            this.Load += new System.EventHandler(this.UIAgregarUsuario_Load);
+            this.Text = "Crear usuario nuevo";
+         
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -279,6 +269,5 @@
         private System.Windows.Forms.TextBox tboxClave;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnBorrarTodo;
-        private System.Windows.Forms.Label warningNombre;
     }
 }
