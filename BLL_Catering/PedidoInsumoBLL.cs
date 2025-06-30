@@ -20,21 +20,61 @@ namespace BLL_Catering
 
         public List<PedidoInsumo> ObtenerPedidoInsumoBLL()
         {
-            return _pedidoInsumoDAL.ObtenerPedidoInsumo();
+            try
+            {
+                return _pedidoInsumoDAL.ObtenerPedidoInsumo();
+            }
+            catch (Exception ex) {
+                throw;
+            }           
         }
 
-        public bool UpdatePedidoInsumoBLL(int idInsumo,int idPedidoInsumo,DateTime fechaPedidoInsumo,string entregado, Decimal cantidad,int costo)
-       
+        public List<PedidoInsumo> ObtenerPedidoInsumoBLL(int idInsumo, DateTime? fechaDesde, DateTime? fechaHasta)
         {
-
-            _pedidoInsumoDAL.UpdatePedidoInsumoBLL(idInsumo, idPedidoInsumo, fechaPedidoInsumo, entregado, cantidad,costo);
-            return true;
-
+            try
+            {
+                return _pedidoInsumoDAL.ObtenerPedidoInsumo(idInsumo,fechaDesde,fechaHasta);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
-        public bool AddPedidoInsumoBll(int idPedidoInsumo, int idInsumo, DateTime fecha_pedido, string estado, Decimal cantidad, int idUsuario)
+
+        public bool UpdatePedidoInsumoBLL(int idInsumo,int idPedidoInsumo,DateTime fechaPedidoInsumo,string entregado, Decimal cantidad,int costo, string estadoAnterior)    
         {
-            _pedidoInsumoDAL.AddPedidoInsumoDAL(idPedidoInsumo, idInsumo, fecha_pedido, estado, cantidad, idUsuario);
-            return true;
+            try
+            {               
+                ValidarCambioEstadoPedido(estadoAnterior, entregado);
+                return _pedidoInsumoDAL.UpdatePedidoInsumoBLL(idInsumo, idPedidoInsumo, fechaPedidoInsumo, entregado, cantidad, costo);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        private void ValidarCambioEstadoPedido(string estadoAnterior, string estadoNuevo)
+        {
+            if (estadoAnterior == estadoNuevo)
+                return;
+
+            if (estadoAnterior == "ENTREGADO")
+                throw new ArgumentException("No se puede modificar el estado de un pedido 'Entregado'");
+            if (estadoAnterior == "CANCELADO")
+                throw new ArgumentException("No se puede modificar el estado de un pedido 'Cancelado'");
+        }
+
+        public bool AddPedidoInsumoBll(int idInsumo, DateTime fecha_pedido, string estado, Decimal cantidad, int idUsuario)
+        {
+            try
+            {
+                return _pedidoInsumoDAL.AddPedidoInsumoDAL(idInsumo, fecha_pedido, estado, cantidad, idUsuario);
+            }
+            catch(Exception ex)
+            {
+                throw;
+            }
         }
 
     }

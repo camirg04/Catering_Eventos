@@ -32,40 +32,27 @@ namespace Servicio_Catering
             _helperFront = new HelperFront();
 
             //instancio blllote para trearme todos los lotes
+            CargarDgvLotes();
+
+            //me traigo todos los insumos
+            InsumoBLL insumoBll = new InsumoBLL();
+            _insumo.AddRange(_logisticaBLL.BuscarInsumos("",""));
+
+            //inicializamos data grid de PEDIDO INSUMO
+            ReestablecerFiltros();
+            CargarDgvPedidos();
+
+            _helperFront.cargarComboIsumos(this.comboBox1, _insumo.ToList());
+            _helperFront.cargarComboIsumos(this.cbProductoPedido, _insumo.ToList());            
+        }
+
+
+        private void CargarDgvLotes()
+        {
             LoteInsumoBLL loteInsumoBLL = new LoteInsumoBLL();
             _lote.AddRange(loteInsumoBLL.ObtenerLotesInsumos());
             dataGridView2.DataSource = _lote.ToList();
             dataGridView2.Columns["Severidad"].Visible = false;
-            //me traigo todos los insumos
-            InsumoBLL insumoBll = new InsumoBLL();
-            _insumo.AddRange(insumoBll.ObtenerInsumosActivos());
-            this.comboBox1.DataSource = _insumo.ToList();
-            this.comboBox1.DisplayMember = "Nombre";
-            this.comboBox1.ValueMember = "IdInsumo";
-            this.comboBox1.SelectedIndex = -1;
-            //inicializamos data grid de PEDIDO INSUMO
-            PedidoInsumoBLL pedidoBLL = new PedidoInsumoBLL();
-
-            _pedido.AddRange(pedidoBLL.ObtenerPedidoInsumoBLL());
-            //_pedido[0].Insumo.IdInsumo
-            dataGridView1.DataSource = _pedido.ToList();
-            dataGridView1.Columns["Insumo"].Visible = false;
-            dataGridView1.Columns["UsuarioPedido"].Visible = false;
-            this.comboBox2.DataSource = _insumo.ToList();
-            this.comboBox2.DisplayMember = "Nombre";
-            this.comboBox2.ValueMember = "IdInsumo";
-            this.comboBox2.SelectedIndex = -1;
-            this.comboBox7.DataSource = _insumo.ToList();
-            this.comboBox7.DisplayMember = "Nombre";
-            this.comboBox7.ValueMember = "IdInsumo";
-            this.comboBox7.SelectedIndex = -1;
-
-            this.comboBox4.DataSource = _insumo.ToList();
-            this.comboBox4.DisplayMember = "Nombre";
-            this.comboBox4.ValueMember = "IdInsumo";
-            this.comboBox4.SelectedIndex = -1;
-
-            
         }
 
 
@@ -137,132 +124,49 @@ namespace Servicio_Catering
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex != -1)
-            {
-                if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() != "")
-                {
-                    //MessageBox.Show(dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
+            //if (e.RowIndex != -1)
+            //{
+            //    if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() != "")
+            //    {
+            //        //MessageBox.Show(dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
 
-                    if (dataGridView1.Rows[e.RowIndex].Cells["EstadoPedido"].Value.ToString() != "ENTREGADO")
-                    {
-                        //vemos el campo estadoPedido
-                        if (dataGridView1.Rows[e.RowIndex].Cells["EstadoPedido"].Value.ToString() == "ENTREGADO")
-                        {
-                            comboBox6.SelectedIndex = 1;
-                        }
-                        else
-                        {
-                            comboBox6.SelectedIndex = 0;
-                        }
-                        //sacamos la cantidad
-                        textBox2.Text = dataGridView1.Rows[e.RowIndex].Cells["Cantidad"].Value.ToString();
-                        //sacamos la fecha del pedido
-                        dateTimePicker6.Text = dataGridView1.Rows[e.RowIndex].Cells["FechaPedido"].Value.ToString();
-                        //creo un insumo que esta en el campo INSUMO
-                        Insumo OneInsumo = new Insumo();
-                        OneInsumo = dataGridView1.Rows[e.RowIndex].Cells["Insumo"].Value as Insumo;
-                        //matcheo el id con el value -- idInsumo
-                        comboBox7.SelectedValue = OneInsumo.IdInsumo;
-                        textBox3.Text = dataGridView1.Rows[e.RowIndex].Cells["IdPedidoInsumo"].Value.ToString();
-                        //creo un usuario
-                        Usuario OneUsuario = new Usuario();
-                        OneUsuario = dataGridView1.Rows[e.RowIndex].Cells["UsuarioPedido"].Value as Usuario;
-                        textBox4.Text = OneUsuario.IdUsuario.ToString();
-                    }
-                    else
-                    {
-                        MessageBox.Show("El Insumo ya fue entregado");
-                    }
+            //        if (dataGridView1.Rows[e.RowIndex].Cells["EstadoPedido"].Value.ToString() != "ENTREGADO")
+            //        {
+            //            //vemos el campo estadoPedido
+            //            if (dataGridView1.Rows[e.RowIndex].Cells["EstadoPedido"].Value.ToString() == "ENTREGADO")
+            //            {
+            //                comboBox6.SelectedIndex = 1;
+            //            }
+            //            else
+            //            {
+            //                comboBox6.SelectedIndex = 0;
+            //            }
+            //            //sacamos la cantidad
+            //            textBox2.Text = dataGridView1.Rows[e.RowIndex].Cells["Cantidad"].Value.ToString();
+            //            //sacamos la fecha del pedido
+            //            dateTimePicker6.Text = dataGridView1.Rows[e.RowIndex].Cells["FechaPedido"].Value.ToString();
+            //            //creo un insumo que esta en el campo INSUMO
+            //            Insumo OneInsumo = new Insumo();
+            //            OneInsumo = dataGridView1.Rows[e.RowIndex].Cells["Insumo"].Value as Insumo;
+            //            //matcheo el id con el value -- idInsumo
+            //            comboBox7.SelectedValue = OneInsumo.IdInsumo;
+            //            textBox3.Text = dataGridView1.Rows[e.RowIndex].Cells["IdPedidoInsumo"].Value.ToString();
+            //            //creo un usuario
+            //            Usuario OneUsuario = new Usuario();
+            //            OneUsuario = dataGridView1.Rows[e.RowIndex].Cells["UsuarioPedido"].Value as Usuario;
+            //            textBox4.Text = OneUsuario.IdUsuario.ToString();
+            //        }
+            //        else
+            //        {
+            //            MessageBox.Show("El Insumo ya fue entregado");
+            //        }
                     
 
-                }
+            //    }
 
-            }
+            //}
         }
 
-        private void button7_Click(object sender, EventArgs e)
-        {
-            //MessageBox.Show(comboBox7.SelectedValue.ToString());
-            //int idInsumo = int.Parse(comboBox7.SelectedValue.ToString());
-            //int idPedidoInsumo = int.Parse(textBox3.Text.ToString());
-            //DateTime fechaPedidoInsumo = dateTimePicker6.Value;
-            //string entregado = comboBox6.Text;
-            //int idUsuario = int.Parse(textBox4.Text.ToString());
-            PedidoInsumoBLL updatePedido = new PedidoInsumoBLL();
-
-            if (comboBox7.SelectedValue.ToString() != "" && textBox3.Text.ToString() != "" && comboBox6.Text != "" && textBox4.Text.ToString() != "")
-            {
-
-                int idInsumo = int.Parse(comboBox7.SelectedValue.ToString());
-                int idPedidoInsumo = int.Parse(textBox3.Text.ToString());
-                DateTime fechaPedidoInsumo = dateTimePicker6.Value;
-                string entregado = comboBox6.Text;
-                Decimal cantidad = Decimal.Parse(textBox2.Text.ToString());
-                //Insumo OneInsumo = new Insumo();
-                
-                //foreach (var item in _insumo)
-                //{
-                //    if (item.IdInsumo == int.Parse(comboBox7.SelectedValue.ToString()))
-                //    {
-                //        OneInsumo = item;
-                //    }
-                //}
-                //decimal precioUnitario = OneInsumo.
-
-                 updatePedido.UpdatePedidoInsumoBLL(idInsumo, idPedidoInsumo, fechaPedidoInsumo, entregado, cantidad,0);
-
-                PedidoInsumoBLL pedidoBLL = new PedidoInsumoBLL();
-                _pedido.Clear();
-                _pedido.AddRange(pedidoBLL.ObtenerPedidoInsumoBLL());
-                //_pedido[0].Insumo.IdInsumo
-
-                dataGridView1.DataSource = _pedido.ToList();
-                dataGridView1.Columns["Insumo"].Visible = false;
-                dataGridView1.Columns["UsuarioPedido"].Visible = false;
-
-                MessageBox.Show("Datos actualizados");
-                comboBox7.SelectedIndex = -1;
-                textBox3.Text = "";
-                dateTimePicker6.Value = DateTime.Now;
-                comboBox6.SelectedIndex = -1;
-                textBox2.Text = "";
-                textBox4.Text = "";
-
-            }
-            else
-            {
-                MessageBox.Show("Falta Datos Llenar");
-            }
-
-
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            DateTime fecha_pedido = dateTimePicker5.Value;
-            decimal cantidad = decimal.Parse(textBox1.Text);
-            string estado = comboBox5.Text;
-            int idInsumo = int.Parse(comboBox4.SelectedValue.ToString());
-            int idUsuario = _usuario.IdUsuario;
-            int idPedidoInsumo = dataGridView1.Rows.Count;
-
-            if ((comboBox4.SelectedValue.ToString() != "" || idInsumo != -1) && textBox1.Text.ToString() != "" && comboBox5.Text != "")
-            {
-                idPedidoInsumo++;
-                PedidoInsumoBLL pedidoInsumo = new PedidoInsumoBLL();
-                pedidoInsumo.AddPedidoInsumoBll(idPedidoInsumo, idInsumo, fecha_pedido, estado, cantidad, idUsuario);
-                dateTimePicker5.Value = DateTime.Now;
-                textBox1.Text = "";
-                comboBox4.SelectedIndex= -1;
-                comboBox5.SelectedIndex= -1;
-            }
-            else
-            {
-                MessageBox.Show("Tiene que tener todos los campos llenos");
-            }
-
-                
-        }
 
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -365,6 +269,60 @@ namespace Servicio_Catering
             var editarInsumo = new DetalleInsumo(new Insumo(), "agregar");
             editarInsumo.ShowDialog();
             cargarDgvInsumos(_logisticaBLL.BuscarInsumos(null, null));
+        }
+
+
+
+        private void CargarDgvPedidos()
+        {
+            var fechaDesde = dtFechaDesdePedido.Value;
+            var fechaHasta = dtFechaHastaPedido.Value;
+            var insumoSeleccionado = cbProductoPedido.SelectedValue == null ? 0 : (int)cbProductoPedido.SelectedValue;
+            dataGridView1.ReadOnly = true;
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = PedidoInsumoDTO.mapListPedidoInsumoToListPedidoInsumoDTO(_logisticaBLL.BuscarPedidos(insumoSeleccionado,fechaDesde,fechaHasta));
+            dataGridView1.Columns["IdPedidoInsumo"].Visible = false;
+            dataGridView1.Columns["IdInsumo"].Visible = false;
+        }
+
+        private void ReestablecerFiltros()
+        {
+            dtFechaDesdePedido.Value = DateTime.Now.AddDays(-20);
+            dtFechaHastaPedido.Value = DateTime.Now.AddDays(10);
+            cbProductoPedido.SelectedIndex = -1;
+        }
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            CargarDgvPedidos();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ReestablecerFiltros();
+            CargarDgvPedidos();
+        }
+
+        private void btnVerDetallePedido_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow == null)
+                return;
+            var pedido = (PedidoInsumoDTO)dataGridView1.CurrentRow.DataBoundItem;
+
+            var editarPedido = new EditarPedido(pedido, "editar",_insumo,_usuario);
+            editarPedido.ShowDialog();
+            ReestablecerFiltros();
+            CargarDgvPedidos();
+            CargarDgvLotes();
+        }
+
+        private void btnAgregarPedido_Click(object sender, EventArgs e)
+        {
+            var editarPedido = new EditarPedido(new PedidoInsumoDTO(), "agregar", _insumo,_usuario);
+            editarPedido.ShowDialog();
+            ReestablecerFiltros();
+            CargarDgvPedidos();
         }
     }
 }

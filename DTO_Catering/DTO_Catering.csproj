@@ -45,6 +45,7 @@
     <Compile Include="EventoDTO.cs" />
     <Compile Include="InsumoPlatoDTO.cs" />
     <Compile Include="LoteInsumoDTO.cs" />
+    <Compile Include="PedidoInsumoDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
