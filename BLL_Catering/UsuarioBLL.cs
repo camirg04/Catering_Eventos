@@ -14,10 +14,14 @@ namespace BLL_Catering
     {
 
         private readonly UsuarioDAL _empleadosDal;
+        private readonly UsuarioDAL _usuarioAuxDal;
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
 
         public UsuarioBLL() {
+            
             _empleadosDal = new UsuarioDAL();
+            _usuarioAuxDal = new UsuarioDAL();
+
         }
 
 
@@ -55,7 +59,7 @@ namespace BLL_Catering
             return aux;
 
         }
-        public Usuario CrearUsuario(string nombre, string apellido, string dni, string domicilio,string telefono, string perfil,string email, string clave, DateTime fechaCreacion)
+        public bool CrearUsuario(string nombre, string apellido, string dni, string domicilio,string telefono, string perfil,string email, string clave, DateTime fechaCreacion)
         {
             Usuario userAux = new Usuario();
 
@@ -69,10 +73,61 @@ namespace BLL_Catering
             userAux.Clave = clave;
             userAux.FechaCreacion = fechaCreacion;
 
-            return userAux;
+
+            if (_usuarioAuxDal.CrearUsuario(userAux))
+            {
+                return true;
+            }
+
+            else 
+                return false;
 
         }
 
+        public bool EditarUsuario(string nombre, string apellido, string dni, string domicilio, string telefono, string perfil, string email, string clave, int id)
+        {
+            Usuario usuarioAux = new Usuario();
+
+            usuarioAux.Nombre = nombre;
+            usuarioAux.Apellido = apellido;
+            usuarioAux.DNI = dni;
+            usuarioAux.Domicilio = domicilio;
+            usuarioAux.Telefono = telefono;
+            usuarioAux.Perfil = perfil;
+            usuarioAux.Email = email;
+            usuarioAux.Clave = clave;
+            usuarioAux.IdUsuario = id;
+            
+            if (_usuarioAuxDal.EditarUsuario(usuarioAux))
+            {
+                return true;
+            }
+            else
+                return false;
+
+        }
+
+        public bool BajaUsuario(string nombre, string apellido, string dni, string domicilio, string telefono, string perfil, string email, string clave)
+        {
+            Usuario usuarioAux = new Usuario();
+
+            usuarioAux.Nombre = nombre;
+            usuarioAux.Apellido = apellido;
+            usuarioAux.DNI = dni;
+            usuarioAux.Domicilio = domicilio;
+            usuarioAux.Telefono = telefono;
+            usuarioAux.Perfil = perfil;
+            usuarioAux.Email = email;
+            usuarioAux.Clave = clave;
+
+            if (_usuarioAuxDal.BajaUsuario(usuarioAux))
+            {
+                return true;
+            }
+            else
+                return false;
+            
+        }
 
         public string ValidarUsuario(string usuario)
         {

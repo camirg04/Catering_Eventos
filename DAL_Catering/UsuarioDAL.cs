@@ -55,15 +55,15 @@ namespace DAL_Catering
         {
             SqlParameter[] parametros = {
            
-                new SqlParameter("nombre", usuarioAux.Nombre),
-                new SqlParameter("apellido", usuarioAux.Apellido),
-                new SqlParameter("domicilio", usuarioAux.Domicilio),
-                new SqlParameter("telefono", usuarioAux.Telefono),
-                new SqlParameter("dni_empleado", usuarioAux.DNI ),
-                new SqlParameter("fecha_creacion", usuarioAux.FechaCreacion),
-                new SqlParameter("perfil", usuarioAux.Perfil),
-                new SqlParameter("clave", usuarioAux.Clave),
-                new SqlParameter("email", usuarioAux.Email),
+                new SqlParameter("inNombre", usuarioAux.Nombre),
+                new SqlParameter("inApellido", usuarioAux.Apellido),
+                new SqlParameter("inDomicilio", usuarioAux.Domicilio),
+                new SqlParameter("inTelefono", usuarioAux.Telefono),
+                new SqlParameter("inDniEmpleado", usuarioAux.DNI ),
+                new SqlParameter("inFechaCreacion", usuarioAux.FechaCreacion),
+                new SqlParameter("inPerfil", usuarioAux.Perfil),
+                new SqlParameter("inClave", usuarioAux.Clave),
+                new SqlParameter("inEmail", usuarioAux.Email),
                 
             };
 
@@ -78,6 +78,71 @@ namespace DAL_Catering
                 Console.WriteLine(ex.ToString());
                 return false;
             }
+        }
+
+        public bool EditarUsuario(Usuario usuarioAux)
+        {
+
+            SqlParameter[] parametros =
+            {
+                new SqlParameter("inNombre", usuarioAux.Nombre),
+                new SqlParameter("inApellido", usuarioAux.Apellido),
+                new SqlParameter("inDomicilio", usuarioAux.Domicilio),
+                new SqlParameter("inTelefono", usuarioAux.Telefono),
+                new SqlParameter("inDniEmpleado", usuarioAux.DNI ),
+                new SqlParameter("inPerfil", usuarioAux.Perfil),
+                new SqlParameter("inClave", usuarioAux.Clave),
+                new SqlParameter("inEmail", usuarioAux.Email),
+                new SqlParameter("inId", usuarioAux.IdUsuario)
+
+            };
+
+            try
+            {
+                int filasAfectadas = conexion.EscribirPorStoreProcedure("sp_editarUsuario", parametros);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return false;
+            }
+
+
+
+        }
+
+        public bool BajaUsuario(Usuario usuarioAux)
+        {
+       
+
+            SqlParameter[] parametros =
+          {
+                new SqlParameter("inNombre", usuarioAux.Nombre),
+                new SqlParameter("inApellido", usuarioAux.Apellido),
+                new SqlParameter("inDomicilio", usuarioAux.Domicilio),
+                new SqlParameter("inTelefono", usuarioAux.Telefono),
+                new SqlParameter("inDniEmpleado", usuarioAux.DNI ),
+                new SqlParameter("inPerfil", usuarioAux.Perfil),
+                new SqlParameter("inClave", usuarioAux.Clave),
+                new SqlParameter("inEmail", usuarioAux.Email),
+                new SqlParameter("inFechaBaja", DateTime.Now)
+
+            };
+
+
+            try
+            {
+                int filasAfectadas = conexion.EscribirPorStoreProcedure("sp_bajaUsuario", parametros);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+
+                return false;
+            }
+
         }
 
         public List<string> ObtenerMailsLogisticaChefs()

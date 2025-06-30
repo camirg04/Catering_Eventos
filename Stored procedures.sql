@@ -679,3 +679,95 @@ END
 
 
 
+USE [CATERINGDB]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[sp_todoUsuarios] as
+SELECT [id_usuario]
+      ,[email]
+      ,[clave]
+      ,[perfil]
+      ,[fecha_creacion]
+      ,[fecha_baja]
+      ,[dni_empleado]
+      ,[nombre]
+      ,[apellido]
+      ,[domicilio]
+      ,[telefono]
+  FROM [dbo].[usuarios]
+  WHERE fecha_baja is null
+
+
+
+  
+USE [CATERINGDB]
+GO
+
+CREATE PROCEDURE sp_agregarUsuario
+@inNombre varchar(50),
+@inApellido varchar(50),
+@inDomicilio varchar(50),
+@inTelefono varchar(50),
+@inDniEmpleado varchar(8),
+@inFechaCreacion date,
+@inPerfil varchar(50),
+@inClave varchar(50),
+@inEmail varchar(100)
+
+AS
+BEGIN
+  INSERT INTO usuarios(email,clave,perfil,fecha_creacion,dni_empleado,nombre,apellido,domicilio,telefono,fecha_baja)
+  values(@inEmail,@inClave,@inPerfil,@inFechaCreacion,@inDniEmpleado,@inNombre,@inApellido,@inDomicilio,@inTelefono,NULL)
+END;
+
+
+
+
+USE [CATERINGDB]
+GO
+
+CREATE PROCEDURE sp_editarUsuario
+@inNombre varchar(50),
+@inApellido varchar(50),
+@inDomicilio varchar(50),
+@inTelefono varchar(50),
+@inDniEmpleado varchar(8),
+@inPerfil varchar(50),
+@inClave varchar(50),
+@inEmail varchar(100),
+@inId int
+
+AS
+BEGIN
+  UPDATE usuarios
+  set email = @inEmail, clave = @inClave, perfil = @inPerfil, dni_empleado = @inDniEmpleado,telefono = @inTelefono,domicilio = @inDomicilio,apellido = @inApellido,nombre = @inNombre
+  WHERE id_usuario = @inId;
+END;
+
+
+
+USE [CATERINGDB]
+GO
+
+CREATE PROCEDURE sp_bajaUsuario
+@inNombre varchar(50),
+@inApellido varchar(50),
+@inDomicilio varchar(50),
+@inTelefono varchar(50),
+@inDniEmpleado varchar(8),
+@inPerfil varchar(50),
+@inClave varchar(50),
+@inEmail varchar(100),
+@inFechaBaja date
+
+AS
+BEGIN
+  UPDATE usuarios
+  set fecha_baja = @inFechaBaja
+  WHERE apellido = @inApellido AND dni_empleado = @inDniEmpleado;
+END;
+
