@@ -53,6 +53,20 @@ namespace Servicio_Catering
             }
         }
 
+        public void cargarComboEstadoPedido(ComboBox combo)
+        {
+            combo.Items.Clear();
+            List<string> lista = Enum.GetValues(typeof(EstadoPedidoInsumo))
+                .Cast<EstadoPedidoInsumo>()
+                .Select(e => e.ToString()).ToList();
+
+
+            foreach (var item in lista)
+            {
+                combo.Items.Add(item);
+            }
+        }
+
 
         public void cargarComboSiNo(ComboBox combo)
         {

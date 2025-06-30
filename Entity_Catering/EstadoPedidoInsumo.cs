@@ -8,9 +8,9 @@ namespace Entity_Catering
 {
     public enum EstadoPedidoInsumo
     {
-        CANCELADO,
-        REALIZADO,
-        RECIBIDO
+        PENDIENTE,
+        ENTREGADO,
+        CANCELADO
     }
     
 }

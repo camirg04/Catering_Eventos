@@ -14,10 +14,12 @@ namespace BLL_Catering
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
         private readonly InsumoBLL _insumoBLL;
         private readonly ValidacionesBLL _validacionesBLL;
+        private readonly PedidoInsumoBLL _pedidoBLL;
         public LogisticaBLL()
         {
             _insumoBLL = new InsumoBLL();
             _validacionesBLL = new ValidacionesBLL();
+            _pedidoBLL = new PedidoInsumoBLL();
         }
 
         public List<Insumo> BuscarInsumos(string nombre, string activo)
@@ -98,6 +100,89 @@ namespace BLL_Catering
             {
                 logger.Error(ex, "Error al editar insumo");
                 throw ex;
+            }
+        }
+
+        public List<PedidoInsumo> BuscarPedidos()
+        {
+            try
+            {
+                return _pedidoBLL.ObtenerPedidoInsumoBLL();
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al editar insumo");
+                throw ex;
+            }
+        }
+
+        public List<PedidoInsumo> BuscarPedidos(int idInsumo, DateTime? fechaDesde, DateTime? fechaHasta)
+        {
+            try
+            {
+                return _pedidoBLL.ObtenerPedidoInsumoBLL(idInsumo,fechaDesde,fechaHasta);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al editar insumo");
+                throw ex;
+            }
+        }
+
+        public bool AgregarPedido(int idInsumo,DateTime fecha, string estado,Decimal cantidad,int idUsuario)
+        {
+            try
+            {
+                return _pedidoBLL.AddPedidoInsumoBll(idInsumo,fecha,estado,cantidad,idUsuario);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al editar insumo");
+                throw ex;
+            }
+        }
+
+
+        public bool EditarPedido(int idInsumo, int idPedidoInsumo, DateTime fechaPedidoInsumo, string entregado, Decimal cantidad, int costo, string estadoAnterior)
+        {
+            try
+            {
+                return _pedidoBLL.UpdatePedidoInsumoBLL(idInsumo,idPedidoInsumo,fechaPedidoInsumo,entregado,cantidad,costo,estadoAnterior);
+            }
+            catch (ArgumentException ex)
+            {
+                logger.Error(ex, "Error de validación al editar insumo");
+                throw;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al editar insumo");
+                throw ex;
+            }
+        }
+
+
+
+        public void ValidarDatosPedido(string nombre, string cantidad, string estado)
+        {
+            if (nombre == null || nombre.Trim() == "")
+            {
+                throw new ArgumentException("Debe ingresar el nombre del insumo.");
+            }
+
+            if (cantidad == null || cantidad.Trim() == "")
+            {
+                throw new ArgumentException("Debe especificar la cantidad.");
+            }
+
+            if (!_validacionesBLL.esDecimal(cantidad))
+            {
+                throw new ArgumentException("La cantidad debe ser un valor numérico decimal válido.");
+            }
+
+            if (estado == null || estado.Trim() == "")
+            {
+                throw new ArgumentException("Debe indicar el estado del pedido.");
             }
         }
     }

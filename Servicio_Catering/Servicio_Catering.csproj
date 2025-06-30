@@ -69,6 +69,12 @@
     <Compile Include="EditarMenu.Designer.cs">
       <DependentUpon>EditarMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditarPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditarPedido.Designer.cs">
+      <DependentUpon>EditarPedido.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditarPlato.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditarMenu.resx">
       <DependentUpon>EditarMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditarPedido.resx">
+      <DependentUpon>EditarPedido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditarPlato.resx">
       <DependentUpon>EditarPlato.cs</DependentUpon>
