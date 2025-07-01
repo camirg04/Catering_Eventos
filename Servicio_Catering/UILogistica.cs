@@ -32,6 +32,7 @@ namespace Servicio_Catering
             _helperFront = new HelperFront();
 
             //instancio blllote para trearme todos los lotes
+            SetearFiltrosIniciales();
             CargarDgvLotes();
 
             //me traigo todos los insumos
@@ -42,17 +43,23 @@ namespace Servicio_Catering
             ReestablecerFiltros();
             CargarDgvPedidos();
 
-            _helperFront.cargarComboIsumos(this.comboBox1, _insumo.ToList());
+            _helperFront.cargarComboIsumos(this.cbProductoLote, _insumo.ToList());
             _helperFront.cargarComboIsumos(this.cbProductoPedido, _insumo.ToList());            
         }
 
 
         private void CargarDgvLotes()
         {
-            LoteInsumoBLL loteInsumoBLL = new LoteInsumoBLL();
-            _lote.AddRange(loteInsumoBLL.ObtenerLotesInsumos());
-            dataGridView2.DataSource = _lote.ToList();
+            var fechaDesde = dtDesdeLote.Value;
+            var fechaHasta = dtHastaLote.Value;
+            var insumoSeleccionado = cbProductoLote.SelectedValue == null ? 0 : (int)cbProductoLote.SelectedValue;
+            dataGridView2.ReadOnly = true;
+            dataGridView2.DataSource = null;
+            dataGridView2.DataSource = _logisticaBLL.BuscarLotesInsumos(insumoSeleccionado, fechaDesde, fechaHasta);
             dataGridView2.Columns["Severidad"].Visible = false;
+            dataGridView2.Columns["IdLoteInsumo"].Visible = false;
+            dataGridView2.Columns["IdInsumo"].Visible = false;
+            dataGridView2.Columns["IdPedidoInsumo"].Visible = false;
         }
 
 
@@ -93,141 +100,27 @@ namespace Servicio_Catering
         /*EVENTOS  PARA STOCK*/
         private void button4_Click(object sender, EventArgs e)
         {
-            string idInsumo = this.comboBox1.SelectedValue.ToString();
-            string fechaIngresoInicio = this.dateTimePicker2.Text;
-            string fechaIngresoFin = this.dateTimePicker1.Text;
-
-            if (idInsumo == "")
+            try
             {
-                MessageBox.Show("Tiene que tener un producto");
+                CargarDgvLotes();
             }
-            else
-            {
-                LoteInsumoBLL loteInsumoBLL = new LoteInsumoBLL();
-                Console.WriteLine(loteInsumoBLL.BuscarLotePorId(int.Parse(idInsumo), fechaIngresoInicio, fechaIngresoFin).Count);
-                _lote.Clear();
-                _lote.AddRange(loteInsumoBLL.BuscarLotePorId(int.Parse(idInsumo), fechaIngresoInicio, fechaIngresoFin));
-                dataGridView2.DataSource = _lote.ToList();
+            catch (Exception ex) {
+                MessageBox.Show("Error al cargar los lotes: " + ex.Message);
             }
 
+        }
+
+        private void SetearFiltrosIniciales()
+        {
+            dtDesdeLote.Value = DateTime.Now.AddDays(-20);
+            dtHastaLote.Value = DateTime.Now.AddDays(10);
+            cbProductoLote.SelectedIndex = -1;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-
-            LoteInsumoBLL loteInsumoBLL = new LoteInsumoBLL();
-            _lote.Clear();
-            _lote.AddRange(loteInsumoBLL.ObtenerLotesInsumos());
-            dataGridView2.DataSource = _lote.ToList();
-            dataGridView2.Columns["Severidad"].Visible = false;
-        }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //if (e.RowIndex != -1)
-            //{
-            //    if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() != "")
-            //    {
-            //        //MessageBox.Show(dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
-
-            //        if (dataGridView1.Rows[e.RowIndex].Cells["EstadoPedido"].Value.ToString() != "ENTREGADO")
-            //        {
-            //            //vemos el campo estadoPedido
-            //            if (dataGridView1.Rows[e.RowIndex].Cells["EstadoPedido"].Value.ToString() == "ENTREGADO")
-            //            {
-            //                comboBox6.SelectedIndex = 1;
-            //            }
-            //            else
-            //            {
-            //                comboBox6.SelectedIndex = 0;
-            //            }
-            //            //sacamos la cantidad
-            //            textBox2.Text = dataGridView1.Rows[e.RowIndex].Cells["Cantidad"].Value.ToString();
-            //            //sacamos la fecha del pedido
-            //            dateTimePicker6.Text = dataGridView1.Rows[e.RowIndex].Cells["FechaPedido"].Value.ToString();
-            //            //creo un insumo que esta en el campo INSUMO
-            //            Insumo OneInsumo = new Insumo();
-            //            OneInsumo = dataGridView1.Rows[e.RowIndex].Cells["Insumo"].Value as Insumo;
-            //            //matcheo el id con el value -- idInsumo
-            //            comboBox7.SelectedValue = OneInsumo.IdInsumo;
-            //            textBox3.Text = dataGridView1.Rows[e.RowIndex].Cells["IdPedidoInsumo"].Value.ToString();
-            //            //creo un usuario
-            //            Usuario OneUsuario = new Usuario();
-            //            OneUsuario = dataGridView1.Rows[e.RowIndex].Cells["UsuarioPedido"].Value as Usuario;
-            //            textBox4.Text = OneUsuario.IdUsuario.ToString();
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("El Insumo ya fue entregado");
-            //        }
-                    
-
-            //    }
-
-            //}
-        }
-
-
-        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-
-                if (e.RowIndex != -1)
-                {
-                    if (dataGridView2.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() != "")
-                    {
-                        //text 5 -> insumo
-                        //text6 -> unidad medida
-                        //text7 -> cantidad ->
-                        //text8 -> costo unit
-                        //datetime 7 -> fechavence
-                        decimal cantidad = decimal.Parse(dataGridView2.Rows[e.RowIndex].Cells["Cantidad"].Value.ToString());//decimal.Parse(textBox5.Text);
-                        DateTime fecha_vence = DateTime.Parse(dataGridView2.Rows[e.RowIndex].Cells[8].Value.ToString());
-                        string insumo = dataGridView2.Rows[e.RowIndex].Cells[3].Value.ToString();
-                        string idPedidoInsumo = dataGridView2.Rows[e.RowIndex].Cells["idLoteInsumo"].Value.ToString();
-                        string unidad = dataGridView2.Rows[e.RowIndex].Cells[4].Value.ToString();
-                        decimal costo = decimal.Parse(dataGridView2.Rows[e.RowIndex].Cells[7].Value.ToString());
-
-                        textBox5.Text = insumo;
-                        textBox6.Text = unidad;
-                        textBox7.Text = cantidad.ToString();
-                        textBox8.Text = costo.ToString();
-                        textBox9.Text  = idPedidoInsumo.ToString();
-                        dateTimePicker7.Value = fecha_vence;
-                    }
-                }
-
-            }
-            catch(Exception ex) {  MessageBox.Show(ex.Message); }
-
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (textBox9.Text != "")
-                {
-                    int idLote = int.Parse(textBox9.Text);
-                    decimal costo = Decimal.Parse(textBox8.Text);
-                    DateTime vence = dateTimePicker7.Value;
-                    LoteInsumoBLL loteBll = new LoteInsumoBLL();
-                    loteBll.ActualizarCostoFechaLote(idLote, costo, vence);
-
-                    textBox5.Text = "";
-                    textBox6.Text = "";
-                    textBox7.Text = "";
-                    textBox8.Text = "";
-                    textBox9.Text = "";
-                    dateTimePicker7.Value = DateTime.Now;
-                    MessageBox.Show("Los datos se actualizaron");
-
-                }
-            }
-            catch(Exception ex) { MessageBox.Show(ex.Message); }
-
-
+            SetearFiltrosIniciales();
+            CargarDgvLotes();
         }
 
         private void btnBuscarMenu_Click(object sender, EventArgs e)
@@ -323,6 +216,23 @@ namespace Servicio_Catering
             editarPedido.ShowDialog();
             ReestablecerFiltros();
             CargarDgvPedidos();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if (dataGridView2.CurrentRow == null)
+                return;
+            var lote = (LoteInsumoDTO)dataGridView2.CurrentRow.DataBoundItem;
+
+            var ditarLote = new EditarLote(lote);
+            ditarLote.ShowDialog();
+            SetearFiltrosIniciales();
+            CargarDgvLotes();
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

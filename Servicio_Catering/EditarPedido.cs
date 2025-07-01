@@ -106,7 +106,7 @@ namespace Servicio_Catering
                         _pedidoInsumo.EstadoPedido);
                     if(cbEstado.Text == "ENTREGADO")
                     {
-                        mensaje = "Se creó el lote para el pedido de " + cbProducto.Text + ". Modifique la fecha de vencimiento si es un producto perecedero";
+                        mensaje = "Se creó el lote para el pedido de " + cbProducto.Text + ". Modifique el costo, y la fecha de vencimiento si es un producto perecedero";
                     }
                 }
 

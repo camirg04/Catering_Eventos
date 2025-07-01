@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL_Catering;
+using DTO_Catering;
 using Entity_Catering;
 using NLog;
 
@@ -15,11 +17,13 @@ namespace BLL_Catering
         private readonly InsumoBLL _insumoBLL;
         private readonly ValidacionesBLL _validacionesBLL;
         private readonly PedidoInsumoBLL _pedidoBLL;
+        private readonly LoteInsumoBLL _loteBLL;
         public LogisticaBLL()
         {
             _insumoBLL = new InsumoBLL();
             _validacionesBLL = new ValidacionesBLL();
             _pedidoBLL = new PedidoInsumoBLL();
+            _loteBLL = new LoteInsumoBLL();
         }
 
         public List<Insumo> BuscarInsumos(string nombre, string activo)
@@ -183,6 +187,42 @@ namespace BLL_Catering
             if (estado == null || estado.Trim() == "")
             {
                 throw new ArgumentException("Debe indicar el estado del pedido.");
+            }
+        }
+
+        public List<LoteInsumoDTO> BuscarLotesInsumos(int idIsumo, DateTime fechaIngresoInicio, DateTime fechaIngresoFin)
+        {
+            try
+            {
+                return _loteBLL.BuscarLotePorId(idIsumo, fechaIngresoInicio, fechaIngresoFin);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al buscar lote por ID");
+                throw;
+            }
+        }
+
+        public int ActualizarCostoFechaLote(int idLote, string costo, DateTime vence)
+        {
+            try
+            {
+                if(!_validacionesBLL.esDecimal(costo))
+                {
+                    throw new ArgumentException("El costo debe ser un valor numérico decimal válido.");
+                }
+
+                Decimal costoDecimal = Decimal.Parse(costo, new CultureInfo("es-ES"));
+                if (costoDecimal <= 0)
+                {
+                    throw new ArgumentException("El costo debe ser mayor a 0");
+                }
+                return _loteBLL.ActualizarCostoFechaLote(idLote, costoDecimal, vence);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al obtener lotes de insumos");
+                throw;
             }
         }
     }

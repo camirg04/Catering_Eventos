@@ -177,17 +177,24 @@ namespace DAL_Catering
             }
         }
 
-        public List<LoteInsumo> BuscarLotePorId(int idInsumo, string fechaIngresoInicio, string fechaIngresoFin)
+        public List<LoteInsumo> BuscarLotePorId(int idInsumo, DateTime fechaIngresoInicio, DateTime fechaIngresoFin)
         {
 
             List<LoteInsumo> listaLotes = new List<LoteInsumo>();
 
+            // Convertir parámetros a DBNull si corresponde
+            object idInsumoParam = idInsumo == 0 ? DBNull.Value : (object)idInsumo;
+            object fechaInicioParam = fechaIngresoInicio == null ? DBNull.Value : (object)fechaIngresoInicio;
+            object fechaFinParam = fechaIngresoFin == null ? DBNull.Value : (object)fechaIngresoFin;
+
             SqlParameter[] valores = {
-                new SqlParameter("id_insumo", idInsumo),
-                new SqlParameter("fecha_ingreso_inicio", fechaIngresoInicio),
-                new SqlParameter("fecha_ingreso_fin", fechaIngresoFin)
+                new SqlParameter("id_insumo", idInsumoParam),
+                new SqlParameter("fecha_ingreso_inicio", fechaInicioParam),
+                new SqlParameter("fecha_ingreso_fin", fechaFinParam)
             };
+
             var dt = conexion.LeerPorStoreProcedure("ObtenerLotesDeInsumosxId", valores);
+
             foreach (DataRow fila in dt.Rows)
             {
                 var loteInsumo = new LoteInsumo();

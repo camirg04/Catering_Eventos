@@ -63,6 +63,12 @@
     <Compile Include="DetalleInsumo.Designer.cs">
       <DependentUpon>DetalleInsumo.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditarLote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditarLote.Designer.cs">
+      <DependentUpon>EditarLote.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditarMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DetalleInsumo.resx">
       <DependentUpon>DetalleInsumo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditarLote.resx">
+      <DependentUpon>EditarLote.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditarMenu.resx">
       <DependentUpon>EditarMenu.cs</DependentUpon>
