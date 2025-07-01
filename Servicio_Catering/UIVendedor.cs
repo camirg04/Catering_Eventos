@@ -582,7 +582,13 @@ namespace Servicio_Catering
         {
             try
             {
-                Evento evento = new Evento(DateTime.Parse(dateTimePicker1.Text), float.Parse(textBox24.Text), textBox17.Text, textBox20.Text, "PENDIENTE", int.Parse(textBox22.Text), float.Parse(textBox21.Text), comboBox1.Text == "si" ? 1 : 0, int.Parse(textBox23.Text), int.Parse(this.comboBox3.SelectedValue.ToString()), int.Parse(this.comboBox4.SelectedValue.ToString()));
+                MessageBox.Show(comboBox1.SelectedIndex.ToString());
+                if (comboBox1.SelectedIndex == -1)
+                {
+                    throw new Exception("Tiene que selecciona un valor de si paga el cliente");
+                }
+
+                Evento evento = new Evento(DateTime.Parse(dateTimePicker1.Text), float.Parse(textBox24.Text), textBox17.Text, textBox20.Text, "PENDIENTE", int.Parse(textBox22.Text), float.Parse(textBox21.Text), comboBox1.SelectedIndex, int.Parse(textBox23.Text), int.Parse(this.comboBox3.SelectedValue.ToString()), int.Parse(this.comboBox4.SelectedValue.ToString()));
                 _evento.AddEvento(evento);
                 evento.Id = int.Parse(textBox16.Text.ToString());
                 eventosLista.Add(evento);
@@ -599,7 +605,7 @@ namespace Servicio_Catering
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Hubo un error en guardar los datos");
+                MessageBox.Show("Hubo un error en guardar los datos: "+ex.Message);
             }
         }
         /*BOTON CREAMOS EVENTO*/
@@ -655,7 +661,7 @@ namespace Servicio_Catering
             try
             {
                 Evento evento = new Evento(DateTime.Parse(dateTimePicker2.Text), float.Parse(textBox25.Text), textBox32.Text, textBox29.Text, "PENDIENTE", int.Parse(textBox27.Text), float.Parse(textBox28.Text),
-                comboBox2.Text == "si" ? 1 : 0, int.Parse(textBox26.Text), int.Parse(this.comboBox5.SelectedValue.ToString()), int.Parse(this.comboBox6.SelectedValue.ToString()));
+                comboBox2.SelectedIndex, int.Parse(textBox26.Text), int.Parse(this.comboBox5.SelectedValue.ToString()), int.Parse(this.comboBox6.SelectedValue.ToString()));
                 evento.Id = int.Parse(textBox33.Text.ToString());
 
                 EventosBLL updateEvento = new EventosBLL();
