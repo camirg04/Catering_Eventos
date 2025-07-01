@@ -120,6 +120,8 @@
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.crearClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.comboBox7 = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabEvento.SuspendLayout();
             this.gb_mod_evento.SuspendLayout();
@@ -145,7 +147,6 @@
             // 
             // tabEvento
             // 
-            this.tabEvento.Controls.Add(this.gb_mod_evento);
             this.tabEvento.Controls.Add(this.gb_crea_evento);
             this.tabEvento.Controls.Add(this.menuStrip1);
             this.tabEvento.Location = new System.Drawing.Point(4, 25);
@@ -158,6 +159,8 @@
             // 
             // gb_mod_evento
             // 
+            this.gb_mod_evento.Controls.Add(this.comboBox7);
+            this.gb_mod_evento.Controls.Add(this.label14);
             this.gb_mod_evento.Controls.Add(this.label13);
             this.gb_mod_evento.Controls.Add(this.comboBox6);
             this.gb_mod_evento.Controls.Add(this.comboBox5);
@@ -184,7 +187,7 @@
             this.gb_mod_evento.Controls.Add(this.label41);
             this.gb_mod_evento.Controls.Add(this.textBox32);
             this.gb_mod_evento.Controls.Add(this.textBox33);
-            this.gb_mod_evento.Location = new System.Drawing.Point(3, 31);
+            this.gb_mod_evento.Location = new System.Drawing.Point(652, 65);
             this.gb_mod_evento.Name = "gb_mod_evento";
             this.gb_mod_evento.Size = new System.Drawing.Size(569, 450);
             this.gb_mod_evento.TabIndex = 25;
@@ -257,8 +260,8 @@
             // 
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
-            "No",
-            "Si"});
+            "NO",
+            "SI"});
             this.comboBox2.Location = new System.Drawing.Point(280, 396);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(83, 24);
@@ -269,9 +272,9 @@
             this.label31.AutoSize = true;
             this.label31.Location = new System.Drawing.Point(277, 377);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(47, 16);
+            this.label31.Size = new System.Drawing.Size(40, 16);
             this.label31.TabIndex = 20;
-            this.label31.Text = "Paga?";
+            this.label31.Text = "Paga";
             // 
             // textBox25
             // 
@@ -512,8 +515,8 @@
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "si",
-            "no"});
+            "NO",
+            "SI"});
             this.comboBox1.Location = new System.Drawing.Point(401, 287);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(83, 24);
@@ -524,9 +527,9 @@
             this.label26.AutoSize = true;
             this.label26.Location = new System.Drawing.Point(398, 268);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(47, 16);
+            this.label26.Size = new System.Drawing.Size(40, 16);
             this.label26.TabIndex = 20;
-            this.label26.Text = "Paga?";
+            this.label26.Text = "Paga";
             // 
             // textBox24
             // 
@@ -1032,11 +1035,32 @@
             this.modificarToolStripMenuItem1.Text = "Modificar";
             this.modificarToolStripMenuItem1.Click += new System.EventHandler(this.modificarToolStripMenuItem1_Click);
             // 
+            // comboBox7
+            // 
+            this.comboBox7.FormattingEnabled = true;
+            this.comboBox7.Items.AddRange(new object[] {
+            "PENDIENTE",
+            "CONFIRMADO"});
+            this.comboBox7.Location = new System.Drawing.Point(416, 252);
+            this.comboBox7.Name = "comboBox7";
+            this.comboBox7.Size = new System.Drawing.Size(100, 24);
+            this.comboBox7.TabIndex = 30;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(413, 233);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(50, 16);
+            this.label14.TabIndex = 29;
+            this.label14.Text = "Estado";
+            // 
             // UIVendedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(586, 517);
+            this.ClientSize = new System.Drawing.Size(1289, 551);
+            this.Controls.Add(this.gb_mod_evento);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
@@ -1160,5 +1184,7 @@
         private System.Windows.Forms.ComboBox comboBox5;
         private System.Windows.Forms.TextBox textBox13;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox comboBox7;
+        private System.Windows.Forms.Label label14;
     }
 }

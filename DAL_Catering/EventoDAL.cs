@@ -25,31 +25,46 @@ namespace DAL_Catering
 
         public List<Entity_Catering.Evento> Listar()
         {
-            List<Entity_Catering.Evento> eventos = new List<Entity_Catering.Evento>();
-
-            DataTable dt = conexion.LeerPorStoreProcedure("sp_todoEventos");
-
-            foreach (DataRow fila in dt.Rows)
+            try
             {
-                Entity_Catering.Evento unEvento = new Entity_Catering.Evento();
+                List<Entity_Catering.Evento> eventos = new List<Entity_Catering.Evento>();
 
-                unEvento.Id = int.Parse(fila["id_evento"].ToString());
-                unEvento.IdCliente = int.Parse(fila["id_cliente"].ToString());
-                unEvento.IdMenu = int.Parse(fila["id_menu"].ToString());
-                unEvento.Fecha = DateTime.Parse(fila["fecha_evento"].ToString());
-                unEvento.DescuentoAplicado = float.Parse(fila["descuento_aplicado"].ToString());
-                unEvento.Direccion = fila["direccion"].ToString();
-                unEvento.Localidad = fila["localidad"].ToString();
-                unEvento.Estado = fila["estado_evento"].ToString();
-                unEvento.CantidadPersonas = int.Parse(fila["cantidad_personas"].ToString());
-                unEvento.Total = float.Parse(fila["total_estimado"].ToString());
-                //unEvento.Pago = int.Parse(fila["evento_pago"].ToString());
-                unEvento.IdUsuarioVenta = int.Parse(fila["id_usuario_venta"].ToString());
-                eventos.Add(unEvento);
+                DataTable dt = conexion.LeerPorStoreProcedure("sp_todoEventos");
+
+                foreach (DataRow fila in dt.Rows)
+                {
+                    Entity_Catering.Evento unEvento = new Entity_Catering.Evento();
+
+                    unEvento.Id = int.Parse(fila["id_evento"].ToString());
+                    unEvento.IdCliente = int.Parse(fila["id_cliente"].ToString());
+                    unEvento.IdMenu = int.Parse(fila["id_menu"].ToString());
+                    unEvento.Fecha = DateTime.Parse(fila["fecha_evento"].ToString());
+                    unEvento.DescuentoAplicado = float.Parse(fila["descuento_aplicado"].ToString());
+                    unEvento.Direccion = fila["direccion"].ToString();
+                    unEvento.Localidad = fila["localidad"].ToString();
+                    unEvento.Estado = fila["estado_evento"].ToString();
+                    unEvento.CantidadPersonas = int.Parse(fila["cantidad_personas"].ToString());
+                    unEvento.Total = float.Parse(fila["total_estimado"].ToString());
+                    if (fila["evento_pago"].ToString() != "") 
+                    {
+                        unEvento.Pago = bool.Parse(fila["evento_pago"].ToString()) ? 1 : 0;
+                    }
+                    else
+                    {
+                        unEvento.Pago = 0;
+                    }
+                    unEvento.IdUsuarioVenta = int.Parse(fila["id_usuario_venta"].ToString());
+                    eventos.Add(unEvento);
+
+                }
+                return eventos;
 
             }
+            catch (Exception ex) { 
+                Console.WriteLine(ex.ToString());
+                throw new Exception(ex.ToString());
+            }
 
-            return eventos;
 
         }
 
@@ -78,6 +93,14 @@ namespace DAL_Catering
                 unEvento.CantidadPersonas = int.Parse(fila["cantidad_personas"].ToString());
                 unEvento.Total = float.Parse(fila["total_estimado"].ToString());
                 //unEvento.Pago = int.Parse(fila["evento_pago"].ToString());
+                if (fila["evento_pago"].ToString() != "")
+                {
+                    unEvento.Pago = bool.Parse(fila["evento_pago"].ToString()) ? 1 : 0;
+                }
+                else
+                {
+                    unEvento.Pago = 0;
+                }
                 unEvento.IdUsuarioVenta = int.Parse(fila["id_usuario_venta"].ToString());
 
                 eventos.Add(unEvento);
