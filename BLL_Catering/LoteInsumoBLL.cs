@@ -127,11 +127,18 @@ namespace BLL_Catering
         }
 
 
-        public List<LoteInsumoDTO> BuscarLotePorId(int idIsumo, string fechaIngresoInicio, string fechaIngresoFin)
+        public List<LoteInsumoDTO> BuscarLotePorId(int idIsumo, DateTime fechaIngresoInicio, DateTime fechaIngresoFin)
         {
-            var lotesIdFecha = _loteInsumoDal.BuscarLotePorId(idIsumo,fechaIngresoInicio,fechaIngresoFin);
-            return lotesIdFecha.Select(LoteInsumoDTO.mapLoteInsumoToLoteInsumoDTO).ToList();
-
+            try
+            {
+                var lotesIdFecha = _loteInsumoDal.BuscarLotePorId(idIsumo, fechaIngresoInicio, fechaIngresoFin);
+                return lotesIdFecha.Select(LoteInsumoDTO.mapLoteInsumoToLoteInsumoDTO).ToList();
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error al buscar lote por ID");
+                throw;
+            }
         }
 
     }
