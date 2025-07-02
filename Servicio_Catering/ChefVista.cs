@@ -325,7 +325,7 @@ namespace Servicio_Catering
                 //editar estado evento
                 var nuevoEstado = cbEditarEstadoEvento.Text;
                 EventoDTO evento = (EventoDTO)dgvEventos.CurrentRow.DataBoundItem;
-                _chefBLL.ModificarEstadoEvento(evento.IdMenu, evento.CantidadPersonas, nuevoEstado,evento.IdEvento);
+                _chefBLL.ModificarEstadoEvento(evento.IdMenu, evento.CantidadPersonas, nuevoEstado,evento.IdEvento,evento.EstadoEvento);
                 MessageBox.Show("El estado se actualizó correctamente");
                 var fechaDesde = fechaDesdeEvento.Value;
                 var fechaHasta = fechaHastaEvento.Value;
