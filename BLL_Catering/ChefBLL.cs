@@ -242,10 +242,26 @@ namespace BLL_Catering
             }
         }
 
-        public void ModificarEstadoEvento(int id_menu, int cantidadPersonas,string estado,int idEvento)
+        public void ModificarEstadoEvento(int id_menu, int cantidadPersonas,string estado,int idEvento, string estadoAnterior)
         {
             try
             {
+                if(estado != estadoAnterior)
+                {
+                    if (estadoAnterior == "FINALIZADO")
+                    {
+                        throw new Exception("No se puede modificar el estado de un evento finalizado.");
+                    }
+                    if(estadoAnterior == "PENDIENTE" && estado == "FINALIZADO")
+                    {
+                        throw new Exception("No se puede finalizar un evento sin pasar por el estado EN PROCESO.");
+                    }
+                    if (estadoAnterior == "PROCESO" && estado == "PENDIENTE")
+                    {
+                        throw new Exception("No se puede volver a PENDIENTE un evento que ya está en PROCESO.");
+                    }
+
+                }
                 if (estado == "PROCESO")
                 {
                     GestionarStock(id_menu, cantidadPersonas);

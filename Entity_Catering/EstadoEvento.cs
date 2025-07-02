@@ -9,7 +9,6 @@ namespace Entity_Catering
     public enum EstadoEvento
     {
         PENDIENTE,
-        CONFIRMADO,
         PROCESO,
         FINALIZADO
     }
