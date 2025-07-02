@@ -37,13 +37,7 @@ namespace Servicio_Catering.UIAdminstrador
         {
             try
             {
-
-                List<Usuario> listAux = _usuarioBLL.ListarActivos();
-                dgvVisualizaUsuarios.DataSource = listAux;
-                dgvVisualizaUsuarios.Columns["mail"].Visible = false;
-                dgvVisualizaUsuarios.Columns["fechaBajaUsuario"].Visible = false;
-                dgvVisualizaUsuarios.Columns["idUsuario"].HeaderText = "ID";
-                btnEditarUsuario.Enabled = true;
+                usuariosActivos();
             }
             catch (Exception ex)
             {
@@ -60,9 +54,20 @@ namespace Servicio_Catering.UIAdminstrador
         private void UIAdministrador_Load(object sender, EventArgs e)
         {
             lblBienvenida.Text = darBienvenida(_usuario.Nombre);
+            usuariosActivos();
           
         }
 
+        public void usuariosActivos()
+        {
+
+            List<Usuario> listAux = _usuarioBLL.ListarActivos();
+            dgvVisualizaUsuarios.DataSource = listAux;
+            dgvVisualizaUsuarios.Columns["mail"].Visible = false;
+            dgvVisualizaUsuarios.Columns["fechaBajaUsuario"].Visible = false;
+            dgvVisualizaUsuarios.Columns["idUsuario"].HeaderText = "ID";
+            btnEditarUsuario.Enabled = true;
+        }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             try
@@ -113,6 +118,7 @@ namespace Servicio_Catering.UIAdminstrador
         {
             UIAgregarUsuario ventanaAgregarUsuario = new UIAgregarUsuario();
             ventanaAgregarUsuario.ShowDialog();
+            usuariosActivos();
         }
 
         public void cerrarSesion()
@@ -145,9 +151,10 @@ namespace Servicio_Catering.UIAdminstrador
                 ;
 
                 UIEditarUsuario ventanaEdicionUsuario = new UIEditarUsuario(_usuarioAux);
-                ventanaEdicionUsuario.Show();
+                ventanaEdicionUsuario.ShowDialog();
+                usuariosActivos();
 
-        
+
 
 
             }
@@ -157,7 +164,7 @@ namespace Servicio_Catering.UIAdminstrador
                 throw;
             }
 
-
+          
             
 
 
