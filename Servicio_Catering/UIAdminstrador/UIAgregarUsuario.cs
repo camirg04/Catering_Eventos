@@ -73,6 +73,7 @@ namespace Servicio_Catering.UIAdminstrador
                         tboxDomicilio.Text = "";
                         cboxPerfil.Text = "";
                         this.Close();
+                        
 
                     }
                     else
