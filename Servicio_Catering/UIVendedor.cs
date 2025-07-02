@@ -94,6 +94,11 @@ namespace Servicio_Catering
             eventosLista.Clear();
             eventosLista.AddRange(_evento.ListarEventos());
             dataGridView2.DataSource = eventosLista.ToList();
+            dataGridView2.Columns["Id"].Visible = false;
+            dataGridView2.Columns["IdUsuarioVenta"].Visible = false;
+            dataGridView2.Columns["IdMenu"].Visible = false;
+            dataGridView2.Columns["IdCliente"].Visible = false;
+
             comboBox4.SelectedIndex = -1;
             /*COMBO BOX MENUS*/
             MenusVende.Clear();
@@ -110,9 +115,35 @@ namespace Servicio_Catering
             this.comboBox6.ValueMember = "Id";
             this.comboBox6.SelectedIndex = -1;
             /*PANTALLA MODIFICAR EVENTO*/
+
+            /*AGREGAMOS NUEVA COLUMNA*/
+            dataGridView2.Columns.Add("Menu", "Menu");
+            dataGridView2.Columns.Add("Cliente", "Cliente");
+
+            // un bucle suicida pero rellena, la proxima mas que un DTO o esta cosa fea, es mejor tener una vista de sql que haga inner join o right
+            foreach (DataGridViewRow row in dataGridView2.Rows)
+            {
+                foreach (Cliente cliente in ClienteVende)
+                {
+                    if (cliente.Id == int.Parse(row.Cells["IdCliente"].Value.ToString()))
+                    {
+                        row.Cells["Cliente"].Value = cliente.Nombre;
+                    }
+                }
+
+                foreach (Menus menu in MenusVende)
+                {
+                    if (menu.IdMenu == int.Parse(row.Cells["IdMenu"].Value.ToString()))
+                    {
+                        row.Cells["Menu"].Value = menu.Nombre;
+                    }
+                }
+            }
+            //cambiamos orden
+            dataGridView2.Columns["Cliente"].DisplayIndex = 0;
+            dataGridView2.Columns["Menu"].DisplayIndex = 1;
+            /*AGREGAMOS NUEVA COLUMNA*/
         }
-
-
 
         // COMIENZA CLIENTES
 
@@ -124,6 +155,7 @@ namespace Servicio_Catering
             ClienteVende.Clear();
             ClienteVende.AddRange(_cliente.ListarClientes());
             dataGridView1.DataSource = ClienteVende.ToList();
+            dataGridView1.Columns["Id"].Visible = false;
         }
 
         /*BOTON CREAR CLIENTE*/
@@ -582,7 +614,7 @@ namespace Servicio_Catering
         {
             try
             {
-                MessageBox.Show(comboBox1.SelectedIndex.ToString());
+                //MessageBox.Show(comboBox1.SelectedIndex.ToString());
                 if (comboBox1.SelectedIndex == -1)
                 {
                     throw new Exception("Tiene que selecciona un valor de si paga el cliente");
@@ -635,6 +667,7 @@ namespace Servicio_Catering
                     this.comboBox5.SelectedValue = int.Parse(dataGridView2.Rows[e.RowIndex].Cells["IdMenu"].Value.ToString());
                     this.comboBox6.SelectedValue = int.Parse(dataGridView2.Rows[e.RowIndex].Cells["IdCliente"].Value.ToString());
                     this.comboBox2.SelectedIndex = int.Parse(dataGridView2.Rows[e.RowIndex].Cells["Pago"].Value.ToString());
+                    this.comboBox7.SelectedIndex = dataGridView2.Rows[e.RowIndex].Cells["Estado"].Value.ToString() == "PENDIENTE" ? 0 : 1;
 
                     textBox33.Text = dataGridView2.Rows[e.RowIndex].Cells["Id"].Value.ToString();
                     dateTimePicker2.Text = dataGridView2.Rows[e.RowIndex].Cells["Fecha"].Value.ToString();
@@ -644,6 +677,8 @@ namespace Servicio_Catering
                     textBox29.Text = dataGridView2.Rows[e.RowIndex].Cells["Localidad"].Value.ToString();
                     textBox25.Text = dataGridView2.Rows[e.RowIndex].Cells["DescuentoAplicado"].Value.ToString();
                     textBox28.Text = dataGridView2.Rows[e.RowIndex].Cells["Total"].Value.ToString();
+
+                    button2.Enabled = true;
                 }
 
             }
@@ -660,7 +695,7 @@ namespace Servicio_Catering
         {
             try
             {
-                Evento evento = new Evento(DateTime.Parse(dateTimePicker2.Text), float.Parse(textBox25.Text), textBox32.Text, textBox29.Text, "PENDIENTE", int.Parse(textBox27.Text), float.Parse(textBox28.Text),
+                Evento evento = new Evento(DateTime.Parse(dateTimePicker2.Text), float.Parse(textBox25.Text), textBox32.Text, textBox29.Text, comboBox7.Text, int.Parse(textBox27.Text), float.Parse(textBox28.Text),
                 comboBox2.SelectedIndex, int.Parse(textBox26.Text), int.Parse(this.comboBox5.SelectedValue.ToString()), int.Parse(this.comboBox6.SelectedValue.ToString()));
                 evento.Id = int.Parse(textBox33.Text.ToString());
 
@@ -689,7 +724,10 @@ namespace Servicio_Catering
             comboBox5.SelectedIndex = -1;
             comboBox6.SelectedIndex = -1;
             comboBox2.SelectedIndex = -1;
+            comboBox7.SelectedIndex = -1;
             textBox25.Text = "";
+            button2.Enabled = false;
+
         }
 
 
