@@ -76,12 +76,28 @@ namespace BLL_Catering
 
             if (_usuarioAuxDal.CrearUsuario(userAux))
             {
-                return true;
+                try
+                {
+                    enviarMailUsuario(email, clave);
+                }
+                catch (Exception ex)
+                {
+                    logger.Error(ex, "Error al enviar mail al usuario creado en BLL");
+                }
+                return true;           
             }
 
             else 
                 return false;
 
+        }
+
+
+        private void enviarMailUsuario(string email, string pass)
+        {
+            EmailService emailService = new EmailService();
+            string mailTextoPlano = $"Se registró un nuevo usuario en el sistema con el correo: {email}. La contraseña asignada es: {pass}.";
+            emailService.EnviarMail(email, "Nuevo Usuario", mailTextoPlano);
         }
 
         public bool EditarUsuario(string nombre, string apellido, string dni, string domicilio, string telefono, string perfil, string email, string clave, int id)
